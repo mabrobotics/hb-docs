@@ -23,6 +23,7 @@ jobs:
       - name: Build the book
         run: |
           jupyter-book build .
+          touch _build/html/.nojekyll
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.4.3
         with:

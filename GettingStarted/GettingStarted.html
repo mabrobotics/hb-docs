@@ -358,7 +358,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -374,6 +376,54 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-in-the-box">What’s in the box?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parts-names">Parts names</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#buttons-and-connectors">Buttons and connectors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#status-of-the-robot">Status of the robot</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#battery-charge-level">Battery charge level</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robot-off">Robot off</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robot-on">Robot on</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#charging">Charging</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#emergency-stop">Emergency stop</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bootloader-state">Bootloader state</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#safety">Safety</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-safety-rules">General safety rules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operator-responsibilities">Operator responsibilities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operating-environment">Operating environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mechanical-hazards">Mechanical hazards</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#electrical-and-battery-safety">Electrical and battery safety</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#safe-handling-and-lifting">Safe handling and lifting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#safe-startup-and-shutdown">Safe startup and shutdown</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#charging-the-robot">Charging the Robot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#before-charging">Before charging</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#charging-procedure">Charging procedure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#charging-status">Charging status</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operating-the-robot-with-the-control-console">Operating the Robot with the Control Console</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#before-operation">Before operation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#powering-on">Powering on</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standing-up">Standing up</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-movement">Basic movement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stopping-and-powering-off">Stopping and powering off</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Emergency stop</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -385,6 +435,485 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="getting-started">
 <h1>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>This manual describes the basic operation, handling, and maintenance procedures for the quadruped mobile robot <code class="docutils literal notranslate"><span class="pre">Honey</span> <span class="pre">Badger</span> <span class="pre">5.0</span></code>. It is intended for operators, engineers, and service personnel who need to safely prepare, start, control, stop, and inspect the robot.</p>
+<p>Before operating the robot, read this manual carefully, especially the safety instructions and emergency stop procedures. The robot contains powerful electric actuators and can move suddenly if enabled incorrectly.</p>
+<section id="overview">
+<h3>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h3>
+<p>The robot is a four-legged mobile robotic platform designed for research, testing, inspection, and autonomous or remotely controlled operation. It is equipped with electric actuators, onboard computers, a battery power system, sensors, and communication interfaces.</p>
+<p>The robot can operate in several modes, including idle, standing, walking, teleoperation, and safety/recovery mode. Depending on the installed software and hardware configuration, the robot may support mapping, localization, or autonomous operation.</p>
+<p>[TODO: INSERT THE PICTURE/PICTURES OF THE ROBOT WITH MAIN DIMENSIONS]</p>
+<p>The main components of the robot are:</p>
+<ul class="simple">
+<li><p>quadruped mechanical body,</p></li>
+<li><p>four articulated legs with electric actuators,</p></li>
+<li><p>onboard computers,</p></li>
+<li><p>battery system,</p></li>
+<li><p>sensors,</p></li>
+<li><p>communication interfaces,</p></li>
+<li><p>operator control interface.</p></li>
+</ul>
+</section>
+<section id="what-s-in-the-box">
+<h3>What’s in the box?<a class="headerlink" href="#what-s-in-the-box" title="Link to this heading">#</a></h3>
+<p>The standard robot package may include the following items:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Item</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Standard</p></th>
+<th class="head"><p>Pro</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Quadruped robot</p></td>
+<td><p>Main robotic platform</p></td>
+<td><p><input type="checkbox" checked/></p></td>
+<td><p><input type="checkbox" checked/></p></td>
+</tr>
+<tr class="row-odd"><td><p>Battery pack</p></td>
+<td><p>Power source for the robot</p></td>
+<td><p><input type="checkbox" checked/></p></td>
+<td><p><input type="checkbox" checked/></p></td>
+</tr>
+<tr class="row-even"><td><p>Battery charger</p></td>
+<td><p>Charger compatible with the supplied battery</p></td>
+<td><p><input type="checkbox" checked/></p></td>
+<td><p><input type="checkbox" checked/></p></td>
+</tr>
+<tr class="row-odd"><td><p>Operator controller</p></td>
+<td><p>Dedicated remote controller</p></td>
+<td><p><input type="checkbox" checked/></p></td>
+<td><p><input type="checkbox" checked/></p></td>
+</tr>
+<tr class="row-even"><td><p>Ethernet cable</p></td>
+<td><p>Used for direct network connection</p></td>
+<td><p><input type="checkbox" unchecked/></p></td>
+<td><p><input type="checkbox" checked/></p></td>
+</tr>
+<tr class="row-odd"><td><p>Transport case</p></td>
+<td><p>Protective case for storage and transport</p></td>
+<td><p><input type="checkbox" unchecked/></p></td>
+<td><p><input type="checkbox" checked/></p></td>
+</tr>
+<tr class="row-even"><td><p>Documentation</p></td>
+<td><p>Operating manual, safety instructions, and configuration notes</p></td>
+<td><p><input type="checkbox" checked/></p></td>
+<td><p><input type="checkbox" checked/></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p>The exact contents may depend on the purchased configuration. Check the packing list supplied with the robot.</p>
+</div></blockquote>
+<p>[TODO: INSERT THE SMALL PICTURES OF THE INCLUDED ITEMS WITH DESCRIPTIONS]</p>
+</section>
+<section id="parts-names">
+<h3>Parts names<a class="headerlink" href="#parts-names" title="Link to this heading">#</a></h3>
+<p>The main robot parts are shown below and should be referenced consistently throughout this manual.</p>
+<p>[TODO: INSERT THE PICTURE/PICTURES WITH ROBOT PARTS NAMES]</p>
+<p>Robot leg naming convention is:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Abbreviation</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>FL</p></td>
+<td><p>Front-left leg</p></td>
+</tr>
+<tr class="row-odd"><td><p>FR</p></td>
+<td><p>Front-right leg</p></td>
+</tr>
+<tr class="row-even"><td><p>RL</p></td>
+<td><p>Rear-left leg</p></td>
+</tr>
+<tr class="row-odd"><td><p>RR</p></td>
+<td><p>Rear-right leg</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>This naming convention is used in logs, diagnostics, calibration, troubleshooting, and service procedures.</p>
+</section>
+<section id="buttons-and-connectors">
+<h3>Buttons and connectors<a class="headerlink" href="#buttons-and-connectors" title="Link to this heading">#</a></h3>
+<p>The robot may include several connectors, a power button, and status LEDs. Their location may vary depending on the hardware version.</p>
+<p>[TODO: INSERT THE PICTURE/PICTURES OF THE ROBOT WITH POWER BUTTON AND STANDARD CONNECTOR NAMES]</p>
+<blockquote>
+<div><p>These are the standard connector configurations. Connector functions may vary depending on the specific client requirements. Always check the connector description supplied with the robot.</p>
+</div></blockquote>
+</section>
+<section id="status-of-the-robot">
+<h3>Status of the robot<a class="headerlink" href="#status-of-the-robot" title="Link to this heading">#</a></h3>
+<p>The robot status is indicated by the RGB LEDs around the power button.</p>
+<section id="battery-charge-level">
+<h4>Battery charge level<a class="headerlink" href="#battery-charge-level" title="Link to this heading">#</a></h4>
+<p>The LED color represents the battery charge level:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>LED indication</p></th>
+<th class="head"><p>Battery charge level</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Green</p></td>
+<td><p>More than 60%</p></td>
+</tr>
+<tr class="row-odd"><td><p>Yellow</p></td>
+<td><p>30–60%</p></td>
+</tr>
+<tr class="row-even"><td><p>Red</p></td>
+<td><p>10–30%</p></td>
+</tr>
+<tr class="row-odd"><td><p>Blinking red</p></td>
+<td><p>Less than 10%</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>When the robot is off, briefly pressing the power button displays the battery charge level for 10 seconds.</p>
+</section>
+<section id="robot-off">
+<h4>Robot off<a class="headerlink" href="#robot-off" title="Link to this heading">#</a></h4>
+<p>When the robot is powered off:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Button action</p></th>
+<th class="head"><p>Robot behavior</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Brief press</p></td>
+<td><p>Displays battery charge level for 10 seconds</p></td>
+</tr>
+<tr class="row-odd"><td><p>Hold for 2 seconds</p></td>
+<td><p>Starts the power-on sequence</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="robot-on">
+<h4>Robot on<a class="headerlink" href="#robot-on" title="Link to this heading">#</a></h4>
+<p>When the robot is powered on, the power button LED shows the current battery charge level.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Button action</p></th>
+<th class="head"><p>Robot behavior</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Hold for 2 seconds</p></td>
+<td><p>Starts the shutdown sequence</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="charging">
+<h4>Charging<a class="headerlink" href="#charging" title="Link to this heading">#</a></h4>
+<p>When the charger is connected:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Robot state</p></th>
+<th class="head"><p>LED indication</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Robot off</p></td>
+<td><p>Slow pulsing color based on battery charge level</p></td>
+</tr>
+<tr class="row-odd"><td><p>Robot on</p></td>
+<td><p>Slow pulsing between cyan and the color based on battery charge level</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="emergency-stop">
+<h4>Emergency stop<a class="headerlink" href="#emergency-stop" title="Link to this heading">#</a></h4>
+<p>When the emergency stop is active and the robot leg actuators are disabled, the power button LED blinks between red and yellow.</p>
+<p>Do not attempt to operate the robot while the emergency stop is active. Remove the cause of the emergency stop before resetting the system.</p>
+</section>
+<section id="bootloader-state">
+<h4>Bootloader state<a class="headerlink" href="#bootloader-state" title="Link to this heading">#</a></h4>
+<p>When the power button LED blinks in a red-blue pattern, the robot internal mainboard is in bootloader state and is ready for firmware upload.</p>
+<p>This state is intended for service or firmware update procedures.</p>
+</section>
+</section>
+</section>
+<section id="safety">
+<h2>Safety<a class="headerlink" href="#safety" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">Honey</span> <span class="pre">Badger</span> <span class="pre">5.0</span></code> is a powerful mobile robot equipped with electric actuators, batteries, sensors, and onboard computers. Incorrect operation may result in injury, damage to the robot, or damage to the surrounding environment.</p>
+<p>Read and understand this section before powering on or operating the robot.</p>
+<section id="general-safety-rules">
+<h3>General safety rules<a class="headerlink" href="#general-safety-rules" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Operate the robot only after reading this manual.</p></li>
+<li><p>Keep hands, tools, loose clothing, and cables away from the robot legs.</p></li>
+<li><p>Do not touch the legs or joints while the robot is powered on or enabled.</p></li>
+<li><p>Operate the robot only in a clear and controlled area.</p></li>
+<li><p>Do not leave the robot operating unattended.</p></li>
+<li><p>Do not operate the robot near people, animals, stairs, traffic, water, or fragile objects.</p></li>
+<li><p>Do not exceed the specified payload, speed, or operating limits.</p></li>
+<li><p>Stop the robot immediately if unexpected behavior occurs.</p></li>
+</ul>
+</section>
+<section id="operator-responsibilities">
+<h3>Operator responsibilities<a class="headerlink" href="#operator-responsibilities" title="Link to this heading">#</a></h3>
+<p>The operator is responsible for safe preparation, supervision, and shutdown of the robot.</p>
+<p>Before operation, the operator must:</p>
+<ul class="simple">
+<li><p>inspect the robot for visible damage,</p></li>
+<li><p>check that the battery is properly installed,</p></li>
+<li><p>ensure that the operating area is clear,</p></li>
+<li><p>confirm that all required software and communication systems are working,</p></li>
+<li><p>make sure that all nearby people are aware that the robot may move.</p></li>
+</ul>
+<p>During operation, the operator must:</p>
+<ul class="simple">
+<li><p>supervise the robot at all times,</p></li>
+<li><p>maintain a safe distance from the robot,</p></li>
+<li><p>be ready to activate the emergency stop,</p></li>
+<li><p>monitor the robot state and battery level,</p></li>
+<li><p>stop operation if the robot behaves unexpectedly.</p></li>
+</ul>
+</section>
+<section id="operating-environment">
+<h3>Operating environment<a class="headerlink" href="#operating-environment" title="Link to this heading">#</a></h3>
+<p>Operate the robot only in environments suitable for its current configuration and software version.</p>
+<p>Do not operate the robot:</p>
+<ul class="simple">
+<li><p>on unstable, slippery, or wet surfaces,</p></li>
+<li><p>near stairs, ledges, holes, or drop-offs,</p></li>
+<li><p>in public areas without proper supervision and safety measures,</p></li>
+<li><p>near moving vehicles or machinery,</p></li>
+<li><p>in rain, snow, or standing water unless the robot is explicitly configured for such conditions,</p></li>
+<li><p>in explosive or flammable environments,</p></li>
+<li><p>outside the specified temperature and humidity limits.</p></li>
+</ul>
+</section>
+<section id="mechanical-hazards">
+<h3>Mechanical hazards<a class="headerlink" href="#mechanical-hazards" title="Link to this heading">#</a></h3>
+<p>The robot legs contain powerful moving joints. The legs may move suddenly during startup, calibration, recovery, or operation.</p>
+<blockquote>
+<div><p><strong>WARNING</strong> Keep hands, fingers, tools, and loose objects away from the legs and joints whenever the robot is powered on.</p>
+</div></blockquote>
+<p>Do not:</p>
+<ul class="simple">
+<li><p>place hands between leg segments,</p></li>
+<li><p>lift or carry the robot by its legs,</p></li>
+<li><p>stand close to the robot during startup or recovery,</p></li>
+<li><p>attempt to stop leg motion by hand,</p></li>
+<li><p>perform mechanical adjustments while the robot is enabled.</p></li>
+</ul>
+</section>
+<section id="electrical-and-battery-safety">
+<h3>Electrical and battery safety<a class="headerlink" href="#electrical-and-battery-safety" title="Link to this heading">#</a></h3>
+<p>The robot uses a high-power battery system. Incorrect handling may result in electric shock, fire, or equipment damage.</p>
+<ul class="simple">
+<li><p>Use only approved batteries and chargers.</p></li>
+<li><p>Do not use damaged, swollen, leaking, or overheated batteries.</p></li>
+<li><p>Do not short-circuit battery terminals.</p></li>
+<li><p>Do not connect or disconnect batteries with wet hands.</p></li>
+<li><p>Do not charge the battery unattended.</p></li>
+<li><p>Do not operate the robot with damaged power cables or connectors.</p></li>
+<li><p>Disconnect power before maintenance, unless the procedure explicitly requires power.</p></li>
+</ul>
+</section>
+<section id="safe-handling-and-lifting">
+<h3>Safe handling and lifting<a class="headerlink" href="#safe-handling-and-lifting" title="Link to this heading">#</a></h3>
+<p>The robot is heavy and may be difficult to handle by one person.</p>
+<ul class="simple">
+<li><p>Power off the robot before lifting or transporting it.</p></li>
+<li><p>Disable the actuators before handling the robot.</p></li>
+<li><p>Carry the robot only by the main body or designated carrying points.</p></li>
+<li><p>Do not lift the robot by the legs, sensors, connectors, cables, or payload.</p></li>
+<li><p>Use two people or lifting equipment if required by the robot weight.</p></li>
+<li><p>Remove the battery before transport if required by the transport procedure.</p></li>
+</ul>
+</section>
+<section id="safe-startup-and-shutdown">
+<h3>Safe startup and shutdown<a class="headerlink" href="#safe-startup-and-shutdown" title="Link to this heading">#</a></h3>
+<p>Before startup:</p>
+<ul class="simple">
+<li><p>place the robot on stable, flat ground,</p></li>
+<li><p>ensure that the legs have enough free space to move,</p></li>
+<li><p>check that the emergency stop is released,</p></li>
+<li><p>ensure that no one is touching the robot,</p></li>
+<li><p>verify that the operating area is clear.</p></li>
+</ul>
+<p>Before shutdown:</p>
+<ul class="simple">
+<li><p>stop robot motion,</p></li>
+<li><p>switch the robot to idle or safe state,</p></li>
+<li><p>wait until the robot is stable,</p></li>
+<li><p>stop the robot software,</p></li>
+<li><p>turn off power according to the shutdown procedure.</p></li>
+</ul>
+</section>
+</section>
+<section id="charging-the-robot">
+<h2>Charging the Robot<a class="headerlink" href="#charging-the-robot" title="Link to this heading">#</a></h2>
+<p>Use only the charger supplied with the <code class="docutils literal notranslate"><span class="pre">Honey</span> <span class="pre">Badger</span> <span class="pre">5.0</span></code> robot or another charger approved by the manufacturer.</p>
+<blockquote>
+<div><p><strong>WARNING</strong><br />
+Do not charge the robot unattended. Do not charge the robot if the battery, charger, cable, or connector is damaged.</p>
+</div></blockquote>
+<p>[TODO: INSERT THE PICTURE/PICTURES OF THE ROBOT CHARGER AND CHARGER CABLES]</p>
+<section id="before-charging">
+<h3>Before charging<a class="headerlink" href="#before-charging" title="Link to this heading">#</a></h3>
+<p>Before connecting the charger:</p>
+<ol class="arabic simple">
+<li><p>Place the robot on a stable, flat surface.</p></li>
+<li><p>Make sure the robot is stopped and in a safe state.</p></li>
+<li><p>Check that the charger, cable, and connector are clean, dry, and undamaged.</p></li>
+<li><p>Make sure the charging area is dry, ventilated, and away from flammable materials.</p></li>
+</ol>
+</section>
+<section id="charging-procedure">
+<h3>Charging procedure<a class="headerlink" href="#charging-procedure" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Connect the charger to the robot.</p></li>
+<li><p>Connect the charger to the mains power outlet.</p></li>
+<li><p>Check the LED indication around the power button.</p></li>
+<li><p>Wait until the battery is charged.</p></li>
+<li><p>Disconnect the charger from the mains power outlet.</p></li>
+<li><p>Disconnect the charger from the robot.</p></li>
+</ol>
+<blockquote>
+<div><p><strong>NOTICE</strong><br />
+Disconnect the charger by holding the connector body. Do not pull on the cable.</p>
+</div></blockquote>
+</section>
+<section id="charging-status">
+<h3>Charging status<a class="headerlink" href="#charging-status" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Robot state</p></th>
+<th class="head"><p>LED indication</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Robot off, charger connected</p></td>
+<td><p>Slow pulsing color based on battery charge level</p></td>
+</tr>
+<tr class="row-odd"><td><p>Robot on, charger connected</p></td>
+<td><p>Slow pulsing between cyan and the battery charge color</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Stop charging immediately if abnormal heat, smell, smoke, or noise is detected.</p>
+</section>
+</section>
+<section id="operating-the-robot-with-the-control-console">
+<h2>Operating the Robot with the Control Console<a class="headerlink" href="#operating-the-robot-with-the-control-console" title="Link to this heading">#</a></h2>
+<p>The control console is used to monitor robot status, change robot modes, and command basic movement. The robot is controlled using a Steam Deck console with the robot control GUI application installed.</p>
+<blockquote>
+<div><p><strong>WARNING</strong><br />
+The robot can move suddenly after being enabled. Keep a safe distance from the robot and make sure the emergency stop is accessible.</p>
+</div></blockquote>
+<section id="before-operation">
+<h3>Before operation<a class="headerlink" href="#before-operation" title="Link to this heading">#</a></h3>
+<p>Before controlling the robot:</p>
+<ol class="arabic simple">
+<li><p>Place the robot on stable, flat ground.</p></li>
+<li><p>Make sure the operating area is clear.</p></li>
+<li><p>Make sure no one is touching the robot.</p></li>
+<li><p>Check that the emergency stop is accessible and released.</p></li>
+<li><p>Check that the battery level is sufficient.</p></li>
+<li><p>Make sure the control console is connected to the robot.</p></li>
+</ol>
+</section>
+<section id="powering-on">
+<h3>Powering on<a class="headerlink" href="#powering-on" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Press and hold the robot power button for 2 seconds.</p></li>
+<li><p>Wait for the power-on sequence to complete.</p></li>
+<li><p>Open the control console.</p></li>
+<li><p>Wait until the console shows that the robot is connected.</p></li>
+<li><p>Check the robot status and battery level.</p></li>
+</ol>
+</section>
+<section id="standing-up">
+<h3>Standing up<a class="headerlink" href="#standing-up" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Make sure the robot is on stable, flat ground.</p></li>
+<li><p>Make sure all legs have enough free space to move.</p></li>
+<li><p>In the control console, select the stand command.</p></li>
+<li><p>Wait until the robot reaches a stable standing posture.</p></li>
+</ol>
+<blockquote>
+<div><p><strong>WARNING</strong><br />
+Keep hands and tools away from the robot legs during the stand-up sequence.</p>
+</div></blockquote>
+</section>
+<section id="basic-movement">
+<h3>Basic movement<a class="headerlink" href="#basic-movement" title="Link to this heading">#</a></h3>
+<p>After the robot is standing, use the control console to command movement.</p>
+<p>[TODO: INSERT THE PICTURE OF THE STEAMDECK WITH DESCRIBED CONTROL KNOBS AND BUTTONS]</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Robot behavior</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Forward</p></td>
+<td><p>Walks forward</p></td>
+</tr>
+<tr class="row-odd"><td><p>Backward</p></td>
+<td><p>Walks backward</p></td>
+</tr>
+<tr class="row-even"><td><p>Left / Right</p></td>
+<td><p>Moves or turns left/right, depending on control mode</p></td>
+</tr>
+<tr class="row-odd"><td><p>Rotate left / right</p></td>
+<td><p>Rotates in place</p></td>
+</tr>
+<tr class="row-even"><td><p>Stop</p></td>
+<td><p>Stops commanded motion</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>During operation:</p>
+<ul class="simple">
+<li><p>keep the robot under supervision,</p></li>
+<li><p>keep a safe distance,</p></li>
+<li><p>avoid obstacles, stairs, ledges, wet surfaces, and people,</p></li>
+<li><p>monitor the battery level and warning messages,</p></li>
+<li><p>stop the robot if unexpected behavior occurs.</p></li>
+</ul>
+</section>
+<section id="stopping-and-powering-off">
+<h3>Stopping and powering off<a class="headerlink" href="#stopping-and-powering-off" title="Link to this heading">#</a></h3>
+<p>To stop and power off the robot:</p>
+<ol class="arabic simple">
+<li><p>Stop all movement commands.</p></li>
+<li><p>Select idle mode in the control console.</p></li>
+<li><p>Wait until the robot is stable.</p></li>
+<li><p>Press and hold the power button for 2 seconds.</p></li>
+<li><p>Wait until the shutdown sequence is complete.</p></li>
+</ol>
+</section>
+<section id="id1">
+<h3>Emergency stop<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>Use the emergency stop immediately if the robot moves unexpectedly, becomes unstable, falls, loses communication, or creates any unsafe condition.</p>
+<p>After activating the emergency stop:</p>
+<ol class="arabic simple">
+<li><p>Wait until all motion stops.</p></li>
+<li><p>Check the robot and surroundings.</p></li>
+<li><p>Remove the cause of the emergency.</p></li>
+<li><p>Reset the emergency stop only when it is safe to continue.</p></li>
+</ol>
+</section>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -443,6 +972,61 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-in-the-box">What’s in the box?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parts-names">Parts names</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#buttons-and-connectors">Buttons and connectors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#status-of-the-robot">Status of the robot</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#battery-charge-level">Battery charge level</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robot-off">Robot off</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robot-on">Robot on</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#charging">Charging</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#emergency-stop">Emergency stop</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bootloader-state">Bootloader state</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#safety">Safety</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-safety-rules">General safety rules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operator-responsibilities">Operator responsibilities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operating-environment">Operating environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mechanical-hazards">Mechanical hazards</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#electrical-and-battery-safety">Electrical and battery safety</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#safe-handling-and-lifting">Safe handling and lifting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#safe-startup-and-shutdown">Safe startup and shutdown</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#charging-the-robot">Charging the Robot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#before-charging">Before charging</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#charging-procedure">Charging procedure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#charging-status">Charging status</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operating-the-robot-with-the-control-console">Operating the Robot with the Control Console</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#before-operation">Before operation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#powering-on">Powering on</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standing-up">Standing up</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-movement">Basic movement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stopping-and-powering-off">Stopping and powering off</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Emergency stop</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

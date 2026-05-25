@@ -1,4 +1,4 @@
-## SteamDeck Controller
+# SteamDeck Controller
 
 Remote control of HB robots is best done using MAB supplied SteamDeck controller with custom software suite. The controller allows easy to easily startup, change gaits and control the robot, using `hb50_remote` application.
 

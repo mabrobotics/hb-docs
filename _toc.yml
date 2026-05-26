@@ -8,13 +8,16 @@ chapters:
   - file: GettingStarted/GettingStarted.md
     title: Getting Started
     sections:
-      - file: GettingStarted/SteamDeck.md
-        title: SteamDeck Controller
-      - file: GettingStarted/ReferenceFrames.md 
-        title: Robot Coordinate Frames
+      - file: GettingStarted/Basics.md
+        title: Basics
   - file: Physical/Overview.md
     title: Physical 
     sections:
       - file: Physical/Connectors.md
         title: Button & Connectors 
+  - file: Software/Overview.md
+    title: Software 
+    sections:
+      - file: Software/Geometry.md 
+        title: Geometry & Frames
     

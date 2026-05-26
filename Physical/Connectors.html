@@ -1,0 +1,792 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Connectors &#8212; Honey Badger Robot Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Physical/Connectors';</script>
+    <link rel="icon" href="../_static/logo32x32.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Mechanical" href="Overview.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Honey Badger Robot Documentation - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Honey Badger Robot Documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Intro
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../GettingStarted/GettingStarted.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/SteamDeck.html">SteamDeck Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/ReferenceFrames.html">Robot Coordinate Frames</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Overview.html">Physical</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Button &amp; Connectors</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/mabrobotics/hb-docs" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/mabrobotics/hb-docs/issues/new?title=Issue%20on%20page%20%2FPhysical/Connectors.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Physical/Connectors.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Connectors</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-status-button">Power &amp; Status button</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#status-of-the-robot">Status of the robot</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#battery-charge-level">Battery charge level</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robot-off">Robot off</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robot-on">Robot on</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#charging">Charging</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#emergency-stop">Emergency stop</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#firmware-update">Firmware update</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Connectors</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#environmental-safety">Environmental safety</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aux1">AUX1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aux2">AUX2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#e-stop">E-stop</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#charger-port">Charger port</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#todo-lan-wan">TODO: LAN/WAN</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="connectors">
+<h1>Connectors<a class="headerlink" href="#connectors" title="Link to this heading">#</a></h1>
+<section id="power-status-button">
+<h2>Power &amp; Status button<a class="headerlink" href="#power-status-button" title="Link to this heading">#</a></h2>
+<p>Power button is located on the right side of the robots’ body. It can be used to power on, and off the robot,
+and displays current status of the robots’ internal systems.</p>
+<section id="status-of-the-robot">
+<h3>Status of the robot<a class="headerlink" href="#status-of-the-robot" title="Link to this heading">#</a></h3>
+<p>The robot status is indicated by the RGB LED ring around the power button.</p>
+<section id="battery-charge-level">
+<h4>Battery charge level<a class="headerlink" href="#battery-charge-level" title="Link to this heading">#</a></h4>
+<p>The LED color represents the battery charge level:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>LED indication</p></th>
+<th class="head"><p>Battery charge level</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Green</p></td>
+<td><p>More than 60%</p></td>
+</tr>
+<tr class="row-odd"><td><p>Yellow</p></td>
+<td><p>30–60%</p></td>
+</tr>
+<tr class="row-even"><td><p>Red</p></td>
+<td><p>10–30%</p></td>
+</tr>
+<tr class="row-odd"><td><p>Blinking red</p></td>
+<td><p>Less than 10%</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>When the robot is off, briefly pressing the power button displays the battery charge level for 10 seconds.</p>
+</section>
+<section id="robot-off">
+<h4>Robot off<a class="headerlink" href="#robot-off" title="Link to this heading">#</a></h4>
+<p>When the robot is powered off:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Button action</p></th>
+<th class="head"><p>Robot behavior</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Brief press</p></td>
+<td><p>Displays battery charge level for 10 seconds</p></td>
+</tr>
+<tr class="row-odd"><td><p>Hold for 2 seconds</p></td>
+<td><p>Starts the power-on sequence</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="robot-on">
+<h4>Robot on<a class="headerlink" href="#robot-on" title="Link to this heading">#</a></h4>
+<p>When the robot is powered on, the power button LED shows the current battery charge level.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Button action</p></th>
+<th class="head"><p>Robot behavior</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Hold for 2 seconds</p></td>
+<td><p>Starts the shutdown sequence</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="charging">
+<h4>Charging<a class="headerlink" href="#charging" title="Link to this heading">#</a></h4>
+<p>When the charger is connected:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Robot state</p></th>
+<th class="head"><p>LED indication</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Robot off</p></td>
+<td><p>Slow pulsing between off and the color based on battery charge level</p></td>
+</tr>
+<tr class="row-odd"><td><p>Robot on</p></td>
+<td><p>Slow pulsing between cyan and the color based on battery charge level</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="emergency-stop">
+<h4>Emergency stop<a class="headerlink" href="#emergency-stop" title="Link to this heading">#</a></h4>
+<p>When the emergency stop is active and the robot leg actuators are disabled electrically, the power button
+LED blinks between red and yellow.</p>
+<p>Do not attempt to operate the robot while the emergency stop is active. Remove the cause of the emergency
+stop before resetting the system.</p>
+</section>
+<section id="firmware-update">
+<h4>Firmware update<a class="headerlink" href="#firmware-update" title="Link to this heading">#</a></h4>
+<p>When the power button LED blinks in a red-blue (police) pattern, the robot internal mainboard is in
+firmware update mode. This state is intended for service or firmware update procedures and should not be
+active during normal operation.</p>
+</section>
+</section>
+</section>
+<section id="id1">
+<h2>Connectors<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>The robot includes several connectors, a power button, and status LEDs. Their location may vary depending
+on the hardware version.</p>
+<p>To plug the cable to the connector:</p>
+<ul class="simple">
+<li><p>match connector and cable orientation by aligning red markers,</p></li>
+<li><p>push the cable into the connector, until auidible and/or haptic click.</p></li>
+</ul>
+<p>To unplug the connector:</p>
+<ul class="simple">
+<li><p>firmly grab cable connectors body,</p></li>
+<li><p>slightly pull the connector housing, internal sliding mechanism will be actuated (refer to schematic),</p></li>
+<li><p>pull the cable from the socket - it should come out without significant force requirement.</p></li>
+<li><p>for battery connector, always plug battery connector plug immiedietly after disconnecting from the robot.</p></li>
+</ul>
+<figure class="align-center">
+<img alt="hb50_connectors" class="no-scaled-link" src="../_images/robot_connectors.png" />
+</figure>
+<section id="environmental-safety">
+<h3>Environmental safety<a class="headerlink" href="#environmental-safety" title="Link to this heading">#</a></h3>
+<p>While all robots connectors were selected and rated for outdoor use, they must remain plugged at all times during operation.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The ports without plugged connector (or matching plug) are not suitable for use near water, dust, diry or in
+high humidity scenarios!</p>
+</div>
+<p>There are 3 types of plugs for the robot:</p>
+<ul class="simple">
+<li><p>2x plastic USB port cap,</p></li>
+<li><p>2x 12mm plug (LAN, LAN/WAN),</p></li>
+<li><p>3x 10mm plug (AUX1, AUX2, Charger)</p></li>
+</ul>
+<figure class="align-center">
+<img alt="connector_plugs" class="no-scaled-link" src="../_images/connector_plugs.jpg" />
+</figure>
+</section>
+<section id="aux1">
+<h3>AUX1<a class="headerlink" href="#aux1" title="Link to this heading">#</a></h3>
+<p>AUX1 connector hosts payload power connector and dedicated FDCAN lines.</p>
+<figure class="align-center">
+<img alt="connector_5pin" class="no-scaled-link" src="../_images/connector_5pin.png" />
+</figure>
+<p>Pinout is as follows:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin no.</p></th>
+<th class="head"><p>Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Not Connected</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>VCC 36V-50.4V, up to 50W</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>GND</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>FDCAN - CAN L</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>FDCAN - CAN H</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="aux2">
+<h3>AUX2<a class="headerlink" href="#aux2" title="Link to this heading">#</a></h3>
+<p>AUX2 connectors hosts isolated 5V supply, and Emergency Stop inputs.</p>
+<figure class="align-center">
+<img alt="connector_5pin" class="no-scaled-link" src="../_images/connector_5pin.png" />
+</figure>
+<p>Pinout is as follows:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin no.</p></th>
+<th class="head"><p>Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Not Connected</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>5V (Isolated), up to 10W</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>GND (Isolated)</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>E-stop</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>E-stop</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This connector offers isolated output - its outputs should not be shorted to regular GND (in AUX1) nor to the robots’
+chassis. Shorting ant of the connections to the batterys GND, may lead to damage to internal electronics.</p>
+</div>
+<section id="e-stop">
+<h4>E-stop<a class="headerlink" href="#e-stop" title="Link to this heading">#</a></h4>
+<p>If E-stop button is used, it should be normally-closed, pressing the button should disconnect the circuit.</p>
+<p>There are two input pins connected to the robots E-stop mechanism. These pins should be shorted
+to each other during normal operation. The circut operates in normally-closed manner. The E-stop circuit
+has direct hardware connection to robots power system, bypassing software for always-ready emergency use.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is ‘hard’ E-stop mechanism, using it will immiedietly cut the power to robots’ legs, leading to a fall.
+This may, lead to unintended damage to the robot and its surrounding. Additionally sudden power cutoff may lead
+to voltage surges that can damage electronics, including exposed payload power port.
+<strong>Avoid using E-stop, except in emergency</strong></p>
+</div>
+</section>
+</section>
+<section id="charger-port">
+<h3>Charger port<a class="headerlink" href="#charger-port" title="Link to this heading">#</a></h3>
+<p>Charger port is only suitable to work with MAB supplied charger.</p>
+</section>
+</section>
+<section id="todo-lan-wan">
+<h2>TODO: LAN/WAN<a class="headerlink" href="#todo-lan-wan" title="Link to this heading">#</a></h2>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Physical"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Overview.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Mechanical</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-status-button">Power &amp; Status button</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#status-of-the-robot">Status of the robot</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#battery-charge-level">Battery charge level</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robot-off">Robot off</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robot-on">Robot on</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#charging">Charging</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#emergency-stop">Emergency stop</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#firmware-update">Firmware update</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Connectors</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#environmental-safety">Environmental safety</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aux1">AUX1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aux2">AUX2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#e-stop">E-stop</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#charger-port">Charger port</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#todo-lan-wan">TODO: LAN/WAN</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By MAB Robotics
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

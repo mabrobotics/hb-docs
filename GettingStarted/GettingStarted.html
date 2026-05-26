@@ -185,6 +185,10 @@
 <li class="toctree-l2"><a class="reference internal" href="ReferenceFrames.html">Robot Coordinate Frames</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Physical/Overview.html">Physical</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Physical/Connectors.html">Button &amp; Connectors</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -395,16 +399,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#safe-handling-and-lifting">Safe handling and lifting</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#safe-startup-and-shutdown">Safe startup and shutdown</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parts-names">Parts names</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#buttons-and-connectors">Buttons and connectors</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#status-of-the-robot">Status of the robot</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#battery-charge-level">Battery charge level</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robot-off">Robot off</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robot-on">Robot on</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#charging">Charging</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#emergency-stop">Emergency stop</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bootloader-state">Bootloader state</a></li>
-</ul>
-</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#charging-the-robot">Charging the Robot</a><ul class="nav section-nav flex-column">
@@ -469,7 +463,7 @@ The robot can operate in several modes, including idle, standing, walking, teleo
 <tbody>
 <tr class="row-even"><td><p>Robot model</p></td>
 <td><p>Honey Badger 5.0 [hb50]</p></td>
-<td><p>—-</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p>Length (with legs)</p></td>
 <td><p>725</p></td>
@@ -571,6 +565,18 @@ The robot can operate in several modes, including idle, standing, walking, teleo
 <td><p>+-30</p></td>
 <td><p>°</p></td>
 </tr>
+<tr class="row-even"><td><p><strong>Connectivity</strong></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>WiFi 5 AP 802.11</p></td>
+<td><p>up to 867Mbps</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>Ethernet</p></td>
+<td><p>1x LAN, 1x WAN/LAN, up to 1Gbps each</p></td>
+<td><p></p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -608,19 +614,19 @@ The robot can operate in several modes, including idle, standing, walking, teleo
 <td><p><input type="checkbox" checked/></p></td>
 <td><p><input type="checkbox" checked/></p></td>
 </tr>
-<tr class="row-even"><td><p>Ethernet cable</p></td>
+<tr class="row-even"><td><p>Documentation</p></td>
+<td><p>Operating manual, safety instructions, and configuration notes</p></td>
+<td><p><input type="checkbox" checked/></p></td>
+<td><p><input type="checkbox" checked/></p></td>
+</tr>
+<tr class="row-odd"><td><p>Ethernet cable</p></td>
 <td><p>Used for direct network connection</p></td>
 <td><p><input type="checkbox" unchecked/></p></td>
 <td><p><input type="checkbox" checked/></p></td>
 </tr>
-<tr class="row-odd"><td><p>Transport case</p></td>
+<tr class="row-even"><td><p>Transport case</p></td>
 <td><p>Protective case for storage and transport</p></td>
 <td><p><input type="checkbox" unchecked/></p></td>
-<td><p><input type="checkbox" checked/></p></td>
-</tr>
-<tr class="row-even"><td><p>Documentation</p></td>
-<td><p>Operating manual, safety instructions, and configuration notes</p></td>
-<td><p><input type="checkbox" checked/></p></td>
 <td><p><input type="checkbox" checked/></p></td>
 </tr>
 </tbody>
@@ -794,114 +800,6 @@ Never lift the robot while in Active balance mode!</p>
 </table>
 </div>
 <p>This naming convention is used in logs, diagnostics, calibration, troubleshooting, and service procedures.</p>
-</section>
-<section id="buttons-and-connectors">
-<h3>Buttons and connectors<a class="headerlink" href="#buttons-and-connectors" title="Link to this heading">#</a></h3>
-<p>The robot may include several connectors, a power button, and status LEDs. Their location may vary depending on the hardware version.</p>
-<figure class="align-center">
-<img alt="hb50_connectors" class="no-scaled-link" src="../_images/robot_connectors.png" />
-</figure>
-<blockquote>
-<div><p>These are the standard connector configurations. Connector functions may vary depending on the specific client requirements. Always check the connector description supplied with the robot.</p>
-</div></blockquote>
-</section>
-<section id="status-of-the-robot">
-<h3>Status of the robot<a class="headerlink" href="#status-of-the-robot" title="Link to this heading">#</a></h3>
-<p>The robot status is indicated by the RGB LEDs around the power button.</p>
-<section id="battery-charge-level">
-<h4>Battery charge level<a class="headerlink" href="#battery-charge-level" title="Link to this heading">#</a></h4>
-<p>The LED color represents the battery charge level:</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>LED indication</p></th>
-<th class="head"><p>Battery charge level</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Green</p></td>
-<td><p>More than 60%</p></td>
-</tr>
-<tr class="row-odd"><td><p>Yellow</p></td>
-<td><p>30–60%</p></td>
-</tr>
-<tr class="row-even"><td><p>Red</p></td>
-<td><p>10–30%</p></td>
-</tr>
-<tr class="row-odd"><td><p>Blinking red</p></td>
-<td><p>Less than 10%</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>When the robot is off, briefly pressing the power button displays the battery charge level for 10 seconds.</p>
-</section>
-<section id="robot-off">
-<h4>Robot off<a class="headerlink" href="#robot-off" title="Link to this heading">#</a></h4>
-<p>When the robot is powered off:</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Button action</p></th>
-<th class="head"><p>Robot behavior</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Brief press</p></td>
-<td><p>Displays battery charge level for 10 seconds</p></td>
-</tr>
-<tr class="row-odd"><td><p>Hold for 2 seconds</p></td>
-<td><p>Starts the power-on sequence</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="robot-on">
-<h4>Robot on<a class="headerlink" href="#robot-on" title="Link to this heading">#</a></h4>
-<p>When the robot is powered on, the power button LED shows the current battery charge level.</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Button action</p></th>
-<th class="head"><p>Robot behavior</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Hold for 2 seconds</p></td>
-<td><p>Starts the shutdown sequence</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="charging">
-<h4>Charging<a class="headerlink" href="#charging" title="Link to this heading">#</a></h4>
-<p>When the charger is connected:</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Robot state</p></th>
-<th class="head"><p>LED indication</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Robot off</p></td>
-<td><p>Slow pulsing color based on battery charge level</p></td>
-</tr>
-<tr class="row-odd"><td><p>Robot on</p></td>
-<td><p>Slow pulsing between cyan and the color based on battery charge level</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="emergency-stop">
-<h4>Emergency stop<a class="headerlink" href="#emergency-stop" title="Link to this heading">#</a></h4>
-<p>When the emergency stop is active and the robot leg actuators are disabled, the power button LED blinks between red and yellow.</p>
-<p>Do not attempt to operate the robot while the emergency stop is active. Remove the cause of the emergency stop before resetting the system.</p>
-</section>
-<section id="bootloader-state">
-<h4>Bootloader state<a class="headerlink" href="#bootloader-state" title="Link to this heading">#</a></h4>
-<p>When the power button LED blinks in a red-blue pattern, the robot internal mainboard is in bootloader state and is ready for firmware upload.</p>
-<p>This state is intended for service or firmware update procedures.</p>
-</section>
 </section>
 </section>
 <section id="charging-the-robot">
@@ -1149,16 +1047,6 @@ Never lift the robot while in Active balance mode!</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#safe-handling-and-lifting">Safe handling and lifting</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#safe-startup-and-shutdown">Safe startup and shutdown</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parts-names">Parts names</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#buttons-and-connectors">Buttons and connectors</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#status-of-the-robot">Status of the robot</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#battery-charge-level">Battery charge level</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robot-off">Robot off</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robot-on">Robot on</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#charging">Charging</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#emergency-stop">Emergency stop</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bootloader-state">Bootloader state</a></li>
-</ul>
-</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#charging-the-robot">Charging the Robot</a><ul class="nav section-nav flex-column">

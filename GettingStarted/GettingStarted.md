@@ -32,7 +32,7 @@ The main components of the robot are:
 
 | Parameter           | Value                   | Unit |
 | ------------------- | ----------------------- | ---  |
-| Robot model         | Honey Badger 5.0 [hb50] | ---- |
+| Robot model         | Honey Badger 5.0 [hb50] |
 | Length (with legs)  | 725 | mm |
 | Length (stowed)     | xxx | mm |
 | Width               | 320 | mm |
@@ -58,8 +58,9 @@ The main components of the robot are:
 | Walking Speed (Walk)   | 0.6 | m/s |
 | Walking Speed (Run)    | 1.0 | m/s |
 | Slopes | +-30 | ° |
-
-
+| **Connectivity**|
+| WiFi 5 AP 802.11 | up to 867Mbps
+| Ethernet | 1x LAN, 1x WAN/LAN, up to 1Gbps each | 
 
 \*Operating time in nominal conditions - no payload, constant walking (`Walk` gait), with average speed of 0.5m/s, on mostly flat, dry concrete surface.
 
@@ -73,9 +74,9 @@ The standard robot package may include the following items:
 | Battery pack        | Power source for the robot                                     | <input type="checkbox" checked/>   | <input type="checkbox" checked/> |
 | Battery charger     | Charger compatible with the supplied battery                   | <input type="checkbox" checked/>   | <input type="checkbox" checked/> |
 | Operator controller | Dedicated remote controller                                    | <input type="checkbox" checked/>   | <input type="checkbox" checked/> |
+| Documentation       | Operating manual, safety instructions, and configuration notes | <input type="checkbox" checked/>   | <input type="checkbox" checked/> |
 | Ethernet cable      | Used for direct network connection                             | <input type="checkbox" unchecked/> | <input type="checkbox" checked/> |
 | Transport case      | Protective case for storage and transport                      | <input type="checkbox" unchecked/> | <input type="checkbox" checked/> |
-| Documentation       | Operating manual, safety instructions, and configuration notes | <input type="checkbox" checked/>   | <input type="checkbox" checked/> |
 
 > The exact contents may depend on the purchased configuration. Check the packing list supplied with the robot.
 
@@ -143,7 +144,6 @@ The robot legs contain powerful moving joints. The legs may move suddenly during
 Keep hands, fingers, tools, and loose objects away from the legs and joints whenever the robot is powered on.
 ```
 Do not:
-
 - place hands between leg segments,
 - lift or carry the robot by its legs,
 - stand close to the robot during startup or recovery,
@@ -235,75 +235,6 @@ Robot leg naming convention is:
 
 This naming convention is used in logs, diagnostics, calibration, troubleshooting, and service procedures.
 
-### Buttons and connectors
-
-The robot may include several connectors, a power button, and status LEDs. Their location may vary depending on the hardware version.
-
-```{figure} ./img/robot_connectors.png
-:alt: hb50_connectors
-:class: bg-primary mb-1
-:align: center
-:class: no-scaled-link
-```
-
-> These are the standard connector configurations. Connector functions may vary depending on the specific client requirements. Always check the connector description supplied with the robot.
-
-### Status of the robot
-
-The robot status is indicated by the RGB LEDs around the power button.
-
-#### Battery charge level
-
-The LED color represents the battery charge level:
-
-| LED indication | Battery charge level |
-| -------------- | -------------------- |
-| Green          | More than 60%        |
-| Yellow         | 30–60%               |
-| Red            | 10–30%               |
-| Blinking red   | Less than 10%        |
-
-When the robot is off, briefly pressing the power button displays the battery charge level for 10 seconds.
-
-#### Robot off
-
-When the robot is powered off:
-
-| Button action | Robot behavior |
-| ------------- | -------------- |
-| Brief press   | Displays battery charge level for 10 seconds |
-| Hold for 2 seconds | Starts the power-on sequence |
-
-#### Robot on
-
-When the robot is powered on, the power button LED shows the current battery charge level.
-
-| Button action | Robot behavior |
-| ------------- | -------------- |
-| Hold for 2 seconds | Starts the shutdown sequence |
-
-#### Charging
-
-When the charger is connected:
-
-| Robot state | LED indication                                                        |
-| ----------- | --------------------------------------------------------------------- |
-| Robot off   | Slow pulsing color based on battery charge level                      |
-| Robot on    | Slow pulsing between cyan and the color based on battery charge level |
-
-#### Emergency stop
-
-When the emergency stop is active and the robot leg actuators are disabled, the power button LED blinks between red and yellow.
-
-Do not attempt to operate the robot while the emergency stop is active. Remove the cause of the emergency stop before resetting the system.
-
-#### Bootloader state
-
-When the power button LED blinks in a red-blue pattern, the robot internal mainboard is in bootloader state and is ready for firmware upload.
-
-This state is intended for service or firmware update procedures.
-
-
 ## Charging the Robot
 
 Use only the charger supplied with the `Honey Badger 5.0` robot or another charger approved by the manufacturer.
@@ -334,6 +265,7 @@ Before connecting the charger:
 ```{note}
 Disconnect the charger by holding the connector body. Do not pull on the cable!
 ```
+
 ### Charging status
 
 | Robot state | LED indication |

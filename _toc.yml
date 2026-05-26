@@ -12,3 +12,9 @@ chapters:
         title: SteamDeck Controller
       - file: GettingStarted/ReferenceFrames.md 
         title: Robot Coordinate Frames
+  - file: Physical/Overview.md
+    title: Physical 
+    sections:
+      - file: Physical/Connectors.md
+        title: Button & Connectors 
+    

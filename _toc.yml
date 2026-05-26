@@ -18,6 +18,8 @@ chapters:
   - file: Software/Overview.md
     title: Software 
     sections:
+      - file: Software/Networking.md 
+        title: Networking
       - file: Software/Geometry.md 
         title: Geometry & Frames
     

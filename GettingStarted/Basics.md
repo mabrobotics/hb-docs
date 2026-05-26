@@ -28,6 +28,10 @@ Before startup:
 - ensure that no one is touching the robot,
 - verify that the operating area is clear.
 
+```{note}
+Startup procedure takes around 90 seconds to complete.
+```
+
 Before shutdown:
 
 - stop robot motion,
@@ -36,10 +40,26 @@ Before shutdown:
 - stop the robot software,
 - turn off power according to the shutdown procedure.
 
+```{note}
+Shutdown using button or via hb_remote, takes around 10 seconds to complete, up to 15 seconds, while the
+charger is connected.
+```
+
+## Connection
+
+By default, the robot is configured with independent WiFi access point. SSID follows a pattern:
+- **hb50_XXXX** - for 2.4Ghz network,
+- **hb50_XXXX_5G** - for 5Ghz network.
+Where XXXX is robot serial code shortened to 4 hex symbols - e.g. "hb50_AFAB" or "hb50_D71C_5G".
+
+If SteamDeck controller has been ordered alongside the robot, it will automatically connect to the network.
+If connections has to be estabilished from other device the default WiFi password for all robots is
+- `milkaorzechowa`
 
 ## Operating the Robot with the Control Console
 
-The control console is used to monitor robot status, change robot modes, and command basic movement. The robot is controlled using a Steam Deck console with the robot control GUI application installed.
+The control console is used to monitor robot status, change robot modes, and command basic movement. 
+The robot is controlled using a Steam Deck console with the robot control GUI application installed.
 
 ```{warning}
 The robot can move suddenly after being enabled. Keep a safe distance from the robot and make sure the emergency stop is accessible.

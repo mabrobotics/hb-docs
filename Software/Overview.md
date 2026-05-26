@@ -230,9 +230,7 @@ Contains velocity commands for the MAB control stack.
 | `Y` | commanded lateral velocity |
 | `Z` | commanded reference walking height |
 
-Walking height is computed as:
-
-:contentReference[oaicite:0]{index=0}
+TODO: How Z is computed 
 
 ##### Angular Component
 

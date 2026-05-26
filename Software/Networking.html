@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; Honey Badger Robot Documentation</title>
+    <title>Network &#8212; Honey Badger Robot Documentation</title>
   
   
   
@@ -58,10 +58,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'GettingStarted/ReferenceFrames';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Software/Networking';</script>
     <link rel="icon" href="../_static/logo32x32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Geometry and Frames" href="Geometry.html" />
+    <link rel="prev" title="Software Overview" href="Overview.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -124,8 +126,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -179,17 +179,18 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="GettingStarted.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="Basics.html">Basics</a></li>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../GettingStarted/GettingStarted.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/Basics.html">Basics</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Physical/Overview.html">Physical</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Physical/Connectors.html">Button &amp; Connectors</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Software/Overview.html">Software</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Software/Geometry.html">Geometry &amp; Frames</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Overview.html">Software</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Networking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Geometry.html">Geometry &amp; Frames</a></li>
 </ul>
 </details></li>
 </ul>
@@ -263,7 +264,7 @@
       
       
       
-      <li><a href="https://github.com/mabrobotics/hb-docs/issues/new?title=Issue%20on%20page%20%2FGettingStarted/ReferenceFrames.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/mabrobotics/hb-docs/issues/new?title=Issue%20on%20page%20%2FSoftware/Networking.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -293,7 +294,7 @@
       
       
       
-      <li><a href="../_sources/GettingStarted/ReferenceFrames.md" target="_blank"
+      <li><a href="../_sources/Software/Networking.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -377,7 +378,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Network</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -386,9 +387,12 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ros-and-ssh">ROS and SSH</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh">SSH</a></li>
 </ul>
-
+</li>
+</ul>
             </nav>
         </div>
     </div>
@@ -399,7 +403,60 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="network">
+<h1>Network<a class="headerlink" href="#network" title="Link to this heading">#</a></h1>
+<p>Robot is equipped with on-board WiFi router, allowing for easy access, updates and managing multiple
+connected devices.</p>
+<p>By default, the robot is configured with independent WiFi access point. SSID follows a pattern:</p>
+<ul class="simple">
+<li><p><strong>hb50_XXXX</strong> - for 2.4Ghz network,</p></li>
+<li><p><strong>hb50_XXXX_5G</strong> - for 5Ghz network.
+Where XXXX is robot serial code shortened to 4 hex symbols - e.g. “hb50_AFAB” or “hb50_D71C_5G”.
+Default password to the network is: <code class="docutils literal notranslate"><span class="pre">milkaorzechowa</span></code>.</p></li>
+</ul>
+<p>The router also hosts DNS server, allowing for easy SSH connections.</p>
+<figure class="align-center">
+<img alt="network" class="no-scaled-link" src="../_images/network.png" />
+</figure>
+<section id="ros-and-ssh">
+<h2>ROS and SSH<a class="headerlink" href="#ros-and-ssh" title="Link to this heading">#</a></h2>
+<p>Both of the robots on-board computers can be connected to via ROS2 or direcly with ssh.
+By default, robots use ROS_DOMAIN_ID of 69, thus robots topics should be visible shortly after power-up.</p>
+<section id="ssh">
+<h3>SSH<a class="headerlink" href="#ssh" title="Link to this heading">#</a></h3>
+<p>Robots’ DNS server uses 10.11.0.1 as base address (also Router address), and both LPC and APC have static
+IP address:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Device</p></th>
+<th class="head"><p>Static Address</p></th>
+<th class="head"><p>Hostname</p></th>
+<th class="head"><p>Username</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>LPC</p></td>
+<td><p>10.11.0.10</p></td>
+<td><p>hb50.lan</p></td>
+<td><p>hb</p></td>
+</tr>
+<tr class="row-odd"><td><p>APC (Orin)</p></td>
+<td><p>10.11.0.11</p></td>
+<td><p>hb50-orin.lan</p></td>
+<td><p>hb-orin</p></td>
+</tr>
+<tr class="row-even"><td><p>SteamDeck</p></td>
+<td><p>Dynamic IP</p></td>
+<td><p>deck.lan</p></td>
+<td><p>mab</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+</section>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -413,7 +470,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./GettingStarted"
+            path: "./Software"
         },
         predefinedOutput: true
     }
@@ -430,6 +487,24 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="Overview.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Software Overview</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Geometry.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Geometry and Frames</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -445,9 +520,12 @@ document.write(`
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ros-and-ssh">ROS and SSH</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh">SSH</a></li>
 </ul>
-
+</li>
+</ul>
   </nav></div>
 
 </div></div>

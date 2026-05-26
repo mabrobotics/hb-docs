@@ -189,6 +189,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Software/Overview.html">Software</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Software/Networking.html">Networking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Software/Geometry.html">Geometry &amp; Frames</a></li>
 </ul>
 </details></li>
@@ -389,6 +390,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-in-the-box">What’s in the box?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#safe-startup-and-shutdown">Safe startup and shutdown</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connection">Connection</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operating-the-robot-with-the-control-console">Operating the Robot with the Control Console</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#before-operation">Before operation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#powering-on">Powering on</a></li>
@@ -481,6 +483,10 @@ document.write(`
 <li><p>ensure that no one is touching the robot,</p></li>
 <li><p>verify that the operating area is clear.</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Startup procedure takes around 90 seconds to complete.</p>
+</div>
 <p>Before shutdown:</p>
 <ul class="simple">
 <li><p>stop robot motion,</p></li>
@@ -489,10 +495,30 @@ document.write(`
 <li><p>stop the robot software,</p></li>
 <li><p>turn off power according to the shutdown procedure.</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Shutdown using button or via hb_remote, takes around 10 seconds to complete, up to 15 seconds, while the
+charger is connected.</p>
+</div>
+</section>
+<section id="connection">
+<h2>Connection<a class="headerlink" href="#connection" title="Link to this heading">#</a></h2>
+<p>By default, the robot is configured with independent WiFi access point. SSID follows a pattern:</p>
+<ul class="simple">
+<li><p><strong>hb50_XXXX</strong> - for 2.4Ghz network,</p></li>
+<li><p><strong>hb50_XXXX_5G</strong> - for 5Ghz network.
+Where XXXX is robot serial code shortened to 4 hex symbols - e.g. “hb50_AFAB” or “hb50_D71C_5G”.</p></li>
+</ul>
+<p>If SteamDeck controller has been ordered alongside the robot, it will automatically connect to the network.
+If connections has to be estabilished from other device the default WiFi password for all robots is</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">milkaorzechowa</span></code></p></li>
+</ul>
 </section>
 <section id="operating-the-robot-with-the-control-console">
 <h2>Operating the Robot with the Control Console<a class="headerlink" href="#operating-the-robot-with-the-control-console" title="Link to this heading">#</a></h2>
-<p>The control console is used to monitor robot status, change robot modes, and command basic movement. The robot is controlled using a Steam Deck console with the robot control GUI application installed.</p>
+<p>The control console is used to monitor robot status, change robot modes, and command basic movement.
+The robot is controlled using a Steam Deck console with the robot control GUI application installed.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The robot can move suddenly after being enabled. Keep a safe distance from the robot and make sure the emergency stop is accessible.</p>
@@ -709,6 +735,7 @@ We advise to avoid charging and operating at the same time.</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-in-the-box">What’s in the box?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#safe-startup-and-shutdown">Safe startup and shutdown</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connection">Connection</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operating-the-robot-with-the-control-console">Operating the Robot with the Control Console</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#before-operation">Before operation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#powering-on">Powering on</a></li>

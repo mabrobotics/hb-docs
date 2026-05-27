@@ -182,6 +182,7 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../GettingStarted/GettingStarted.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../GettingStarted/Basics.html">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/SteamDeck.html">Control Console (SteamDeck)</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Physical/Overview.html">Physical</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -388,8 +389,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ros-and-ssh">ROS and SSH</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ros2-and-ssh">ROS2 and SSH</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh">SSH</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ros2">ROS2</a></li>
 </ul>
 </li>
 </ul>
@@ -410,18 +412,25 @@ connected devices.</p>
 <p>By default, the robot is configured with independent WiFi access point. SSID follows a pattern:</p>
 <ul class="simple">
 <li><p><strong>hb50_XXXX</strong> - for 2.4Ghz network,</p></li>
-<li><p><strong>hb50_XXXX_5G</strong> - for 5Ghz network.
-Where XXXX is robot serial code shortened to 4 hex symbols - e.g. “hb50_AFAB” or “hb50_D71C_5G”.
-Default password to the network is: <code class="docutils literal notranslate"><span class="pre">milkaorzechowa</span></code>.</p></li>
+<li><p><strong>hb50_XXXX_5G</strong> - for 5Ghz network.</p></li>
 </ul>
+<p>Where XXXX is robot serial code shortened to 4 hex symbols - e.g. “hb50_AFAB” or “hb50_D71C_5G”.
+Default password to the network is: <code class="docutils literal notranslate"><span class="pre">milkaorzechowa</span></code>.</p>
 <p>The router also hosts DNS server, allowing for easy SSH connections.</p>
 <figure class="align-center">
 <img alt="network" class="no-scaled-link" src="../_images/network.png" />
 </figure>
-<section id="ros-and-ssh">
-<h2>ROS and SSH<a class="headerlink" href="#ros-and-ssh" title="Link to this heading">#</a></h2>
-<p>Both of the robots on-board computers can be connected to via ROS2 or direcly with ssh.
-By default, robots use ROS_DOMAIN_ID of 69, thus robots topics should be visible shortly after power-up.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Due to ROS2 constrains, when a node (such as <code class="docutils literal notranslate"><span class="pre">hb_remote</span></code>) is launched <em>before</em> network connection
+is estabilished (IP address resolved), it usually fails to properly discover and detect other ROS2 nodes,
+topics and services.</p>
+<p>Before starting any node that will interoperate with Honey Badger, make sure you are connected to correct
+network.</p>
+</div>
+<section id="ros2-and-ssh">
+<h2>ROS2 and SSH<a class="headerlink" href="#ros2-and-ssh" title="Link to this heading">#</a></h2>
+<p>Both of the robots on-board computers can be connected to via ROS2 or direcly with ssh.</p>
 <section id="ssh">
 <h3>SSH<a class="headerlink" href="#ssh" title="Link to this heading">#</a></h3>
 <p>Robots’ DNS server uses 10.11.0.1 as base address (also Router address), and both LPC and APC have static
@@ -453,6 +462,11 @@ IP address:</p>
 </tbody>
 </table>
 </div>
+</section>
+<section id="ros2">
+<h3>ROS2<a class="headerlink" href="#ros2" title="Link to this heading">#</a></h3>
+<p>By default, robots use ROS_DOMAIN_ID of 69, thus robots topics should be visible shortly after power-up.
+No further customization is required.</p>
 </section>
 </section>
 </section>
@@ -521,8 +535,9 @@ IP address:</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ros-and-ssh">ROS and SSH</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ros2-and-ssh">ROS2 and SSH</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh">SSH</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ros2">ROS2</a></li>
 </ul>
 </li>
 </ul>

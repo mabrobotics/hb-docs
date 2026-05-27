@@ -1,4 +1,11 @@
 # Software Overview
+```{note}
+Software described below is running on the robots LPC (Locomotion PC) or Control Console (SteamDeck).
+By default, no MAB supplied ROS2 nodes are running on the APC (Application PC - Nvidia Orin).
+
+While adding to a system, the user is highly encouraged to deploy their applications on APC, as running 
+additional demanding processes on LPC can induce jitter to low-level communications and lead to loss of stability.
+```
 
 The robot uses ROS2 Jazzy (on Ubuntu 24), as its system architecture. There are a few main nodes running on the robot:
 - **hb_bridge** - node responsible for low-level hardware handling,

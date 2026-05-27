@@ -182,6 +182,7 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../GettingStarted/GettingStarted.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../GettingStarted/Basics.html">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/SteamDeck.html">Control Console (SteamDeck)</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Physical/Overview.html">Physical</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -456,6 +457,13 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="software-overview">
 <h1>Software Overview<a class="headerlink" href="#software-overview" title="Link to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Software described below is running on the robots LPC (Locomotion PC) or Control Console (SteamDeck).
+By default, no MAB supplied ROS2 nodes are running on the APC (Application PC - Nvidia Orin).</p>
+<p>While adding to a system, the user is highly encouraged to deploy their applications on APC, as running
+additional demanding processes on LPC can induce jitter to low-level communications and lead to loss of stability.</p>
+</div>
 <p>The robot uses ROS2 Jazzy (on Ubuntu 24), as its system architecture. There are a few main nodes running on the robot:</p>
 <ul class="simple">
 <li><p><strong>hb_bridge</strong> - node responsible for low-level hardware handling,</p></li>

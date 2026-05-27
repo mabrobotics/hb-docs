@@ -62,7 +62,7 @@
     <link rel="icon" href="../_static/logo32x32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Mechanical" href="../Physical/Overview.html" />
+    <link rel="next" title="SteamDeck Controller" href="SteamDeck.html" />
     <link rel="prev" title="Getting Started" href="GettingStarted.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -182,6 +182,7 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="GettingStarted.html">Getting Started</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SteamDeck.html">Control Console (SteamDeck)</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Physical/Overview.html">Physical</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -418,6 +419,9 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="setup-and-startup">
 <h1>Setup and Startup<a class="headerlink" href="#setup-and-startup" title="Link to this heading">#</a></h1>
+<figure class="align-center">
+<img alt="robot_water" class="no-scaled-link" src="../_images/robot_water.jpg" />
+</figure>
 <section id="what-s-in-the-box">
 <h2>What’s in the box?<a class="headerlink" href="#what-s-in-the-box" title="Link to this heading">#</a></h2>
 <p>The standard robot package may include the following items:</p>
@@ -506,9 +510,9 @@ charger is connected.</p>
 <p>By default, the robot is configured with independent WiFi access point. SSID follows a pattern:</p>
 <ul class="simple">
 <li><p><strong>hb50_XXXX</strong> - for 2.4Ghz network,</p></li>
-<li><p><strong>hb50_XXXX_5G</strong> - for 5Ghz network.
-Where XXXX is robot serial code shortened to 4 hex symbols - e.g. “hb50_AFAB” or “hb50_D71C_5G”.</p></li>
+<li><p><strong>hb50_XXXX_5G</strong> - for 5Ghz network.</p></li>
 </ul>
+<p>Where XXXX is robot serial code shortened to 4 hex symbols - e.g. “hb50_AFAB” or “hb50_D71C_5G”.</p>
 <p>If SteamDeck controller has been ordered alongside the robot, it will automatically connect to the network.
 If connections has to be estabilished from other device the default WiFi password for all robots is</p>
 <ul class="simple">
@@ -539,7 +543,7 @@ The robot is controlled using a Steam Deck console with the robot control GUI ap
 <h3>Powering on<a class="headerlink" href="#powering-on" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Press and hold the robot power button for 2 seconds.</p></li>
-<li><p>Wait for the power-on sequence to complete.</p></li>
+<li><p>Wait for the power-on sequence to complete (~90 seconds).</p></li>
 <li><p>Open the control console.</p></li>
 <li><p>Wait until the console shows that the robot is connected.</p></li>
 <li><p>Check the robot status and battery level.</p></li>
@@ -547,19 +551,35 @@ The robot is controlled using a Steam Deck console with the robot control GUI ap
 </section>
 <section id="standing-up">
 <h3>Standing up<a class="headerlink" href="#standing-up" title="Link to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Make sure the robot is on stable, flat ground, all legs have enough free space to move.</p>
+</div>
 <ol class="arabic simple">
-<li><p>Make sure the robot is on stable, flat ground.</p></li>
-<li><p>Make sure all legs have enough free space to move.</p></li>
-<li><p>Move away from the robot.</p></li>
-<li><p>In the control console, select the stand command.</p></li>
-<li><p>Wait until the robot reaches a stable standing posture.</p></li>
+<li><p>Validate robot network connection,</p></li>
+<li><p>Make sure ROS2 connection is ready,</p></li>
+<li><p>Validate robot is IDLE mode,</p></li>
 </ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Next step is going to energize (enable) robots actuators, step away from the robot and make sure it is safe
+to proceed, according to Safety section of this manual.</p>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Energize the actuators,</p></li>
+<li><p>Start “Stand Up” procedure,</p></li>
+<li><p>When robot reaches stable standing position, enter ative-balance “Stand”,</p></li>
+<li><p>Now you cen select one of the available gaits.</p></li>
+</ol>
+<figure class="align-center">
+<img alt="steamdeck_controls" class="no-scaled-link" src="../_images/deck_startup.png" />
+</figure>
 </section>
 <section id="basic-movement">
 <h3>Basic movement<a class="headerlink" href="#basic-movement" title="Link to this heading">#</a></h3>
-<p>After the robot is standing, use the control console to command movement.</p>
+<p>After the gait is selected, use the control console to command movement.</p>
 <figure class="align-center">
-<img alt="steamdeck_controls" class="no-scaled-link" src="../_images/steamdeck_controls.png" />
+<img alt="steamdeck_controls" class="no-scaled-link" src="../_images/deck_controls.png" />
 </figure>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -709,11 +729,11 @@ We advise to avoid charging and operating at the same time.</p>
       </div>
     </a>
     <a class="right-next"
-       href="../Physical/Overview.html"
+       href="SteamDeck.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Mechanical</p>
+        <p class="prev-next-title">SteamDeck Controller</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

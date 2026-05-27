@@ -10,6 +10,8 @@ chapters:
     sections:
       - file: GettingStarted/Basics.md
         title: Basics
+      - file: GettingStarted/SteamDeck.md
+        title: Control Console (SteamDeck)
   - file: Physical/Overview.md
     title: Physical 
     sections:

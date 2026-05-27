@@ -1,5 +1,12 @@
 # Setup and Startup
 
+```{figure} ./img/robot_water.jpg
+:alt: robot_water 
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
+
 ## What's in the box?
 
 The standard robot package may include the following items:
@@ -50,6 +57,7 @@ charger is connected.
 By default, the robot is configured with independent WiFi access point. SSID follows a pattern:
 - **hb50_XXXX** - for 2.4Ghz network,
 - **hb50_XXXX_5G** - for 5Ghz network.
+
 Where XXXX is robot serial code shortened to 4 hex symbols - e.g. "hb50_AFAB" or "hb50_D71C_5G".
 
 If SteamDeck controller has been ordered alongside the robot, it will automatically connect to the network.
@@ -79,25 +87,42 @@ Before controlling the robot:
 ### Powering on
 
 1. Press and hold the robot power button for 2 seconds.
-2. Wait for the power-on sequence to complete.
+2. Wait for the power-on sequence to complete (~90 seconds).
 3. Open the control console.
 4. Wait until the console shows that the robot is connected.
 5. Check the robot status and battery level.
 
 ### Standing up
 
-1. Make sure the robot is on stable, flat ground.
-2. Make sure all legs have enough free space to move.
-3. Move away from the robot.
-4. In the control console, select the stand command.
-5. Wait until the robot reaches a stable standing posture.
+```{note}
+Make sure the robot is on stable, flat ground, all legs have enough free space to move.
+```
+
+1. Validate robot network connection,
+2. Make sure ROS2 connection is ready,
+3. Validate robot is IDLE mode,
+```{warning}
+Next step is going to energize (enable) robots actuators, step away from the robot and make sure it is safe
+to proceed, according to Safety section of this manual.
+```
+4. Energize the actuators,
+5. Start "Stand Up" procedure,
+6. When robot reaches stable standing position, enter ative-balance "Stand",
+7. Now you cen select one of the available gaits.
+
+```{figure} ./img/deck_startup.png
+:alt: steamdeck_controls
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
 
 ### Basic movement
 
-After the robot is standing, use the control console to command movement.
+After the gait is selected, use the control console to command movement.
 
 
-```{figure} ./img/steamdeck_controls.png
+```{figure} ./img/deck_controls.png
 :alt: steamdeck_controls
 :class: bg-primary mb-1
 :align: center

@@ -155,7 +155,7 @@ chassis. Shorting ant of the connections to the batterys GND, may lead to damage
 If E-stop button is used, it should be normally-closed, pressing the button should disconnect the circuit.
 
 There are two input pins connected to the robots E-stop mechanism. These pins should be shorted 
-to each other during normal operation. The circut operates in normally-closed manner. The E-stop circuit
+to each other during normal operation. The circuit operates in normally-closed manner. The E-stop circuit
 has direct hardware connection to robots power system, bypassing software for always-ready emergency use.
 
 ```{note}

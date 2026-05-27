@@ -81,7 +81,7 @@ Read and understand this section before powering on or operating the robot.
 - Keep hands, tools, loose clothing, and cables away from the robot legs.
 - Do not touch the legs or joints while the robot is powered on or enabled.
 - Always keep distance of at least 1m, between operating robot and people, animals, stairs, fragile objects or moving objects.
-- Do not leave the robot operating unattended, an operator should always be withing line of sight of the operating robot.
+- Do not leave the robot operating unattended, an operator should always be within line of sight of the operating robot.
 - Do not exceed the specified payload, speed or operating limits.
 - Stop the robot immediately if unexpected behavior occurs.
 
@@ -174,7 +174,7 @@ The robot is heavy and may be difficult to handle by one person.
 - Remove the battery before transport if required by the transport procedure.
 
 ```{warning}
-Lifting the robot when Standing or Walking (using any gait) can result in unexpected and rapid legs movemnets.
+Lifting the robot when Standing or Walking (using any gait) can result in unexpected and rapid legs movements.
 Never lift the robot while in Active balance mode!
 ```
 

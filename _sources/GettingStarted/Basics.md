@@ -61,7 +61,7 @@ By default, the robot is configured with independent WiFi access point. SSID fol
 Where XXXX is robot serial code shortened to 4 hex symbols - e.g. "hb50_AFAB" or "hb50_D71C_5G".
 
 If SteamDeck controller has been ordered alongside the robot, it will automatically connect to the network.
-If connections has to be estabilished from other device the default WiFi password for all robots is
+If connections has to be established from other device the default WiFi password for all robots is
 - `milkaorzechowa`
 
 ## Operating the Robot with the Control Console
@@ -107,7 +107,7 @@ to proceed, according to Safety section of this manual.
 ```
 4. Energize the actuators,
 5. Start "Stand Up" procedure,
-6. When robot reaches stable standing position, enter ative-balance "Stand",
+6. When robot reaches stable standing position, enter active-balance "Stand",
 7. Now you cen select one of the available gaits.
 
 ```{figure} ./img/deck_startup.png
@@ -179,7 +179,7 @@ Do not charge the robot unattended. Do not charge the robot if the battery, char
 ```
 ```{note}
 The robot is capable of operating while charging - however the charging cable can be easily damaged by robots 
-actuators in pinch points. If the user decideds to proceed with simoutamoius charging and oparating, 
+actuators in pinch points. If the user decides to proceed with simoutamoius charging and oparating, 
 special care must be taken to protect the cable from damage.
 We advise to avoid charging and operating at the same time. 
 ```

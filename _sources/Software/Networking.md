@@ -21,7 +21,7 @@ The router also hosts DNS server, allowing for easy SSH connections.
 
 ```{note}
 Due to ROS2 constrains, when a node (such as `hb_remote`) is launched *before* network connection
-is estabilished (IP address resolved), it usually fails to properly discover and detect other ROS2 nodes,
+is established (IP address resolved), it usually fails to properly discover and detect other ROS2 nodes,
 topics and services.
 
 Before starting any node that will interoperate with Honey Badger, make sure you are connected to correct 
@@ -29,7 +29,7 @@ network.
 ```
 
 ## ROS2 and SSH
-Both of the robots on-board computers can be connected to via ROS2 or direcly with ssh. 
+Both of the robots on-board computers can be connected to via ROS2 or directly with ssh. 
 
 ### SSH 
 Robots' DNS server uses 10.11.0.1 as base address (also Router address), and both LPC and APC have static

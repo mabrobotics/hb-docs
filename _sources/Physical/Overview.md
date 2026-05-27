@@ -41,7 +41,7 @@ constrained by the approximate payload area.
 
 ```{note}
 In some scenarios, mainly during recovery procedures (flipping from the back), legs can reach over the nomiminal payload
-area. When designing payloads that reach or extend beyond boundaries of approximate payload area, contanct MAB team
+area. When designing payloads that reach or extend beyond boundaries of approximate payload area, contact MAB team
 to avoid collisions between legs and payload.
 ```
 

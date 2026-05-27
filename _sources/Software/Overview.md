@@ -22,7 +22,7 @@ The robot uses ROS2 Jazzy (on Ubuntu 24), as its system architecture. There are 
 
 ## Topics and Messages
 
-Honey badger software stack sticks to a typical ROS2 architecure whenever applicable, certain nodes and topic
+Honey badger software stack sticks to a typical ROS2 architecture whenever applicable, certain nodes and topic
 should be self-explanatory for most users who already worked with ROS based robots.
 
 ### Topics
@@ -54,7 +54,7 @@ There are two types of QoS used in the robot:
 - Reliable - depth: 10, reliable, durability: volatile;
 
 ### Messages
-Although in most cases ROS offers good variaty of built-in message types, for performance and usability reasons,
+Although in most cases ROS offers good variety of built-in message types, for performance and usability reasons,
 a few new types are required for Honey Badger robots operation.
 #### `/bridge_data`
 

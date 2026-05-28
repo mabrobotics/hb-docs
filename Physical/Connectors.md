@@ -2,6 +2,12 @@
 
 ## Power & Status button
 
+```{figure} ./img/robot_button.jpg
+:alt: robot_button
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
 Power button is located on the right side of the robots' body. It can be used to power on, and off the robot,
 and displays current status of the robots' internal systems.
 

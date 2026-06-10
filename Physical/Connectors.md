@@ -78,6 +78,7 @@ To unplug the connector:
 - for battery connector, always plug battery connector plug immiedietly after disconnecting from the robot.
 
 ```{figure} ../GettingStarted/img/robot_connectors.png
+:name: robot-connectors
 :alt: hb50_connectors
 :class: bg-primary mb-1
 :align: center
@@ -94,7 +95,7 @@ high humidity scenarios!
 
 There are 3 types of plugs for the robot:
 - 2x plastic USB port cap,
-- 2x 12mm plug (LAN, LAN/WAN),
+- 2x 12mm plug (LAN, WAN/LAN),
 - 3x 10mm plug (AUX1, AUX2, Charger) 
 
 ```{figure} ./img/connector_plugs.jpg
@@ -151,6 +152,60 @@ This connector offers isolated output - its outputs should not be shorted to reg
 chassis. Shorting ant of the connections to the batterys GND, may lead to damage to internal electronics.
 ```
 
+### LAN
+
+The LAN connector (located on the left side of the {ref}` rear panel <robot-connectors>`) provides standard wired Ethernet connectivity. 
+
+```{figure} ./img/connector_8pin.png
+:alt: connector_8pin
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
+
+Pinout is as follows:
+| Pin no. | Color |
+| ------------- | -------------- |
+| 1 | white-orange |
+| 2 | orange |
+| 3 | white-green |
+| 4 | green |
+| 5 | white-brown |
+| 6 | brown |
+| 7 | white-blue |
+| 8 | blue |
+
+```{warning}
+The socket pinout corresponds to the RJ45 T568B wiring standard.
+```
+
+### WAN/LAN
+
+The WAN/LAN connector (located on the right side of the {ref}` rear panel <robot-connectors>`) provides standard wired Ethernet connectivity.
+
+```{figure} ./img/connector_8pin.png
+:alt: connector_8pin
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
+
+Pinout is as follows:
+| Pin no. | Color |
+| ------------- | -------------- |
+| 1 | white-orange |
+| 2 | orange |
+| 3 | white-green |
+| 4 | green |
+| 5 | white-brown |
+| 6 | brown |
+| 7 | white-blue |
+| 8 | blue |
+
+```{warning}
+The socket pinout corresponds to the RJ45 T568B wiring standard.
+```
+
 #### E-stop
 If E-stop button is used, it should be normally-closed, pressing the button should disconnect the circuit.
 
@@ -168,5 +223,3 @@ to voltage surges that can damage electronics, including exposed payload power p
 ### Charger port
 
 Charger port is only suitable to work with MAB supplied charger.
-
-## TODO: LAN/WAN

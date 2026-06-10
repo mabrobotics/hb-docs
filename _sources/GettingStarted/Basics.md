@@ -13,13 +13,13 @@ The standard robot package may include the following items:
 
 | Item                | Description                                                    | Standard                           | Pro                              |
 | ------------------- | -------------------------------------------------------------- | ---------------------------------- | -------------------------------- |
-| Quadruped robot     | Main robotic platform                                          | <input type="checkbox" checked/>   | <input type="checkbox" checked/> |
-| Battery pack        | Power source for the robot                                     | <input type="checkbox" checked/>   | <input type="checkbox" checked/> |
-| Battery charger     | Charger compatible with the supplied battery                   | <input type="checkbox" checked/>   | <input type="checkbox" checked/> |
-| Operator controller | Dedicated remote controller                                    | <input type="checkbox" checked/>   | <input type="checkbox" checked/> |
-| Documentation       | Operating manual, safety instructions, and configuration notes | <input type="checkbox" checked/>   | <input type="checkbox" checked/> |
-| Ethernet cable      | Used for direct network connection                             | <input type="checkbox" unchecked/> | <input type="checkbox" checked/> |
-| Transport case      | Protective case for storage and transport                      | <input type="checkbox" unchecked/> | <input type="checkbox" checked/> |
+| Quadruped robot     | Main robotic platform                                          | <input type="checkbox" checked onclick="return false;"/>   | <input type="checkbox" checked onclick="return false;"/> |
+| Battery pack        | Power source for the robot                                     | <input type="checkbox" checked onclick="return false;"/>   | <input type="checkbox" checked onclick="return false;"/> |
+| Battery charger     | Charger compatible with the supplied battery                   | <input type="checkbox" checked onclick="return false;"/>   | <input type="checkbox" checked onclick="return false;"/> |
+| Operator controller | Dedicated remote controller                                    | <input type="checkbox" checked onclick="return false;"/>   | <input type="checkbox" checked onclick="return false;"/> |
+| Documentation       | Operating manual, safety instructions, and configuration notes | <input type="checkbox" checked onclick="return false;"/>   | <input type="checkbox" checked onclick="return false;"/> |
+| Ethernet cable      | Used for direct network connection                             | <input type="checkbox" unchecked onclick="return false;"/> | <input type="checkbox" checked onclick="return false;"/> |
+| Transport case      | Protective case for storage and transport                      | <input type="checkbox" unchecked onclick="return false;"/> | <input type="checkbox" checked onclick="return false;"/> |
 
 > The exact contents may depend on the purchased configuration. Check the packing list supplied with the robot.
 

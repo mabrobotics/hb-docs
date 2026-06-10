@@ -404,14 +404,15 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Connectors</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#environmental-safety">Environmental safety</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aux1">AUX1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aux2">AUX2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aux2">AUX2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lan">LAN</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wan-lan">WAN/LAN</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#e-stop">E-stop</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#charger-port">Charger port</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#todo-lan-wan">TODO: LAN/WAN</a></li>
 </ul>
             </nav>
         </div>
@@ -547,7 +548,7 @@ on the hardware version.</p>
 <li><p>pull the cable from the socket - it should come out without significant force requirement.</p></li>
 <li><p>for battery connector, always plug battery connector plug immiedietly after disconnecting from the robot.</p></li>
 </ul>
-<figure class="align-center">
+<figure class="align-center" id="robot-connectors">
 <img alt="hb50_connectors" class="no-scaled-link" src="../_images/robot_connectors.png" />
 </figure>
 <section id="environmental-safety">
@@ -561,7 +562,7 @@ high humidity scenarios!</p>
 <p>There are 3 types of plugs for the robot:</p>
 <ul class="simple">
 <li><p>2x plastic USB port cap,</p></li>
-<li><p>2x 12mm plug (LAN, LAN/WAN),</p></li>
+<li><p>2x 12mm plug (LAN, WAN/LAN),</p></li>
 <li><p>3x 10mm plug (AUX1, AUX2, Charger)</p></li>
 </ul>
 <figure class="align-center">
@@ -638,6 +639,98 @@ high humidity scenarios!</p>
 <p>This connector offers isolated output - its outputs should not be shorted to regular GND (in AUX1) nor to the robots’
 chassis. Shorting ant of the connections to the batterys GND, may lead to damage to internal electronics.</p>
 </div>
+</section>
+<section id="lan">
+<h3>LAN<a class="headerlink" href="#lan" title="Link to this heading">#</a></h3>
+<p>The LAN connector (located on the left side of the <a class="reference internal" href="#robot-connectors"><span class="std std-ref"> rear panel</span></a>) provides standard wired Ethernet connectivity.</p>
+<figure class="align-center">
+<img alt="connector_8pin" class="no-scaled-link" src="../_images/connector_8pin.png" />
+</figure>
+<p>Pinout is as follows:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin no.</p></th>
+<th class="head"><p>Color</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>white-orange</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>orange</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>white-green</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>green</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>white-brown</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>brown</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>white-blue</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>blue</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The socket pinout corresponds to the RJ45 T568B wiring standard.</p>
+</div>
+</section>
+<section id="wan-lan">
+<h3>WAN/LAN<a class="headerlink" href="#wan-lan" title="Link to this heading">#</a></h3>
+<p>The WAN/LAN connector (located on the right side of the <a class="reference internal" href="#robot-connectors"><span class="std std-ref"> rear panel</span></a>) provides standard wired Ethernet connectivity.</p>
+<figure class="align-center">
+<img alt="connector_8pin" class="no-scaled-link" src="../_images/connector_8pin.png" />
+</figure>
+<p>Pinout is as follows:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin no.</p></th>
+<th class="head"><p>Color</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>white-orange</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>orange</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>white-green</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>green</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>white-brown</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>brown</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>white-blue</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>blue</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The socket pinout corresponds to the RJ45 T568B wiring standard.</p>
+</div>
 <section id="e-stop">
 <h4>E-stop<a class="headerlink" href="#e-stop" title="Link to this heading">#</a></h4>
 <p>If E-stop button is used, it should be normally-closed, pressing the button should disconnect the circuit.</p>
@@ -657,9 +750,6 @@ to voltage surges that can damage electronics, including exposed payload power p
 <h3>Charger port<a class="headerlink" href="#charger-port" title="Link to this heading">#</a></h3>
 <p>Charger port is only suitable to work with MAB supplied charger.</p>
 </section>
-</section>
-<section id="todo-lan-wan">
-<h2>TODO: LAN/WAN<a class="headerlink" href="#todo-lan-wan" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -742,14 +832,15 @@ to voltage surges that can damage electronics, including exposed payload power p
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Connectors</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#environmental-safety">Environmental safety</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aux1">AUX1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aux2">AUX2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aux2">AUX2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lan">LAN</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wan-lan">WAN/LAN</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#e-stop">E-stop</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#charger-port">Charger port</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#todo-lan-wan">TODO: LAN/WAN</a></li>
 </ul>
   </nav></div>
 

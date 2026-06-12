@@ -13,13 +13,13 @@ The standard robot package may include the following items:
 
 | Item                | Description                                                    | Standard                           | Pro                              |
 | ------------------- | -------------------------------------------------------------- | ---------------------------------- | -------------------------------- |
-| Quadruped robot     | Main robotic platform                                          | <input type="checkbox" checked/>   | <input type="checkbox" checked/> |
-| Battery pack        | Power source for the robot                                     | <input type="checkbox" checked/>   | <input type="checkbox" checked/> |
-| Battery charger     | Charger compatible with the supplied battery                   | <input type="checkbox" checked/>   | <input type="checkbox" checked/> |
-| Operator controller | Dedicated remote controller                                    | <input type="checkbox" checked/>   | <input type="checkbox" checked/> |
-| Documentation       | Operating manual, safety instructions, and configuration notes | <input type="checkbox" checked/>   | <input type="checkbox" checked/> |
-| Ethernet cable      | Used for direct network connection                             | <input type="checkbox" unchecked/> | <input type="checkbox" checked/> |
-| Transport case      | Protective case for storage and transport                      | <input type="checkbox" unchecked/> | <input type="checkbox" checked/> |
+| Quadruped robot     | Main robotic platform                                          | <input type="checkbox" checked onclick="return false;"/>   | <input type="checkbox" checked onclick="return false;"/> |
+| Battery pack        | Power source for the robot                                     | <input type="checkbox" checked onclick="return false;"/>   | <input type="checkbox" checked onclick="return false;"/> |
+| Battery charger     | Charger compatible with the supplied battery                   | <input type="checkbox" checked onclick="return false;"/>   | <input type="checkbox" checked onclick="return false;"/> |
+| Operator controller | Dedicated remote controller                                    | <input type="checkbox" checked onclick="return false;"/>   | <input type="checkbox" checked onclick="return false;"/> |
+| Documentation       | Operating manual, safety instructions, and configuration notes | <input type="checkbox" checked onclick="return false;"/>   | <input type="checkbox" checked onclick="return false;"/> |
+| Ethernet cable      | Used for direct network connection                             | <input type="checkbox" unchecked onclick="return false;"/> | <input type="checkbox" checked onclick="return false;"/> |
+| Transport case      | Protective case for storage and transport                      | <input type="checkbox" unchecked onclick="return false;"/> | <input type="checkbox" checked onclick="return false;"/> |
 
 > The exact contents may depend on the purchased configuration. Check the packing list supplied with the robot.
 
@@ -61,7 +61,7 @@ By default, the robot is configured with independent WiFi access point. SSID fol
 Where XXXX is robot serial code shortened to 4 hex symbols - e.g. "hb50_AFAB" or "hb50_D71C_5G".
 
 If SteamDeck controller has been ordered alongside the robot, it will automatically connect to the network.
-If connections has to be established from other device the default WiFi password for all robots is
+If connections has to be established from other device the default WiFi password for all robots is:
 - `milkaorzechowa`
 
 ## Operating the Robot with the Control Console
@@ -86,7 +86,15 @@ Before controlling the robot:
 
 ### Powering on
 
-1. Press and hold the robot power button for 2 seconds.
+```{figure} ./img/power_button.svg
+:name: power-button
+:alt: power_button
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
+
+1. Press and hold the robot {ref}` power button <power-button>` for 2 seconds.
 2. Wait for the power-on sequence to complete (~90 seconds).
 3. Open the control console.
 4. Wait until the console shows that the robot is connected.
@@ -134,7 +142,7 @@ After the gait is selected, use the control console to command movement.
 | Forward             | Walks forward                                        |
 | Backward            | Walks backward                                       |
 | Left / Right        | Moves or turns left/right, depending on control mode |
-| Rotate left / right | Rotates in place                                     |
+| Rotate Left / Right | Rotates in place                                     |
 | Stop                | Stops commanded motion                               |
 
 During operation:

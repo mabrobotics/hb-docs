@@ -47,6 +47,7 @@ Here is list of releavent topics published by robot:
 | `/tf` | `tf2_msgs/msg/TFMessage` | Reliable | 10 hz |
 | `/tf_static` | `tf2_msgs/msg/TFMessage` | Reliable | as needed |
 
+(qos-information)=
 ### QoS
 
 There are two types of QoS used in the robot:

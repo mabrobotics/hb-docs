@@ -194,6 +194,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../Software/Geometry.html">Geometry &amp; Frames</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Payload/Payload.html">Payload</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Payload/Spool.html">Spool</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -514,7 +518,7 @@ charger is connected.</p>
 </ul>
 <p>Where XXXX is robot serial code shortened to 4 hex symbols - e.g. “hb50_AFAB” or “hb50_D71C_5G”.</p>
 <p>If SteamDeck controller has been ordered alongside the robot, it will automatically connect to the network.
-If connections has to be established from other device the default WiFi password for all robots is</p>
+If connections has to be established from other device the default WiFi password for all robots is:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">milkaorzechowa</span></code></p></li>
 </ul>
@@ -541,8 +545,11 @@ The robot is controlled using a Steam Deck console with the robot control GUI ap
 </section>
 <section id="powering-on">
 <h3>Powering on<a class="headerlink" href="#powering-on" title="Link to this heading">#</a></h3>
+<figure class="align-center" id="power-button">
+<img alt="power_button" class="no-scaled-link" src="../_images/power_button.svg" />
+</figure>
 <ol class="arabic simple">
-<li><p>Press and hold the robot power button for 2 seconds.</p></li>
+<li><p>Press and hold the robot <a class="reference internal" href="#power-button"><span class="std std-ref"> power button</span></a> for 2 seconds.</p></li>
 <li><p>Wait for the power-on sequence to complete (~90 seconds).</p></li>
 <li><p>Open the control console.</p></li>
 <li><p>Wait until the console shows that the robot is connected.</p></li>
@@ -597,7 +604,7 @@ to proceed, according to Safety section of this manual.</p>
 <tr class="row-even"><td><p>Left / Right</p></td>
 <td><p>Moves or turns left/right, depending on control mode</p></td>
 </tr>
-<tr class="row-odd"><td><p>Rotate left / right</p></td>
+<tr class="row-odd"><td><p>Rotate Left / Right</p></td>
 <td><p>Rotates in place</p></td>
 </tr>
 <tr class="row-even"><td><p>Stop</p></td>

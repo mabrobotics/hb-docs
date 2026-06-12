@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Network &#8212; Honey Badger Robot Documentation</title>
+    <title>Spool &#8212; Honey Badger Robot Documentation</title>
   
   
   
@@ -58,12 +58,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Software/Networking';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Payload/Spool';</script>
     <link rel="icon" href="../_static/logo32x32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Geometry and Frames" href="Geometry.html" />
-    <link rel="prev" title="Software Overview" href="Overview.html" />
+    <link rel="prev" title="Payload" href="Payload.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -189,13 +188,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../Physical/Connectors.html">Button &amp; Connectors</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="Overview.html">Software</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Networking</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Geometry.html">Geometry &amp; Frames</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Software/Overview.html">Software</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Software/Networking.html">Networking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Software/Geometry.html">Geometry &amp; Frames</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Payload/Payload.html">Payload</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Payload/Spool.html">Spool</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Payload.html">Payload</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Spool</a></li>
 </ul>
 </details></li>
 </ul>
@@ -269,7 +268,7 @@
       
       
       
-      <li><a href="https://github.com/mabrobotics/hb-docs/issues/new?title=Issue%20on%20page%20%2FSoftware/Networking.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/mabrobotics/hb-docs/issues/new?title=Issue%20on%20page%20%2FPayload/Spool.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -299,7 +298,7 @@
       
       
       
-      <li><a href="../_sources/Software/Networking.md" target="_blank"
+      <li><a href="../_sources/Payload/Spool.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -383,7 +382,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Network</h1>
+    <h1>Spool</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -393,11 +392,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ros2-and-ssh">ROS2 and SSH</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh">SSH</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ros2">ROS2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spool-mount">Spool mount</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spool-remote-controller-interface">Spool remote controller interface</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operating-mode">Operating mode</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-mode">Manual mode</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-mode">Automatic mode</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spool-topics">Spool topics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spool-services">Spool services</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use">Use</a></li>
 </ul>
             </nav>
         </div>
@@ -409,69 +416,186 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="network">
-<h1>Network<a class="headerlink" href="#network" title="Link to this heading">#</a></h1>
-<p>Robot is equipped with on-board WiFi router, allowing for easy access, updates and managing multiple
-connected devices.</p>
-<p>By default, the robot is configured with independent WiFi access point. SSID follows a pattern:</p>
-<ul class="simple">
-<li><p><strong>hb50_XXXX</strong> - for 2.4Ghz network,</p></li>
-<li><p><strong>hb50_XXXX_5G</strong> - for 5Ghz network.</p></li>
-</ul>
-<p>Where XXXX is robot serial code shortened to 4 hex symbols - e.g. “hb50_AFAB” or “hb50_D71C_5G”.
-Default password to the network is: <code class="docutils literal notranslate"><span class="pre">milkaorzechowa</span></code>.</p>
-<p>The router also hosts DNS server, allowing for easy SSH connections.</p>
-<figure class="align-center">
-<img alt="network" class="no-scaled-link" src="../_images/network.png" />
+  <section class="tex2jax_ignore mathjax_ignore" id="spool">
+<h1>Spool<a class="headerlink" href="#spool" title="Link to this heading">#</a></h1>
+<p>Honey Badger robot can be equipped with spool with optical fiber  that allows the operator for wired connection with the robot. This solution is mostly used in long-range environments where wireless connection would be impossible due to disturbances or lack of WiFi range.</p>
+<section id="spool-mount">
+<h2>Spool mount<a class="headerlink" href="#spool-mount" title="Link to this heading">#</a></h2>
+</section>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
+<p>Communication with spool driver is established based on ROS2 node - <code class="docutils literal notranslate"><span class="pre">hb50_spool</span></code>. Powering up the platform initializes the spool driver, which in turn automatically starts the node.</p>
+</section>
+<section id="spool-remote-controller-interface">
+<h2>Spool remote controller interface<a class="headerlink" href="#spool-remote-controller-interface" title="Link to this heading">#</a></h2>
+<p>Spool control has a separate interface built in remote controller. It allows operator for safe spool handling. To begin with operator should press <code class="docutils literal notranslate"><span class="pre">SPOOL</span> <span class="pre">MENU</span></code> (numbered one) button to open spool control view.</p>
+<figure class="align-center" id="remote-spool">
+<img alt="remote_spool" class="no-scaled-link" src="../_images/remote_spool.svg" />
 </figure>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Due to ROS2 constrains, when a node (such as <code class="docutils literal notranslate"><span class="pre">hb_remote</span></code>) is launched <em>before</em> network connection
-is established (IP address resolved), it usually fails to properly discover and detect other ROS2 nodes,
-topics and services.</p>
-<p>Before starting any node that will interoperate with Honey Badger, make sure you are connected to correct
-network.</p>
-</div>
-<section id="ros2-and-ssh">
-<h2>ROS2 and SSH<a class="headerlink" href="#ros2-and-ssh" title="Link to this heading">#</a></h2>
-<p>Both of the robots on-board computers can be connected to via ROS2 or directly with ssh.</p>
-<section id="ssh">
-<h3>SSH<a class="headerlink" href="#ssh" title="Link to this heading">#</a></h3>
-<p>Robots’ DNS server uses 10.11.0.1 as base address (also Router address), and both LPC and APC have static
-IP address:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Device</p></th>
-<th class="head"><p>Static Address</p></th>
-<th class="head"><p>Hostname</p></th>
-<th class="head"><p>Username</p></th>
+<tr class="row-odd"><th class="head"><p>Number</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Function</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>LPC</p></td>
-<td><p>10.11.0.10</p></td>
-<td><p>hb50.lan</p></td>
-<td><p>hb</p></td>
+<tr class="row-even"><td><p>1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SPOOL</span> <span class="pre">MENU</span></code></p></td>
+<td><p>Opens menu containing whole functionality of spool.</p></td>
 </tr>
-<tr class="row-odd"><td><p>APC (Orin)</p></td>
-<td><p>10.11.0.11</p></td>
-<td><p>hb50-orin.lan</p></td>
-<td><p>hb-orin</p></td>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ENABLE</span> <span class="pre">SPOOL</span></code></p></td>
+<td><p>Enables spool motors.</p></td>
 </tr>
-<tr class="row-even"><td><p>SteamDeck</p></td>
-<td><p>Dynamic IP</p></td>
-<td><p>deck.lan</p></td>
-<td><p>mab</p></td>
+<tr class="row-even"><td><p>3</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DISABLE</span> <span class="pre">SPOOL</span></code></p></td>
+<td><p>Disables spool motors.</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ZERO</span> <span class="pre">SPOOL</span></code></p></td>
+<td><p>Sets current position of unwinded optical fiber as a 0 point.</p></td>
+</tr>
+<tr class="row-even"><td><p>Manual control:</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Operating</span> <span class="pre">Mode</span> <span class="pre">Switch</span></code></p></td>
+<td><p>Enables/Disables manual mode.</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-/+</span> <span class="pre">Direction</span> <span class="pre">Control</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-</span></code> stands for winding spool and <code class="docutils literal notranslate"><span class="pre">+</span></code> for unwinding.</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-/+</span> <span class="pre">Velocity</span> <span class="pre">Control</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-</span></code> decreases linear velocity of winding by -0.1 [m/s] and <code class="docutils literal notranslate"><span class="pre">+</span></code> for increasing linear velocity of winding by 0.1 [m/s].</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="operating-mode">
+<h3>Operating mode<a class="headerlink" href="#operating-mode" title="Link to this heading">#</a></h3>
+<p>The spool platform can operate in two separate modes: manual and automatic.</p>
+<section id="manual-mode">
+<h4>Manual mode<a class="headerlink" href="#manual-mode" title="Link to this heading">#</a></h4>
+<p>Manual mode allows operator for direct control of winding or unwinding optical fiber form spool using terminal or remote controller by passing specified linear velocities expressed in [m/s].</p>
+<p>For enabling manual mode with remote controller user should unlock safety switch (<a class="reference internal" href="#remote-spool"><span class="std std-ref">button number 5</span></a>).</p>
+<p>By default, the system is operated using the remote controller. However, if the operator prefers manual mode via the terminal, they should publish a safe velocity to the <code class="docutils literal notranslate"><span class="pre">/hb50/payload/spool_unroll_speed</span></code> topic.</p>
+<p>Example of use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>topic<span class="w"> </span>pub<span class="w"> </span>/hb50/payload/spool_unroll_speed<span class="w"> </span>std_msgs/msg/Float32<span class="w"> </span><span class="s2">&quot;{data: 0.1}&quot;</span>
+</pre></div>
+</div>
+<p>Above command will result in unwinding spool with linear velocity of 0.1 [m/s].</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Passing negative value of <code class="docutils literal notranslate"><span class="pre">float</span></code> will result in winding the optical fiber. Every time ensure that there is a safe margin of optical fiber that can be winded.</p>
+</div>
+</section>
+<section id="automatic-mode">
+<h4>Automatic mode<a class="headerlink" href="#automatic-mode" title="Link to this heading">#</a></h4>
+<p>Automatic mode is used for synchronous work with Honey Badger robot. In this mode spool platform takes on velocities values from <code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/RobotState</span></code> topic where is published real linear velocity of Honey Badger robot.</p>
+</section>
+</section>
+<section id="spool-topics">
+<h3>Spool topics<a class="headerlink" href="#spool-topics" title="Link to this heading">#</a></h3>
+<p>Spool node <code class="docutils literal notranslate"><span class="pre">hb50_spool</span></code> uses:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Topic</p></th>
+<th class="head"><p>Message Type</p></th>
+<th class="head"><p>QoS</p></th>
+<th class="head"><p>Publish Rate</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/payload/spool_unroll_speed</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">std_msgs/msg/Float32</span></code></p></td>
+<td><p>Reliable</p></td>
+<td><p>10 hz</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/payload/spool_unroll_length</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">std_msgs/msg/Float32</span></code></p></td>
+<td><p>Reliable</p></td>
+<td><p>10 hz</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/robot_state_10hz</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/RobotState</span></code></p></td>
+<td><p>mabRT</p></td>
+<td><p>10 hz</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For precise definition of QoS check: <a class="reference internal" href="../Software/Overview.html#qos-information"><span class="std std-ref">QoS</span></a>.</p>
+</div>
+</section>
+<section id="spool-services">
+<h3>Spool services<a class="headerlink" href="#spool-services" title="Link to this heading">#</a></h3>
+<p>Spool uses only one service that is prepared for enabling different features.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Service</p></th>
+<th class="head"><p>Interface Type</p></th>
+<th class="head"><p>QoS</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/payload/spool_control</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons::srv::EnableFeature</span></code></p></td>
+<td><p>Reliable</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Interface type defined as <code class="docutils literal notranslate"><span class="pre">hb50_commons::srv::EnableFeature</span></code> has following parameters:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Name of parameter</p></th>
+<th class="head"><p>Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">feature</span></code></p></td>
+<td><p>Describes function that should be applied.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">state</span></code></p></td>
+<td><p>Represents logic value of 0 or 1 that stands for disabling or enabling feature.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">success</span></code></p></td>
+<td><p>Informs about result of applied service.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Operator has two features that he can apply in case of calibration or safety assurance. Argument is passed as a <code class="docutils literal notranslate"><span class="pre">string</span></code> and can be the following:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">feature</span></code> name</p></th>
+<th class="head"><p>Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">zero_length</span></code></p></td>
+<td><p>Sets current position of unwinded optical fiber as a 0 point.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">enable_motors</span></code></p></td>
+<td><p>If <code class="docutils literal notranslate"><span class="pre">1</span></code> passed enables motors and allows them to be ready to work, if <code class="docutils literal notranslate"><span class="pre">0</span></code> passed disables motors.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
-<section id="ros2">
-<h3>ROS2<a class="headerlink" href="#ros2" title="Link to this heading">#</a></h3>
-<p>By default, robots use ROS_DOMAIN_ID of 69, thus robots topics should be visible shortly after power-up.
-No further customization is required.</p>
 </section>
+<section id="use">
+<h2>Use<a class="headerlink" href="#use" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -488,7 +612,7 @@ No further customization is required.</p>
         },
         kernelOptions: {
             name: "python3",
-            path: "./Software"
+            path: "./Payload"
         },
         predefinedOutput: true
     }
@@ -506,22 +630,13 @@ No further customization is required.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Overview.html"
+       href="Payload.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Software Overview</p>
+        <p class="prev-next-title">Payload</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="Geometry.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Geometry and Frames</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -539,11 +654,19 @@ No further customization is required.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ros2-and-ssh">ROS2 and SSH</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh">SSH</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ros2">ROS2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spool-mount">Spool mount</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spool-remote-controller-interface">Spool remote controller interface</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operating-mode">Operating mode</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-mode">Manual mode</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-mode">Automatic mode</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spool-topics">Spool topics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spool-services">Spool services</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use">Use</a></li>
 </ul>
   </nav></div>
 

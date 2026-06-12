@@ -77,13 +77,27 @@ To unplug the connector:
 - pull the cable from the socket - it should come out without significant force requirement.
 - for battery connector, always plug battery connector plug immiedietly after disconnecting from the robot.
 
-```{figure} ../GettingStarted/img/robot_connectors.png
+
+```{figure} ./img/interface.svg
 :name: robot-connectors
-:alt: hb50_connectors
+:alt: interface
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
 ```
+
+| Connector number | Function |
+| ------------- | -------------- |
+| 1 | Power Button |
+| 2 | AUX 1|
+| 3 | Charger |
+| 4 | AUX 2 (e-stop) |
+| 5 | LAN |
+| 6 | APC (Orin) USB 3.0 |
+| 7 | LPC USB 3.0 |
+| 8 | WAN/LAN |
+| 9 | WiFi Antenna |
+| 10 | WiFi Antenna |
 
 ### Environmental safety
 

@@ -69,13 +69,13 @@ on the hardware version.
 
 To plug the cable to the connector:
 - match connector and cable orientation by aligning red markers,
-- push the cable into the connector, until auidible and/or haptic click.
+- push the cable into the connector, until audible and/or haptic click.
 
 To unplug the connector:
 - firmly grab cable connectors body,
 - slightly pull the connector housing, internal sliding mechanism will be actuated (refer to schematic),
 - pull the cable from the socket - it should come out without significant force requirement.
-- for battery connector, always plug battery connector plug immiedietly after disconnecting from the robot.
+- for battery connector, always plug battery connector plug immediately after disconnecting from the robot.
 
 
 ```{figure} ./img/interface.svg
@@ -103,7 +103,7 @@ To unplug the connector:
 
 While all robots connectors were selected and rated for outdoor use, they must remain plugged at all times during operation.
 ```{warning}
-The ports without plugged connector (or matching plug) are not suitable for use near water, dust, diry or in 
+The ports without plugged connector (or matching plug) are not suitable for use near water, dust, dirt or in 
 high humidity scenarios!
 ```
 
@@ -163,7 +163,7 @@ Pinout is as follows:
 
 ```{warning}
 This connector offers isolated output - its outputs should not be shorted to regular GND (in AUX1) nor to the robots' 
-chassis. Shorting ant of the connections to the batterys GND, may lead to damage to internal electronics.
+chassis. Shorting ant of the connections to the batteries GND, may lead to damage to internal electronics.
 ```
 
 ### LAN
@@ -228,7 +228,7 @@ to each other during normal operation. The circuit operates in normally-closed m
 has direct hardware connection to robots power system, bypassing software for always-ready emergency use.
 
 ```{note}
-This is 'hard' E-stop mechanism, using it will immiedietly cut the power to robots' legs, leading to a fall.
+This is 'hard' E-stop mechanism, using it will immediately cut the power to robots' legs, leading to a fall.
 This may, lead to unintended damage to the robot and its surrounding. Additionally sudden power cutoff may lead
 to voltage surges that can damage electronics, including exposed payload power port.
 **Avoid using E-stop, except in emergency**

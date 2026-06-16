@@ -26,12 +26,12 @@ Honey badger software stack sticks to a typical ROS2 architecture whenever appli
 should be self-explanatory for most users who already worked with ROS based robots.
 
 ### Topics
-Here is list of releavent topics published by robot:
+Here is list of relevant topics published by robot:
 | Topic | Message Type | QoS | Publish Rate |
 |---|---|---|---|
 | `/hb50/bridge_data` | `hb50_commons/msg/BridgeData` | mabRT | 500 hz |
 | `/hb50/bridge_state` | `hb50_commons/msg/BridgeState` | mabRT | 500 hz |
-| `/hb50/bridge_state_10` | `hb50_commons/msg/BridgeState` | Reliable | 10 hz |
+| `/hb50/bridge_state_10hz` | `hb50_commons/msg/BridgeState` | Reliable | 10 hz |
 | `/hb50/config_update` | `std_msgs/msg/String` | Reliable | as needed |
 | `/hb50/control_command` | `std_msgs/msg/String` | Reliable | as needed |
 | `/hb50/hardware_command` | `hb50_commons/msg/Status` | Reliable | as needed |
@@ -41,7 +41,7 @@ Here is list of releavent topics published by robot:
 | `/hb50/joy` | `sensor_msgs/msg/Joy` | Reliable | as needed |
 | `/hb50/robot_description` | `std_msgs/msg/String` | Reliable | as needed |
 | `/hb50/robot_state` | `hb50_commons/msg/RobotState` | mabRT | 500hz |
-| `/hb50/robot_state_10` | `hb50_commons/msg/RobotState` | Reliable | 10 hz |
+| `/hb50/robot_state_10hz` | `hb50_commons/msg/RobotState` | Reliable | 10 hz |
 | `/hb50/status` | `hb50_commons/msg/Status` | Reliable | as needed |
 | `/hb50/velocity_command` | `geometry_msgs/msg/Twist` | mabRT | as needed | 
 | `/tf` | `tf2_msgs/msg/TFMessage` | Reliable | 10 hz |

@@ -116,7 +116,7 @@ to proceed, according to Safety section of this manual.
 4. Energize the actuators,
 5. Start "Stand Up" procedure,
 6. When robot reaches stable standing position, enter active-balance "Stand",
-7. Now you cen select one of the available gaits.
+7. Now you can select one of the available gaits.
 
 ```{figure} ./img/deck_startup.png
 :alt: steamdeck_controls
@@ -187,7 +187,7 @@ Do not charge the robot unattended. Do not charge the robot if the battery, char
 ```
 ```{note}
 The robot is capable of operating while charging - however the charging cable can be easily damaged by robots 
-actuators in pinch points. If the user decides to proceed with simoutamoius charging and oparating, 
+actuators in pinch points. If the user decides to proceed with simultaneous charging and operating, 
 special care must be taken to protect the cable from damage.
 We advise to avoid charging and operating at the same time. 
 ```

@@ -151,7 +151,7 @@ in this manual, the battery can be a fire hazard.
 ```
 
 The robots' battery is a specialized piece of equipment, unsuitable for use outside of Honey Badger system. To avoid damage
-damage and harazdous 
+damage and hazardous 
 - Use only approved batteries and chargers.
 - Do not use damaged, swollen, leaking, or overheated batteries.
 - Do not short-circuit battery terminals.

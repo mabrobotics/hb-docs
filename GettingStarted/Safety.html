@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>SteamDeck Controller &#8212; Honey Badger Robot Documentation</title>
+    <title>Safety &#8212; Honey Badger Robot Documentation</title>
   
   
   
@@ -58,12 +58,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'GettingStarted/SteamDeck';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'GettingStarted/Safety';</script>
     <link rel="icon" href="../_static/logo32x32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Mechanical" href="../Physical/Overview.html" />
-    <link rel="prev" title="Setup and Startup" href="Basics.html" />
+    <link rel="next" title="Setup and Startup" href="Setup.html" />
+    <link rel="prev" title="First startup instructions" href="FirstStartup.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -181,8 +181,11 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="GettingStarted.html">Getting Started</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="Basics.html">Basics</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Control Console (SteamDeck)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QuickStart.html">Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="FirstStartup.html">First Startup</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Safety</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Setup.html">Setup &amp; Charging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ControlConsole.html">Control Console</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Physical/Overview.html">Physical</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -190,6 +193,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Software/Overview.html">Software</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Software/Messages.html">Message types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Software/Networking.html">Networking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Software/Geometry.html">Geometry &amp; Frames</a></li>
 </ul>
@@ -269,7 +273,7 @@
       
       
       
-      <li><a href="https://github.com/mabrobotics/hb-docs/issues/new?title=Issue%20on%20page%20%2FGettingStarted/SteamDeck.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/mabrobotics/hb-docs/issues/new?title=Issue%20on%20page%20%2FGettingStarted/Safety.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -299,7 +303,7 @@
       
       
       
-      <li><a href="../_sources/GettingStarted/SteamDeck.md" target="_blank"
+      <li><a href="../_sources/GettingStarted/Safety.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -383,7 +387,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>SteamDeck Controller</h1>
+    <h1>Safety</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -393,12 +397,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-setup">Network Setup</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wired-connection">Wired connection</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-interface">User Interface</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controls-layout">Controls Layout</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-safety-rules">General safety rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operator-responsibilities">Operator responsibilities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operating-environment">Operating environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mechanical-hazards">Mechanical hazards</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electrical-and-battery-safety">Electrical and battery safety</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#safe-handling-and-lifting">Safe handling and lifting</a></li>
 </ul>
             </nav>
         </div>
@@ -410,46 +414,120 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="steamdeck-controller">
-<h1>SteamDeck Controller<a class="headerlink" href="#steamdeck-controller" title="Link to this heading">#</a></h1>
-<p>Remote control of HB robots is best done using MAB supplied SteamDeck controller with custom software and drivers.
-The controller allows easy to easily startup, change gaits and control the robot,
-using <code class="docutils literal notranslate"><span class="pre">hb50_remote</span></code> application.</p>
-<section id="network-setup">
-<h2>Network Setup<a class="headerlink" href="#network-setup" title="Link to this heading">#</a></h2>
-<p>To connect to the robots’ WiFi network, follow the steps below:</p>
-<figure class="align-center">
-<img alt="deck_wifi" class="no-scaled-link" src="../_images/deck_wifi.png" />
-</figure>
+  <section class="tex2jax_ignore mathjax_ignore" id="safety">
+<h1>Safety<a class="headerlink" href="#safety" title="Link to this heading">#</a></h1>
+<p>This section contains the main safety instructions for Honey Badger 5.0 operation, handling, and maintenance.</p>
+<blockquote>
+<div><p>Read this page before powering on or operating the robot.</p>
+</div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>You can use WiFi to connect to other networks (e.g. internet access). However it is recommended to uncheck
-“Connect Automatically” checkbox in the network configuration, to avoid confusion when robots WiFi becomes
-unavailable, and controller switches to other network.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Honey</span> <span class="pre">Badger</span> <span class="pre">5.0</span></code> is a powerful mobile robot equipped with electric actuators, batteries, sensors,
+and onboard computers. Incorrect operation may result in injury, damage to the robot or damage to the
+surrounding environment.</p>
 </div>
-<section id="wired-connection">
-<h3>Wired connection<a class="headerlink" href="#wired-connection" title="Link to this heading">#</a></h3>
-<p>Connecting SteamDeck to the robot is also possible via wired connection. This can be done through USB-C
-port on the device and Ethernet-to-USB dongle (not included). This setup can be further extended to allow for
-communication over any medium, supporting IP traffic such as: optical fibre, long range radios etc.</p>
+<section id="general-safety-rules">
+<h2>General safety rules<a class="headerlink" href="#general-safety-rules" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Operate the robot only after reading this manual.</p></li>
+<li><p>Keep hands, tools, loose clothing, and cables away from the robot legs.</p></li>
+<li><p>Do not touch the legs or joints while the robot is powered on or enabled.</p></li>
+<li><p>Always keep distance of at least 1 m between the operating robot and people, animals, stairs, fragile objects, or moving objects.</p></li>
+<li><p>Do not leave the robot operating unattended; an operator should always be within line of sight of the operating robot.</p></li>
+<li><p>Do not exceed the specified payload, speed, or operating limits.</p></li>
+<li><p>Stop the robot immediately if unexpected behavior occurs.</p></li>
+</ul>
 </section>
+<section id="operator-responsibilities">
+<h2>Operator responsibilities<a class="headerlink" href="#operator-responsibilities" title="Link to this heading">#</a></h2>
+<p>The operator is responsible for safe preparation, supervision, and shutdown of the robot.</p>
+<p>Before operation, the operator must:</p>
+<ul class="simple">
+<li><p>inspect the robot for visible damage,</p></li>
+<li><p>check that the battery is properly installed,</p></li>
+<li><p>ensure that the operating area is clear,</p></li>
+<li><p>confirm that all required software and communication systems are working,</p></li>
+<li><p>make sure that all nearby people are aware that the robot may move.</p></li>
+</ul>
+<p>During operation, the operator must:</p>
+<ul class="simple">
+<li><p>supervise the robot at all times,</p></li>
+<li><p>maintain a safe distance from the robot,</p></li>
+<li><p>be ready to activate the emergency stop,</p></li>
+<li><p>monitor the robot state and battery level,</p></li>
+<li><p>stop operation if the robot behaves unexpectedly.</p></li>
+</ul>
 </section>
-<section id="user-interface">
-<h2>User Interface<a class="headerlink" href="#user-interface" title="Link to this heading">#</a></h2>
-<p>On the Desktop, there is “Honey Badger” application icon, that will start up <code class="docutils literal notranslate"><span class="pre">hb_remote</span></code> dedicated application
-for controlling Honey Badger robots. The application allows for quick diagnostic overview and running typical
-tasks related to robot operation.</p>
+<section id="operating-environment">
+<h2>Operating environment<a class="headerlink" href="#operating-environment" title="Link to this heading">#</a></h2>
+<p>Operate the robot only in environments suitable for its current configuration and software version.</p>
+<p>Do not operate the robot:</p>
+<ul class="simple">
+<li><p>on unstable, slippery, or wet surfaces,</p></li>
+<li><p>near stairs, ledges, holes, or drop-offs,</p></li>
+<li><p>in public areas without proper supervision and safety measures,</p></li>
+<li><p>near moving vehicles or machinery,</p></li>
+<li><p>in rain, snow, or standing water unless the robot is explicitly configured for such conditions,</p></li>
+<li><p>in explosive or flammable environments,</p></li>
+<li><p>outside the specified temperature and humidity limits.</p></li>
+</ul>
+</section>
+<section id="mechanical-hazards">
+<h2>Mechanical hazards<a class="headerlink" href="#mechanical-hazards" title="Link to this heading">#</a></h2>
+<p>The robot legs contain powerful moving joints. The legs may move suddenly during startup, calibration, recovery, or operation.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Keep hands, fingers, tools, and loose objects away from the legs and joints whenever the robot is powered on.</p>
+</div>
+<p>Do not:</p>
+<ul class="simple">
+<li><p>place hands between leg segments,</p></li>
+<li><p>lift or carry the robot by its legs,</p></li>
+<li><p>stand close to the robot during startup or recovery,</p></li>
+<li><p>attempt to stop leg motion by hand,</p></li>
+<li><p>perform mechanical adjustments while the robot is enabled.</p></li>
+</ul>
+<p>Below is an image highlighting mechanical pinch points - avoid touching the robot near these at all times.</p>
 <figure class="align-center">
-<img alt="deck_remote" class="no-scaled-link" src="../_images/deck_remote.png" />
+<img alt="hb50_pinch_points" class="no-scaled-link" src="../_images/robot_pinch_points.png" />
 </figure>
 </section>
-<section id="controls-layout">
-<h2>Controls Layout<a class="headerlink" href="#controls-layout" title="Link to this heading">#</a></h2>
-<p>Alongside <code class="docutils literal notranslate"><span class="pre">hb_remote</span></code> there is also another node <code class="docutils literal notranslate"><span class="pre">hb_teleop</span></code>, which captures joystick button inputs and
-converts them to robot commands. Below is a list of supported commands and actions:</p>
-<figure class="align-center">
-<img alt="deck_controls" class="no-scaled-link" src="../_images/deck_controls.png" />
-</figure>
+<section id="electrical-and-battery-safety">
+<h2>Electrical and battery safety<a class="headerlink" href="#electrical-and-battery-safety" title="Link to this heading">#</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Honey Badger uses high capacity Lithium based battery pack. If operated incorrectly or outside guidelines specified
+in this manual, the battery can be a fire hazard.</p>
+</div>
+<p>The robot’s battery is a specialized piece of equipment, unsuitable for use outside of the Honey Badger system. To avoid damage and hazardous conditions:</p>
+<ul class="simple">
+<li><p>use only approved batteries and chargers,</p></li>
+<li><p>do not use damaged, swollen, leaking, or overheated batteries,</p></li>
+<li><p>do not short-circuit battery terminals,</p></li>
+<li><p>do not connect or disconnect the battery if the robot is wet or water is present nearby,</p></li>
+<li><p>do not connect or disconnect the battery with wet hands,</p></li>
+<li><p>do not charge the battery unattended,</p></li>
+<li><p>do not operate the robot with damaged power cables or connectors,</p></li>
+<li><p>disconnect power before maintenance, unless the procedure explicitly requires power,</p></li>
+<li><p>after disconnecting the battery, secure the battery connector with the dedicated plug.</p></li>
+</ul>
+</section>
+<section id="safe-handling-and-lifting">
+<h2>Safe handling and lifting<a class="headerlink" href="#safe-handling-and-lifting" title="Link to this heading">#</a></h2>
+<p>The robot is heavy and may be difficult to handle by one person.</p>
+<ul class="simple">
+<li><p>Power off the robot before lifting or transporting it.</p></li>
+<li><p>Disable the actuators before handling the robot.</p></li>
+<li><p>Carry the robot only by the main body or designated carrying points.</p></li>
+<li><p>Do not lift the robot by the legs, sensors, connectors, cables, or payload.</p></li>
+<li><p>Use two people or lifting equipment if required by the robot weight.</p></li>
+<li><p>Remove the battery before transport if required by the transport procedure.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Lifting the robot when Standing or Walking (using any gait) can result in unexpected and rapid legs movements.
+Never lift the robot while in Active balance mode!</p>
+</div>
 </section>
 </section>
 
@@ -484,20 +562,20 @@ converts them to robot commands. Below is a list of supported commands and actio
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Basics.html"
+       href="FirstStartup.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Setup and Startup</p>
+        <p class="prev-next-title">First startup instructions</p>
       </div>
     </a>
     <a class="right-next"
-       href="../Physical/Overview.html"
+       href="Setup.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Mechanical</p>
+        <p class="prev-next-title">Setup and Startup</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -517,12 +595,12 @@ converts them to robot commands. Below is a list of supported commands and actio
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-setup">Network Setup</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wired-connection">Wired connection</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-interface">User Interface</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controls-layout">Controls Layout</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-safety-rules">General safety rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operator-responsibilities">Operator responsibilities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operating-environment">Operating environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mechanical-hazards">Mechanical hazards</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electrical-and-battery-safety">Electrical and battery safety</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#safe-handling-and-lifting">Safe handling and lifting</a></li>
 </ul>
   </nav></div>
 

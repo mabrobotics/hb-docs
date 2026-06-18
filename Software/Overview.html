@@ -62,7 +62,7 @@
     <link rel="icon" href="../_static/logo32x32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Network" href="Networking.html" />
+    <link rel="next" title="Custom message types" href="Messages.html" />
     <link rel="prev" title="Connectors" href="../Physical/Connectors.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -181,8 +181,11 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../GettingStarted/GettingStarted.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/Basics.html">Basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/SteamDeck.html">Control Console (SteamDeck)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/QuickStart.html">Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/FirstStartup.html">First Startup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/Safety.html">Safety</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/Setup.html">Setup &amp; Charging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/ControlConsole.html">Control Console</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Physical/Overview.html">Physical</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -190,6 +193,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Software</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Messages.html">Message types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Networking.html">Networking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Geometry.html">Geometry &amp; Frames</a></li>
 </ul>
@@ -393,59 +397,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topics-and-messages">Topics and Messages</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topics">Topics</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qos">QoS</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#messages">Messages</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bridge-data"><code class="docutils literal notranslate"><span class="pre">/bridge_data</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a></li>
-</ul>
-</li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bridge-state"><code class="docutils literal notranslate"><span class="pre">/bridge_state</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Description</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
-</ul>
-</li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#control-command"><code class="docutils literal notranslate"><span class="pre">/control_command</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Description</a></li>
-</ul>
-</li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware-command"><code class="docutils literal notranslate"><span class="pre">/hardware_command</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Description</a></li>
-</ul>
-</li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#heartbeat"><code class="docutils literal notranslate"><span class="pre">/heartbeat</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Description</a></li>
-</ul>
-</li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-command"><code class="docutils literal notranslate"><span class="pre">/joint_command</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Description</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Notes</a></li>
-</ul>
-</li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-states"><code class="docutils literal notranslate"><span class="pre">/joint_states</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Description</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Notes</a></li>
-</ul>
-</li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robot-state"><code class="docutils literal notranslate"><span class="pre">/robot_state</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Description</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Notes</a></li>
-</ul>
-</li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#status"><code class="docutils literal notranslate"><span class="pre">/status</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Description</a></li>
-</ul>
-</li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity-command"><code class="docutils literal notranslate"><span class="pre">/velocity_command</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Description</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-component">Linear Component</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#angular-component">Angular Component</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Notes</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topics-and-messages">Topics and messages</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core-topics">Core topics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qos-policies">QoS policies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-message-types">Custom message types</a></li>
 </ul>
 </li>
 </ul>
@@ -479,486 +434,99 @@ additional demanding processes on LPC can induce jitter to low-level communicati
 <img alt="ros_overview" class="no-scaled-link" src="../_images/ros_overview.png" />
 </figure>
 <section id="topics-and-messages">
-<h2>Topics and Messages<a class="headerlink" href="#topics-and-messages" title="Link to this heading">#</a></h2>
-<p>Honey badger software stack sticks to a typical ROS2 architecture whenever applicable, certain nodes and topic
-should be self-explanatory for most users who already worked with ROS based robots.</p>
-<section id="topics">
-<h3>Topics<a class="headerlink" href="#topics" title="Link to this heading">#</a></h3>
-<p>Here is list of relevant topics published by robot:</p>
+<h2>Topics and messages<a class="headerlink" href="#topics-and-messages" title="Link to this heading">#</a></h2>
+<p>The Honey Badger stack follows a conventional ROS 2 architecture. Below is a summary of the main topics. For detailed field definitions and usage guidance, see <a class="reference internal" href="Messages.html"><span class="std std-doc">Software/Messages.md</span></a>.</p>
+<section id="core-topics">
+<h3>Core topics<a class="headerlink" href="#core-topics" title="Link to this heading">#</a></h3>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Topic</p></th>
 <th class="head"><p>Message Type</p></th>
 <th class="head"><p>QoS</p></th>
-<th class="head"><p>Publish Rate</p></th>
+<th class="head text-right"><p>Rate</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/bridge_data</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/BridgeData</span></code></p></td>
 <td><p>mabRT</p></td>
-<td><p>500 hz</p></td>
+<td class="text-right"><p>500 Hz</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/bridge_state</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/BridgeState</span></code></p></td>
 <td><p>mabRT</p></td>
-<td><p>500 hz</p></td>
+<td class="text-right"><p>500 Hz</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/bridge_state_10hz</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/BridgeState</span></code></p></td>
 <td><p>Reliable</p></td>
-<td><p>10 hz</p></td>
+<td class="text-right"><p>10 Hz</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/config_update</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/control_command</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">std_msgs/msg/String</span></code></p></td>
 <td><p>Reliable</p></td>
-<td><p>as needed</p></td>
+<td class="text-right"><p>as needed</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/control_command</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">std_msgs/msg/String</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/joint_command</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/JointCommand</span></code></p></td>
+<td><p>mabRT</p></td>
+<td class="text-right"><p>500 Hz</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/joint_states</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sensor_msgs/msg/JointState</span></code></p></td>
 <td><p>Reliable</p></td>
-<td><p>as needed</p></td>
+<td class="text-right"><p>10 Hz</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/hardware_command</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/robot_state</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/RobotState</span></code></p></td>
+<td><p>mabRT</p></td>
+<td class="text-right"><p>500 Hz</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/robot_state_10hz</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/RobotState</span></code></p></td>
+<td><p>Reliable</p></td>
+<td class="text-right"><p>10 Hz</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/status</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/Status</span></code></p></td>
 <td><p>Reliable</p></td>
-<td><p>as needed</p></td>
+<td class="text-right"><p>as needed</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/velocity_command</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">geometry_msgs/msg/Twist</span></code></p></td>
+<td><p>mabRT</p></td>
+<td class="text-right"><p>as needed</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/heartbeat</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/Status</span></code></p></td>
 <td><p>Reliable</p></td>
-<td><p>1 hz</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/joint_command</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/JointCommand</span></code></p></td>
-<td><p>mabRT</p></td>
-<td><p>500hz</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/joint_states</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">sensor_msgs/msg/JointState</span></code></p></td>
-<td><p>Reliable</p></td>
-<td><p>10 hz</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/joy</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">sensor_msgs/msg/Joy</span></code></p></td>
-<td><p>Reliable</p></td>
-<td><p>as needed</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/robot_description</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">std_msgs/msg/String</span></code></p></td>
-<td><p>Reliable</p></td>
-<td><p>as needed</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/robot_state</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/RobotState</span></code></p></td>
-<td><p>mabRT</p></td>
-<td><p>500hz</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/robot_state_10hz</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/RobotState</span></code></p></td>
-<td><p>Reliable</p></td>
-<td><p>10 hz</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/status</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/Status</span></code></p></td>
-<td><p>Reliable</p></td>
-<td><p>as needed</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/velocity_command</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">geometry_msgs/msg/Twist</span></code></p></td>
-<td><p>mabRT</p></td>
-<td><p>as needed</p></td>
+<td class="text-right"><p>1 Hz</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/tf</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">tf2_msgs/msg/TFMessage</span></code></p></td>
 <td><p>Reliable</p></td>
-<td><p>10 hz</p></td>
+<td class="text-right"><p>10 Hz</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/tf_static</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">tf2_msgs/msg/TFMessage</span></code></p></td>
 <td><p>Reliable</p></td>
-<td><p>as needed</p></td>
+<td class="text-right"><p>as needed</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
-<section id="qos">
-<span id="qos-information"></span><h3>QoS<a class="headerlink" href="#qos" title="Link to this heading">#</a></h3>
-<p>There are two types of QoS used in the robot:</p>
+<section id="qos-policies">
+<h3>QoS policies<a class="headerlink" href="#qos-policies" title="Link to this heading">#</a></h3>
+<p>Two QoS configurations are used:</p>
 <ul class="simple">
-<li><p>mabRT - depth: 1, best_effort, durability: volatile;</p></li>
-<li><p>Reliable - depth: 10, reliable, durability: volatile;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mabRT</span></code> — high‑rate, low‑latency streams (depth: 1, best_effort, volatile)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Reliable</span></code> — visualization and infrequent messages (depth: 10, reliable, volatile)</p></li>
 </ul>
 </section>
-<section id="messages">
-<h3>Messages<a class="headerlink" href="#messages" title="Link to this heading">#</a></h3>
-<p>Although in most cases ROS offers good variety of built-in message types, for performance and usability reasons,
-a few new types are required for Honey Badger robots operation.</p>
-<section id="bridge-data">
-<h4><code class="docutils literal notranslate"><span class="pre">/bridge_data</span></code><a class="headerlink" href="#bridge-data" title="Link to this heading">#</a></h4>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Field</p></th>
-<th class="head"><p>Value</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Message Type</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/BridgeData</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Producer</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">hb50_bridge</span></code></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<section id="description">
-<h5>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h5>
-<p>Contains data received from the MainBoard update frames:</p>
-<ul class="simple">
-<li><p>actuator positions</p></li>
-<li><p>actuator velocities</p></li>
-<li><p>actuator torques</p></li>
-<li><p>raw AHRS data</p></li>
-</ul>
-</section>
-</section>
-<section id="bridge-state">
-<h4><code class="docutils literal notranslate"><span class="pre">/bridge_state</span></code><a class="headerlink" href="#bridge-state" title="Link to this heading">#</a></h4>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Field</p></th>
-<th class="head"><p>Value</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Message Type</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/BridgeState</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Producer</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">hb50_bridge</span></code></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<section id="id1">
-<h5>Description<a class="headerlink" href="#id1" title="Link to this heading">#</a></h5>
-<p>Contains:</p>
-<ul class="simple">
-<li><p>power section state of the MainBoard</p></li>
-<li><p>diagnostic data</p></li>
-<li><p>hardware-generated status vectors (<code class="docutils literal notranslate"><span class="pre">State</span> <span class="pre">/</span> <span class="pre">Warnings</span> <span class="pre">/</span> <span class="pre">Errors</span></code>)</p></li>
-</ul>
-</section>
-<section id="notes">
-<h5>Notes<a class="headerlink" href="#notes" title="Link to this heading">#</a></h5>
-<p>Low-frequency variant available:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/bridge_state_10
-</pre></div>
-</div>
-<p>Recommended for:</p>
-<ul class="simple">
-<li><p>visualization</p></li>
-<li><p>UI applications</p></li>
-<li><p>lossy network access</p></li>
-</ul>
-</section>
-</section>
-<section id="control-command">
-<h4><code class="docutils literal notranslate"><span class="pre">/control_command</span></code><a class="headerlink" href="#control-command" title="Link to this heading">#</a></h4>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Field</p></th>
-<th class="head"><p>Value</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Message Type</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">std_msgs/msg/String</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Producer</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">user</span></code></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<section id="id2">
-<h5>Description<a class="headerlink" href="#id2" title="Link to this heading">#</a></h5>
-<p>Contains commands for the MAB control stack.</p>
-</section>
-</section>
-<section id="hardware-command">
-<h4><code class="docutils literal notranslate"><span class="pre">/hardware_command</span></code><a class="headerlink" href="#hardware-command" title="Link to this heading">#</a></h4>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Field</p></th>
-<th class="head"><p>Value</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Message Type</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">std_msgs/msg/String</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Producer</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">hb50_bridge</span></code></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<section id="id3">
-<h5>Description<a class="headerlink" href="#id3" title="Link to this heading">#</a></h5>
-<p>Contains high-level hardware commands and events, for example:</p>
-<ul class="simple">
-<li><p>user pressed power button</p></li>
-<li><p>shutdown request for all robot computers</p></li>
-<li><p>imminent power removal notification</p></li>
-</ul>
-</section>
-</section>
-<section id="heartbeat">
-<h4><code class="docutils literal notranslate"><span class="pre">/heartbeat</span></code><a class="headerlink" href="#heartbeat" title="Link to this heading">#</a></h4>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Field</p></th>
-<th class="head"><p>Value</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Message Type</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/Status</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Producer</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">hb50_bridge</span></code>, <code class="docutils literal notranslate"><span class="pre">hb50_control</span></code></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<section id="id4">
-<h5>Description<a class="headerlink" href="#id4" title="Link to this heading">#</a></h5>
-<p>All active nodes should publish a status message every <code class="docutils literal notranslate"><span class="pre">1s</span></code>.</p>
-</section>
-</section>
-<section id="joint-command">
-<h4><code class="docutils literal notranslate"><span class="pre">/joint_command</span></code><a class="headerlink" href="#joint-command" title="Link to this heading">#</a></h4>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Field</p></th>
-<th class="head"><p>Value</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Message Type</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/JointCommand</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Producer</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">hb50_control</span></code>, <code class="docutils literal notranslate"><span class="pre">user</span></code></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<section id="id5">
-<h5>Description<a class="headerlink" href="#id5" title="Link to this heading">#</a></h5>
-<p>Contains actuator control commands:</p>
-<ul class="simple">
-<li><p>target position</p></li>
-<li><p>target velocity</p></li>
-<li><p>target torque</p></li>
-<li><p>positional gain (<code class="docutils literal notranslate"><span class="pre">kp</span></code>)</p></li>
-<li><p>velocity gain (<code class="docutils literal notranslate"><span class="pre">kd</span></code>)</p></li>
-</ul>
-</section>
-<section id="id6">
-<h5>Notes<a class="headerlink" href="#id6" title="Link to this heading">#</a></h5>
-<p><code class="docutils literal notranslate"><span class="pre">hb50_bridge</span></code> assumes strict actuator ordering.</p>
-<p>All commands <strong>must always</strong> follow the order defined in:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Robot Actuators
-</pre></div>
-</div>
-</section>
-</section>
-<section id="joint-states">
-<h4><code class="docutils literal notranslate"><span class="pre">/joint_states</span></code><a class="headerlink" href="#joint-states" title="Link to this heading">#</a></h4>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Field</p></th>
-<th class="head"><p>Value</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Message Type</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">sensor_msgs/msg/JointState</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Producer</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">hb50_bridge</span></code></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<section id="id7">
-<h5>Description<a class="headerlink" href="#id7" title="Link to this heading">#</a></h5>
-<p>Low-frequency joint state topic intended for:</p>
-<ul class="simple">
-<li><p>TF generation</p></li>
-<li><p>visualization</p></li>
-</ul>
-</section>
-<section id="id8">
-<h5>Notes<a class="headerlink" href="#id8" title="Link to this heading">#</a></h5>
-<p>Visualization-only topic.</p>
-<p>For control applications, subscribe to:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/bridge_data
-</pre></div>
-</div>
-</section>
-</section>
-<section id="robot-state">
-<h4><code class="docutils literal notranslate"><span class="pre">/robot_state</span></code><a class="headerlink" href="#robot-state" title="Link to this heading">#</a></h4>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Field</p></th>
-<th class="head"><p>Value</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Message Type</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/RobotState</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Producer</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">hb50_control</span></code></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<section id="id9">
-<h5>Description<a class="headerlink" href="#id9" title="Link to this heading">#</a></h5>
-<p>Contains outputs from:</p>
-<ul class="simple">
-<li><p>state estimation</p></li>
-<li><p>kinematics</p></li>
-<li><p>dynamics</p></li>
-</ul>
-</section>
-<section id="id10">
-<h5>Notes<a class="headerlink" href="#id10" title="Link to this heading">#</a></h5>
-<p>Low-frequency variant available:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/robot_state_10
-</pre></div>
-</div>
-<p>Recommended for:</p>
-<ul class="simple">
-<li><p>visualization</p></li>
-<li><p>UI applications</p></li>
-<li><p>lossy network access</p></li>
-</ul>
-</section>
-</section>
-<section id="status">
-<h4><code class="docutils literal notranslate"><span class="pre">/status</span></code><a class="headerlink" href="#status" title="Link to this heading">#</a></h4>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Field</p></th>
-<th class="head"><p>Value</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Message Type</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/Status</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Producer</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">all</span> <span class="pre">nodes</span></code></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<section id="id11">
-<h5>Description<a class="headerlink" href="#id11" title="Link to this heading">#</a></h5>
-<p>Contains status messages describing:</p>
-<ul class="simple">
-<li><p>important events</p></li>
-<li><p>warnings</p></li>
-<li><p>state changes</p></li>
-</ul>
-</section>
-</section>
-<section id="velocity-command">
-<h4><code class="docutils literal notranslate"><span class="pre">/velocity_command</span></code><a class="headerlink" href="#velocity-command" title="Link to this heading">#</a></h4>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Field</p></th>
-<th class="head"><p>Value</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Message Type</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">geometry_msgs/msg/Twist</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Producer</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">all</span> <span class="pre">nodes</span></code></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<section id="id12">
-<h5>Description<a class="headerlink" href="#id12" title="Link to this heading">#</a></h5>
-<p>Contains velocity commands for the MAB control stack.</p>
-</section>
-<section id="linear-component">
-<h5>Linear Component<a class="headerlink" href="#linear-component" title="Link to this heading">#</a></h5>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Axis</p></th>
-<th class="head"><p>Meaning</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">X</span></code></p></td>
-<td><p>commanded linear velocity</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Y</span></code></p></td>
-<td><p>commanded lateral velocity</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Z</span></code></p></td>
-<td><p>commanded reference walking height</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>TODO: How Z is computed</p>
-</section>
-<section id="angular-component">
-<h5>Angular Component<a class="headerlink" href="#angular-component" title="Link to this heading">#</a></h5>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Axis</p></th>
-<th class="head"><p>Meaning</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">X</span></code></p></td>
-<td><p>commanded roll angle</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Y</span></code></p></td>
-<td><p>commanded pitch angle</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Z</span></code></p></td>
-<td><p>commanded yaw velocity</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="id13">
-<h5>Notes<a class="headerlink" href="#id13" title="Link to this heading">#</a></h5>
-<p>All command inputs must be normalized to <code class="docutils literal notranslate"><span class="pre">&lt;-1,</span> <span class="pre">1&gt;</span></code>.
-Physical velocities and angular commands are computed by scaling inputs using:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">cmd_vel_lin</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">cmd_vel_ang</span></code>
-from robot configuration.</p></li>
-</ul>
-</section>
-</section>
+<section id="custom-message-types">
+<h3>Custom message types<a class="headerlink" href="#custom-message-types" title="Link to this heading">#</a></h3>
+<p>For details on each custom message, field definitions, and usage examples, refer to <a class="reference internal" href="Messages.html"><span class="std std-doc">Software/Messages.md</span></a>.</p>
 </section>
 </section>
 <div class="toctree-wrapper compound">
@@ -1005,11 +573,11 @@ from robot configuration.</p></li>
       </div>
     </a>
     <a class="right-next"
-       href="Networking.html"
+       href="Messages.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Network</p>
+        <p class="prev-next-title">Custom message types</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1029,59 +597,10 @@ from robot configuration.</p></li>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topics-and-messages">Topics and Messages</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topics">Topics</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qos">QoS</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#messages">Messages</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bridge-data"><code class="docutils literal notranslate"><span class="pre">/bridge_data</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a></li>
-</ul>
-</li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bridge-state"><code class="docutils literal notranslate"><span class="pre">/bridge_state</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Description</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
-</ul>
-</li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#control-command"><code class="docutils literal notranslate"><span class="pre">/control_command</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Description</a></li>
-</ul>
-</li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware-command"><code class="docutils literal notranslate"><span class="pre">/hardware_command</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Description</a></li>
-</ul>
-</li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#heartbeat"><code class="docutils literal notranslate"><span class="pre">/heartbeat</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Description</a></li>
-</ul>
-</li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-command"><code class="docutils literal notranslate"><span class="pre">/joint_command</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Description</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Notes</a></li>
-</ul>
-</li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-states"><code class="docutils literal notranslate"><span class="pre">/joint_states</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Description</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Notes</a></li>
-</ul>
-</li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robot-state"><code class="docutils literal notranslate"><span class="pre">/robot_state</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Description</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Notes</a></li>
-</ul>
-</li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#status"><code class="docutils literal notranslate"><span class="pre">/status</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Description</a></li>
-</ul>
-</li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity-command"><code class="docutils literal notranslate"><span class="pre">/velocity_command</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Description</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-component">Linear Component</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#angular-component">Angular Component</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Notes</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topics-and-messages">Topics and messages</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core-topics">Core topics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qos-policies">QoS policies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-message-types">Custom message types</a></li>
 </ul>
 </li>
 </ul>

@@ -181,8 +181,11 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../GettingStarted/GettingStarted.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/Basics.html">Basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/SteamDeck.html">Control Console (SteamDeck)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/QuickStart.html">Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/FirstStartup.html">First Startup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/Safety.html">Safety</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/Setup.html">Setup &amp; Charging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/ControlConsole.html">Control Console</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Physical/Overview.html">Physical</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -190,6 +193,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="Overview.html">Software</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Messages.html">Message types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Networking.html">Networking</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Geometry &amp; Frames</a></li>
 </ul>
@@ -393,8 +397,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#robots-structure">Robots Structure</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-coordinate-frame">Local Coordinate Frame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#robot-structure">Robot structure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#leg-naming">Leg naming</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#local-coordinate-frame">Local coordinate frame</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -408,13 +415,14 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="geometry-and-frames">
 <h1>Geometry and Frames<a class="headerlink" href="#geometry-and-frames" title="Link to this heading">#</a></h1>
-<section id="robots-structure">
-<h2>Robots Structure<a class="headerlink" href="#robots-structure" title="Link to this heading">#</a></h2>
-<p>The main robot parts are shown below and should be referenced consistently throughout this manual.</p>
+<section id="robot-structure">
+<h2>Robot structure<a class="headerlink" href="#robot-structure" title="Link to this heading">#</a></h2>
+<p>The main robot parts are illustrated below. Use the naming and frame conventions from this page consistently in logs, diagnostics and documentation.</p>
 <figure class="align-center">
 <img alt="hb50_parts" class="no-scaled-link" src="../_images/robot_parts.png" />
 </figure>
-<p>Robot leg naming convention is:</p>
+<section id="leg-naming">
+<h3>Leg naming<a class="headerlink" href="#leg-naming" title="Link to this heading">#</a></h3>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Abbreviation</p></th>
@@ -422,38 +430,41 @@ document.write(`
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>FL</p></td>
-<td><p>Front-left leg</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">FL</span></code></p></td>
+<td><p>Front‑left leg</p></td>
 </tr>
-<tr class="row-odd"><td><p>FR</p></td>
-<td><p>Front-right leg</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">FR</span></code></p></td>
+<td><p>Front‑right leg</p></td>
 </tr>
-<tr class="row-even"><td><p>RL</p></td>
-<td><p>Rear-left leg</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">RL</span></code></p></td>
+<td><p>Rear‑left leg</p></td>
 </tr>
-<tr class="row-odd"><td><p>RR</p></td>
-<td><p>Rear-right leg</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">RR</span></code></p></td>
+<td><p>Rear‑right leg</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>This naming convention is used in logs, diagnostics, calibration, troubleshooting, and service procedures.</p>
 </section>
 <section id="local-coordinate-frame">
-<h2>Local Coordinate Frame<a class="headerlink" href="#local-coordinate-frame" title="Link to this heading">#</a></h2>
-<p>Robots main coordinate frame follows right-hand rule convention. Coordinates are referenced from the center of
-the robot chassis, in the midpoint between leg origins. This is also approximately the location of the center of mass for modeling purposes. The coordinate frame is as follows:</p>
+<h3>Local coordinate frame<a class="headerlink" href="#local-coordinate-frame" title="Link to this heading">#</a></h3>
+<p>The robot uses a right‑hand coordinate system with origin at the chassis center (approximately the center of mass). Axes and rotations are defined as:</p>
 <ul class="simple">
-<li><p>X Axis, along robots longest dimension in horizontal plane, values increasing in the direction of the robots front,</p></li>
-<li><p>Y Axis, along robots shortest axis in horizontal plane, values increasing in the direction of robots left,</p></li>
-<li><p>Z Axis, vertical axis, values increasing in up direction, opposite to gravity vector.</p></li>
-<li><p>Roll - angular around X Axis,</p></li>
-<li><p>Pitch - angular around Y Axis,</p></li>
-<li><p>Yaw - angular around Z Axis</p></li>
+<li><p>X — forward (positive toward the robot front)</p></li>
+<li><p>Y — left (positive toward the robot left)</p></li>
+<li><p>Z — up (positive opposite gravity)</p></li>
+</ul>
+<p>Rotations:</p>
+<ul class="simple">
+<li><p>Roll — rotation around X</p></li>
+<li><p>Pitch — rotation around Y</p></li>
+<li><p>Yaw — rotation around Z</p></li>
 </ul>
 <figure class="align-center">
 <img alt="robot_local_frame" class="no-scaled-link" src="../_images/robot_reference_frame.png" />
 </figure>
+<p>Use these conventions when interpreting TFs, URDF links and joint commands.</p>
+</section>
 </section>
 </section>
 
@@ -521,8 +532,11 @@ the robot chassis, in the midpoint between leg origins. This is also approximate
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#robots-structure">Robots Structure</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-coordinate-frame">Local Coordinate Frame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#robot-structure">Robot structure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#leg-naming">Leg naming</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#local-coordinate-frame">Local coordinate frame</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

@@ -1,0 +1,1014 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Custom message types &#8212; Honey Badger Robot Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Software/Messages';</script>
+    <link rel="icon" href="../_static/logo32x32.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Network" href="Networking.html" />
+    <link rel="prev" title="Software Overview" href="Overview.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Honey Badger Robot Documentation - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Honey Badger Robot Documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Intro
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../GettingStarted/GettingStarted.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/QuickStart.html">Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/FirstStartup.html">First Startup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/Safety.html">Safety</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/Setup.html">Setup &amp; Charging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/ControlConsole.html">Control Console</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Physical/Overview.html">Physical</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Physical/Connectors.html">Button &amp; Connectors</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Overview.html">Software</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Message types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Networking.html">Networking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Geometry.html">Geometry &amp; Frames</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Payload/Payload.html">Payload</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Payload/Spool.html">Spool</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/mabrobotics/hb-docs" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/mabrobotics/hb-docs/issues/new?title=Issue%20on%20page%20%2FSoftware/Messages.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Software/Messages.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Custom message types</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bridgedata-high-rate-hardware-frame">BridgeData — high-rate hardware frame</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fields">Fields</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bridgestate-power-and-diagnostic-state">BridgeState — power and diagnostic state</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Fields</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jointcommand-actuator-control-commands">JointCommand — actuator control commands</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Fields</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#robotstate-estimated-state">RobotState — estimated state</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Fields</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#legstate-per-leg-status">LegState — per-leg status</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Fields</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#status-event-and-status-messages">Status — event and status messages</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Fields</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#level-enum">Level enum</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity-command-interpretation">Velocity command interpretation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-velocity">Linear velocity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#angular-velocity">Angular velocity</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#message-usage-guide">Message usage guide</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-control-loop-development">For control loop development</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-ui-and-visualization">For UI and visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-diagnostics-and-logging">For diagnostics and logging</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="custom-message-types">
+<h1>Custom message types<a class="headerlink" href="#custom-message-types" title="Link to this heading">#</a></h1>
+<p>This page documents the custom ROS 2 message types used by Honey Badger 5.0. All custom messages are defined in the <code class="docutils literal notranslate"><span class="pre">hb50_commons</span></code> package.</p>
+<section id="bridgedata-high-rate-hardware-frame">
+<h2>BridgeData — high-rate hardware frame<a class="headerlink" href="#bridgedata-high-rate-hardware-frame" title="Link to this heading">#</a></h2>
+<p><strong>Message type:</strong> <code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/BridgeData</span></code><br />
+<strong>Producer:</strong> <code class="docutils literal notranslate"><span class="pre">hb50_bridge</span></code><br />
+<strong>Rate:</strong> 500 Hz<br />
+<strong>QoS:</strong> mabRT<br />
+<strong>Use case:</strong> Control applications requiring raw actuator data</p>
+<p>Contains the high-frequency mainboard update with kinematics and IMU data. This is the primary topic for control loops and state estimation.</p>
+<section id="fields">
+<h3>Fields<a class="headerlink" href="#fields" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">header</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">std_msgs/Header</span></code></p></td>
+<td><p>Timestamp and frame ID</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">orientation</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">geometry_msgs/Quaternion</span></code></p></td>
+<td><p>IMU orientation (quaternion)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">angular_velocity</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">geometry_msgs/Vector3</span></code></p></td>
+<td><p>Body angular velocity (rad/s)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">linear_acceleration</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">geometry_msgs/Vector3</span></code></p></td>
+<td><p>Body linear acceleration (m/s²)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">joint_name[]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string[]</span></code></p></td>
+<td><p>Names of actuators (e.g., <code class="docutils literal notranslate"><span class="pre">[&quot;fr_j0&quot;,</span> <span class="pre">&quot;fr_j1&quot;,</span> <span class="pre">...]</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">joint_position[]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float32[]</span></code></p></td>
+<td><p>Current position of each joint (rad)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">joint_velocity[]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float32[]</span></code></p></td>
+<td><p>Current velocity of each joint (rad/s)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">joint_effort[]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float32[]</span></code></p></td>
+<td><p>Estimated torque of each joint (N·m)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">joint_temperature[]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint8[]</span></code></p></td>
+<td><p>Temperature of each actuator (°C)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">joint_status[]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint16[]</span></code></p></td>
+<td><p>Status flags for each joint</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="bridgestate-power-and-diagnostic-state">
+<h2>BridgeState — power and diagnostic state<a class="headerlink" href="#bridgestate-power-and-diagnostic-state" title="Link to this heading">#</a></h2>
+<p><strong>Message type:</strong> <code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/BridgeState</span></code><br />
+<strong>Producer:</strong> <code class="docutils literal notranslate"><span class="pre">hb50_bridge</span></code><br />
+<strong>Rate:</strong> 500 Hz (standard), 10 Hz (<code class="docutils literal notranslate"><span class="pre">/bridge_state_10hz</span></code>)<br />
+<strong>QoS:</strong> mabRT (500 Hz), Reliable (10 Hz)<br />
+<strong>Use case:</strong> Diagnostics, UI, monitoring</p>
+<p>Contains power subsystem state, temperatures and hardware status. A low-frequency variant (<code class="docutils literal notranslate"><span class="pre">/bridge_state_10hz</span></code>) is provided for visualization and lossy networks.</p>
+<section id="id1">
+<h3>Fields<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">battery</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float32</span></code></p></td>
+<td><p>Battery charge state (0–100 %)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bus_v</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float32</span></code></p></td>
+<td><p>Bus voltage (V)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bus_i</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float32</span></code></p></td>
+<td><p>Bus current (A)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bus_p</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float32</span></code></p></td>
+<td><p>Instantaneous bus power (W)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bus_pt</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float32</span></code></p></td>
+<td><p>Cumulative bus power transfer (kWh)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">legs_v</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float32</span></code></p></td>
+<td><p>Leg actuator supply voltage (V)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">charger_v</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float32</span></code></p></td>
+<td><p>Charger input voltage (V)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bridge_t</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float32</span></code></p></td>
+<td><p>Bridge board temperature (°C)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ext1_t</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float32</span></code></p></td>
+<td><p>Auxiliary sensor 1 temperature (°C)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ext2_t</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float32</span></code></p></td>
+<td><p>Auxiliary sensor 2 temperature (°C)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">drives_enabled</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p>Whether actuators are energized</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">status[]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string[]</span></code></p></td>
+<td><p>Hardware status strings (warnings, errors)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">up_time</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int32</span></code></p></td>
+<td><p>System uptime (s)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="jointcommand-actuator-control-commands">
+<h2>JointCommand — actuator control commands<a class="headerlink" href="#jointcommand-actuator-control-commands" title="Link to this heading">#</a></h2>
+<p><strong>Message type:</strong> <code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/JointCommand</span></code><br />
+<strong>Producer:</strong> <code class="docutils literal notranslate"><span class="pre">hb50_control</span></code>, user nodes<br />
+<strong>Rate:</strong> 500 Hz (as needed)<br />
+<strong>QoS:</strong> mabRT<br />
+<strong>Use case:</strong> Control applications commanding joint motion</p>
+<p>Commands the actuators with target position, velocity, torque and PD gains. <strong>Critical:</strong> actuators must be commanded in strict order defined in the robot configuration.</p>
+<section id="id2">
+<h3>Fields<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">header</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">std_msgs/Header</span></code></p></td>
+<td><p>Timestamp and source</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source_node</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td><p>Name of commanding node (e.g., <code class="docutils literal notranslate"><span class="pre">hb_control</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">name[]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string[]</span></code></p></td>
+<td><p>Actuator identifiers (e.g., <code class="docutils literal notranslate"><span class="pre">[&quot;fr_j0&quot;,</span> <span class="pre">&quot;fr_j1&quot;,</span> <span class="pre">...]</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">kp[]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float32[]</span></code></p></td>
+<td><p>Position gain for each joint</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ki[]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float32[]</span></code></p></td>
+<td><p>(Reserved) Integral gain</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">kd[]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float32[]</span></code></p></td>
+<td><p>Velocity damping gain for each joint</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">t_pos[]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float32[]</span></code></p></td>
+<td><p>Target position (rad)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">t_vel[]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float32[]</span></code></p></td>
+<td><p>Target velocity (rad/s)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">t_trq[]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float32[]</span></code></p></td>
+<td><p>Target torque (N·m)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">brake[]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool[]</span></code></p></td>
+<td><p>Enable brake for each joint</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Important:</strong> Array lengths must match the number of actuators. Order must correspond to the actuator ordering in the configuration.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="robotstate-estimated-state">
+<h2>RobotState — estimated state<a class="headerlink" href="#robotstate-estimated-state" title="Link to this heading">#</a></h2>
+<p><strong>Message type:</strong> <code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/RobotState</span></code><br />
+<strong>Producer:</strong> <code class="docutils literal notranslate"><span class="pre">hb50_control</span></code><br />
+<strong>Rate:</strong> 500 Hz (standard), 10 Hz (<code class="docutils literal notranslate"><span class="pre">/robot_state_10hz</span></code>)<br />
+<strong>QoS:</strong> mabRT (500 Hz), Reliable (10 Hz)<br />
+<strong>Use case:</strong> State machine, planning, visualization</p>
+<p>Contains state estimation outputs, body kinematics and dynamics. A low-frequency variant (<code class="docutils literal notranslate"><span class="pre">/robot_state_10hz</span></code>) is provided for visualization and UI applications.</p>
+<section id="id3">
+<h3>Fields<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">header</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">std_msgs/Header</span></code></p></td>
+<td><p>Timestamp and frame ID</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">leg[]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LegState[]</span></code></p></td>
+<td><p>Array of leg states (one entry per leg)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pose</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">geometry_msgs/Pose</span></code></p></td>
+<td><p>Estimated body pose (position and orientation)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">body_vel</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">geometry_msgs/Twist</span></code></p></td>
+<td><p>Body velocity in body frame (m/s, rad/s)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">world_vel</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">geometry_msgs/Twist</span></code></p></td>
+<td><p>Body velocity in world frame (m/s, rad/s)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">motion_mode</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">byte</span></code></p></td>
+<td><p>Current motion mode (enum, see <code class="docutils literal notranslate"><span class="pre">hb50_control.hpp</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">motion_type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">byte</span></code></p></td>
+<td><p>Motion type classification (enum)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">motion_gait</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">byte</span></code></p></td>
+<td><p>Current gait (Idle, Stand, Walk, Run, etc.)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For motion mode and gait enums, refer to <code class="docutils literal notranslate"><span class="pre">hb50_control/hb50_control.hpp</span></code> in the source repository.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="legstate-per-leg-status">
+<h2>LegState — per-leg status<a class="headerlink" href="#legstate-per-leg-status" title="Link to this heading">#</a></h2>
+<p><strong>Message type:</strong> <code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/LegState</span></code><br />
+<strong>Nested in:</strong> <code class="docutils literal notranslate"><span class="pre">RobotState</span></code><br />
+<strong>Use case:</strong> Leg-specific diagnostics and control</p>
+<p>Describes the estimated state of a single leg, including foot contact and forces.</p>
+<section id="id4">
+<h3>Fields<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">leg_name</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td><p>Leg identifier (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;FR&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;RL&quot;</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">contact</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p>Whether foot is in contact with ground</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">foot_pos_body</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">geometry_msgs/Vector3</span></code></p></td>
+<td><p>Foot position in body frame (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">foot_vel</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">geometry_msgs/Vector3</span></code></p></td>
+<td><p>Foot velocity (m/s)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">foot_force_est</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">geometry_msgs/Vector3</span></code></p></td>
+<td><p>Estimated ground reaction force (N)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="status-event-and-status-messages">
+<h2>Status — event and status messages<a class="headerlink" href="#status-event-and-status-messages" title="Link to this heading">#</a></h2>
+<p><strong>Message type:</strong> <code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/Status</span></code>
+<strong>Producers:</strong> All nodes (by heartbeat subnode), <code class="docutils literal notranslate"><span class="pre">hb50_bridge</span></code> (hardware events), <code class="docutils literal notranslate"><span class="pre">hb50_control</span></code> (control events)
+<strong>Rate:</strong> 1 Hz (heartbeat), as needed (events)
+<strong>QoS:</strong> Reliable
+<strong>Use case:</strong> Monitoring, logging, alarm handling</p>
+<p>General‑purpose status message for reporting important events, warnings and errors.</p>
+<section id="id5">
+<h3>Fields<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">header</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">std_msgs/Header</span></code></p></td>
+<td><p>Timestamp and source frame</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">level</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">byte</span></code></p></td>
+<td><p>Severity level: <code class="docutils literal notranslate"><span class="pre">OK=1</span></code>, <code class="docutils literal notranslate"><span class="pre">WARN=2</span></code>, <code class="docutils literal notranslate"><span class="pre">ERROR=3</span></code>, <code class="docutils literal notranslate"><span class="pre">STALE=4</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reporting_node</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td><p>Name of the node sending the status</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">status</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td><p>Human-readable message</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">data[]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">byte[]</span></code></p></td>
+<td><p>Optional structured data (node‑specific)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="level-enum">
+<h3>Level enum<a class="headerlink" href="#level-enum" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OK=1</span></code> — normal operation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WARN=2</span></code> — warning condition</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ERROR=3</span></code> — error condition</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">STALE=4</span></code> — stale/timeout condition</p></li>
+</ul>
+<p>All nodes should publish a heartbeat Status message with <code class="docutils literal notranslate"><span class="pre">level=OK</span></code> at least every 1 second. Missing heartbeats indicate communication loss or node crash.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="velocity-command-interpretation">
+<h2>Velocity command interpretation<a class="headerlink" href="#velocity-command-interpretation" title="Link to this heading">#</a></h2>
+<p>The standard ROS geometry message <code class="docutils literal notranslate"><span class="pre">/hb50/velocity_command</span></code> (<code class="docutils literal notranslate"><span class="pre">geometry_msgs/msg/Twist</span></code>) is used for high‑level gait commands. Components are interpreted as:</p>
+<section id="linear-velocity">
+<h3>Linear velocity<a class="headerlink" href="#linear-velocity" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> — forward velocity (m/s, normalized to <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code> — lateral velocity (m/s, normalized to <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">z</span></code> — reference walking height (m, normalized to <code class="docutils literal notranslate"><span class="pre">1</span></code>)</p></li>
+</ul>
+</section>
+<section id="angular-velocity">
+<h3>Angular velocity<a class="headerlink" href="#angular-velocity" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> — roll command (rad/s, normalized to <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code> — pitch command (rad/s, normalized to <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">z</span></code> — yaw rate (rad/s, normalized to <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>)</p></li>
+</ul>
+<p><strong>Normalization:</strong> All normalized commands are scaled by configuration parameters (<code class="docutils literal notranslate"><span class="pre">cmd_vel_lin</span></code>, <code class="docutils literal notranslate"><span class="pre">cmd_vel_ang</span></code>) to produce physical values.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="message-usage-guide">
+<h2>Message usage guide<a class="headerlink" href="#message-usage-guide" title="Link to this heading">#</a></h2>
+<section id="for-control-loop-development">
+<h3>For control loop development<a class="headerlink" href="#for-control-loop-development" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Subscribe to:</strong> <code class="docutils literal notranslate"><span class="pre">/hb50/bridge_data</span></code> (500 Hz) for raw actuator feedback</p></li>
+<li><p><strong>Publish to:</strong> <code class="docutils literal notranslate"><span class="pre">/hb50/joint_command</span></code> (500 Hz) for actuator commands</p></li>
+<li><p><strong>Monitor:</strong> <code class="docutils literal notranslate"><span class="pre">/hb50/robot_state</span></code> (500 Hz) for state estimation</p></li>
+<li><p><strong>Check:</strong> <code class="docutils literal notranslate"><span class="pre">/hb50/heartbeat</span></code> (1 Hz) to detect stale nodes</p></li>
+</ul>
+</section>
+<section id="for-ui-and-visualization">
+<h3>For UI and visualization<a class="headerlink" href="#for-ui-and-visualization" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Subscribe to:</strong> <code class="docutils literal notranslate"><span class="pre">/hb50/robot_state_10hz</span></code> and <code class="docutils literal notranslate"><span class="pre">/hb50/bridge_state_10hz</span></code> (10 Hz, Reliable QoS)</p></li>
+<li><p><strong>Monitor:</strong> <code class="docutils literal notranslate"><span class="pre">/hb50/status</span></code> for warnings and errors</p></li>
+<li><p><strong>Listen to:</strong> <code class="docutils literal notranslate"><span class="pre">/tf</span></code> and <code class="docutils literal notranslate"><span class="pre">/tf_static</span></code> for frame transforms</p></li>
+</ul>
+</section>
+<section id="for-diagnostics-and-logging">
+<h3>For diagnostics and logging<a class="headerlink" href="#for-diagnostics-and-logging" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Monitor:</strong> <code class="docutils literal notranslate"><span class="pre">/hb50/bridge_state</span></code> for power and temperature trends</p></li>
+<li><p><strong>Watch:</strong> <code class="docutils literal notranslate"><span class="pre">/hb50/status</span></code> and <code class="docutils literal notranslate"><span class="pre">/hb50/heartbeat</span></code> for node health</p></li>
+<li><p><strong>Check:</strong> <code class="docutils literal notranslate"><span class="pre">joint_temperature</span></code> and <code class="docutils literal notranslate"><span class="pre">joint_status</span></code> in <code class="docutils literal notranslate"><span class="pre">/hb50/bridge_data</span></code> for actuator issues</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Software"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Overview.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Software Overview</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Networking.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Network</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bridgedata-high-rate-hardware-frame">BridgeData — high-rate hardware frame</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fields">Fields</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bridgestate-power-and-diagnostic-state">BridgeState — power and diagnostic state</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Fields</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jointcommand-actuator-control-commands">JointCommand — actuator control commands</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Fields</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#robotstate-estimated-state">RobotState — estimated state</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Fields</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#legstate-per-leg-status">LegState — per-leg status</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Fields</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#status-event-and-status-messages">Status — event and status messages</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Fields</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#level-enum">Level enum</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity-command-interpretation">Velocity command interpretation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-velocity">Linear velocity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#angular-velocity">Angular velocity</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#message-usage-guide">Message usage guide</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-control-loop-development">For control loop development</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-ui-and-visualization">For UI and visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-diagnostics-and-logging">For diagnostics and logging</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By MAB Robotics
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

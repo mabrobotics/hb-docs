@@ -8,21 +8,29 @@ chapters:
   - file: GettingStarted/GettingStarted.md
     title: Getting Started
     sections:
-      - file: GettingStarted/Basics.md
-        title: Basics
-      - file: GettingStarted/SteamDeck.md
-        title: Control Console (SteamDeck)
+      - file: GettingStarted/QuickStart.md
+        title: Quick Start
+      - file: GettingStarted/FirstStartup.md
+        title: First Startup
+      - file: GettingStarted/Safety.md
+        title: Safety
+      - file: GettingStarted/Setup.md
+        title: Setup & Charging
+      - file: GettingStarted/ControlConsole.md
+        title: Control Console
   - file: Physical/Overview.md
-    title: Physical 
+    title: Physical
     sections:
       - file: Physical/Connectors.md
-        title: Button & Connectors 
+        title: Button & Connectors
   - file: Software/Overview.md
-    title: Software 
+    title: Software
     sections:
-      - file: Software/Networking.md 
+      - file: Software/Messages.md
+        title: Message types
+      - file: Software/Networking.md
         title: Networking
-      - file: Software/Geometry.md 
+      - file: Software/Geometry.md
         title: Geometry & Frames
   - file: Payload/Payload.md
     title: Payload

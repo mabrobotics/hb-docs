@@ -1,8 +1,8 @@
 # Geometry and Frames
 
-## Robots Structure
+## Robot structure
 
-The main robot parts are shown below and should be referenced consistently throughout this manual.
+The main robot parts are illustrated below. Use the naming and frame conventions from this page consistently in logs, diagnostics and documentation.
 
 ```{figure} ./img/robot_parts.png
 :alt: hb50_parts
@@ -11,27 +11,28 @@ The main robot parts are shown below and should be referenced consistently throu
 :class: no-scaled-link
 ```
 
-Robot leg naming convention is:
+### Leg naming
 
-| Abbreviation | Meaning         |
-| ------------ | --------------- |
-| FL           | Front-left leg  |
-| FR           | Front-right leg |
-| RL           | Rear-left leg   |
-| RR           | Rear-right leg  |
+| Abbreviation | Meaning |
+|---|---|
+| `FL` | Front‑left leg |
+| `FR` | Front‑right leg |
+| `RL` | Rear‑left leg |
+| `RR` | Rear‑right leg |
 
-This naming convention is used in logs, diagnostics, calibration, troubleshooting, and service procedures.
+### Local coordinate frame
 
-## Local Coordinate Frame
+The robot uses a right‑hand coordinate system with origin at the chassis center (approximately the center of mass). Axes and rotations are defined as:
 
-Robots main coordinate frame follows right-hand rule convention. Coordinates are referenced from the center of 
-the robot chassis, in the midpoint between leg origins. This is also approximately the location of the center of mass for modeling purposes. The coordinate frame is as follows:
-- X Axis, along robots longest dimension in horizontal plane, values increasing in the direction of the robots front,
-- Y Axis, along robots shortest axis in horizontal plane, values increasing in the direction of robots left,
-- Z Axis, vertical axis, values increasing in up direction, opposite to gravity vector.
-- Roll - angular around X Axis,
-- Pitch - angular around Y Axis,
-- Yaw - angular around Z Axis
+- X — forward (positive toward the robot front)
+- Y — left (positive toward the robot left)
+- Z — up (positive opposite gravity)
+
+Rotations:
+
+- Roll — rotation around X
+- Pitch — rotation around Y
+- Yaw — rotation around Z
 
 ```{figure} ./img/robot_reference_frame.png
 :alt: robot_local_frame
@@ -39,4 +40,6 @@ the robot chassis, in the midpoint between leg origins. This is also approximate
 :align: center
 :class: no-scaled-link
 ```
+
+Use these conventions when interpreting TFs, URDF links and joint commands.
 

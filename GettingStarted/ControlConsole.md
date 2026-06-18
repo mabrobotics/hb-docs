@@ -5,7 +5,7 @@ The controller allows easy to easily startup, change gaits and control the robot
 using `hb50_remote` application.
 
 ## Network Setup
-To connect to the robots' WiFi network, follow the steps below:
+For robot Wi-Fi SSID and password details, see `GettingStarted/Setup.md`.
 
 ```{figure} ./img/deck_wifi.png
 :alt: deck_wifi
@@ -15,9 +15,7 @@ To connect to the robots' WiFi network, follow the steps below:
 ```
 
 ```{note}
-You can use WiFi to connect to other networks (e.g. internet access). However it is recommended to uncheck
-"Connect Automatically" checkbox in the network configuration, to avoid confusion when robots WiFi becomes 
-unavailable, and controller switches to other network.
+You can use Wi-Fi to connect to other networks (for example internet access). We recommend disabling automatic reconnection to avoid confusion when the robot's network becomes unavailable.
 ```
 
 ### Wired connection

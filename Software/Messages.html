@@ -814,19 +814,19 @@ document.write(`
 <section id="linear-velocity">
 <h3>Linear velocity<a class="headerlink" href="#linear-velocity" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> — forward velocity (m/s, normalized to <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code> — lateral velocity (m/s, normalized to <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">z</span></code> — reference walking height (m, normalized to <code class="docutils literal notranslate"><span class="pre">1</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> — forward velocity (normalized to <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code> — lateral velocity (normalized to <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">z</span></code> — reference walking height (normalized to <code class="docutils literal notranslate"><span class="pre">1</span></code>)</p></li>
 </ul>
 </section>
 <section id="angular-velocity">
 <h3>Angular velocity<a class="headerlink" href="#angular-velocity" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> — roll command (rad/s, normalized to <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code> — pitch command (rad/s, normalized to <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">z</span></code> — yaw rate (rad/s, normalized to <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> — roll command (normalized to <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code> — pitch command (normalized to <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">z</span></code> — yaw rate (normalized to <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>)</p></li>
 </ul>
-<p><strong>Normalization:</strong> All normalized commands are scaled by configuration parameters (<code class="docutils literal notranslate"><span class="pre">cmd_vel_lin</span></code>, <code class="docutils literal notranslate"><span class="pre">cmd_vel_ang</span></code>) to produce physical values.</p>
+<p><strong>Normalization:</strong> All normalized commands are scaled by configuration parameters (<code class="docutils literal notranslate"><span class="pre">cmd_vel_lin</span></code>, <code class="docutils literal notranslate"><span class="pre">cmd_vel_ang</span></code>) to produce physical values in SI units (m/s, rad/s).</p>
 </section>
 </section>
 <hr class="docutils" />

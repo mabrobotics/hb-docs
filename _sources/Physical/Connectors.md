@@ -88,12 +88,12 @@ To unplug the connector:
 | Connector number | Function |
 | ------------- | -------------- |
 | 1 | Power Button |
-| 2 | AUX 1|
-| 3 | Charger |
+| 2 | Charger |
+| 3 | AUX 1 |
 | 4 | AUX 2 (e-stop) |
-| 5 | LAN |
+| 5 | LPC USB 3.0 |
 | 6 | APC (Orin) USB 3.0 |
-| 7 | LPC USB 3.0 |
+| 7 | LAN |
 | 8 | WAN/LAN |
 | 9 | WiFi Antenna |
 | 10 | WiFi Antenna |

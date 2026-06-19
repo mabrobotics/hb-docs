@@ -193,6 +193,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="Software/Overview.html">Software</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Software/Platform.html">Platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Software/Messages.html">Message types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Software/Networking.html">Networking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Software/Geometry.html">Geometry &amp; Frames</a></li>
@@ -397,15 +398,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">hb-docs</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#building">Building</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-build-environment">Prepare build environment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Building</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation-structure">Documentation structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building">Building</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-build-environment">Prepare build environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-the-docs">Build the docs</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pushing-merging">Pushing &amp; Merging</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pushing-merging">Pushing &amp; Merging</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -418,32 +418,51 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="hb-docs">
 <h1>hb-docs<a class="headerlink" href="#hb-docs" title="Link to this heading">#</a></h1>
-<p>Documentation for honey badger robots</p>
+<p>Documentation for Honey Badger robots.</p>
+<section id="documentation-structure">
+<h2>Documentation structure<a class="headerlink" href="#documentation-structure" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="GettingStarted/GettingStarted.html"><span class="std std-doc">Getting Started</span></a> — robot introduction and key specs</p></li>
+<li><p><a class="reference internal" href="GettingStarted/QuickStart.html"><span class="std std-doc">Quick Start</span></a> — compact first-use roadmap</p></li>
+<li><p><a class="reference internal" href="GettingStarted/FirstStartup.html"><span class="std std-doc">First Startup</span></a> — first startup checklist</p></li>
+<li><p><a class="reference internal" href="GettingStarted/Safety.html"><span class="std std-doc">Safety</span></a> — safety and emergency procedures</p></li>
+<li><p><a class="reference internal" href="GettingStarted/Setup.html"><span class="std std-doc">Setup</span></a> — package contents, network reference, charging</p></li>
+<li><p><a class="reference internal" href="GettingStarted/ControlConsole.html"><span class="std std-doc">Control Console</span></a> — Steam Deck controller and operator console</p></li>
+<li><p><a class="reference internal" href="Physical/Overview.html"><span class="std std-doc">Physical Overview</span></a> — mechanical overview</p></li>
+<li><p><a class="reference internal" href="Physical/Connectors.html"><span class="std std-doc">Connectors</span></a> — connectors, buttons, and port reference</p></li>
+<li><p><a class="reference internal" href="Software/Overview.html"><span class="std std-doc">Software Overview</span></a> — ROS2 architecture and core topics</p></li>
+<li><p><a class="reference internal" href="Software/Platform.html"><span class="std std-doc">Platform</span></a> — onboard LPC/APC platform roles</p></li>
+<li><p><a class="reference internal" href="Software/Messages.html"><span class="std std-doc">Messages</span></a> — custom ROS2 message reference</p></li>
+<li><p><a class="reference internal" href="Software/Networking.html"><span class="std std-doc">Networking</span></a> — Wi-Fi, SSH, and ROS2 network notes</p></li>
+<li><p><a class="reference internal" href="Software/Geometry.html"><span class="std std-doc">Geometry</span></a> — coordinate frames and leg geometry</p></li>
+<li><p><a class="reference internal" href="Payload/Payload.html"><span class="std std-doc">Payload</span></a> — payload mount and spool configuration</p></li>
+</ul>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="building">
-<h1>Building<a class="headerlink" href="#building" title="Link to this heading">#</a></h1>
+<section id="building">
+<h2>Building<a class="headerlink" href="#building" title="Link to this heading">#</a></h2>
 <section id="prepare-build-environment">
-<h2>Prepare build environment<a class="headerlink" href="#prepare-build-environment" title="Link to this heading">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">venv</span>
-<span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="n">venv</span>
-<span class="o">.</span> <span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+<h3>Prepare build environment<a class="headerlink" href="#prepare-build-environment" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3-venv
+python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+.<span class="w"> </span>venv/bin/activate
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 </pre></div>
 </div>
 </section>
-<section id="id1">
-<h2>Building<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">build</span> <span class="o">.</span>
+<section id="build-the-docs">
+<h3>Build the docs<a class="headerlink" href="#build-the-docs" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter-book<span class="w"> </span>build<span class="w"> </span>.
 </pre></div>
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="pushing-merging">
-<h1>Pushing &amp; Merging<a class="headerlink" href="#pushing-merging" title="Link to this heading">#</a></h1>
+<section id="pushing-merging">
+<h2>Pushing &amp; Merging<a class="headerlink" href="#pushing-merging" title="Link to this heading">#</a></h2>
 <p>Before every merge, do a typos check with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typos</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>typos
 </pre></div>
 </div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -492,15 +511,14 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">hb-docs</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#building">Building</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-build-environment">Prepare build environment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Building</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation-structure">Documentation structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building">Building</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-build-environment">Prepare build environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-the-docs">Build the docs</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pushing-merging">Pushing &amp; Merging</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pushing-merging">Pushing &amp; Merging</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>

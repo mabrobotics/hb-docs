@@ -62,7 +62,7 @@
     <link rel="icon" href="../_static/logo32x32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Custom message types" href="Messages.html" />
+    <link rel="next" title="Software Platform" href="Platform.html" />
     <link rel="prev" title="Connectors" href="../Physical/Connectors.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -193,6 +193,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Software</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Platform.html">Platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Messages.html">Message types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Networking.html">Networking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Geometry.html">Geometry &amp; Frames</a></li>
@@ -397,10 +398,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topics-and-messages">Topics and messages</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core-topics">Core topics</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qos-policies">QoS policies</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-message-types">Custom message types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topics-and-messages">Topics and Messages</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topics">Topics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-of-service">Quality of Service</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#messages">Messages</a></li>
 </ul>
 </li>
 </ul>
@@ -418,10 +419,7 @@ document.write(`
 <h1>Software Overview<a class="headerlink" href="#software-overview" title="Link to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Software described below is running on the robots LPC (Locomotion PC) or Control Console (SteamDeck).
-By default, no MAB supplied ROS2 nodes are running on the APC (Application PC - Nvidia Orin).</p>
-<p>While adding to a system, the user is highly encouraged to deploy their applications on APC, as running
-additional demanding processes on LPC can induce jitter to low-level communications and lead to loss of stability.</p>
+<p>For the canonical description of the onboard computers (LPC / APC), their roles and network addresses, see the <a class="reference internal" href="Platform.html"><span class="std std-doc">Platform</span></a> chapter.</p>
 </div>
 <p>The robot uses ROS2 Jazzy (on Ubuntu 24), as its system architecture. There are a few main nodes running on the robot:</p>
 <ul class="simple">
@@ -434,99 +432,122 @@ additional demanding processes on LPC can induce jitter to low-level communicati
 <img alt="ros_overview" class="no-scaled-link" src="../_images/ros_overview.png" />
 </figure>
 <section id="topics-and-messages">
-<h2>Topics and messages<a class="headerlink" href="#topics-and-messages" title="Link to this heading">#</a></h2>
-<p>The Honey Badger stack follows a conventional ROS 2 architecture. Below is a summary of the main topics. For detailed field definitions and usage guidance, see <a class="reference internal" href="Messages.html"><span class="std std-doc">Software/Messages.md</span></a>.</p>
-<section id="core-topics">
-<h3>Core topics<a class="headerlink" href="#core-topics" title="Link to this heading">#</a></h3>
+<h2>Topics and Messages<a class="headerlink" href="#topics-and-messages" title="Link to this heading">#</a></h2>
+<p>Honey badger software stack sticks to a typical ROS2 architecture whenever applicable, certain nodes and topic
+should be self-explanatory for most users who already worked with ROS based robots.</p>
+<section id="topics">
+<h3>Topics<a class="headerlink" href="#topics" title="Link to this heading">#</a></h3>
+<p>Here is list of relevant topics published by robot:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Topic</p></th>
 <th class="head"><p>Message Type</p></th>
 <th class="head"><p>QoS</p></th>
-<th class="head text-right"><p>Rate</p></th>
+<th class="head"><p>Publish Rate</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/bridge_data</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/BridgeData</span></code></p></td>
 <td><p>mabRT</p></td>
-<td class="text-right"><p>500 Hz</p></td>
+<td><p>500 hz</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/bridge_state</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/BridgeState</span></code></p></td>
 <td><p>mabRT</p></td>
-<td class="text-right"><p>500 Hz</p></td>
+<td><p>500 hz</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/bridge_state_10hz</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/BridgeState</span></code></p></td>
 <td><p>Reliable</p></td>
-<td class="text-right"><p>10 Hz</p></td>
+<td><p>10 hz</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/control_command</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/config_update</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">std_msgs/msg/String</span></code></p></td>
 <td><p>Reliable</p></td>
-<td class="text-right"><p>as needed</p></td>
+<td><p>as needed</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/joint_command</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/JointCommand</span></code></p></td>
-<td><p>mabRT</p></td>
-<td class="text-right"><p>500 Hz</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/joint_states</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">sensor_msgs/msg/JointState</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/control_command</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">std_msgs/msg/String</span></code></p></td>
 <td><p>Reliable</p></td>
-<td class="text-right"><p>10 Hz</p></td>
+<td><p>as needed</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/robot_state</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/RobotState</span></code></p></td>
-<td><p>mabRT</p></td>
-<td class="text-right"><p>500 Hz</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/robot_state_10hz</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/RobotState</span></code></p></td>
-<td><p>Reliable</p></td>
-<td class="text-right"><p>10 Hz</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/status</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/hardware_command</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/Status</span></code></p></td>
 <td><p>Reliable</p></td>
-<td class="text-right"><p>as needed</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/velocity_command</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">geometry_msgs/msg/Twist</span></code></p></td>
-<td><p>mabRT</p></td>
-<td class="text-right"><p>as needed</p></td>
+<td><p>as needed</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/heartbeat</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/Status</span></code></p></td>
 <td><p>Reliable</p></td>
-<td class="text-right"><p>1 Hz</p></td>
+<td><p>1 hz</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/joint_command</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/JointCommand</span></code></p></td>
+<td><p>mabRT</p></td>
+<td><p>500hz</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/joint_states</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sensor_msgs/msg/JointState</span></code></p></td>
+<td><p>Reliable</p></td>
+<td><p>10 hz</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/joy</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sensor_msgs/msg/Joy</span></code></p></td>
+<td><p>Reliable</p></td>
+<td><p>as needed</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/robot_description</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">std_msgs/msg/String</span></code></p></td>
+<td><p>Reliable</p></td>
+<td><p>as needed</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/robot_state</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/RobotState</span></code></p></td>
+<td><p>mabRT</p></td>
+<td><p>500hz</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/robot_state_10hz</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/RobotState</span></code></p></td>
+<td><p>Reliable</p></td>
+<td><p>10 hz</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/status</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/Status</span></code></p></td>
+<td><p>Reliable</p></td>
+<td><p>as needed</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/velocity_command</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">geometry_msgs/msg/Twist</span></code></p></td>
+<td><p>mabRT</p></td>
+<td><p>as needed</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/tf</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">tf2_msgs/msg/TFMessage</span></code></p></td>
 <td><p>Reliable</p></td>
-<td class="text-right"><p>10 Hz</p></td>
+<td><p>10 hz</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/tf_static</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">tf2_msgs/msg/TFMessage</span></code></p></td>
 <td><p>Reliable</p></td>
-<td class="text-right"><p>as needed</p></td>
+<td><p>as needed</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
-<section id="qos-policies">
-<h3>QoS policies<a class="headerlink" href="#qos-policies" title="Link to this heading">#</a></h3>
-<p>Two QoS configurations are used:</p>
+<section id="quality-of-service">
+<span id="qos-information"></span><h3>Quality of Service<a class="headerlink" href="#quality-of-service" title="Link to this heading">#</a></h3>
+<p>There are two types of QoS used in the robot:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">mabRT</span></code> — high‑rate, low‑latency streams (depth: 1, best_effort, volatile)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Reliable</span></code> — visualization and infrequent messages (depth: 10, reliable, volatile)</p></li>
+<li><p>mabRT - depth: 1, best_effort, durability: volatile;</p></li>
+<li><p>Reliable - depth: 10, reliable, durability: volatile;</p></li>
 </ul>
 </section>
-<section id="custom-message-types">
-<h3>Custom message types<a class="headerlink" href="#custom-message-types" title="Link to this heading">#</a></h3>
-<p>For details on each custom message, field definitions, and usage examples, refer to <a class="reference internal" href="Messages.html"><span class="std std-doc">Software/Messages.md</span></a>.</p>
+<section id="messages">
+<h3>Messages<a class="headerlink" href="#messages" title="Link to this heading">#</a></h3>
+<p>The robot uses a mix of built-in ROS2 messages and custom types defined in <code class="docutils literal notranslate"><span class="pre">hb50_commons</span></code> package.
+For full, canonical field-level documentation of custom messages, see <a class="reference internal" href="Messages.html"><span class="std std-doc">Messages</span></a>.</p>
 </section>
 </section>
 <div class="toctree-wrapper compound">
@@ -573,11 +594,11 @@ additional demanding processes on LPC can induce jitter to low-level communicati
       </div>
     </a>
     <a class="right-next"
-       href="Messages.html"
+       href="Platform.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Custom message types</p>
+        <p class="prev-next-title">Software Platform</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -597,10 +618,10 @@ additional demanding processes on LPC can induce jitter to low-level communicati
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topics-and-messages">Topics and messages</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core-topics">Core topics</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qos-policies">QoS policies</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-message-types">Custom message types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topics-and-messages">Topics and Messages</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topics">Topics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-of-service">Quality of Service</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#messages">Messages</a></li>
 </ul>
 </li>
 </ul>

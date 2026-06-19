@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Network &#8212; Honey Badger Robot Documentation</title>
+    <title>Software Platform &#8212; Honey Badger Robot Documentation</title>
   
   
   
@@ -58,12 +58,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Software/Networking';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Software/Platform';</script>
     <link rel="icon" href="../_static/logo32x32.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Geometry and Frames" href="Geometry.html" />
-    <link rel="prev" title="Custom message types" href="Messages.html" />
+    <link rel="next" title="Custom message types" href="Messages.html" />
+    <link rel="prev" title="Software Overview" href="Overview.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -193,9 +193,9 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="Overview.html">Software</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="Platform.html">Platform</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Messages.html">Message types</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Networking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Networking.html">Networking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Geometry.html">Geometry &amp; Frames</a></li>
 </ul>
 </details></li>
@@ -274,7 +274,7 @@
       
       
       
-      <li><a href="https://github.com/mabrobotics/hb-docs/issues/new?title=Issue%20on%20page%20%2FSoftware/Networking.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/mabrobotics/hb-docs/issues/new?title=Issue%20on%20page%20%2FSoftware/Platform.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -304,7 +304,7 @@
       
       
       
-      <li><a href="../_sources/Software/Networking.md" target="_blank"
+      <li><a href="../_sources/Software/Platform.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -388,7 +388,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Network</h1>
+    <h1>Software Platform</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -398,11 +398,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ros2-and-ssh">ROS2 and SSH</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh">SSH</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ros2">ROS2</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lpc-locomotion-pc">LPC (Locomotion PC)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apc-application-pc">APC (Application PC)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-roles">Network roles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-this-matters">Why this matters</a></li>
 </ul>
             </nav>
         </div>
@@ -414,68 +413,55 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="network">
-<h1>Network<a class="headerlink" href="#network" title="Link to this heading">#</a></h1>
-<p>Robot is equipped with on-board WiFi router, allowing for easy access, updates and managing multiple
-connected devices.</p>
-<p>By default, the robot is configured with independent WiFi access point. SSID follows a pattern:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="software-platform">
+<h1>Software Platform<a class="headerlink" href="#software-platform" title="Link to this heading">#</a></h1>
+<p>The Honey Badger robot has two onboard computers with separate roles:</p>
 <ul class="simple">
-<li><p><strong>hb50_XXXX</strong> - for 2.4Ghz network,</p></li>
-<li><p><strong>hb50_XXXX_5G</strong> - for 5Ghz network.</p></li>
+<li><p><strong>LPC (Locomotion PC)</strong> — UP Squared Pro 7000</p></li>
+<li><p><strong>APC (Application PC)</strong> — Nvidia Jetson Orin Nano Super</p></li>
 </ul>
-<p>Where XXXX is robot serial code shortened to 4 hex symbols - e.g. “hb50_AFAB” or “hb50_D71C_5G”.
-Default password to the network is: <code class="docutils literal notranslate"><span class="pre">milkaorzechowa</span></code>.</p>
-<p>The router also hosts DNS server, allowing for easy SSH connections.</p>
-<figure class="align-center">
-<img alt="network" class="no-scaled-link" src="../_images/network.png" />
-</figure>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Due to ROS2 constrains, when a node (such as <code class="docutils literal notranslate"><span class="pre">hb_remote</span></code>) is launched <em>before</em> network connection
-is established (IP address resolved), it usually fails to properly discover and detect other ROS2 nodes,
-topics and services.</p>
-<p>Before starting any node that will interoperate with Honey Badger, make sure you are connected to correct
-network.</p>
-</div>
-<section id="ros2-and-ssh">
-<h2>ROS2 and SSH<a class="headerlink" href="#ros2-and-ssh" title="Link to this heading">#</a></h2>
-<p>Both of the robots on-board computers can be connected to via ROS2 or directly with ssh.</p>
-<section id="ssh">
-<h3>SSH<a class="headerlink" href="#ssh" title="Link to this heading">#</a></h3>
-<p>Robots’ DNS server uses 10.11.0.1 as base address (also Router address), and both LPC and APC have static
-IP address:</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Device</p></th>
-<th class="head"><p>Static Address</p></th>
-<th class="head"><p>Hostname</p></th>
-<th class="head"><p>Username</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>LPC</p></td>
-<td><p>10.11.0.10</p></td>
-<td><p>hb50.lan</p></td>
-<td><p>hb</p></td>
-</tr>
-<tr class="row-odd"><td><p>APC (Orin)</p></td>
-<td><p>10.11.0.11</p></td>
-<td><p>hb50-orin.lan</p></td>
-<td><p>hb-orin</p></td>
-</tr>
-<tr class="row-even"><td><p>SteamDeck</p></td>
-<td><p>Dynamic IP</p></td>
-<td><p>deck.lan</p></td>
-<td><p>mab</p></td>
-</tr>
-</tbody>
-</table>
-</div>
+<p>This separation helps keep real-time locomotion control isolated from user applications and high-level compute workloads.</p>
+<section id="lpc-locomotion-pc">
+<h2>LPC (Locomotion PC)<a class="headerlink" href="#lpc-locomotion-pc" title="Link to this heading">#</a></h2>
+<p>The LPC is the primary real-time control computer for the robot. It typically runs:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">hb_bridge</span></code> — low-level interface to the mainboard and actuators</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hb_control</span></code> — locomotion and motion control stack</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">robot_state_publisher</span></code> — ROS 2 transform publisher</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">config_node</span></code> — configuration and parameter server</p></li>
+</ul>
+<p>The LPC is responsible for safe, deterministic robot motion and direct hardware handling.</p>
 </section>
-<section id="ros2">
-<h3>ROS2<a class="headerlink" href="#ros2" title="Link to this heading">#</a></h3>
-<p>By default, robots use ROS_DOMAIN_ID of 69, thus robots topics should be visible shortly after power-up. Ensure your client uses the same <code class="docutils literal notranslate"><span class="pre">ROS_DOMAIN_ID</span></code> when interacting with the robot.</p>
+<section id="apc-application-pc">
+<h2>APC (Application PC)<a class="headerlink" href="#apc-application-pc" title="Link to this heading">#</a></h2>
+<p>The APC is the user-facing application computer. It is intended for:</p>
+<ul class="simple">
+<li><p>perception and mapping</p></li>
+<li><p>autonomous behavior and planning</p></li>
+<li><p>custom user applications</p></li>
+<li><p>data logging and analysis</p></li>
+</ul>
+<p>By default, MAB-supplied ROS 2 nodes are not launched on the APC. This keeps the APC available for additional compute workloads without affecting the locomotion stack.</p>
 </section>
+<section id="network-roles">
+<h2>Network roles<a class="headerlink" href="#network-roles" title="Link to this heading">#</a></h2>
+<p>Both computers are connected to the robot’s internal network:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LPC</span></code> — static IP <code class="docutils literal notranslate"><span class="pre">10.11.0.10</span></code>, hostname <code class="docutils literal notranslate"><span class="pre">hb50.lan</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">APC</span></code> — static IP <code class="docutils literal notranslate"><span class="pre">10.11.0.11</span></code>, hostname <code class="docutils literal notranslate"><span class="pre">hb50-orin.lan</span></code></p></li>
+</ul>
+<p>The robot also provides a Wi-Fi access point for external controllers, such as the Steam Deck.</p>
+</section>
+<section id="why-this-matters">
+<h2>Why this matters<a class="headerlink" href="#why-this-matters" title="Link to this heading">#</a></h2>
+<p>Separating the locomotion computer from the application computer delivers several benefits:</p>
+<ul class="simple">
+<li><p>improved stability for low-level control</p></li>
+<li><p>reduced jitter when running compute-intensive user code</p></li>
+<li><p>clearer operational boundaries for users and developers</p></li>
+<li><p>easier troubleshooting and system monitoring</p></li>
+</ul>
+<p>For network and connectivity details, see <a class="reference internal" href="Networking.html"><span class="std std-doc">Networking</span></a>.</p>
 </section>
 </section>
 
@@ -510,20 +496,20 @@ IP address:</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Messages.html"
+       href="Overview.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Custom message types</p>
+        <p class="prev-next-title">Software Overview</p>
       </div>
     </a>
     <a class="right-next"
-       href="Geometry.html"
+       href="Messages.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Geometry and Frames</p>
+        <p class="prev-next-title">Custom message types</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -543,11 +529,10 @@ IP address:</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ros2-and-ssh">ROS2 and SSH</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh">SSH</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ros2">ROS2</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lpc-locomotion-pc">LPC (Locomotion PC)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apc-application-pc">APC (Application PC)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-roles">Network roles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-this-matters">Why this matters</a></li>
 </ul>
   </nav></div>
 

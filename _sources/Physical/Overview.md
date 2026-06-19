@@ -1,6 +1,7 @@
 # Mechanical
 
 ## General dimensions
+
 ```{figure} ./img/robot_dimensions.png
 :alt: hb50_dimensions
 :class: bg-primary mb-1
@@ -25,4 +26,3 @@
 | 1 | Front | 180° (90°+90°) |
 | 1 | Back | 270° (90°+180°) |
 | 2 | Front/Back | 140° (90°+50°) |
-

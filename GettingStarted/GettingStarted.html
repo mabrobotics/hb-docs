@@ -193,6 +193,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Software/Overview.html">Software</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Software/Platform.html">Platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Software/Messages.html">Message types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Software/Networking.html">Networking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Software/Geometry.html">Geometry &amp; Frames</a></li>
@@ -429,9 +430,12 @@ document.write(`
 The robot can operate in several modes, including idle, standing, walking, teleoperation, and safety/recovery mode. Depending on the installed software and hardware configuration, the robot may support mapping, localization, or autonomous operation.</p>
 <p>The main components of the robot are:</p>
 <ul class="simple">
-<li><p>quadruped mechanical body,</p></li>
+<li><p>quadruped mechanical body,</p>
+<ul>
 <li><p>four articulated legs with electric actuators,</p></li>
-<li><p>onboard computers,</p></li>
+<li><p>two onboard computers (LPC and APC) — see <a class="reference internal" href="../Software/Platform.html"><span class="std std-doc">Platform</span></a> for roles and network addresses,</p></li>
+</ul>
+</li>
 <li><p>battery system,</p></li>
 <li><p>sensors,</p></li>
 <li><p>communication interfaces,</p></li>
@@ -574,11 +578,11 @@ The robot can operate in several modes, including idle, standing, walking, teleo
 <h2>How to use this manual<a class="headerlink" href="#how-to-use-this-manual" title="Link to this heading">#</a></h2>
 <p>This page introduces the robot and its key specifications. For actual startup, safety, and operation instructions, use the dedicated sections below.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">GettingStarted/Safety.md</span></code> — full safety guidance and emergency procedures.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">GettingStarted/QuickStart.md</span></code> — compact first-use roadmap.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">GettingStarted/FirstStartup.md</span></code> — step-by-step first startup checklist.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">GettingStarted/ControlConsole.md</span></code> — Steam Deck control and interface details.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">GettingStarted/Setup.md</span></code> — package contents, connection reference, and charging.</p></li>
+<li><p><a class="reference internal" href="Safety.html"><span class="std std-doc">Safety</span></a> — full safety guidance and emergency procedures.</p></li>
+<li><p><a class="reference internal" href="QuickStart.html"><span class="std std-doc">QuickStart</span></a> — compact first-use roadmap.</p></li>
+<li><p><a class="reference internal" href="FirstStartup.html"><span class="std std-doc">FirstStartup</span></a> — step-by-step first startup checklist.</p></li>
+<li><p><a class="reference internal" href="ControlConsole.html"><span class="std std-doc">ControlConsole</span></a> — Steam Deck control and interface details.</p></li>
+<li><p><a class="reference internal" href="Setup.html"><span class="std std-doc">Setup</span></a> — package contents, connection reference, and charging.</p></li>
 </ul>
 </section>
 <div class="toctree-wrapper compound">

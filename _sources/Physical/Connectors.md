@@ -62,21 +62,22 @@ When the power button LED blinks in a red-blue (police) pattern, the robot inter
 firmware update mode. This state is intended for service or firmware update procedures and should not be
 active during normal operation.
 
-## Connectors 
+## Connectors
 
 The robot includes several connectors, a power button, and status LEDs. Their location may vary depending
 on the hardware version.
 
 To plug the cable to the connector:
+
 - match connector and cable orientation by aligning red markers,
 - push the cable into the connector, until audible and/or haptic click.
 
 To unplug the connector:
+
 - firmly grab cable connectors body,
 - slightly pull the connector housing, internal sliding mechanism will be actuated (refer to schematic),
 - pull the cable from the socket - it should come out without significant force requirement.
 - for battery connector, always plug battery connector plug immediately after disconnecting from the robot.
-
 
 ```{figure} ./img/interface.svg
 :name: robot-connectors
@@ -99,15 +100,19 @@ To unplug the connector:
 | 9 | WiFi Antenna |
 | 10 | WiFi Antenna |
 
+For the canonical description of the onboard computers (LPC / APC), their roles and network addresses, see [Platform](../Software/Platform.md).
+
 ### Environmental safety
 
 While all robots connectors were selected and rated for outdoor use, they must remain plugged at all times during operation.
+
 ```{warning}
 The ports without plugged connector (or matching plug) are not suitable for use near water, dust, dirt or in 
 high humidity scenarios!
 ```
 
 There are 3 types of plugs for the robot:
+
 - 2x plastic USB port cap,
 - 2x 12mm plug (LAN, WAN/LAN),
 - 3x 10mm plug (AUX1, AUX2, Charger) 
@@ -121,7 +126,7 @@ There are 3 types of plugs for the robot:
 
 ### AUX1
 
-AUX1 connector hosts payload power connector and dedicated FDCAN lines. 
+AUX1 connector hosts payload power connector and dedicated FDCAN lines.
 
 ```{figure} ./img/connector_5pin.png
 :alt: connector_5pin
@@ -140,8 +145,7 @@ Pinout is as follows:
 | 4 | FDCAN - CAN L |
 | 5 | FDCAN - CAN H |
 
-
-### AUX2 
+### AUX2
 
 AUX2 connectors hosts isolated 5V supply, and Emergency Stop inputs.
 
@@ -153,6 +157,7 @@ AUX2 connectors hosts isolated 5V supply, and Emergency Stop inputs.
 ```
 
 Pinout is as follows:
+
 | Pin no. | Function |
 | ------------- | -------------- |
 | 1 | Not Connected |
@@ -178,6 +183,7 @@ The LAN connector (located on the left side of the {ref}` rear panel <robot-conn
 ```
 
 Pinout is as follows:
+
 | Pin no. | Color |
 | ------------- | -------------- |
 | 1 | white-orange |
@@ -195,7 +201,7 @@ The socket pinout corresponds to the RJ45 T568B wiring standard.
 
 ### WAN/LAN
 
-The WAN/LAN connector (located on the right side of the {ref}` rear panel <robot-connectors>`) provides standard wired Ethernet connectivity.
+The WAN/LAN connector (located on the right side of the {ref}`rear panel <robot-connectors>`) provides standard wired Ethernet connectivity.
 
 ```{figure} ./img/connector_8pin.png
 :alt: connector_8pin
@@ -205,6 +211,7 @@ The WAN/LAN connector (located on the right side of the {ref}` rear panel <robot
 ```
 
 Pinout is as follows:
+
 | Pin no. | Color |
 | ------------- | -------------- |
 | 1 | white-orange |
@@ -221,6 +228,7 @@ The socket pinout corresponds to the RJ45 T568B wiring standard.
 ```
 
 #### E-stop
+
 If E-stop button is used, it should be normally-closed, pressing the button should disconnect the circuit.
 
 There are two input pins connected to the robots E-stop mechanism. These pins should be shorted 

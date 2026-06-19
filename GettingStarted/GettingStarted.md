@@ -21,8 +21,8 @@ The robot can operate in several modes, including idle, standing, walking, teleo
 The main components of the robot are:
 
 - quadruped mechanical body,
-- four articulated legs with electric actuators,
-- onboard computers,
+	- four articulated legs with electric actuators,
+	- two onboard computers (LPC and APC) — see [Platform](../Software/Platform.md) for roles and network addresses,
 - battery system,
 - sensors,
 - communication interfaces,
@@ -60,18 +60,16 @@ The main components of the robot are:
 | Slopes | +-30 | ° |
 | **Connectivity**|
 | WiFi 5 AP 802.11 | up to 867Mbps
-| Ethernet | 1x LAN, 1x WAN/LAN, up to 1Gbps each | 
+| Ethernet | 1x LAN, 1x WAN/LAN, up to 1Gbps each |
 
 \*Operating time in nominal conditions - no payload, constant walking (`Walk` gait), with average speed of 0.5m/s, on mostly flat, dry concrete surface.
-
 
 ## How to use this manual
 
 This page introduces the robot and its key specifications. For actual startup, safety, and operation instructions, use the dedicated sections below.
 
-- `GettingStarted/Safety.md` — full safety guidance and emergency procedures.
-- `GettingStarted/QuickStart.md` — compact first-use roadmap.
-- `GettingStarted/FirstStartup.md` — step-by-step first startup checklist.
-- `GettingStarted/ControlConsole.md` — Steam Deck control and interface details.
-- `GettingStarted/Setup.md` — package contents, connection reference, and charging.
-
+- [Safety](Safety.md) — full safety guidance and emergency procedures.
+- [QuickStart](QuickStart.md) — compact first-use roadmap.
+- [FirstStartup](FirstStartup.md) — step-by-step first startup checklist.
+- [ControlConsole](ControlConsole.md) — Steam Deck control and interface details.
+- [Setup](Setup.md) — package contents, connection reference, and charging.

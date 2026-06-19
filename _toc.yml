@@ -10,10 +10,10 @@ chapters:
     sections:
       - file: GettingStarted/QuickStart.md
         title: Quick Start
-      - file: GettingStarted/FirstStartup.md
-        title: First Startup
       - file: GettingStarted/Safety.md
         title: Safety
+      - file: GettingStarted/FirstStartup.md
+        title: First Startup
       - file: GettingStarted/Setup.md
         title: Setup & Charging
       - file: GettingStarted/ControlConsole.md

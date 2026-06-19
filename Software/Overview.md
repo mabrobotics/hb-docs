@@ -6,9 +6,9 @@ For the canonical description of the onboard computers (LPC / APC), their roles 
 
 The robot uses ROS 2 Jazzy (on Ubuntu 24.04 LTS), as its system architecture. There are a few main nodes running on the robot:
 
-- **hb_bridge** - node responsible for low-level hardware handling,
-- **hb_control** - motion and locomotion control
-- robot_state_publisher - handles TF messages,
+- **bridge_node** - node responsible for low-level hardware handling,
+- **control_node** - motion and locomotion control
+- state_publisher_node - handles TF messages,
 - config_node - global parameter server.
 
 ```{figure} ./img/ros_overview.png
@@ -16,6 +16,10 @@ The robot uses ROS 2 Jazzy (on Ubuntu 24.04 LTS), as its system architecture. Th
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
+```
+
+```{note}
+All of the ROS2 components (nodes, topics, services etc.) are using namespaces which should be equal to the robot name. For example the robot Honey Badger in default configuration will have a namespace: `hb50`. Namespace will appear as a prefix to all names of the rOS2 components.
 ```
 
 ## Topics and Messages
@@ -28,7 +32,7 @@ should be self-explanatory for most users who already worked with ROS based robo
 Here is list of relevant topics published by robot:
 
 | Topic | Message Type | QoS | Publish Rate |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `/hb50/bridge_data` | `hb50_commons/msg/BridgeData` | mabRT | 500 hz |
 | `/hb50/bridge_state` | `hb50_commons/msg/BridgeState` | mabRT | 500 hz |
 | `/hb50/bridge_state_10hz` | `hb50_commons/msg/BridgeState` | Reliable | 10 hz |

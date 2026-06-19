@@ -24,7 +24,7 @@ port on the device and Ethernet-to-USB dongle (not included). This setup can be 
 
 ## User Interface
 
-On the Desktop, there is "Honey Badger" application icon, that will start up `hb_remote` dedicated application
+On the Desktop, there is "Honey Badger" application icon, that will start up `remote_node` dedicated application
 for controlling Honey Badger robots. The application allows for quick diagnostic overview and running typical
 tasks related to robot operation.
 
@@ -37,7 +37,7 @@ tasks related to robot operation.
 
 ## Controls Layout
 
-Alongside `hb_remote` there is also another node `hb_teleop`, which captures joystick button inputs and converts them to robot commands. Below is a list of supported commands and actions:
+Alongside `remote_node` there is also another node `teleop_node`, which captures joystick button inputs and converts them to robot commands. Below is a list of supported commands and actions:
 
 ```{figure} ./img/deck_controls.png
 :alt: deck_controls

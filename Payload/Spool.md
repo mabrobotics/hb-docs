@@ -21,7 +21,7 @@ Spool control has a separate interface built in remote controller. It allows ope
 ```
 
 | Number | Name |Function |
-|---|---|---|
+| --- | --- | --- |
 | 1 | `SPOOL MENU` | Opens menu containing whole functionality of spool. |
 | 2 | `ENABLE SPOOL` | Enables spool motors. |
 | 3 | `DISABLE SPOOL` | Disables spool motors. |
@@ -64,7 +64,7 @@ Automatic mode is used for synchronous work with Honey Badger robot. In this mod
 Spool node `hb50_spool` uses:
 
 | Topic | Message Type | QoS | Publish Rate |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `/hb50/payload/spool_unroll_speed` | `std_msgs/msg/Float32` | Reliable | 10 hz |
 | `/hb50/payload/spool_unroll_length` | `std_msgs/msg/Float32` | Reliable | 10 hz |
 | `/hb50/robot_state_10hz` | `hb50_commons/msg/RobotState` | mabRT | 10 hz |
@@ -78,13 +78,13 @@ For precise definition of QoS check: {ref}`qos-information`.
 Spool uses only one service that is prepared for enabling different features.
 
 | Service | Interface Type | QoS |
-|---|---|---|
+| --- | --- | --- |
 | `/hb50/payload/spool_control` | `hb50_commons::srv::EnableFeature` | Reliable |
 
 Interface type defined as `hb50_commons::srv::EnableFeature` has following parameters:
 
 | Type | Name of parameter | Function |
-|---|---|---|
+| --- | --- | --- |
 | `string` | `feature` | Describes function that should be applied. |
 | `bool` | `state` | Represents logic value of 0 or 1 that stands for disabling or enabling feature. |
 | `bool` | `success` | Informs about result of applied service. |
@@ -92,6 +92,6 @@ Interface type defined as `hb50_commons::srv::EnableFeature` has following param
 Operator has two features that he can apply in case of calibration or safety assurance. Argument is passed as a `string` and can be the following:
 
 | `feature` name | Function |
-|---|---|
+| --- | --- |
 | `zero_length` | Sets current position of unwinded optical fiber as a 0 point. |
 | `enable_motors` | If `1` passed enables motors and allows them to be ready to work, if `0` passed disables motors. |

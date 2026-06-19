@@ -21,7 +21,7 @@ The router also hosts DNS server, allowing for easy SSH connections.
 ```
 
 ```{note}
-Due to ROS2 constrains, when a node (such as `hb_remote`) is launched *before* network connection
+Due to ROS2 constrains, when a node (such as `remote_node`) is launched *before* network connection
 is established (IP address resolved), it usually fails to properly discover and detect other ROS2 nodes,
 topics and services.
 
@@ -39,7 +39,7 @@ Robots' DNS server uses 10.11.0.1 as base address (also Router address), and bot
 IP address:
 
 | Device | Static Address | Hostname | Username |
-| --- | --- | --- | ---|
+| --- | --- | --- | --- |
 | LPC | 10.11.0.10 | hb50.lan | hb |
 | APC (Orin) | 10.11.0.11 | hb50-orin.lan | hb-orin |
 | SteamDeck | Dynamic IP | deck.lan | mab |

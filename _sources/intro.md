@@ -23,7 +23,7 @@ referrerpolicy="strict-origin-when-cross-origin">
 | ------------------- | ----------------------- | --- |
 | Robot model         | Honey Badger 5.0 [hb50] |
 | Length (with legs)  | 725 | mm |
-| Length (stowed)     | xxx | mm |
+| Length (stowed)     | 520 | mm |
 | Width               | 320 | mm |
 | Height (sitting)    | 145 | mm |
 | Height (standing)   | 400 | mm |

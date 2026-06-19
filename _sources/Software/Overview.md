@@ -4,7 +4,7 @@
 For the canonical description of the onboard computers (LPC / APC), their roles and network addresses, see the [Platform](Platform.md) chapter.
 ```
 
-The robot uses ROS2 Jazzy (on Ubuntu 24), as its system architecture. There are a few main nodes running on the robot:
+The robot uses ROS 2 Jazzy (on Ubuntu 24.04 LTS), as its system architecture. There are a few main nodes running on the robot:
 
 - **hb_bridge** - node responsible for low-level hardware handling,
 - **hb_control** - motion and locomotion control

@@ -175,17 +175,17 @@ The standard ROS geometry message `/hb50/velocity_command` (`geometry_msgs/msg/T
 
 ### Linear velocity
 
-- `x` — forward velocity (m/s, normalized to `[-1, 1]`)
-- `y` — lateral velocity (m/s, normalized to `[-1, 1]`)
-- `z` — reference walking height (m, normalized to `1`)
+- `x` — forward velocity (normalized to `[-1, 1]`)
+- `y` — lateral velocity (normalized to `[-1, 1]`)
+- `z` — reference walking height (normalized to `1`)
 
 ### Angular velocity
 
-- `x` — roll command (rad/s, normalized to `[-1, 1]`)
-- `y` — pitch command (rad/s, normalized to `[-1, 1]`)
-- `z` — yaw rate (rad/s, normalized to `[-1, 1]`)
+- `x` — roll command (normalized to `[-1, 1]`)
+- `y` — pitch command (normalized to `[-1, 1]`)
+- `z` — yaw rate (normalized to `[-1, 1]`)
 
-**Normalization:** All normalized commands are scaled by configuration parameters (`cmd_vel_lin`, `cmd_vel_ang`) to produce physical values.
+**Normalization:** All normalized commands are scaled by configuration parameters (`cmd_vel_lin`, `cmd_vel_ang`) to produce physical values in SI units (m/s, rad/s).
 
 ---
 

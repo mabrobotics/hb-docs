@@ -5,7 +5,6 @@ Documentation for Honey Badger robots.
 ## Documentation structure
 
 - [Getting Started](GettingStarted/GettingStarted.md) — robot introduction and key specs
-- [Quick Start](GettingStarted/QuickStart.md) — compact first-use roadmap
 - [First Startup](GettingStarted/FirstStartup.md) — first startup checklist
 - [Safety](GettingStarted/Safety.md) — safety and emergency procedures
 - [Setup](GettingStarted/Setup.md) — package contents, network reference, charging

@@ -1,16 +1,16 @@
 # Spool
 
-Honey Badger robot can be equipped with spool with optical fiber  that allows the operator for wired connection with the robot. This solution is mostly used in long-range environments where wireless connection would be impossible due to disturbances or lack of WiFi range.
+The Honey Badger robot can be equipped with an optical-fiber spool that allows the operator to establish a wired connection to the robot. This solution is useful in long-range environments where wireless communication is impossible due to interference or limited Wi-Fi range.
 
 ## Spool mount
 
 ## Setup
 
-Communication with spool driver is established based on ROS2 node - `hb50_spool`. Powering up the platform initializes the spool driver, which in turn automatically starts the node.
+Communication with the spool driver is established through the ROS 2 `spool_node`. Powering up the platform initializes the spool driver, which in turn automatically starts the node.
 
 ## Spool remote controller interface
 
-Spool control has a separate interface built in remote controller. It allows operator for safe spool handling. To begin with operator should press `SPOOL MENU` (numbered one) button to open spool control view.
+Spool control has a separate interface built into the remote controller. It allows the operator to handle the spool safely. To begin, the operator should press the `SPOOL MENU` button (number 1) to open the spool control view.
 
 ```{figure} ./img/remote_spool.svg
 :name: remote-spool
@@ -25,7 +25,8 @@ Spool control has a separate interface built in remote controller. It allows ope
 | 1 | `SPOOL MENU` | Opens menu containing whole functionality of spool. |
 | 2 | `ENABLE SPOOL` | Enables spool motors. |
 | 3 | `DISABLE SPOOL` | Disables spool motors. |
-| 4 | `ZERO SPOOL` | Sets current position of unwinded optical fiber as a 0 point. |
+| 4 | `ZERO SPOOL` | Sets the current position of unwound optical fiber as the zero point. |
+
 Manual control:
 | 5 | `Operating Mode Switch` | Enables/Disables manual mode. |
 | 6 | `-/+ Direction Control` | `-` stands for winding spool and `+` for unwinding. |
@@ -37,9 +38,9 @@ The spool platform can operate in two separate modes: manual and automatic.
 
 #### Manual mode
 
-Manual mode allows operator for direct control of winding or unwinding optical fiber form spool using terminal or remote controller by passing specified linear velocities expressed in [m/s].
+Manual mode allows the operator to directly control winding or unwinding optical fiber from the spool using the terminal or remote controller by sending specified linear velocities in [m/s].
 
-For enabling manual mode with remote controller user should unlock safety switch ({ref}`button number 5 <remote-spool>`).
+To enable manual mode with the remote controller, the user should unlock the safety switch ({ref}`button number 5 <remote-spool>`).
 
 By default, the system is operated using the remote controller. However, if the operator prefers manual mode via the terminal, they should publish a safe velocity to the `/hb50/payload/spool_unroll_speed` topic.
 
@@ -49,15 +50,15 @@ Example of use:
 ros2 topic pub /hb50/payload/spool_unroll_speed std_msgs/msg/Float32 "{data: 0.1}"
 ```
 
-Above command will result in unwinding spool with linear velocity of 0.1 [m/s].
+The command unwinds the spool at a linear velocity of 0.1 m/s.
 
 ```{warning}
-Passing negative value of `float` will result in winding the optical fiber. Every time ensure that there is a safe margin of optical fiber that can be winded.
+Passing a negative float value will wind the optical fiber. Always ensure there is a safe margin of optical fiber available for winding.
 ```
 
 #### Automatic mode
 
-Automatic mode is used for synchronous work with Honey Badger robot. In this mode spool platform takes on velocities values from `hb50_commons/msg/RobotState` topic where is published real linear velocity of Honey Badger robot.
+Automatic mode is used for synchronous operation with the Honey Badger robot. In this mode, the spool platform receives velocity values from the `hb50_commons/msg/RobotState` topic, which publishes the robot's actual linear velocity.
 
 ### Spool topics
 
@@ -81,7 +82,7 @@ Spool uses only one service that is prepared for enabling different features.
 | --- | --- | --- |
 | `/hb50/payload/spool_control` | `hb50_commons::srv::EnableFeature` | Reliable |
 
-Interface type defined as `hb50_commons::srv::EnableFeature` has following parameters:
+The interface type defined as `hb50_commons::srv::EnableFeature` has the following parameters:
 
 | Type | Name of parameter | Function |
 | --- | --- | --- |
@@ -89,9 +90,9 @@ Interface type defined as `hb50_commons::srv::EnableFeature` has following param
 | `bool` | `state` | Represents logic value of 0 or 1 that stands for disabling or enabling feature. |
 | `bool` | `success` | Informs about result of applied service. |
 
-Operator has two features that he can apply in case of calibration or safety assurance. Argument is passed as a `string` and can be the following:
+The operator has two feature names available for calibration or safety control. The argument is passed as a `string` and can be one of the following:
 
 | `feature` name | Function |
 | --- | --- |
-| `zero_length` | Sets current position of unwinded optical fiber as a 0 point. |
-| `enable_motors` | If `1` passed enables motors and allows them to be ready to work, if `0` passed disables motors. |
+| `zero_length` | Sets the current position of unwound optical fiber as the zero point. |
+| `enable_motors` | If `1` is passed, enables motors and allows them to be ready to work; if `0` is passed, disables motors. |

@@ -1,6 +1,6 @@
-# SteamDeck Controller
+# Steam Deck Controller
 
-Remote control of HB robots is best done using MAB supplied SteamDeck controller with custom software and drivers. The controller allows easy to easily startup, change gaits and control the robot, using `hb50_remote` application.
+Remote control of HB robots is best done using the MAB-supplied Steam Deck controller with custom software and drivers. The controller makes it easy to start up, change gaits, and control the robot using the `HB50 Remote` application.
 
 ## Network Setup
 
@@ -19,14 +19,11 @@ You can use Wi-Fi to connect to other networks (for example internet access). We
 
 ### Wired connection
 
-Connecting SteamDeck to the robot is also possible via wired connection. This can be done through USB-C
-port on the device and Ethernet-to-USB dongle (not included). This setup can be further extended to allow for communication over any medium, supporting IP traffic such as: optical fibre, long range radios etc.
+Connecting the Steam Deck to the robot is also possible via wired connection. This can be done through the device USB-C port and an Ethernet-to-USB dongle (not included). This setup can be extended to support IP traffic over other media such as optical fiber or long-range radios.
 
 ## User Interface
 
-On the Desktop, there is "Honey Badger" application icon, that will start up `remote_node` dedicated application
-for controlling Honey Badger robots. The application allows for quick diagnostic overview and running typical
-tasks related to robot operation.
+On the desktop, there is a "Honey Badger" application icon that starts the `remote_node` application for controlling Honey Badger robots. The application provides a quick diagnostic overview and enables typical robot operation tasks.
 
 ```{figure} ./img/deck_remote.png
 :alt: deck_remote

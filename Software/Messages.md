@@ -57,7 +57,7 @@ Contains power subsystem state, temperatures and hardware status. A low-frequenc
 | `status[]` | `string[]` | Hardware status strings (warnings, errors) |
 | `up_time` | `int32` | System uptime (s) |
 
-[//]: # (TODO: Check and descriple placements of the temperature sensors)
+[//]: # (TODO: Check and describe placements of the temperature sensors)
 ---
 
 ## JointCommand — actuator control commands
@@ -141,7 +141,7 @@ Describes the estimated state of a single leg, including foot contact and forces
 ## Status — event and status messages
 
 **Message type:** `hb50_commons/msg/Status`
-**Producers:** All nodes (by heartbeat subnode), `bridge_node` (hardware events), `control_node` (control events)
+**Producers:** All nodes (by heartbeat sub-node), `bridge_node` (hardware events), `control_node` (control events)
 **Rate:** 1 Hz (heartbeat), as needed (events)
 **QoS:** Reliable
 **Use case:** Monitoring, logging, alarm handling

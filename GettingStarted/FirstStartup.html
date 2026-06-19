@@ -399,7 +399,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-checklist-read-before-starting">Quick checklist (read before starting)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-on-approx-90-s">1 — Power on (approx. 90 s)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-on-approximately-90-seconds">1 — Power on (approximately 90 seconds)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-control-console-and-network">2 — Connect control console and network</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-system-status-basic-checks">3 — Verify system status (basic checks)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#energize-actuators-enable">4 — Energize actuators (enable)</a></li>
@@ -421,7 +421,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="first-startup-instructions">
 <h1>First startup instructions<a class="headerlink" href="#first-startup-instructions" title="Link to this heading">#</a></h1>
-<p>This page gives a minimal, safe quick-start to get a new Honey Badger 5.0 powered on, connected, and standing.</p>
+<p>This page provides a concise, safe checklist to power on, connect, and stand a new Honey Badger 5.0.</p>
 <blockquote>
 <div><p>Target audience: operators who need a short, reliable checklist to bring the robot to an operational standing state.</p>
 </div></blockquote>
@@ -430,17 +430,16 @@ document.write(`
 <ul class="simple">
 <li><p>Read the Safety section in the main manual.</p></li>
 <li><p>Place robot on flat, stable ground with at least 1 m clearance around legs.</p></li>
-<li><p>Ensure emergency stop (E-stop) is released and accessible.</p></li>
 <li><p>Use two people to lift or position the robot if needed.</p></li>
 <li><p>Have the control console (Steam Deck) or laptop ready.</p></li>
 </ul>
 </section>
-<section id="power-on-approx-90-s">
-<h2>1 — Power on (approx. 90 s)<a class="headerlink" href="#power-on-approx-90-s" title="Link to this heading">#</a></h2>
+<section id="power-on-approximately-90-seconds">
+<h2>1 — Power on (approximately 90 seconds)<a class="headerlink" href="#power-on-approximately-90-seconds" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Place the robot on level ground and make sure nothing blocks leg motion.</p></li>
-<li><p>Press and hold the robot power button for 2 seconds.</p></li>
-<li><p>Wait for the power-up sequence to complete (~90 s). Watch status LEDs.</p></li>
+<li><p>Press and hold the robot power button for 2 seconds, or until LEDs start blinking purple.</p></li>
+<li><p>Wait for the power-up sequence to complete (approximately 90 seconds). Watch status LEDs.</p></li>
 </ol>
 </section>
 <section id="connect-control-console-and-network">
@@ -464,7 +463,7 @@ document.write(`
 <ol class="arabic simple">
 <li><p>Ensure area is clear and everyone stands back.</p></li>
 <li><p>From the control console select the <code class="docutils literal notranslate"><span class="pre">ENERGIZE</span></code> (enable) command.</p></li>
-<li><p>If a hardware E-stop is present and active, reset it only when safe.</p></li>
+<li><p>If a hardware <code class="docutils literal notranslate"><span class="pre">E-stop</span></code> is present and active, reset it only when it is safe to do so.</p></li>
 </ol>
 <p>For full safety guidance, see <a class="reference internal" href="Safety.html"><span class="std std-doc">Safety</span></a>.</p>
 </section>
@@ -473,14 +472,14 @@ document.write(`
 <ol class="arabic simple">
 <li><p>With actuators energized, use the <code class="docutils literal notranslate"><span class="pre">STAND</span> <span class="pre">UP</span></code> command in the GUI.</p></li>
 <li><p>Wait until the robot reaches a stable standing posture.</p></li>
-<li><p>Switch to <code class="docutils literal notranslate"><span class="pre">Stand</span></code> or <code class="docutils literal notranslate"><span class="pre">Active</span> <span class="pre">Balance</span></code> mode as required by your workflow.</p></li>
+<li><p>Switch to <code class="docutils literal notranslate"><span class="pre">STAND</span></code> or a walking mode as required by your workflow.</p></li>
 <li><p>If the robot does not stand or joints twitch, immediately command <code class="docutils literal notranslate"><span class="pre">IDLE</span></code> and disable actuators.</p></li>
 </ol>
 </section>
 <section id="basic-drive-test-low-risk">
 <h2>6 — Basic drive test (low risk)<a class="headerlink" href="#basic-drive-test-low-risk" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Select a slow gait (e.g., <code class="docutils literal notranslate"><span class="pre">Stable</span> <span class="pre">Walk</span></code>) and command a small forward step.</p></li>
+<li><p>Select a slow gait (e.g., <code class="docutils literal notranslate"><span class="pre">STABLE</span> <span class="pre">WALK</span></code>) and command a small forward step.</p></li>
 <li><p>Observe leg motion and listen for abnormal noises.</p></li>
 <li><p>If behavior is abnormal: immediately stop, select <code class="docutils literal notranslate"><span class="pre">IDLE</span></code>, and disable actuators.</p></li>
 </ul>
@@ -490,16 +489,16 @@ document.write(`
 <ol class="arabic simple">
 <li><p>Stop all motion and select <code class="docutils literal notranslate"><span class="pre">IDLE</span></code> in the GUI.</p></li>
 <li><p>Wait until the robot is stable and logs show no active motion.</p></li>
-<li><p>Press and hold the power button for 2 seconds to power off.</p></li>
+<li><p>Press and hold the power button for 2 seconds to power off, or use the <code class="docutils literal notranslate"><span class="pre">POWER</span> <span class="pre">COMMANDS</span></code> menu and select <code class="docutils literal notranslate"><span class="pre">SHUTDOWN</span></code>.</p></li>
 </ol>
 </section>
 <section id="troubleshooting-quick">
 <h2>Troubleshooting (quick)<a class="headerlink" href="#troubleshooting-quick" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>No Wi‑Fi: check that AP SSID is broadcasting; try Ethernet if available.</p></li>
+<li><p>No Wi‑Fi: check that AP SSID is broadcasting.</p></li>
 <li><p>Control console says disconnected: reboot the console app and re-check Wi‑Fi.</p></li>
-<li><p>Robot fails to energize: check E‑stop, battery voltage, and error logs in the console.</p></li>
-<li><p>Overheating or warning LEDs: disable actuators and inspect hardware.</p></li>
+<li><p>Robot fails to energize: check battery voltage and error logs in the console.</p></li>
+<li><p>Overheating: disable actuators and inspect hardware.</p></li>
 </ul>
 </section>
 <section id="next-steps-links">
@@ -577,7 +576,7 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-checklist-read-before-starting">Quick checklist (read before starting)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-on-approx-90-s">1 — Power on (approx. 90 s)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-on-approximately-90-seconds">1 — Power on (approximately 90 seconds)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-control-console-and-network">2 — Connect control console and network</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-system-status-basic-checks">3 — Verify system status (basic checks)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#energize-actuators-enable">4 — Energize actuators (enable)</a></li>

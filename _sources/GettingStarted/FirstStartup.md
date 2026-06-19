@@ -1,6 +1,6 @@
 # First startup instructions
 
-This page gives a minimal, safe quick-start to get a new Honey Badger 5.0 powered on, connected, and standing.
+This page provides a concise, safe checklist to power on, connect, and stand a new Honey Badger 5.0.
 
 > Target audience: operators who need a short, reliable checklist to bring the robot to an operational standing state.
 
@@ -8,15 +8,14 @@ This page gives a minimal, safe quick-start to get a new Honey Badger 5.0 powere
 
 - Read the Safety section in the main manual.
 - Place robot on flat, stable ground with at least 1 m clearance around legs.
-- Ensure emergency stop (E-stop) is released and accessible.
 - Use two people to lift or position the robot if needed.
 - Have the control console (Steam Deck) or laptop ready.
 
-## 1 — Power on (approx. 90 s)
+## 1 — Power on (approximately 90 seconds)
 
 1. Place the robot on level ground and make sure nothing blocks leg motion.
-2. Press and hold the robot power button for 2 seconds.
-3. Wait for the power-up sequence to complete (~90 s). Watch status LEDs.
+2. Press and hold the robot power button for 2 seconds, or until LEDs start blinking purple.
+3. Wait for the power-up sequence to complete (approximately 90 seconds). Watch status LEDs.
 
 ## 2 — Connect control console and network
 
@@ -34,7 +33,7 @@ This page gives a minimal, safe quick-start to get a new Honey Badger 5.0 powere
 
 1. Ensure area is clear and everyone stands back.
 2. From the control console select the `ENERGIZE` (enable) command.
-3. If a hardware E-stop is present and active, reset it only when safe.
+3. If a hardware `E-stop` is present and active, reset it only when it is safe to do so.
 
 For full safety guidance, see [Safety](Safety.md).
 
@@ -42,12 +41,12 @@ For full safety guidance, see [Safety](Safety.md).
 
 1. With actuators energized, use the `STAND UP` command in the GUI.
 2. Wait until the robot reaches a stable standing posture.
-3. Switch to `Stand` or `Active Balance` mode as required by your workflow.
+3. Switch to `STAND` or a walking mode as required by your workflow.
 4. If the robot does not stand or joints twitch, immediately command `IDLE` and disable actuators.
 
 ## 6 — Basic drive test (low risk)
 
-- Select a slow gait (e.g., `Stable Walk`) and command a small forward step.
+- Select a slow gait (e.g., `STABLE WALK`) and command a small forward step.
 - Observe leg motion and listen for abnormal noises.
 - If behavior is abnormal: immediately stop, select `IDLE`, and disable actuators.
 
@@ -55,14 +54,14 @@ For full safety guidance, see [Safety](Safety.md).
 
 1. Stop all motion and select `IDLE` in the GUI.
 2. Wait until the robot is stable and logs show no active motion.
-3. Press and hold the power button for 2 seconds to power off.
+3. Press and hold the power button for 2 seconds to power off, or use the `POWER COMMANDS` menu and select `SHUTDOWN`.
 
 ## Troubleshooting (quick)
 
-- No Wi‑Fi: check that AP SSID is broadcasting; try Ethernet if available.
+- No Wi‑Fi: check that AP SSID is broadcasting.
 - Control console says disconnected: reboot the console app and re-check Wi‑Fi.
-- Robot fails to energize: check E‑stop, battery voltage, and error logs in the console.
-- Overheating or warning LEDs: disable actuators and inspect hardware.
+- Robot fails to energize: check battery voltage and error logs in the console.
+- Overheating: disable actuators and inspect hardware.
 
 ## Next steps / Links
 

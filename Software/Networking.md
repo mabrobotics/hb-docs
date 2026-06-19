@@ -4,6 +4,7 @@ Robot is equipped with on-board WiFi router, allowing for easy access, updates a
 connected devices.
 
 By default, the robot is configured with independent WiFi access point. SSID follows a pattern:
+
 - **hb50_XXXX** - for 2.4Ghz network,
 - **hb50_XXXX_5G** - for 5Ghz network.
 
@@ -29,11 +30,14 @@ network.
 ```
 
 ## ROS2 and SSH
-Both of the robots on-board computers can be connected to via ROS2 or directly with ssh. 
 
-### SSH 
+Both of the robots on-board computers can be connected to via ROS2 or directly with ssh.
+
+### SSH
+
 Robots' DNS server uses 10.11.0.1 as base address (also Router address), and both LPC and APC have static
 IP address:
+
 | Device | Static Address | Hostname | Username |
 | --- | --- | --- | ---|
 | LPC | 10.11.0.10 | hb50.lan | hb |
@@ -41,6 +45,5 @@ IP address:
 | SteamDeck | Dynamic IP | deck.lan | mab |
 
 ### ROS2
-By default, robots use ROS_DOMAIN_ID of 69, thus robots topics should be visible shortly after power-up.
-No further customization is required.
 
+By default, robots use ROS_DOMAIN_ID of 69, thus robots topics should be visible shortly after power-up. Ensure your client uses the same `ROS_DOMAIN_ID` when interacting with the robot.

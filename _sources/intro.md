@@ -42,7 +42,7 @@ referrerpolicy="strict-origin-when-cross-origin">
 | Walking Speed (Run)    | 1.0 | m/s |
 | Slopes | +-30 | ° |
 | **Connectivity**|
-| WiFi 5 AP 802.11 | up to 867Mbps
-| Ethernet | 1x LAN, 1x WAN/LAN, up to 1Gbps each |
+| WiFi 5 AP 802.11 | up to 867 Mbps
+| Ethernet | 1x LAN, 1x WAN/LAN, up to 1 Gbps each |
 
 \*Operating time in nominal conditions - no payload, constant walking (`Walk` gait), with average speed of 0.5m/s, on mostly flat, dry concrete surface.

@@ -5,10 +5,13 @@ Honey Badger robot can be equipped with spool with optical fiber  that allows th
 ## Spool mount
 
 ## Setup
+
 Communication with spool driver is established based on ROS2 node - `hb50_spool`. Powering up the platform initializes the spool driver, which in turn automatically starts the node.
 
 ## Spool remote controller interface
+
 Spool control has a separate interface built in remote controller. It allows operator for safe spool handling. To begin with operator should press `SPOOL MENU` (numbered one) button to open spool control view.
+
 ```{figure} ./img/remote_spool.svg
 :name: remote-spool
 :alt: remote_spool
@@ -29,9 +32,11 @@ Manual control:
 | 7 | `-/+ Velocity Control` | `-` decreases linear velocity of winding by -0.1 [m/s] and `+` for increasing linear velocity of winding by 0.1 [m/s]. |
 
 ### Operating mode
+
 The spool platform can operate in two separate modes: manual and automatic.
 
 #### Manual mode
+
 Manual mode allows operator for direct control of winding or unwinding optical fiber form spool using terminal or remote controller by passing specified linear velocities expressed in [m/s].
 
 For enabling manual mode with remote controller user should unlock safety switch ({ref}`button number 5 <remote-spool>`).
@@ -39,9 +44,11 @@ For enabling manual mode with remote controller user should unlock safety switch
 By default, the system is operated using the remote controller. However, if the operator prefers manual mode via the terminal, they should publish a safe velocity to the `/hb50/payload/spool_unroll_speed` topic.
 
 Example of use:
+
 ```bash
 ros2 topic pub /hb50/payload/spool_unroll_speed std_msgs/msg/Float32 "{data: 0.1}"
 ```
+
 Above command will result in unwinding spool with linear velocity of 0.1 [m/s].
 
 ```{warning}
@@ -49,9 +56,11 @@ Passing negative value of `float` will result in winding the optical fiber. Ever
 ```
 
 #### Automatic mode
+
 Automatic mode is used for synchronous work with Honey Badger robot. In this mode spool platform takes on velocities values from `hb50_commons/msg/RobotState` topic where is published real linear velocity of Honey Badger robot.
 
 ### Spool topics
+
 Spool node `hb50_spool` uses:
 
 | Topic | Message Type | QoS | Publish Rate |
@@ -63,7 +72,9 @@ Spool node `hb50_spool` uses:
 ```{note}
 For precise definition of QoS check: {ref}`qos-information`.
 ```
+
 ### Spool services
+
 Spool uses only one service that is prepared for enabling different features.
 
 | Service | Interface Type | QoS |
@@ -84,6 +95,3 @@ Operator has two features that he can apply in case of calibration or safety ass
 |---|---|
 | `zero_length` | Sets current position of unwinded optical fiber as a 0 point. |
 | `enable_motors` | If `1` passed enables motors and allows them to be ready to work, if `0` passed disables motors. |
-
-
-## Use

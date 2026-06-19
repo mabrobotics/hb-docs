@@ -63,6 +63,7 @@ Keep hands, fingers, tools, and loose objects away from the legs and joints when
 ```
 
 Do not:
+
 - place hands between leg segments,
 - lift or carry the robot by its legs,
 - stand close to the robot during startup or recovery,

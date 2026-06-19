@@ -26,6 +26,8 @@ chapters:
   - file: Software/Overview.md
     title: Software
     sections:
+      - file: Software/Platform.md
+        title: Platform
       - file: Software/Messages.md
         title: Message types
       - file: Software/Networking.md

@@ -1,13 +1,11 @@
 # Software Overview
-```{note}
-Software described below is running on the robots LPC (Locomotion PC) or Control Console (SteamDeck).
-By default, no MAB supplied ROS2 nodes are running on the APC (Application PC - Nvidia Orin).
 
-While adding to a system, the user is highly encouraged to deploy their applications on APC, as running 
-additional demanding processes on LPC can induce jitter to low-level communications and lead to loss of stability.
+```{note}
+For the canonical description of the onboard computers (LPC / APC), their roles and network addresses, see the [Platform](Platform.md) chapter.
 ```
 
 The robot uses ROS2 Jazzy (on Ubuntu 24), as its system architecture. There are a few main nodes running on the robot:
+
 - **hb_bridge** - node responsible for low-level hardware handling,
 - **hb_control** - motion and locomotion control
 - robot_state_publisher - handles TF messages,
@@ -20,35 +18,44 @@ The robot uses ROS2 Jazzy (on Ubuntu 24), as its system architecture. There are 
 :class: no-scaled-link
 ```
 
-## Topics and messages
+## Topics and Messages
 
-The Honey Badger stack follows a conventional ROS 2 architecture. Below is a summary of the main topics. For detailed field definitions and usage guidance, see [Software/Messages.md](Messages.md).
+Honey badger software stack sticks to a typical ROS2 architecture whenever applicable, certain nodes and topic
+should be self-explanatory for most users who already worked with ROS based robots.
 
-### Core topics
+### Topics
 
-| Topic | Message Type | QoS | Rate |
-|---|---|---|---:|
-| `/hb50/bridge_data` | `hb50_commons/msg/BridgeData` | mabRT | 500 Hz |
-| `/hb50/bridge_state` | `hb50_commons/msg/BridgeState` | mabRT | 500 Hz |
-| `/hb50/bridge_state_10hz` | `hb50_commons/msg/BridgeState` | Reliable | 10 Hz |
+Here is list of relevant topics published by robot:
+
+| Topic | Message Type | QoS | Publish Rate |
+|---|---|---|---|
+| `/hb50/bridge_data` | `hb50_commons/msg/BridgeData` | mabRT | 500 hz |
+| `/hb50/bridge_state` | `hb50_commons/msg/BridgeState` | mabRT | 500 hz |
+| `/hb50/bridge_state_10hz` | `hb50_commons/msg/BridgeState` | Reliable | 10 hz |
+| `/hb50/config_update` | `std_msgs/msg/String` | Reliable | as needed |
 | `/hb50/control_command` | `std_msgs/msg/String` | Reliable | as needed |
-| `/hb50/joint_command` | `hb50_commons/msg/JointCommand` | mabRT | 500 Hz |
-| `/hb50/joint_states` | `sensor_msgs/msg/JointState` | Reliable | 10 Hz |
-| `/hb50/robot_state` | `hb50_commons/msg/RobotState` | mabRT | 500 Hz |
-| `/hb50/robot_state_10hz` | `hb50_commons/msg/RobotState` | Reliable | 10 Hz |
+| `/hb50/hardware_command` | `hb50_commons/msg/Status` | Reliable | as needed |
+| `/hb50/heartbeat` | `hb50_commons/msg/Status` | Reliable | 1 hz |
+| `/hb50/joint_command` | `hb50_commons/msg/JointCommand` | mabRT | 500hz |
+| `/hb50/joint_states` | `sensor_msgs/msg/JointState` | Reliable | 10 hz |
+| `/hb50/joy` | `sensor_msgs/msg/Joy` | Reliable | as needed |
+| `/hb50/robot_description` | `std_msgs/msg/String` | Reliable | as needed |
+| `/hb50/robot_state` | `hb50_commons/msg/RobotState` | mabRT | 500hz |
+| `/hb50/robot_state_10hz` | `hb50_commons/msg/RobotState` | Reliable | 10 hz |
 | `/hb50/status` | `hb50_commons/msg/Status` | Reliable | as needed |
-| `/hb50/velocity_command` | `geometry_msgs/msg/Twist` | mabRT | as needed |
-| `/hb50/heartbeat` | `hb50_commons/msg/Status` | Reliable | 1 Hz |
-| `/tf` | `tf2_msgs/msg/TFMessage` | Reliable | 10 Hz |
+| `/hb50/velocity_command` | `geometry_msgs/msg/Twist` | mabRT | as needed | 
+| `/tf` | `tf2_msgs/msg/TFMessage` | Reliable | 10 hz |
 | `/tf_static` | `tf2_msgs/msg/TFMessage` | Reliable | as needed |
 
-### QoS policies
+(qos-information)=
+### Quality of Service
 
-Two QoS configurations are used:
+There are two types of QoS used in the robot:
 
-- `mabRT` — high‑rate, low‑latency streams (depth: 1, best_effort, volatile)
-- `Reliable` — visualization and infrequent messages (depth: 10, reliable, volatile)
+- mabRT - depth: 1, best_effort, durability: volatile;
+- Reliable - depth: 10, reliable, durability: volatile;
 
-### Custom message types
+### Messages
 
-For details on each custom message, field definitions, and usage examples, refer to [Software/Messages.md](Messages.md).
+The robot uses a mix of built-in ROS2 messages and custom types defined in `hb50_commons` package.
+For full, canonical field-level documentation of custom messages, see [Messages](Messages.md).

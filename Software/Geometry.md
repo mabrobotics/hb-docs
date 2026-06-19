@@ -42,4 +42,3 @@ Rotations:
 ```
 
 Use these conventions when interpreting TFs, URDF links and joint commands.
-

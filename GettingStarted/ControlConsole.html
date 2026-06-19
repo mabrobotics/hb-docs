@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>SteamDeck Controller &#8212; Honey Badger Robot Documentation</title>
+    <title>Steam Deck Controller &#8212; Honey Badger Robot Documentation</title>
   
   
   
@@ -387,7 +387,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>SteamDeck Controller</h1>
+    <h1>Steam Deck Controller</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -414,9 +414,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="steamdeck-controller">
-<h1>SteamDeck Controller<a class="headerlink" href="#steamdeck-controller" title="Link to this heading">#</a></h1>
-<p>Remote control of HB robots is best done using MAB supplied SteamDeck controller with custom software and drivers. The controller allows easy to easily startup, change gaits and control the robot, using <code class="docutils literal notranslate"><span class="pre">hb50_remote</span></code> application.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="steam-deck-controller">
+<h1>Steam Deck Controller<a class="headerlink" href="#steam-deck-controller" title="Link to this heading">#</a></h1>
+<p>Remote control of HB robots is best done using the MAB-supplied Steam Deck controller with custom software and drivers. The controller makes it easy to start up, change gaits, and control the robot using the <code class="docutils literal notranslate"><span class="pre">HB50</span> <span class="pre">Remote</span></code> application.</p>
 <section id="network-setup">
 <h2>Network Setup<a class="headerlink" href="#network-setup" title="Link to this heading">#</a></h2>
 <p>For robot Wi-Fi SSID and password details, see <a class="reference internal" href="Setup.html"><span class="std std-doc">Setup</span></a>.</p>
@@ -429,22 +429,19 @@ document.write(`
 </div>
 <section id="wired-connection">
 <h3>Wired connection<a class="headerlink" href="#wired-connection" title="Link to this heading">#</a></h3>
-<p>Connecting SteamDeck to the robot is also possible via wired connection. This can be done through USB-C
-port on the device and Ethernet-to-USB dongle (not included). This setup can be further extended to allow for communication over any medium, supporting IP traffic such as: optical fibre, long range radios etc.</p>
+<p>Connecting the Steam Deck to the robot is also possible via wired connection. This can be done through the device USB-C port and an Ethernet-to-USB dongle (not included). This setup can be extended to support IP traffic over other media such as optical fiber or long-range radios.</p>
 </section>
 </section>
 <section id="user-interface">
 <h2>User Interface<a class="headerlink" href="#user-interface" title="Link to this heading">#</a></h2>
-<p>On the Desktop, there is “Honey Badger” application icon, that will start up <code class="docutils literal notranslate"><span class="pre">hb_remote</span></code> dedicated application
-for controlling Honey Badger robots. The application allows for quick diagnostic overview and running typical
-tasks related to robot operation.</p>
+<p>On the desktop, there is a “Honey Badger” application icon that starts the <code class="docutils literal notranslate"><span class="pre">remote_node</span></code> application for controlling Honey Badger robots. The application provides a quick diagnostic overview and enables typical robot operation tasks.</p>
 <figure class="align-center">
 <img alt="deck_remote" class="no-scaled-link" src="../_images/deck_remote.png" />
 </figure>
 </section>
 <section id="controls-layout">
 <h2>Controls Layout<a class="headerlink" href="#controls-layout" title="Link to this heading">#</a></h2>
-<p>Alongside <code class="docutils literal notranslate"><span class="pre">hb_remote</span></code> there is also another node <code class="docutils literal notranslate"><span class="pre">hb_teleop</span></code>, which captures joystick button inputs and converts them to robot commands. Below is a list of supported commands and actions:</p>
+<p>Alongside <code class="docutils literal notranslate"><span class="pre">remote_node</span></code> there is also another node <code class="docutils literal notranslate"><span class="pre">teleop_node</span></code>, which captures joystick button inputs and converts them to robot commands. Below is a list of supported commands and actions:</p>
 <figure class="align-center">
 <img alt="deck_controls" class="no-scaled-link" src="../_images/deck_controls.png" />
 </figure>

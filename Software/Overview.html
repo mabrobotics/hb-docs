@@ -422,21 +422,24 @@ document.write(`
 </div>
 <p>The robot uses ROS 2 Jazzy (on Ubuntu 24.04 LTS), as its system architecture. There are a few main nodes running on the robot:</p>
 <ul class="simple">
-<li><p><strong>hb_bridge</strong> - node responsible for low-level hardware handling,</p></li>
-<li><p><strong>hb_control</strong> - motion and locomotion control</p></li>
-<li><p>robot_state_publisher - handles TF messages,</p></li>
+<li><p><strong>bridge_node</strong> - node responsible for low-level hardware handling,</p></li>
+<li><p><strong>control_node</strong> - motion and locomotion control</p></li>
+<li><p>state_publisher_node - handles TF messages,</p></li>
 <li><p>config_node - global parameter server.</p></li>
 </ul>
 <figure class="align-center">
 <img alt="ros_overview" class="no-scaled-link" src="../_images/ros_overview.png" />
 </figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All ROS 2 components (nodes, topics, services, etc.) use namespaces that match the robot name. For example, a Honey Badger robot in the default configuration uses the namespace <code class="docutils literal notranslate"><span class="pre">hb50</span></code>. The namespace appears as a prefix to all names of the ROS 2 components.</p>
+</div>
 <section id="topics-and-messages">
 <h2>Topics and Messages<a class="headerlink" href="#topics-and-messages" title="Link to this heading">#</a></h2>
-<p>Honey badger software stack sticks to a typical ROS2 architecture whenever applicable, certain nodes and topic
-should be self-explanatory for most users who already worked with ROS based robots.</p>
+<p>The Honey Badger software stack follows a typical ROS 2 architecture where applicable. Certain nodes and topics should be self-explanatory for users who already worked with ROS-based robots.</p>
 <section id="topics">
 <h3>Topics<a class="headerlink" href="#topics" title="Link to this heading">#</a></h3>
-<p>Here is list of relevant topics published by robot:</p>
+<p>Here is a list of relevant topics published by the robot:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Topic</p></th>
@@ -484,12 +487,12 @@ should be self-explanatory for most users who already worked with ROS based robo
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/joint_command</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/JointCommand</span></code></p></td>
 <td><p>mabRT</p></td>
-<td><p>500hz</p></td>
+<td><p>500 Hz</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/joint_states</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">sensor_msgs/msg/JointState</span></code></p></td>
 <td><p>Reliable</p></td>
-<td><p>10 hz</p></td>
+<td><p>10 Hz</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/joy</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">sensor_msgs/msg/Joy</span></code></p></td>
@@ -504,7 +507,7 @@ should be self-explanatory for most users who already worked with ROS based robo
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/robot_state</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/RobotState</span></code></p></td>
 <td><p>mabRT</p></td>
-<td><p>500hz</p></td>
+<td><p>500 Hz</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/robot_state_10hz</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/RobotState</span></code></p></td>
@@ -545,7 +548,7 @@ should be self-explanatory for most users who already worked with ROS based robo
 </section>
 <section id="messages">
 <h3>Messages<a class="headerlink" href="#messages" title="Link to this heading">#</a></h3>
-<p>The robot uses a mix of built-in ROS2 messages and custom types defined in <code class="docutils literal notranslate"><span class="pre">hb50_commons</span></code> package.
+<p>The robot uses a mix of built-in ROS 2 messages and custom types defined in the <code class="docutils literal notranslate"><span class="pre">hb50_commons</span></code> package.
 For full, canonical field-level documentation of custom messages, see <a class="reference internal" href="Messages.html"><span class="std std-doc">Messages</span></a>.</p>
 </section>
 </section>

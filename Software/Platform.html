@@ -424,9 +424,9 @@ document.write(`
 <h2>LPC (Locomotion PC)<a class="headerlink" href="#lpc-locomotion-pc" title="Link to this heading">#</a></h2>
 <p>The LPC is the primary real-time control computer for the robot. It typically runs:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">hb_bridge</span></code> — low-level interface to the mainboard and actuators</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">hb_control</span></code> — locomotion and motion control stack</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">robot_state_publisher</span></code> — ROS 2 transform publisher</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bridge_node</span></code> — low-level interface to the mainboard and actuators</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">control_node</span></code> — locomotion and motion control stack</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">state_publisher_node</span></code> — ROS 2 transform publisher</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">config_node</span></code> — configuration and parameter server</p></li>
 </ul>
 <p>The LPC is responsible for safe, deterministic robot motion and direct hardware handling.</p>

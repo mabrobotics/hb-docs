@@ -397,9 +397,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ros2-and-ssh">ROS2 and SSH</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ros-2-and-ssh">ROS 2 and SSH</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh">SSH</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ros2">ROS2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ros-2">ROS 2</a></li>
 </ul>
 </li>
 </ul>
@@ -415,12 +415,11 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="network">
 <h1>Network<a class="headerlink" href="#network" title="Link to this heading">#</a></h1>
-<p>Robot is equipped with on-board WiFi router, allowing for easy access, updates and managing multiple
-connected devices.</p>
-<p>By default, the robot is configured with independent WiFi access point. SSID follows a pattern:</p>
+<p>The robot is equipped with an on-board Wi-Fi router, allowing for easy access, updates, and management of multiple connected devices.</p>
+<p>By default, the robot is configured with an independent Wi-Fi access point. SSIDs follow a pattern:</p>
 <ul class="simple">
-<li><p><strong>hb50_XXXX</strong> - for 2.4Ghz network,</p></li>
-<li><p><strong>hb50_XXXX_5G</strong> - for 5Ghz network.</p></li>
+<li><p><strong>hb50_XXXX</strong> — for the 2.4 GHz network,</p></li>
+<li><p><strong>hb50_XXXX_5G</strong> — for the 5 GHz network.</p></li>
 </ul>
 <p>Where XXXX is robot serial code shortened to 4 hex symbols - e.g. “hb50_AFAB” or “hb50_D71C_5G”.
 Default password to the network is: <code class="docutils literal notranslate"><span class="pre">milkaorzechowa</span></code>.</p>
@@ -430,19 +429,15 @@ Default password to the network is: <code class="docutils literal notranslate"><
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Due to ROS2 constrains, when a node (such as <code class="docutils literal notranslate"><span class="pre">hb_remote</span></code>) is launched <em>before</em> network connection
-is established (IP address resolved), it usually fails to properly discover and detect other ROS2 nodes,
-topics and services.</p>
-<p>Before starting any node that will interoperate with Honey Badger, make sure you are connected to correct
-network.</p>
+<p>Due to ROS 2 constraints, when a node (such as <code class="docutils literal notranslate"><span class="pre">remote_node</span></code>) is launched <em>before</em> the network connection is established (IP address resolved), it usually fails to properly discover and detect other ROS 2 nodes, topics, and services.</p>
+<p>Before starting any node that will interoperate with Honey Badger, make sure you are connected to the correct network.</p>
 </div>
-<section id="ros2-and-ssh">
-<h2>ROS2 and SSH<a class="headerlink" href="#ros2-and-ssh" title="Link to this heading">#</a></h2>
-<p>Both of the robots on-board computers can be connected to via ROS2 or directly with ssh.</p>
+<section id="ros-2-and-ssh">
+<h2>ROS 2 and SSH<a class="headerlink" href="#ros-2-and-ssh" title="Link to this heading">#</a></h2>
+<p>Both of the robot’s onboard computers can be accessed via ROS 2 or directly with SSH.</p>
 <section id="ssh">
 <h3>SSH<a class="headerlink" href="#ssh" title="Link to this heading">#</a></h3>
-<p>Robots’ DNS server uses 10.11.0.1 as base address (also Router address), and both LPC and APC have static
-IP address:</p>
+<p>The robot’s DNS server uses 10.11.0.1 as the base address (also the router address), and both LPC and APC have static IP addresses:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Device</p></th>
@@ -462,7 +457,7 @@ IP address:</p>
 <td><p>hb50-orin.lan</p></td>
 <td><p>hb-orin</p></td>
 </tr>
-<tr class="row-even"><td><p>SteamDeck</p></td>
+<tr class="row-even"><td><p>Steam Deck</p></td>
 <td><p>Dynamic IP</p></td>
 <td><p>deck.lan</p></td>
 <td><p>mab</p></td>
@@ -471,9 +466,9 @@ IP address:</p>
 </table>
 </div>
 </section>
-<section id="ros2">
-<h3>ROS2<a class="headerlink" href="#ros2" title="Link to this heading">#</a></h3>
-<p>By default, robots use ROS_DOMAIN_ID of 69, thus robots topics should be visible shortly after power-up. Ensure your client uses the same <code class="docutils literal notranslate"><span class="pre">ROS_DOMAIN_ID</span></code> when interacting with the robot.</p>
+<section id="ros-2">
+<h3>ROS 2<a class="headerlink" href="#ros-2" title="Link to this heading">#</a></h3>
+<p>By default, the robot uses <code class="docutils literal notranslate"><span class="pre">ROS_DOMAIN_ID</span></code> 69, so the robot’s topics should be visible shortly after power-up. Ensure your client uses the same <code class="docutils literal notranslate"><span class="pre">ROS_DOMAIN_ID</span></code> when interacting with the robot.</p>
 </section>
 </section>
 </section>
@@ -542,9 +537,9 @@ IP address:</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ros2-and-ssh">ROS2 and SSH</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ros-2-and-ssh">ROS 2 and SSH</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh">SSH</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ros2">ROS2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ros-2">ROS 2</a></li>
 </ul>
 </li>
 </ul>

@@ -450,7 +450,7 @@ document.write(`
 <section id="bridgedata-high-rate-hardware-frame">
 <h2>BridgeData — high-rate hardware frame<a class="headerlink" href="#bridgedata-high-rate-hardware-frame" title="Link to this heading">#</a></h2>
 <p><strong>Message type:</strong> <code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/BridgeData</span></code><br />
-<strong>Producer:</strong> <code class="docutils literal notranslate"><span class="pre">hb50_bridge</span></code><br />
+<strong>Producer:</strong> <code class="docutils literal notranslate"><span class="pre">bridge_node</span></code><br />
 <strong>Rate:</strong> 500 Hz<br />
 <strong>QoS:</strong> mabRT<br />
 <strong>Use case:</strong> Control applications requiring raw actuator data</p>
@@ -514,7 +514,7 @@ document.write(`
 <section id="bridgestate-power-and-diagnostic-state">
 <h2>BridgeState — power and diagnostic state<a class="headerlink" href="#bridgestate-power-and-diagnostic-state" title="Link to this heading">#</a></h2>
 <p><strong>Message type:</strong> <code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/BridgeState</span></code><br />
-<strong>Producer:</strong> <code class="docutils literal notranslate"><span class="pre">hb50_bridge</span></code><br />
+<strong>Producer:</strong> <code class="docutils literal notranslate"><span class="pre">bridge_node</span></code><br />
 <strong>Rate:</strong> 500 Hz (standard), 10 Hz (<code class="docutils literal notranslate"><span class="pre">/bridge_state_10hz</span></code>)<br />
 <strong>QoS:</strong> mabRT (500 Hz), Reliable (10 Hz)<br />
 <strong>Use case:</strong> Diagnostics, UI, monitoring</p>
@@ -590,11 +590,14 @@ document.write(`
 <section id="jointcommand-actuator-control-commands">
 <h2>JointCommand — actuator control commands<a class="headerlink" href="#jointcommand-actuator-control-commands" title="Link to this heading">#</a></h2>
 <p><strong>Message type:</strong> <code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/JointCommand</span></code><br />
-<strong>Producer:</strong> <code class="docutils literal notranslate"><span class="pre">hb50_control</span></code>, user nodes<br />
+<strong>Producer:</strong> <code class="docutils literal notranslate"><span class="pre">control_node</span></code>, user nodes<br />
 <strong>Rate:</strong> 500 Hz (as needed)<br />
 <strong>QoS:</strong> mabRT<br />
 <strong>Use case:</strong> Control applications commanding joint motion</p>
 <p>Commands the actuators with target position, velocity, torque and PD gains. <strong>Critical:</strong> actuators must be commanded in strict order defined in the robot configuration.</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">bridge_node</span></code> subscribes only to <code class="docutils literal notranslate"><span class="pre">/hb50/joint_command</span></code> topic. Custom control programs can publish <code class="docutils literal notranslate"><span class="pre">JointCommand</span></code> messages directly to this topic; if the custom publisher maintains at least 10 Hz, <code class="docutils literal notranslate"><span class="pre">bridge_node</span></code> will prioritize it over the default <code class="docutils literal notranslate"><span class="pre">control_node</span></code> publisher.</p>
+</div></blockquote>
 <section id="id2">
 <h3>Fields<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -655,7 +658,7 @@ document.write(`
 <section id="robotstate-estimated-state">
 <h2>RobotState — estimated state<a class="headerlink" href="#robotstate-estimated-state" title="Link to this heading">#</a></h2>
 <p><strong>Message type:</strong> <code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/RobotState</span></code><br />
-<strong>Producer:</strong> <code class="docutils literal notranslate"><span class="pre">hb50_control</span></code><br />
+<strong>Producer:</strong> <code class="docutils literal notranslate"><span class="pre">control_node</span></code><br />
 <strong>Rate:</strong> 500 Hz (standard), 10 Hz (<code class="docutils literal notranslate"><span class="pre">/robot_state_10hz</span></code>)<br />
 <strong>QoS:</strong> mabRT (500 Hz), Reliable (10 Hz)<br />
 <strong>Use case:</strong> State machine, planning, visualization</p>
@@ -692,7 +695,7 @@ document.write(`
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">motion_mode</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">byte</span></code></p></td>
-<td><p>Current motion mode (enum, see <code class="docutils literal notranslate"><span class="pre">hb50_control.hpp</span></code>)</p></td>
+<td><p>Current motion mode (enum, see <code class="docutils literal notranslate"><span class="pre">hb50_control/hb50_control.hpp</span></code>)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">motion_type</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">byte</span></code></p></td>
@@ -711,8 +714,8 @@ document.write(`
 <hr class="docutils" />
 <section id="legstate-per-leg-status">
 <h2>LegState — per-leg status<a class="headerlink" href="#legstate-per-leg-status" title="Link to this heading">#</a></h2>
-<p><strong>Message type:</strong> <code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/LegState</span></code><br />
-<strong>Nested in:</strong> <code class="docutils literal notranslate"><span class="pre">RobotState</span></code><br />
+<p><strong>Message type:</strong> <code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/LegState</span></code>
+<strong>Nested in:</strong> <code class="docutils literal notranslate"><span class="pre">RobotState</span></code>
 <strong>Use case:</strong> Leg-specific diagnostics and control</p>
 <p>Describes the estimated state of a single leg, including foot contact and forces.</p>
 <section id="id4">
@@ -754,7 +757,7 @@ document.write(`
 <section id="status-event-and-status-messages">
 <h2>Status — event and status messages<a class="headerlink" href="#status-event-and-status-messages" title="Link to this heading">#</a></h2>
 <p><strong>Message type:</strong> <code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/Status</span></code>
-<strong>Producers:</strong> All nodes (by heartbeat subnode), <code class="docutils literal notranslate"><span class="pre">hb50_bridge</span></code> (hardware events), <code class="docutils literal notranslate"><span class="pre">hb50_control</span></code> (control events)
+<strong>Producers:</strong> All nodes (by heartbeat sub-node), <code class="docutils literal notranslate"><span class="pre">bridge_node</span></code> (hardware events), <code class="docutils literal notranslate"><span class="pre">control_node</span></code> (control events)
 <strong>Rate:</strong> 1 Hz (heartbeat), as needed (events)
 <strong>QoS:</strong> Reliable
 <strong>Use case:</strong> Monitoring, logging, alarm handling</p>

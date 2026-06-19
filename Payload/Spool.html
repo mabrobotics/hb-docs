@@ -421,17 +421,17 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="spool">
 <h1>Spool<a class="headerlink" href="#spool" title="Link to this heading">#</a></h1>
-<p>Honey Badger robot can be equipped with spool with optical fiber  that allows the operator for wired connection with the robot. This solution is mostly used in long-range environments where wireless connection would be impossible due to disturbances or lack of WiFi range.</p>
+<p>The Honey Badger robot can be equipped with an optical-fiber spool that allows the operator to establish a wired connection to the robot. This solution is useful in long-range environments where wireless communication is impossible due to interference or limited Wi-Fi range.</p>
 <section id="spool-mount">
 <h2>Spool mount<a class="headerlink" href="#spool-mount" title="Link to this heading">#</a></h2>
 </section>
 <section id="setup">
 <h2>Setup<a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
-<p>Communication with spool driver is established based on ROS2 node - <code class="docutils literal notranslate"><span class="pre">hb50_spool</span></code>. Powering up the platform initializes the spool driver, which in turn automatically starts the node.</p>
+<p>Communication with the spool driver is established through the ROS 2 <code class="docutils literal notranslate"><span class="pre">spool_node</span></code>. Powering up the platform initializes the spool driver, which in turn automatically starts the node.</p>
 </section>
 <section id="spool-remote-controller-interface">
 <h2>Spool remote controller interface<a class="headerlink" href="#spool-remote-controller-interface" title="Link to this heading">#</a></h2>
-<p>Spool control has a separate interface built in remote controller. It allows operator for safe spool handling. To begin with operator should press <code class="docutils literal notranslate"><span class="pre">SPOOL</span> <span class="pre">MENU</span></code> (numbered one) button to open spool control view.</p>
+<p>Spool control has a separate interface built into the remote controller. It allows the operator to handle the spool safely. To begin, the operator should press the <code class="docutils literal notranslate"><span class="pre">SPOOL</span> <span class="pre">MENU</span></code> button (number 1) to open the spool control view.</p>
 <figure class="align-center" id="remote-spool">
 <img alt="remote_spool" class="no-scaled-link" src="../_images/remote_spool.svg" />
 </figure>
@@ -457,48 +457,36 @@ document.write(`
 </tr>
 <tr class="row-odd"><td><p>4</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ZERO</span> <span class="pre">SPOOL</span></code></p></td>
-<td><p>Sets current position of unwinded optical fiber as a 0 point.</p></td>
-</tr>
-<tr class="row-even"><td><p>Manual control:</p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p>5</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">Operating</span> <span class="pre">Mode</span> <span class="pre">Switch</span></code></p></td>
-<td><p>Enables/Disables manual mode.</p></td>
-</tr>
-<tr class="row-even"><td><p>6</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-/+</span> <span class="pre">Direction</span> <span class="pre">Control</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-</span></code> stands for winding spool and <code class="docutils literal notranslate"><span class="pre">+</span></code> for unwinding.</p></td>
-</tr>
-<tr class="row-odd"><td><p>7</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-/+</span> <span class="pre">Velocity</span> <span class="pre">Control</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-</span></code> decreases linear velocity of winding by -0.1 [m/s] and <code class="docutils literal notranslate"><span class="pre">+</span></code> for increasing linear velocity of winding by 0.1 [m/s].</p></td>
+<td><p>Sets the current position of unwound optical fiber as the zero point.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<p>Manual control:
+| 5 | <code class="docutils literal notranslate"><span class="pre">Operating</span> <span class="pre">Mode</span> <span class="pre">Switch</span></code> | Enables/Disables manual mode. |
+| 6 | <code class="docutils literal notranslate"><span class="pre">-/+</span> <span class="pre">Direction</span> <span class="pre">Control</span></code> | <code class="docutils literal notranslate"><span class="pre">-</span></code> stands for winding spool and <code class="docutils literal notranslate"><span class="pre">+</span></code> for unwinding. |
+| 7 | <code class="docutils literal notranslate"><span class="pre">-/+</span> <span class="pre">Velocity</span> <span class="pre">Control</span></code> | <code class="docutils literal notranslate"><span class="pre">-</span></code> decreases linear velocity of winding by -0.1 [m/s] and <code class="docutils literal notranslate"><span class="pre">+</span></code> for increasing linear velocity of winding by 0.1 [m/s]. |</p>
 <section id="operating-mode">
 <h3>Operating mode<a class="headerlink" href="#operating-mode" title="Link to this heading">#</a></h3>
 <p>The spool platform can operate in two separate modes: manual and automatic.</p>
 <section id="manual-mode">
 <h4>Manual mode<a class="headerlink" href="#manual-mode" title="Link to this heading">#</a></h4>
-<p>Manual mode allows operator for direct control of winding or unwinding optical fiber form spool using terminal or remote controller by passing specified linear velocities expressed in [m/s].</p>
-<p>For enabling manual mode with remote controller user should unlock safety switch (<a class="reference internal" href="#remote-spool"><span class="std std-ref">button number 5</span></a>).</p>
+<p>Manual mode allows the operator to directly control winding or unwinding optical fiber from the spool using the terminal or remote controller by sending specified linear velocities in [m/s].</p>
+<p>To enable manual mode with the remote controller, the user should unlock the safety switch (<a class="reference internal" href="#remote-spool"><span class="std std-ref">button number 5</span></a>).</p>
 <p>By default, the system is operated using the remote controller. However, if the operator prefers manual mode via the terminal, they should publish a safe velocity to the <code class="docutils literal notranslate"><span class="pre">/hb50/payload/spool_unroll_speed</span></code> topic.</p>
 <p>Example of use:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>topic<span class="w"> </span>pub<span class="w"> </span>/hb50/payload/spool_unroll_speed<span class="w"> </span>std_msgs/msg/Float32<span class="w"> </span><span class="s2">&quot;{data: 0.1}&quot;</span>
 </pre></div>
 </div>
-<p>Above command will result in unwinding spool with linear velocity of 0.1 [m/s].</p>
+<p>The command unwinds the spool at a linear velocity of 0.1 m/s.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Passing negative value of <code class="docutils literal notranslate"><span class="pre">float</span></code> will result in winding the optical fiber. Every time ensure that there is a safe margin of optical fiber that can be winded.</p>
+<p>Passing a negative float value will wind the optical fiber. Always ensure there is a safe margin of optical fiber available for winding.</p>
 </div>
 </section>
 <section id="automatic-mode">
 <h4>Automatic mode<a class="headerlink" href="#automatic-mode" title="Link to this heading">#</a></h4>
-<p>Automatic mode is used for synchronous work with Honey Badger robot. In this mode spool platform takes on velocities values from <code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/RobotState</span></code> topic where is published real linear velocity of Honey Badger robot.</p>
+<p>Automatic mode is used for synchronous operation with the Honey Badger robot. In this mode, the spool platform receives velocity values from the <code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/RobotState</span></code> topic, which publishes the robot’s actual linear velocity.</p>
 </section>
 </section>
 <section id="spool-topics">
@@ -554,7 +542,7 @@ document.write(`
 </tbody>
 </table>
 </div>
-<p>Interface type defined as <code class="docutils literal notranslate"><span class="pre">hb50_commons::srv::EnableFeature</span></code> has following parameters:</p>
+<p>The interface type defined as <code class="docutils literal notranslate"><span class="pre">hb50_commons::srv::EnableFeature</span></code> has the following parameters:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Type</p></th>
@@ -578,7 +566,7 @@ document.write(`
 </tbody>
 </table>
 </div>
-<p>Operator has two features that he can apply in case of calibration or safety assurance. Argument is passed as a <code class="docutils literal notranslate"><span class="pre">string</span></code> and can be the following:</p>
+<p>The operator has two feature names available for calibration or safety control. The argument is passed as a <code class="docutils literal notranslate"><span class="pre">string</span></code> and can be one of the following:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">feature</span></code> name</p></th>
@@ -587,10 +575,10 @@ document.write(`
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">zero_length</span></code></p></td>
-<td><p>Sets current position of unwinded optical fiber as a 0 point.</p></td>
+<td><p>Sets the current position of unwound optical fiber as the zero point.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">enable_motors</span></code></p></td>
-<td><p>If <code class="docutils literal notranslate"><span class="pre">1</span></code> passed enables motors and allows them to be ready to work, if <code class="docutils literal notranslate"><span class="pre">0</span></code> passed disables motors.</p></td>
+<td><p>If <code class="docutils literal notranslate"><span class="pre">1</span></code> is passed, enables motors and allows them to be ready to work; if <code class="docutils literal notranslate"><span class="pre">0</span></code> is passed, disables motors.</p></td>
 </tr>
 </tbody>
 </table>

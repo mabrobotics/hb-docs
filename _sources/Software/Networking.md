@@ -1,12 +1,11 @@
 # Network
 
-Robot is equipped with on-board WiFi router, allowing for easy access, updates and managing multiple
-connected devices.
+The robot is equipped with an on-board Wi-Fi router, allowing for easy access, updates, and management of multiple connected devices.
 
-By default, the robot is configured with independent WiFi access point. SSID follows a pattern:
+By default, the robot is configured with an independent Wi-Fi access point. SSIDs follow a pattern:
 
-- **hb50_XXXX** - for 2.4Ghz network,
-- **hb50_XXXX_5G** - for 5Ghz network.
+- **hb50_XXXX** — for the 2.4 GHz network,
+- **hb50_XXXX_5G** — for the 5 GHz network.
 
 Where XXXX is robot serial code shortened to 4 hex symbols - e.g. "hb50_AFAB" or "hb50_D71C_5G".
 Default password to the network is: `milkaorzechowa`.
@@ -21,29 +20,25 @@ The router also hosts DNS server, allowing for easy SSH connections.
 ```
 
 ```{note}
-Due to ROS2 constrains, when a node (such as `hb_remote`) is launched *before* network connection
-is established (IP address resolved), it usually fails to properly discover and detect other ROS2 nodes,
-topics and services.
+Due to ROS 2 constraints, when a node (such as `remote_node`) is launched *before* the network connection is established (IP address resolved), it usually fails to properly discover and detect other ROS 2 nodes, topics, and services.
 
-Before starting any node that will interoperate with Honey Badger, make sure you are connected to correct 
-network.
+Before starting any node that will interoperate with Honey Badger, make sure you are connected to the correct network.
 ```
 
-## ROS2 and SSH
+## ROS 2 and SSH
 
-Both of the robots on-board computers can be connected to via ROS2 or directly with ssh.
+Both of the robot's onboard computers can be accessed via ROS 2 or directly with SSH.
 
 ### SSH
 
-Robots' DNS server uses 10.11.0.1 as base address (also Router address), and both LPC and APC have static
-IP address:
+The robot's DNS server uses 10.11.0.1 as the base address (also the router address), and both LPC and APC have static IP addresses:
 
 | Device | Static Address | Hostname | Username |
-| --- | --- | --- | ---|
+| --- | --- | --- | --- |
 | LPC | 10.11.0.10 | hb50.lan | hb |
 | APC (Orin) | 10.11.0.11 | hb50-orin.lan | hb-orin |
-| SteamDeck | Dynamic IP | deck.lan | mab |
+| Steam Deck | Dynamic IP | deck.lan | mab |
 
-### ROS2
+### ROS 2
 
-By default, robots use ROS_DOMAIN_ID of 69, thus robots topics should be visible shortly after power-up. Ensure your client uses the same `ROS_DOMAIN_ID` when interacting with the robot.
+By default, the robot uses `ROS_DOMAIN_ID` 69, so the robot's topics should be visible shortly after power-up. Ensure your client uses the same `ROS_DOMAIN_ID` when interacting with the robot.

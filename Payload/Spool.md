@@ -2,17 +2,31 @@
 
 The Honey Badger robot can be equipped with an optical-fiber spool that allows the operator to establish a wired connection to the robot. This solution is useful in long-range environments where wireless communication is impossible due to interference or limited Wi-Fi range.
 
-## Spool mount
-
 ## Setup
 
 Communication with the spool driver is established through the ROS 2 `spool_node`. Powering up the platform initializes the spool driver, which in turn automatically starts the node.
 
 ## Spool remote controller interface
 
+```{warning}
+The spool attachment is disabled by default. Always verify the spool is enabled before operating the robot with the spool attached.
+
+If the spool is not enabled and the robot moves, the spool or fiber can be damaged. Enabling the spool also updates the robot motion controller with the spool mass and inertial parameters.
+
+Make sure the `Enable spool attachment mode` toggle shown below is active before using spool functions.
+```
+
+```{figure} ./img/main_menu_spool_dis_warn.png
+:name: main_menu_spool
+:alt: main_menu_spool
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
+
 Spool control has a separate interface built into the remote controller. It allows the operator to handle the spool safely. To begin, the operator should press the `SPOOL MENU` button (number 1) to open the spool control view.
 
-```{figure} ./img/remote_spool.svg
+```{figure} ./img/spool_menu_desc.svg
 :name: remote-spool
 :alt: remote_spool
 :class: bg-primary mb-1
@@ -26,8 +40,6 @@ Spool control has a separate interface built into the remote controller. It allo
 | 2 | `ENABLE SPOOL` | Enables spool motors. |
 | 3 | `DISABLE SPOOL` | Disables spool motors. |
 | 4 | `ZERO SPOOL` | Sets the current position of unwound optical fiber as the zero point. |
-
-Manual control:
 | 5 | `Operating Mode Switch` | Enables/Disables manual mode. |
 | 6 | `-/+ Direction Control` | `-` stands for winding spool and `+` for unwinding. |
 | 7 | `-/+ Velocity Control` | `-` decreases linear velocity of winding by -0.1 [m/s] and `+` for increasing linear velocity of winding by 0.1 [m/s]. |
@@ -53,7 +65,9 @@ ros2 topic pub /hb50/payload/spool_unroll_speed std_msgs/msg/Float32 "{data: 0.1
 The command unwinds the spool at a linear velocity of 0.1 m/s.
 
 ```{warning}
-Passing a negative float value will wind the optical fiber. Always ensure there is a safe margin of optical fiber available for winding.
+Passing a negative float value winds the optical fiber. Always ensure there is enough spare fiber available before winding.
+
+Do not allow the fiber to become taut or caught on obstacles while the spool is active.
 ```
 
 #### Automatic mode

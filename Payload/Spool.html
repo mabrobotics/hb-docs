@@ -396,7 +396,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spool-mount">Spool mount</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spool-remote-controller-interface">Spool remote controller interface</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operating-mode">Operating mode</a><ul class="nav section-nav flex-column">
@@ -422,18 +421,24 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="spool">
 <h1>Spool<a class="headerlink" href="#spool" title="Link to this heading">#</a></h1>
 <p>The Honey Badger robot can be equipped with an optical-fiber spool that allows the operator to establish a wired connection to the robot. This solution is useful in long-range environments where wireless communication is impossible due to interference or limited Wi-Fi range.</p>
-<section id="spool-mount">
-<h2>Spool mount<a class="headerlink" href="#spool-mount" title="Link to this heading">#</a></h2>
-</section>
 <section id="setup">
 <h2>Setup<a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
 <p>Communication with the spool driver is established through the ROS 2 <code class="docutils literal notranslate"><span class="pre">spool_node</span></code>. Powering up the platform initializes the spool driver, which in turn automatically starts the node.</p>
 </section>
 <section id="spool-remote-controller-interface">
 <h2>Spool remote controller interface<a class="headerlink" href="#spool-remote-controller-interface" title="Link to this heading">#</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The spool attachment is disabled by default. Always verify the spool is enabled before operating the robot with the spool attached.</p>
+<p>If the spool is not enabled and the robot moves, the spool or fiber can be damaged. Enabling the spool also updates the robot motion controller with the spool mass and inertial parameters.</p>
+<p>Make sure the <code class="docutils literal notranslate"><span class="pre">Enable</span> <span class="pre">spool</span> <span class="pre">attachment</span> <span class="pre">mode</span></code> toggle shown below is active before using spool functions.</p>
+</div>
+<figure class="align-center" id="main-menu-spool">
+<img alt="main_menu_spool" class="no-scaled-link" src="../_images/main_menu_spool_dis_warn.png" />
+</figure>
 <p>Spool control has a separate interface built into the remote controller. It allows the operator to handle the spool safely. To begin, the operator should press the <code class="docutils literal notranslate"><span class="pre">SPOOL</span> <span class="pre">MENU</span></code> button (number 1) to open the spool control view.</p>
 <figure class="align-center" id="remote-spool">
-<img alt="remote_spool" class="no-scaled-link" src="../_images/remote_spool.svg" />
+<img alt="remote_spool" class="no-scaled-link" src="../_images/spool_menu_desc.svg" />
 </figure>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -459,13 +464,21 @@ document.write(`
 <td><p><code class="docutils literal notranslate"><span class="pre">ZERO</span> <span class="pre">SPOOL</span></code></p></td>
 <td><p>Sets the current position of unwound optical fiber as the zero point.</p></td>
 </tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Operating</span> <span class="pre">Mode</span> <span class="pre">Switch</span></code></p></td>
+<td><p>Enables/Disables manual mode.</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-/+</span> <span class="pre">Direction</span> <span class="pre">Control</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-</span></code> stands for winding spool and <code class="docutils literal notranslate"><span class="pre">+</span></code> for unwinding.</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-/+</span> <span class="pre">Velocity</span> <span class="pre">Control</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-</span></code> decreases linear velocity of winding by -0.1 [m/s] and <code class="docutils literal notranslate"><span class="pre">+</span></code> for increasing linear velocity of winding by 0.1 [m/s].</p></td>
+</tr>
 </tbody>
 </table>
 </div>
-<p>Manual control:
-| 5 | <code class="docutils literal notranslate"><span class="pre">Operating</span> <span class="pre">Mode</span> <span class="pre">Switch</span></code> | Enables/Disables manual mode. |
-| 6 | <code class="docutils literal notranslate"><span class="pre">-/+</span> <span class="pre">Direction</span> <span class="pre">Control</span></code> | <code class="docutils literal notranslate"><span class="pre">-</span></code> stands for winding spool and <code class="docutils literal notranslate"><span class="pre">+</span></code> for unwinding. |
-| 7 | <code class="docutils literal notranslate"><span class="pre">-/+</span> <span class="pre">Velocity</span> <span class="pre">Control</span></code> | <code class="docutils literal notranslate"><span class="pre">-</span></code> decreases linear velocity of winding by -0.1 [m/s] and <code class="docutils literal notranslate"><span class="pre">+</span></code> for increasing linear velocity of winding by 0.1 [m/s]. |</p>
 <section id="operating-mode">
 <h3>Operating mode<a class="headerlink" href="#operating-mode" title="Link to this heading">#</a></h3>
 <p>The spool platform can operate in two separate modes: manual and automatic.</p>
@@ -481,7 +494,8 @@ document.write(`
 <p>The command unwinds the spool at a linear velocity of 0.1 m/s.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Passing a negative float value will wind the optical fiber. Always ensure there is a safe margin of optical fiber available for winding.</p>
+<p>Passing a negative float value winds the optical fiber. Always ensure there is enough spare fiber available before winding.</p>
+<p>Do not allow the fiber to become taut or caught on obstacles while the spool is active.</p>
 </div>
 </section>
 <section id="automatic-mode">
@@ -642,7 +656,6 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spool-mount">Spool mount</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spool-remote-controller-interface">Spool remote controller interface</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operating-mode">Operating mode</a><ul class="nav section-nav flex-column">

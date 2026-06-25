@@ -91,6 +91,7 @@ Commands the actuators with target position, velocity, torque and PD gains. **Cr
 
 ---
 
+(robotstate_def)=
 ## RobotState — estimated state
 
 **Message type:** `hb50_commons/msg/RobotState`  

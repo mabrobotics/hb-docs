@@ -46,11 +46,15 @@ Spool control has a separate interface built into the remote controller. It allo
 
 ### Operating mode
 
-The spool platform can operate in two separate modes: manual and automatic.
+The spool platform can operate in two separate modes: automatic and manual.
+
+#### Automatic mode
+
+Automatic mode is used for synchronous operation with the Honey Badger robot. In this mode, the spool platform receives velocity values from the [`hb50_commons/msg/RobotState`](robotstate_def) topic, which publishes the robot's estimated state and actual linear velocity.
 
 #### Manual mode
 
-Manual mode allows the operator to directly control winding or unwinding optical fiber from the spool using the terminal or remote controller by sending specified linear velocities in [m/s].
+Manual mode allows the operator to directly add a velocity command to the spool while the robot is operating. The manual command is added to the automatic robot velocity, so the resulting spool velocity is the sum of both contributions.
 
 To enable manual mode with the remote controller, the user should unlock the safety switch ({ref}`button number 5 <remote-spool>`).
 
@@ -62,7 +66,7 @@ Example of use:
 ros2 topic pub /hb50/payload/spool_unroll_speed std_msgs/msg/Float32 "{data: 0.1}"
 ```
 
-The command unwinds the spool at a linear velocity of 0.1 m/s.
+The command unwinds the spool at a linear velocity of 0.1 m/s in addition to the current robot velocity.
 
 ```{warning}
 Passing a negative float value winds the optical fiber. Always ensure there is enough spare fiber available before winding.
@@ -70,19 +74,22 @@ Passing a negative float value winds the optical fiber. Always ensure there is e
 Do not allow the fiber to become taut or caught on obstacles while the spool is active.
 ```
 
-#### Automatic mode
-
-Automatic mode is used for synchronous operation with the Honey Badger robot. In this mode, the spool platform receives velocity values from the `hb50_commons/msg/RobotState` topic, which publishes the robot's actual linear velocity.
+The spool velocity from automatic mode and the manual velocity command are summed together. The total spool velocity is limited to a maximum of 1 m/s, so if the combined robot and manual velocities exceed 1 m/s, the spool speed is capped at 1 m/s.
 
 ### Spool topics
 
-Spool node `hb50_spool` uses:
+`spool_node` subscribes to the following topics:
 
 | Topic | Message Type | QoS | Publish Rate |
 | --- | --- | --- | --- |
 | `/hb50/payload/spool_unroll_speed` | `std_msgs/msg/Float32` | Reliable | 10 hz |
+| `/hb50/robot_state_10hz` | [`hb50_commons/msg/RobotState`](robotstate_def) | mabRT | 10 hz |
+
+And publishes to the topics:
+
+| Topic | Message Type | QoS | Publish Rate |
+| --- | --- | --- | --- |
 | `/hb50/payload/spool_unroll_length` | `std_msgs/msg/Float32` | Reliable | 10 hz |
-| `/hb50/robot_state_10hz` | `hb50_commons/msg/RobotState` | mabRT | 10 hz |
 
 ```{note}
 For precise definition of QoS check: {ref}`qos-information`.
@@ -90,7 +97,7 @@ For precise definition of QoS check: {ref}`qos-information`.
 
 ### Spool services
 
-Spool uses only one service that is prepared for enabling different features.
+Spool uses a single service to enable different features.
 
 | Service | Interface Type | QoS |
 | --- | --- | --- |
@@ -109,4 +116,4 @@ The operator has two feature names available for calibration or safety control. 
 | `feature` name | Function |
 | --- | --- |
 | `zero_length` | Sets the current position of unwound optical fiber as the zero point. |
-| `enable_motors` | If `1` is passed, enables motors and allows them to be ready to work; if `0` is passed, disables motors. |
+| `enable_motors` | If `1` is passed to the `state`, enables motors and allows them to be ready to work; if `0` is passed, disables motors. |

@@ -109,6 +109,23 @@ The robot is heavy and may be difficult to handle by one person.
 - Use two people or lifting equipment if required by the robot weight.
 - Remove the battery before transport if required by the transport procedure.
 
+### Manual handling and repositioning
+
+When moving or turning the robot by hand, always ensure it is powered off or in a safe idle state. The robot must not be handled while the actuators are enabled, as this can lead to unexpected motion or injury.
+
+The illustration below shows a recommended belly-to-back repositioning move. Use this method only when the robot is powered off or safely idle.
+
+```{note}
+Always use an overhand grip when holding the robot legs. Keep your fingers away from gaps between mechanical parts, as they may cause crushing injuries.
+```
+
+```{figure} ./img/flip.png
+:alt: belly-to-back turn of the robot by hand
+:width: 70%
+:align: center
+:class: bg-primary mb-1 no-scaled-link
+```
+
 ```{warning}
 Lifting the robot when Standing or Walking (using any gait) can result in unexpected and rapid legs movements.
 Never lift the robot while in Active balance mode!

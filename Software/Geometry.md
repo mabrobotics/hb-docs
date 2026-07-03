@@ -14,9 +14,9 @@ The main robot parts are illustrated below. Use the naming and frame conventions
 ### Leg naming
 
 | Abbreviation | Meaning |
-|---|---|
-| `FL` | Front‑left leg |
+| --- | --- |
 | `FR` | Front‑right leg |
+| `FL` | Front‑left leg |
 | `RL` | Rear‑left leg |
 | `RR` | Rear‑right leg |
 

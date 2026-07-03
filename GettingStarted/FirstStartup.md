@@ -14,7 +14,7 @@ This page provides a concise, safe checklist to power on, connect, and stand a n
 ## 1 — Power on (approximately 90 seconds)
 
 1. Place the robot on level ground and make sure nothing blocks leg motion.
-2. Press and hold the robot power button for 2 seconds, or until LEDs start blinking purple.
+2. Press and hold the robot power button for 2 seconds, or until LEDs start blinking purple. The purple blink lasts about 3 seconds and indicates the startup sequence has begun.
 3. Wait for the power-up sequence to complete (approximately 90 seconds). Watch status LEDs.
 
 ## 2 — Connect control console and network
@@ -26,7 +26,7 @@ This page provides a concise, safe checklist to power on, connect, and stand a n
 ## 3 — Verify system status (basic checks)
 
 - Check battery level is sufficient (> 30% recommended for initial testing).
-- Confirm ROS2/bridge status if shown in the GUI (nodes should be `OK`).
+- Confirm ROS 2 / bridge status if shown in the GUI (nodes should be `OK`).
 - Look for any error or warning messages in the console/log window.
 
 ## 4 — Energize actuators (enable)

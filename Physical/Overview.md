@@ -21,7 +21,7 @@
 ### Joint Motion Range
 
 | Joint no. | Location | Range |
-| --- | --- | --- |
+| :---: | :---: | :---: |
 | 0 | Front/Back | 150° (90°+60°) |
 | 1 | Front | 180° (90°+90°) |
 | 1 | Back | 270° (90°+180°) |

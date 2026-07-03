@@ -11,9 +11,9 @@ This separation helps keep real-time locomotion control isolated from user appli
 
 The LPC is the primary real-time control computer for the robot. It typically runs:
 
-- `hb_bridge` — low-level interface to the mainboard and actuators
-- `hb_control` — locomotion and motion control stack
-- `robot_state_publisher` — ROS 2 transform publisher
+- `bridge_node` — low-level interface to the mainboard and actuators
+- `control_node` — locomotion and motion control stack
+- `state_publisher_node` — ROS 2 transform publisher
 - `config_node` — configuration and parameter server
 
 The LPC is responsible for safe, deterministic robot motion and direct hardware handling.

@@ -8,8 +8,6 @@ chapters:
   - file: GettingStarted/GettingStarted.md
     title: Getting Started
     sections:
-      - file: GettingStarted/QuickStart.md
-        title: Quick Start
       - file: GettingStarted/Safety.md
         title: Safety
       - file: GettingStarted/FirstStartup.md

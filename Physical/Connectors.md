@@ -35,7 +35,7 @@ When the robot is powered off:
 | Button action | Robot behavior |
 | ------------- | -------------- |
 | Brief press   | Displays battery charge level for 10 seconds |
-| Hold for 2 seconds | Starts the power-on sequence |
+| Hold for 2 seconds | Starts the power-on sequence. The power button LED blinks purple for about 3 seconds to indicate startup has begun. |
 
 #### Robot on
 
@@ -64,9 +64,7 @@ stop before resetting the system.
 
 #### Firmware update
 
-When the power button LED blinks in a red-blue (police) pattern, the robot internal mainboard is in 
-firmware update mode. This state is intended for service or firmware update procedures and should not be
-active during normal operation.
+When the power button LED blinks in a red-blue (police) pattern, the robot's internal mainboard is in firmware update mode. This state is intended for service or firmware update procedures and should not be active during normal operation.
 
 ## Connectors
 
@@ -96,12 +94,12 @@ To unplug the connector:
 | Connector number | Function |
 | ------------- | -------------- |
 | 1 | Power Button |
-| 2 | AUX 1|
-| 3 | Charger |
+| 2 | Charger |
+| 3 | AUX 1 |
 | 4 | AUX 2 (e-stop) |
-| 5 | LAN |
+| 5 | LPC USB 3.0 |
 | 6 | APC (Orin) USB 3.0 |
-| 7 | LPC USB 3.0 |
+| 7 | LAN |
 | 8 | WAN/LAN |
 | 9 | WiFi Antenna |
 | 10 | WiFi Antenna |

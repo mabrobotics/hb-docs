@@ -1,15 +1,21 @@
 # Intro
 
-Take a while to take a look at the introduction video:
-[![HB50 Intro](https://img.youtube.com/vi/HEddVC-1DnY/0.jpg)](https://www.youtube.com/watch?v=HEddVC-1DnY?si=H7w_sAJWz4VtlIi8)
+```{figure} ./img/intro_robots.png
+:alt: intro robots
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
 
-<iframe width="560" height="315"
+<!-- Take a while to take a look at the introduction video: -->
+
+<!-- <iframe width="560" height="315"
 src="https://www.youtube.com/embed/HEddVC-1DnY"
 title="YouTube video player"
 frameborder="0"
 allowfullscreen
 referrerpolicy="strict-origin-when-cross-origin">
-</iframe>
+</iframe> -->
 
 ## General parameters
 
@@ -17,7 +23,7 @@ referrerpolicy="strict-origin-when-cross-origin">
 | ------------------- | ----------------------- | --- |
 | Robot model         | Honey Badger 5.0 [hb50] |
 | Length (with legs)  | 725 | mm |
-| Length (stowed)     | xxx | mm |
+| Length (stowed)     | 520 | mm |
 | Width               | 320 | mm |
 | Height (sitting)    | 145 | mm |
 | Height (standing)   | 400 | mm |
@@ -42,7 +48,7 @@ referrerpolicy="strict-origin-when-cross-origin">
 | Walking Speed (Run)    | 1.0 | m/s |
 | Slopes | +-30 | ° |
 | **Connectivity**|
-| WiFi 5 AP 802.11 | up to 867Mbps
-| Ethernet | 1x LAN, 1x WAN/LAN, up to 1Gbps each |
+| WiFi 5 AP 802.11 | up to 867 Mbps
+| Ethernet | 1x LAN, 1x WAN/LAN, up to 1 Gbps each |
 
 \*Operating time in nominal conditions - no payload, constant walking (`Walk` gait), with average speed of 0.5m/s, on mostly flat, dry concrete surface.

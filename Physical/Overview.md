@@ -1,5 +1,6 @@
 # Mechanical
 
+(general-dimensions)=
 ## General dimensions
 
 ```{figure} ./img/robot_dimensions.png

@@ -37,4 +37,6 @@ chapters:
     sections:
       - file: Payload/Spool.md
         title: Spool
-    
+  - file: FAQ.md
+    title: FAQ
+

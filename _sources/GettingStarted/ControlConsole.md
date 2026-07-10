@@ -21,6 +21,7 @@ You can use Wi-Fi to connect to other networks (for example internet access). We
 
 Connecting the Steam Deck to the robot is also possible via wired connection. This can be done through the device USB-C port and an Ethernet-to-USB dongle (not included). This setup can be extended to support IP traffic over other media such as optical fiber or long-range radios.
 
+(user-interface)=
 ## User Interface
 
 On the desktop, there is a "Honey Badger" application icon that starts the `remote_node` application for controlling Honey Badger robots. The application provides a quick diagnostic overview and enables typical robot operation tasks.

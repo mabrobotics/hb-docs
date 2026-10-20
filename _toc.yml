@@ -32,6 +32,8 @@ chapters:
         title: Networking
       - file: Software/Geometry.md
         title: Geometry & Frames
+      - file: Software/Updating.md
+        title: Software Update
   - file: Payload/Payload.md
     title: Payload
     sections:

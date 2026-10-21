@@ -1,6 +1,6 @@
 # Network
 
-The robot is equipped with an on-board Wi-Fi router, allowing for easy access, updates, and management of multiple connected devices.
+The robot is equipped with an on-board Wi-Fi router, allowing for easy access, [software updates](Updating.md), and management of multiple connected devices.
 
 By default, the robot is configured with an independent Wi-Fi access point. SSIDs follow a pattern:
 

@@ -62,6 +62,7 @@ LED blinks between red and yellow.
 Do not attempt to operate the robot while the emergency stop is active. Remove the cause of the emergency 
 stop before resetting the system.
 
+(firmware-update)=
 #### Firmware update
 
 When the power button LED blinks in a red-blue (police) pattern, the robot's internal mainboard is in firmware update mode. This state is intended for service or firmware update procedures and should not be active during normal operation.

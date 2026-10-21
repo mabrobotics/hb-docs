@@ -26,7 +26,7 @@ This page provides a concise, safe checklist to power on, connect, and stand a n
 ## 3 — Verify system status (basic checks)
 
 - Check battery level is sufficient (> 30% recommended for initial testing).
-- Confirm ROS 2 / bridge status if shown in the GUI (nodes should be `OK`).
+- Confirm that `control_node` and `bridge_node` are `ACTIVE` in the left menu of the GUI.
 - Look for any error or warning messages in the console/log window.
 
 ## 4 — Energize actuators (enable)
@@ -41,7 +41,7 @@ For full safety guidance, see [Safety](Safety.md).
 
 1. With actuators energized, use the `STAND UP` command in the GUI.
 2. Wait until the robot reaches a stable standing posture.
-3. Switch to `STAND` or a walking mode as required by your workflow.
+3. Switch to `STAND` or a walking mode (`WALK`, `STABLE WALK`) as required by your workflow. With the {ref}`adaptive locomotion mode <adaptive-mode>` on, a walking robot stands still when there is no joystick input.
 4. If the robot does not stand or joints twitch, immediately command `IDLE` and disable actuators.
 
 ## 6 — Basic drive test (low risk)

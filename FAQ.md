@@ -14,7 +14,7 @@ In the remote, use [Command Switch](GettingStarted/ControlConsole.md#user-interf
 - click `DISABLE BUS`
 - set up the robot in the starting [position lying down](Physical/Overview.md#general-dimensions), like on the technical drawings
 - click `ENABLE BUS`
-- click `HEALTHCHECK`
+- click `HEALTH CHECK`
 
 Then go back to the Control Section and follow the normal starting routine.
 

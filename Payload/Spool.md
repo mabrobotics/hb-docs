@@ -63,10 +63,10 @@ By default, the system is operated using the remote controller. However, if the 
 Example of use:
 
 ```bash
-ros2 topic pub /hb50/payload/spool_unroll_speed std_msgs/msg/Float32 "{data: 0.1}"
+ros2 topic pub -r 10 /hb50/payload/spool_unroll_speed std_msgs/msg/Float32 "{data: 0.1}"
 ```
 
-The command unwinds the spool at a linear velocity of 0.1 m/s in addition to the current robot velocity.
+The command unwinds the spool at a linear velocity of 0.1 m/s in addition to the current robot velocity. The manual command must be published continuously — if no command arrives for 250 ms, the manual velocity is set to zero.
 
 ```{warning}
 Passing a negative float value winds the optical fiber. Always ensure there is enough spare fiber available before winding.
@@ -83,13 +83,16 @@ The spool velocity from automatic mode and the manual velocity command are summe
 | Topic | Message Type | QoS | Publish Rate |
 | --- | --- | --- | --- |
 | `/hb50/payload/spool_unroll_speed` | `std_msgs/msg/Float32` | Reliable | 10 hz |
-| `/hb50/robot_state_10hz` | [`hb50_commons/msg/RobotState`](robotstate_def) | mabRT | 10 hz |
+| `/hb50/robot_state_10hz` | [`hb50_commons/msg/RobotState`](robotstate_def) | Reliable | 10 hz |
+
+If `/hb50/robot_state_10hz` is not received for 1 s while the spool is enabled, the automatic velocity is set to zero and an error is reported on `/hb50/status`.
 
 And publishes to the topics:
 
 | Topic | Message Type | QoS | Publish Rate |
 | --- | --- | --- | --- |
 | `/hb50/payload/spool_unroll_length` | `std_msgs/msg/Float32` | Reliable | 10 hz |
+| `/hb50/torque` | `std_msgs/msg/Float32` | Reliable | 10 hz |
 
 ```{note}
 For precise definition of QoS check: {ref}`qos-information`.
@@ -109,6 +112,7 @@ The interface type defined as `hb50_commons::srv::EnableFeature` has the followi
 | --- | --- | --- |
 | `string` | `feature` | Describes function that should be applied. |
 | `bool` | `state` | Represents logic value of 0 or 1 that stands for disabling or enabling feature. |
+| `uint8[]` | `data` | Additional data, not used by the spool. |
 | `bool` | `success` | Informs about result of applied service. |
 
 The operator has two feature names available for calibration or safety control. The argument is passed as a `string` and can be one of the following:

@@ -11,6 +11,8 @@ The robot uses ROS 2 Jazzy (on Ubuntu 24.04 LTS), as its system architecture. Th
 - state_publisher_node - handles TF messages,
 - config_node - global parameter server.
 
+`bridge_node` and `control_node` are ROS 2 [lifecycle nodes](https://design.ros2.org/articles/node_lifecycle.html). In normal operation both are in the `active` state, which can be checked with `ros2 lifecycle get /hb50/control_node`.
+
 ```{figure} ./img/ros_overview.png
 :alt: ros_overview
 :class: bg-primary mb-1
@@ -19,7 +21,7 @@ The robot uses ROS 2 Jazzy (on Ubuntu 24.04 LTS), as its system architecture. Th
 ```
 
 ```{note}
-All ROS 2 components (nodes, topics, services, etc.) use namespaces that match the robot name. For example, a Honey Badger robot in the default configuration uses the namespace `hb50`. The namespace appears as a prefix to all names of the ROS 2 components.
+All ROS 2 components (nodes, topics, services, etc.) use namespaces that match the robot name. For example, a Honey Badger robot in the default configuration uses the namespace `hb50`, and the robot with wheels uses `hb50w`. The namespace appears as a prefix to all names of the ROS 2 components.
 ```
 
 ## Topics and Messages
@@ -35,10 +37,9 @@ Here is a list of relevant topics published by the robot:
 | `/hb50/bridge_data` | `hb50_commons/msg/BridgeData` | mabRT | 500 hz |
 | `/hb50/bridge_state` | `hb50_commons/msg/BridgeState` | mabRT | 500 hz |
 | `/hb50/bridge_state_10hz` | `hb50_commons/msg/BridgeState` | Reliable | 10 hz |
-| `/hb50/config_update` | `std_msgs/msg/String` | Reliable | as needed |
 | `/hb50/control_command` | `std_msgs/msg/String` | Reliable | as needed |
-| `/hb50/hardware_command` | `hb50_commons/msg/Status` | Reliable | as needed |
 | `/hb50/heartbeat` | `hb50_commons/msg/Status` | Reliable | 1 hz |
+| `/hb50/imu_data` | `sensor_msgs/msg/Imu` | Reliable | 500 Hz |
 | `/hb50/joint_command` | `hb50_commons/msg/JointCommand` | mabRT | 500 Hz |
 | `/hb50/joint_states` | `sensor_msgs/msg/JointState` | Reliable | 10 Hz |
 | `/hb50/joy` | `sensor_msgs/msg/Joy` | Reliable | as needed |
@@ -46,9 +47,23 @@ Here is a list of relevant topics published by the robot:
 | `/hb50/robot_state` | `hb50_commons/msg/RobotState` | mabRT | 500 Hz |
 | `/hb50/robot_state_10hz` | `hb50_commons/msg/RobotState` | Reliable | 10 hz |
 | `/hb50/status` | `hb50_commons/msg/Status` | Reliable | as needed |
-| `/hb50/velocity_command` | `geometry_msgs/msg/Twist` | mabRT | as needed | 
+| `/hb50/velocity_command` | `geometry_msgs/msg/Twist` | Reliable | as needed |
+| `/hb50/version_data/robot` | `hb50_commons/msg/VersionData` | Reliable, transient local | once at startup |
+| `/hb50/version_data/deck` | `hb50_commons/msg/VersionData` | Reliable, transient local | once at startup |
 | `/tf` | `tf2_msgs/msg/TFMessage` | Reliable | 10 hz |
 | `/tf_static` | `tf2_msgs/msg/TFMessage` | Reliable | as needed |
+
+`/hb50/control_command` and `/hb50/velocity_command` are the high-level command inputs of `control_node`, see {ref}`Control command <control-command>` and {ref}`Velocity command <velocity-command>`.
+
+### Services
+
+| Service | Type | Provider | Description |
+| --- | --- | --- | --- |
+| `/hb50/bridge_control` | `hb50_commons/srv/EnableFeature` | `bridge_node` | Hardware commands used by the power commands of the remote (`enable`, `disable`, `enable_leg_bus`, `disable_leg_bus`, `healthcheck`, `shutdown`, ...) |
+| `/hb50/maneuver_control` | `hb50_commons/srv/EnableFeature` | `control_node` | Loading, playing and recording of maneuvers |
+| `/hb50/maneuvers_from_robot` | `hb50_commons/srv/GetRobotData` | `bridge_node` | Names of the maneuvers saved on the robot |
+| `/hb50/config_save` | `std_srvs/srv/Trigger` | `config_node` | Saves the current parameters to the robot configuration file |
+| `/hb50/config_restore_default` | `std_srvs/srv/Trigger` | `config_node` | Restores the default configuration |
 
 (qos-information)=
 ### Quality of Service
@@ -57,6 +72,8 @@ There are two types of QoS used in the robot:
 
 - mabRT - depth: 1, best_effort, durability: volatile;
 - Reliable - depth: 10, reliable, durability: volatile;
+
+`version_data` topics use depth 1, reliable, durability: transient local, so a late subscriber still receives the last message.
 
 ### Messages
 

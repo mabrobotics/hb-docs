@@ -20,7 +20,7 @@ Contains the high-frequency mainboard update with kinematics and IMU data. This 
 | `orientation` | `geometry_msgs/Quaternion` | IMU orientation (quaternion) |
 | `angular_velocity` | `geometry_msgs/Vector3` | Body angular velocity (rad/s) |
 | `linear_acceleration` | `geometry_msgs/Vector3` | Body linear acceleration (m/s²) |
-| `joint_name[]` | `string[]` | Names of actuators (e.g., `["fr_j0", "fr_j1", ...]`) |
+| `joint_name[]` | `string[]` | Names of actuators (e.g., `["fr_j0", "fr_j1", ...]`). HB50W reports 16 actuators: the 12 leg joints followed by the wheels `fr_w`, `fl_w`, `rl_w`, `rr_w` |
 | `joint_position[]` | `float32[]` | Current position of each joint (rad) |
 | `joint_velocity[]` | `float32[]` | Current velocity of each joint (rad/s) |
 | `joint_effort[]` | `float32[]` | Estimated torque of each joint (N·m) |
@@ -77,7 +77,7 @@ Commands the actuators with target position, velocity, torque and PD gains. **Cr
 | Field | Type | Description |
 | --- | --- | --- |
 | `header` | `std_msgs/Header` | Timestamp and source |
-| `source_node` | `string` | Name of commanding node (e.g., `hb_control`) |
+| `source_node` | `string` | Name of commanding node (e.g., `control_node`) |
 | `name[]` | `string[]` | Actuator identifiers (e.g., `["fr_j0", "fr_j1", ...]`) |
 | `kp[]` | `float32[]` | Position gain for each joint |
 | `ki[]` | `float32[]` | (Reserved) Integral gain |
@@ -87,7 +87,7 @@ Commands the actuators with target position, velocity, torque and PD gains. **Cr
 | `t_trq[]` | `float32[]` | Target torque (N·m) |
 | `brake[]` | `bool[]` | Enable brake for each joint |
 
-**Important:** Array lengths must match the number of actuators. Order must correspond to the actuator ordering in the configuration.
+**Important:** Array lengths must be at least the number of actuators (12, or 16 for HB50W), otherwise `bridge_node` drops the message. Actuators are commanded by array index, not by `name[]`, so the order must correspond to the actuator ordering in `BridgeData`.
 
 ---
 
@@ -111,11 +111,42 @@ Contains state estimation outputs, body kinematics and dynamics. A low-frequency
 | `pose` | `geometry_msgs/Pose` | Estimated body pose (position and orientation) |
 | `body_vel` | `geometry_msgs/Twist` | Body velocity in body frame (m/s, rad/s) |
 | `world_vel` | `geometry_msgs/Twist` | Body velocity in world frame (m/s, rad/s) |
-| `motion_mode` | `byte` | Current motion mode (enum, see `hb50_control/hb50_control.hpp`) |
+| `motion_mode` | `byte` | Current motion mode (enum) |
 | `motion_type` | `byte` | Motion type classification (enum) |
-| `motion_gait` | `byte` | Current gait (Idle, Stand, Walk, Run, etc.) |
+| `motion_gait` | `byte` | Current gait (enum) |
 
-For motion mode and gait enums, refer to `hb50_control/hb50_control.hpp` in the source repository.
+### Enums
+
+`motion_mode`:
+
+| Value | Name |
+| --- | --- |
+| 0 | `preop` |
+| 1 | `joint` |
+| 2 | `active` |
+| 3 | `wheels` (HB50W) |
+
+`motion_type`:
+
+| Value | Name |
+| --- | --- |
+| 0 | `idle` |
+| 1 | `stand` |
+| 2 | `walk` |
+| 3 | `safety` |
+| 4 | `maneuver` |
+| 5 | `wheels` (HB50W) |
+
+`motion_gait`:
+
+| Value | Name |
+| --- | --- |
+| 0 | `idle` |
+| 1 | `stand` |
+| 2 | `trott` (`WALK`) |
+| 8 | `crawl` (`STABLE WALK`) |
+
+`joint` mode is used for lying, standing up and maneuvers, `active` mode for balancing and walking (`STAND`, `WALK`, `STABLE WALK`).
 
 ---
 
@@ -170,9 +201,59 @@ All nodes should publish a heartbeat Status message with `level=OK` at least eve
 
 ---
 
+## VersionData — software version
+
+**Message type:** `hb50_commons/msg/VersionData`  
+**Producers:** `bridge_node` (`/hb50/version_data/robot`), `remote_node` (`/hb50/version_data/deck`)  
+**Rate:** once at startup  
+**QoS:** Reliable, transient local  
+**Use case:** Checking the software version of the robot and the Steam Deck
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `version_major` | `uint8` | Major version |
+| `version_minor` | `uint8` | Minor version |
+| `version_rev` | `uint8` | Revision |
+| `version_tag` | `string` | Version tag |
+| `git_hash` | `string` | Git commit of the build |
+| `git_branch` | `string` | Git branch of the build |
+| `build_date` | `uint32` | Build date |
+| `robot_uid` | `string` | Unique device ID (`/etc/machine-id`) |
+
+```bash
+ros2 topic echo --once /hb50/version_data/robot
+```
+
+---
+
+(control-command)=
+## Control command
+
+`/hb50/control_command` (`std_msgs/msg/String`, Reliable QoS) changes the robot motion mode. It is the topic used by the control commands of the [HB50 Remote](../GettingStarted/ControlConsole.md) application.
+
+| Command | Remote button | Description |
+| --- | --- | --- |
+| `idle` | `IDLE` | Stops all motion and disables the actuators |
+| `enable` | `ENERGIZE` | Enables the actuators |
+| `stand_up` | `STAND UP` | Stands the robot up, requires enabled actuators |
+| `stand` | `STAND` | Standing with active balance |
+| `walk` | `WALK` | Walking gait (`trott`) |
+| `stable` | `STABLE WALK` | Stable walking gait (`crawl`) |
+| `wheel_ctrl` | `WHEELS` | Driving on wheels, HB50W only, accepted directly after `stand_up` |
+| `adaptive_enable` / `adaptive_disable` | Adaptive locomotion toggle | Turns the {ref}`adaptive locomotion mode <adaptive-mode>` on or off |
+
+`stand`, `walk` and `stable` are accepted only after `stand_up`. The result is reported on `/hb50/status`.
+
+```bash
+ros2 topic pub --once /hb50/control_command std_msgs/msg/String "{data: stand_up}"
+```
+
+---
+
+(velocity-command)=
 ## Velocity command interpretation
 
-The standard ROS geometry message `/hb50/velocity_command` (`geometry_msgs/msg/Twist`) is used for high‑level gait commands. Components are interpreted as:
+The standard ROS geometry message `/hb50/velocity_command` (`geometry_msgs/msg/Twist`, Reliable QoS) is used for high‑level gait commands. Components are interpreted as:
 
 ### Linear velocity
 
@@ -186,7 +267,9 @@ The standard ROS geometry message `/hb50/velocity_command` (`geometry_msgs/msg/T
 - `y` — pitch command (normalized to `[-1, 1]`)
 - `z` — yaw rate (normalized to `[-1, 1]`)
 
-**Normalization:** All normalized commands are scaled by configuration parameters (`cmd_vel_lin`, `cmd_vel_ang`) to produce physical values in SI units (m/s, rad/s).
+**Normalization:** All normalized commands are scaled by configuration parameters (`cmd_vel.lin`, `cmd_vel.ang`) to produce physical values in SI units (m/s, rad/s).
+
+**Timeout:** The command must be published continuously (the Steam Deck publishes at 10 Hz). If no command arrives for 250 ms, `control_node` sets the velocities to zero and the height to the default.
 
 ---
 

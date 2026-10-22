@@ -45,7 +45,6 @@ referrerpolicy="strict-origin-when-cross-origin">
 | **Mobility** |
 | Walking Speed (Stable) | 0.35 | m/s |
 | Walking Speed (Walk)   | 0.6 | m/s |
-| Walking Speed (Run)    | 1.0 | m/s |
 | Slopes | +-30 | ° |
 | **Connectivity**|
 | WiFi 5 AP 802.11 | up to 867 Mbps

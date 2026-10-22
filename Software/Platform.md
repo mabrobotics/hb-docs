@@ -18,6 +18,14 @@ The LPC is the primary real-time control computer for the robot. It typically ru
 
 The LPC is responsible for safe, deterministic robot motion and direct hardware handling.
 
+The nodes are started automatically at power-up by the `hb50` systemd service, which runs the `bringup.launch.py` launch file as user `hb`. The output of the current and the previous run is stored in `~/.hb50.log` and `~/.hb50_previous.log`. To restart the robot software, connect over SSH and run:
+
+```bash
+sudo systemctl restart hb50
+```
+
+The installed software version is stored in `/var/run/hb/version.json` and published on the `/hb50/version_data/robot` topic.
+
 ## APC (Application PC)
 
 The APC is the user-facing application computer. It is intended for:

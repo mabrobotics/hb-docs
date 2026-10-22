@@ -401,6 +401,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topics-and-messages">Topics and Messages</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topics">Topics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#services">Services</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-of-service">Quality of Service</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#messages">Messages</a></li>
 </ul>
@@ -429,12 +430,13 @@ document.write(`
 <li><p>state_publisher_node - handles TF messages,</p></li>
 <li><p>config_node - global parameter server.</p></li>
 </ul>
+<p><code class="docutils literal notranslate"><span class="pre">bridge_node</span></code> and <code class="docutils literal notranslate"><span class="pre">control_node</span></code> are ROS 2 <a class="reference external" href="https://design.ros2.org/articles/node_lifecycle.html">lifecycle nodes</a>. In normal operation both are in the <code class="docutils literal notranslate"><span class="pre">active</span></code> state, which can be checked with <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">lifecycle</span> <span class="pre">get</span> <span class="pre">/hb50/control_node</span></code>.</p>
 <figure class="align-center">
 <img alt="ros_overview" class="no-scaled-link" src="../_images/ros_overview.png" />
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>All ROS 2 components (nodes, topics, services, etc.) use namespaces that match the robot name. For example, a Honey Badger robot in the default configuration uses the namespace <code class="docutils literal notranslate"><span class="pre">hb50</span></code>. The namespace appears as a prefix to all names of the ROS 2 components.</p>
+<p>All ROS 2 components (nodes, topics, services, etc.) use namespaces that match the robot name. For example, a Honey Badger robot in the default configuration uses the namespace <code class="docutils literal notranslate"><span class="pre">hb50</span></code>, and the robot with wheels uses <code class="docutils literal notranslate"><span class="pre">hb50w</span></code>. The namespace appears as a prefix to all names of the ROS 2 components.</p>
 </div>
 <section id="topics-and-messages">
 <h2>Topics and Messages<a class="headerlink" href="#topics-and-messages" title="Link to this heading">#</a></h2>
@@ -466,18 +468,8 @@ document.write(`
 <td><p>Reliable</p></td>
 <td><p>10 hz</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/config_update</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/control_command</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">std_msgs/msg/String</span></code></p></td>
-<td><p>Reliable</p></td>
-<td><p>as needed</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/control_command</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">std_msgs/msg/String</span></code></p></td>
-<td><p>Reliable</p></td>
-<td><p>as needed</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/hardware_command</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/Status</span></code></p></td>
 <td><p>Reliable</p></td>
 <td><p>as needed</p></td>
 </tr>
@@ -486,55 +478,111 @@ document.write(`
 <td><p>Reliable</p></td>
 <td><p>1 hz</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/joint_command</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/imu_data</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sensor_msgs/msg/Imu</span></code></p></td>
+<td><p>Reliable</p></td>
+<td><p>500 Hz</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/joint_command</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/JointCommand</span></code></p></td>
 <td><p>mabRT</p></td>
 <td><p>500 Hz</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/joint_states</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/joint_states</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">sensor_msgs/msg/JointState</span></code></p></td>
 <td><p>Reliable</p></td>
 <td><p>10 Hz</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/joy</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/joy</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">sensor_msgs/msg/Joy</span></code></p></td>
 <td><p>Reliable</p></td>
 <td><p>as needed</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/robot_description</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/robot_description</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">std_msgs/msg/String</span></code></p></td>
 <td><p>Reliable</p></td>
 <td><p>as needed</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/robot_state</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/robot_state</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/RobotState</span></code></p></td>
 <td><p>mabRT</p></td>
 <td><p>500 Hz</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/robot_state_10hz</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/robot_state_10hz</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/RobotState</span></code></p></td>
 <td><p>Reliable</p></td>
 <td><p>10 hz</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/status</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/status</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/Status</span></code></p></td>
 <td><p>Reliable</p></td>
 <td><p>as needed</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/velocity_command</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/velocity_command</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">geometry_msgs/msg/Twist</span></code></p></td>
-<td><p>mabRT</p></td>
+<td><p>Reliable</p></td>
 <td><p>as needed</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/tf</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/version_data/robot</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/VersionData</span></code></p></td>
+<td><p>Reliable, transient local</p></td>
+<td><p>once at startup</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/version_data/deck</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/VersionData</span></code></p></td>
+<td><p>Reliable, transient local</p></td>
+<td><p>once at startup</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/tf</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">tf2_msgs/msg/TFMessage</span></code></p></td>
 <td><p>Reliable</p></td>
 <td><p>10 hz</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/tf_static</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/tf_static</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">tf2_msgs/msg/TFMessage</span></code></p></td>
 <td><p>Reliable</p></td>
 <td><p>as needed</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">/hb50/control_command</span></code> and <code class="docutils literal notranslate"><span class="pre">/hb50/velocity_command</span></code> are the high-level command inputs of <code class="docutils literal notranslate"><span class="pre">control_node</span></code>, see <a class="reference internal" href="Messages.html#control-command"><span class="std std-ref">Control command</span></a> and <a class="reference internal" href="Messages.html#velocity-command"><span class="std std-ref">Velocity command</span></a>.</p>
+</section>
+<section id="services">
+<h3>Services<a class="headerlink" href="#services" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Service</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Provider</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/bridge_control</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/srv/EnableFeature</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bridge_node</span></code></p></td>
+<td><p>Hardware commands used by the power commands of the remote (<code class="docutils literal notranslate"><span class="pre">enable</span></code>, <code class="docutils literal notranslate"><span class="pre">disable</span></code>, <code class="docutils literal notranslate"><span class="pre">enable_leg_bus</span></code>, <code class="docutils literal notranslate"><span class="pre">disable_leg_bus</span></code>, <code class="docutils literal notranslate"><span class="pre">healthcheck</span></code>, <code class="docutils literal notranslate"><span class="pre">shutdown</span></code>, …)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/maneuver_control</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/srv/EnableFeature</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">control_node</span></code></p></td>
+<td><p>Loading, playing and recording of maneuvers</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/maneuvers_from_robot</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/srv/GetRobotData</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bridge_node</span></code></p></td>
+<td><p>Names of the maneuvers saved on the robot</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/config_save</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">std_srvs/srv/Trigger</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">config_node</span></code></p></td>
+<td><p>Saves the current parameters to the robot configuration file</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/config_restore_default</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">std_srvs/srv/Trigger</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">config_node</span></code></p></td>
+<td><p>Restores the default configuration</p></td>
 </tr>
 </tbody>
 </table>
@@ -547,6 +595,7 @@ document.write(`
 <li><p>mabRT - depth: 1, best_effort, durability: volatile;</p></li>
 <li><p>Reliable - depth: 10, reliable, durability: volatile;</p></li>
 </ul>
+<p><code class="docutils literal notranslate"><span class="pre">version_data</span></code> topics use depth 1, reliable, durability: transient local, so a late subscriber still receives the last message.</p>
 </section>
 <section id="messages">
 <h3>Messages<a class="headerlink" href="#messages" title="Link to this heading">#</a></h3>
@@ -624,6 +673,7 @@ For full, canonical field-level documentation of custom messages, see <a class="
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topics-and-messages">Topics and Messages</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topics">Topics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#services">Services</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-of-service">Quality of Service</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#messages">Messages</a></li>
 </ul>

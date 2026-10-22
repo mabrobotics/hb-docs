@@ -432,6 +432,11 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">config_node</span></code> — configuration and parameter server</p></li>
 </ul>
 <p>The LPC is responsible for safe, deterministic robot motion and direct hardware handling.</p>
+<p>The nodes are started automatically at power-up by the <code class="docutils literal notranslate"><span class="pre">hb50</span></code> systemd service, which runs the <code class="docutils literal notranslate"><span class="pre">bringup.launch.py</span></code> launch file as user <code class="docutils literal notranslate"><span class="pre">hb</span></code>. The output of the current and the previous run is stored in <code class="docutils literal notranslate"><span class="pre">~/.hb50.log</span></code> and <code class="docutils literal notranslate"><span class="pre">~/.hb50_previous.log</span></code>. To restart the robot software, connect over SSH and run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>hb50
+</pre></div>
+</div>
+<p>The installed software version is stored in <code class="docutils literal notranslate"><span class="pre">/var/run/hb/version.json</span></code> and published on the <code class="docutils literal notranslate"><span class="pre">/hb50/version_data/robot</span></code> topic.</p>
 </section>
 <section id="apc-application-pc">
 <h2>APC (Application PC)<a class="headerlink" href="#apc-application-pc" title="Link to this heading">#</a></h2>

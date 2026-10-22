@@ -495,10 +495,10 @@ document.write(`
 <p>To enable manual mode with the remote controller, the user should unlock the safety switch (<a class="reference internal" href="#remote-spool"><span class="std std-ref">button number 5</span></a>).</p>
 <p>By default, the system is operated using the remote controller. However, if the operator prefers manual mode via the terminal, they should publish a safe velocity to the <code class="docutils literal notranslate"><span class="pre">/hb50/payload/spool_unroll_speed</span></code> topic.</p>
 <p>Example of use:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>topic<span class="w"> </span>pub<span class="w"> </span>/hb50/payload/spool_unroll_speed<span class="w"> </span>std_msgs/msg/Float32<span class="w"> </span><span class="s2">&quot;{data: 0.1}&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>topic<span class="w"> </span>pub<span class="w"> </span>-r<span class="w"> </span><span class="m">10</span><span class="w"> </span>/hb50/payload/spool_unroll_speed<span class="w"> </span>std_msgs/msg/Float32<span class="w"> </span><span class="s2">&quot;{data: 0.1}&quot;</span>
 </pre></div>
 </div>
-<p>The command unwinds the spool at a linear velocity of 0.1 m/s in addition to the current robot velocity.</p>
+<p>The command unwinds the spool at a linear velocity of 0.1 m/s in addition to the current robot velocity. The manual command must be published continuously — if no command arrives for 250 ms, the manual velocity is set to zero.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Passing a negative float value winds the optical fiber. Always ensure there is enough spare fiber available before winding.</p>
@@ -526,12 +526,13 @@ document.write(`
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/robot_state_10hz</span></code></p></td>
 <td><p><a class="reference internal" href="../Software/Messages.html#robotstate-def"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/RobotState</span></code></span></a></p></td>
-<td><p>mabRT</p></td>
+<td><p>Reliable</p></td>
 <td><p>10 hz</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<p>If <code class="docutils literal notranslate"><span class="pre">/hb50/robot_state_10hz</span></code> is not received for 1 s while the spool is enabled, the automatic velocity is set to zero and an error is reported on <code class="docutils literal notranslate"><span class="pre">/hb50/status</span></code>.</p>
 <p>And publishes to the topics:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -543,6 +544,11 @@ document.write(`
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/payload/spool_unroll_length</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">std_msgs/msg/Float32</span></code></p></td>
+<td><p>Reliable</p></td>
+<td><p>10 hz</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/torque</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">std_msgs/msg/Float32</span></code></p></td>
 <td><p>Reliable</p></td>
 <td><p>10 hz</p></td>
@@ -590,7 +596,11 @@ document.write(`
 <td><p><code class="docutils literal notranslate"><span class="pre">state</span></code></p></td>
 <td><p>Represents logic value of 0 or 1 that stands for disabling or enabling feature.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">uint8[]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">data</span></code></p></td>
+<td><p>Additional data, not used by the spool.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">success</span></code></p></td>
 <td><p>Informs about result of applied service.</p></td>
 </tr>

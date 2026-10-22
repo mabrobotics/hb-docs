@@ -403,7 +403,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wired-connection">Wired connection</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-interface">User Interface</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-interface">User Interface</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#control-commands">Control commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#power-commands">Power commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adaptive-locomotion-mode">Adaptive locomotion mode</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controls-layout">Controls Layout</a></li>
 </ul>
             </nav>
@@ -436,10 +441,88 @@ document.write(`
 </section>
 <section id="user-interface">
 <span id="id1"></span><h2>User Interface<a class="headerlink" href="#user-interface" title="Link to this heading">#</a></h2>
-<p>On the desktop, there is a “Honey Badger” application icon that starts the <code class="docutils literal notranslate"><span class="pre">remote_node</span></code> application for controlling Honey Badger robots. The application provides a quick diagnostic overview and enables typical robot operation tasks.</p>
+<p>On the desktop, there is an <code class="docutils literal notranslate"><span class="pre">HB50</span> <span class="pre">Remote</span></code> application icon that starts the <code class="docutils literal notranslate"><span class="pre">remote_node</span></code> application for controlling Honey Badger robots. The application provides a quick diagnostic overview and enables typical robot operation tasks.</p>
 <figure class="align-center">
 <img alt="deck_remote" class="no-scaled-link" src="../_images/deck_remote.png" />
 </figure>
+<p>The application window consists of:</p>
+<ul class="simple">
+<li><p><strong>Status</strong> (bottom) — connection state, battery level, DC voltage, charger and DC bus state, temperatures, energy used and up time,</p></li>
+<li><p><strong>Menu</strong> (left) — state of <code class="docutils literal notranslate"><span class="pre">control_node</span></code> and <code class="docutils literal notranslate"><span class="pre">bridge_node</span></code>: <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code>, <code class="docutils literal notranslate"><span class="pre">INACTIVE</span></code>, <code class="docutils literal notranslate"><span class="pre">UNCONFIGURED</span></code> or <code class="docutils literal notranslate"><span class="pre">OFF</span></code>. During normal operation both nodes are <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code>. The <code class="docutils literal notranslate"><span class="pre">DEV</span> <span class="pre">MODE</span></code> toggle at the bottom is PIN-protected and intended for MAB service,</p></li>
+<li><p><strong>MainMenu</strong> (center) — walking height and feet height sliders, robot state overview (motion mode, motion type and current gait), leg temperatures, connected Wi-Fi network and the <a class="reference internal" href="#adaptive-mode"><span class="std std-ref">adaptive locomotion mode</span></a> toggle,</p></li>
+<li><p><strong>Console</strong> — status messages from the robot and the application,</p></li>
+<li><p><strong>Bridge</strong> (right) — robot commands. The Command Switch button at the top (<code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">GO</span> <span class="pre">TO</span> <span class="pre">POWER</span> <span class="pre">COMMANDS</span></code> / <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">GO</span> <span class="pre">TO</span> <span class="pre">CONTROL</span> <span class="pre">COMMANDS</span></code>) switches between control and power commands.</p></li>
+</ul>
+<section id="control-commands">
+<h3>Control commands<a class="headerlink" href="#control-commands" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">IDLE</span></code></p></td>
+<td><p>Stops all motion and disables the actuators (on HB50W after 3 s).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ENERGIZE</span></code></p></td>
+<td><p>Enables the actuators.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">STAND</span> <span class="pre">UP</span></code></p></td>
+<td><p>Stands the robot up. Requires energized actuators.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">STAND</span></code></p></td>
+<td><p>Standing with active balance.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">WALK</span></code></p></td>
+<td><p>Walking gait.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">STABLE</span> <span class="pre">WALK</span></code></p></td>
+<td><p>Slow, stable walking gait.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">WHEELS</span></code></p></td>
+<td><p>Driving on wheels — HB50W only, available directly after <code class="docutils literal notranslate"><span class="pre">STAND</span> <span class="pre">UP</span></code>. Use <code class="docutils literal notranslate"><span class="pre">STAND</span> <span class="pre">UP</span></code> to leave the wheel mode.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">RECOVERY</span></code></p></td>
+<td><p>Moves the legs back to the starting position after a fall. Available after <code class="docutils literal notranslate"><span class="pre">ENERGIZE</span></code> or <code class="docutils literal notranslate"><span class="pre">STAND</span> <span class="pre">UP</span></code>. If the robot lies on its back, the application asks to which side it should roll over — check for obstacles and choose the safe side.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="power-commands">
+<h3>Power commands<a class="headerlink" href="#power-commands" title="Link to this heading">#</a></h3>
+<p>Each power command asks for confirmation before it is executed.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SHUTDOWN</span></code></p></td>
+<td><p>Shuts down the robot.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ENABLE</span> <span class="pre">BUS</span></code></p></td>
+<td><p>Powers on the actuators bus.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DISABLE</span> <span class="pre">BUS</span></code></p></td>
+<td><p>Powers off the actuators bus.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">HEALTH</span> <span class="pre">CHECK</span></code></p></td>
+<td><p>Checks communication with all actuators and their positions. The result is shown in the console.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">RESET</span> <span class="pre">CONTROL</span></code></p></td>
+<td><p>Restarts <code class="docutils literal notranslate"><span class="pre">control_node</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="adaptive-locomotion-mode">
+<span id="adaptive-mode"></span><h3>Adaptive locomotion mode<a class="headerlink" href="#adaptive-locomotion-mode" title="Link to this heading">#</a></h3>
+<p>When the adaptive locomotion mode is on (default), a walking robot stops stepping and stands after 1 s without joystick input. When the joystick is moved again, the robot returns to the selected gait (<code class="docutils literal notranslate"><span class="pre">WALK</span></code> or <code class="docutils literal notranslate"><span class="pre">STABLE</span> <span class="pre">WALK</span></code>) and ramps up the velocity over 0.5 s. When the mode is off, the robot keeps stepping in place.</p>
+</section>
 </section>
 <section id="controls-layout">
 <h2>Controls Layout<a class="headerlink" href="#controls-layout" title="Link to this heading">#</a></h2>
@@ -518,7 +601,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wired-connection">Wired connection</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-interface">User Interface</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-interface">User Interface</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#control-commands">Control commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#power-commands">Power commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adaptive-locomotion-mode">Adaptive locomotion mode</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controls-layout">Controls Layout</a></li>
 </ul>
   </nav></div>

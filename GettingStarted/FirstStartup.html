@@ -455,7 +455,7 @@ document.write(`
 <h2>3 — Verify system status (basic checks)<a class="headerlink" href="#verify-system-status-basic-checks" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Check battery level is sufficient (&gt; 30% recommended for initial testing).</p></li>
-<li><p>Confirm ROS 2 / bridge status if shown in the GUI (nodes should be <code class="docutils literal notranslate"><span class="pre">OK</span></code>).</p></li>
+<li><p>Confirm that <code class="docutils literal notranslate"><span class="pre">control_node</span></code> and <code class="docutils literal notranslate"><span class="pre">bridge_node</span></code> are <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code> in the left menu of the GUI.</p></li>
 <li><p>Look for any error or warning messages in the console/log window.</p></li>
 </ul>
 </section>
@@ -473,7 +473,7 @@ document.write(`
 <ol class="arabic simple">
 <li><p>With actuators energized, use the <code class="docutils literal notranslate"><span class="pre">STAND</span> <span class="pre">UP</span></code> command in the GUI.</p></li>
 <li><p>Wait until the robot reaches a stable standing posture.</p></li>
-<li><p>Switch to <code class="docutils literal notranslate"><span class="pre">STAND</span></code> or a walking mode as required by your workflow.</p></li>
+<li><p>Switch to <code class="docutils literal notranslate"><span class="pre">STAND</span></code> or a walking mode (<code class="docutils literal notranslate"><span class="pre">WALK</span></code>, <code class="docutils literal notranslate"><span class="pre">STABLE</span> <span class="pre">WALK</span></code>) as required by your workflow. With the <a class="reference internal" href="ControlConsole.html#adaptive-mode"><span class="std std-ref">adaptive locomotion mode</span></a> on, a walking robot stands still when there is no joystick input.</p></li>
 <li><p>If the robot does not stand or joints twitch, immediately command <code class="docutils literal notranslate"><span class="pre">IDLE</span></code> and disable actuators.</p></li>
 </ol>
 </section>

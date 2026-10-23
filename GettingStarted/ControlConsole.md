@@ -38,7 +38,7 @@ On the desktop, there is an `HB50 Remote` application icon that starts the `remo
 The application window consists of:
 
 - **Status** (bottom) — connection state, battery level, DC voltage, charger and DC bus state, temperatures, energy used and up time,
-- **Menu** (left) — state of `control_node` and `bridge_node`: `ACTIVE`, `INACTIVE`, `UNCONFIGURED` or `OFF`. During normal operation both nodes are `ACTIVE`. The `DEV MODE` toggle at the bottom is PIN-protected and intended for MAB service,
+- **Menu** (left) — state of `control_node` and `bridge_node`: `ACTIVE`, `INACTIVE`, `UNCONFIGURED` or `OFF`. During normal operation both nodes are `ACTIVE`. When a spool is detected, the `SPOOL MENU` button appears, see [Spool](../Payload/Spool.md). The `DEV MODE` toggle at the bottom is PIN-protected and intended for MAB service,
 - **MainMenu** (center) — walking height and feet height sliders, robot state overview (motion mode, motion type and current gait), leg temperatures, connected Wi-Fi network and the {ref}`adaptive locomotion mode <adaptive-mode>` toggle,
 - **Console** — status messages from the robot and the application,
 - **Bridge** (right) — robot commands. The Command Switch button at the top (`> GO TO POWER COMMANDS` / `> GO TO CONTROL COMMANDS`) switches between control and power commands.
@@ -62,11 +62,13 @@ Each power command asks for confirmation before it is executed.
 
 | Command | Function |
 | --- | --- |
-| `SHUTDOWN` | Shuts down the robot. |
+| `SHUTDOWN` | Shuts down the robot and powers it off. |
 | `ENABLE BUS` | Powers on the actuators bus. |
 | `DISABLE BUS` | Powers off the actuators bus. |
-| `HEALTH CHECK` | Checks communication with all actuators and their positions. The result is shown in the console. |
+| `HEALTH CHECK` | Checks communication with all actuators and their positions. The result is shown in the console. Refused while the actuators are enabled — select `IDLE` first. |
 | `RESET CONTROL` | Restarts `control_node`. |
+| `CHECK SOFTWARE UPDATE` | Verifies the software update bundle, see [Software Update](../Software/Updating.md). |
+| `APPLY SOFTWARE UPDATE` | Installs the verified software update on the robot and the Steam Deck. |
 
 (adaptive-mode)=
 ### Adaptive locomotion mode
@@ -75,7 +77,7 @@ When the adaptive locomotion mode is on (default), a walking robot stops steppin
 
 ## Controls Layout
 
-Alongside `remote_node` there is also another node `teleop_node`, which captures joystick button inputs and converts them to robot commands. Below is a list of supported commands and actions:
+Alongside `remote_node` there is also another node `teleop_node`, which captures joystick button inputs and converts them to robot commands. If the controller input is lost for more than 0.3 s, `teleop_node` commands zero velocity. Below is a list of supported commands and actions:
 
 ```{figure} ./img/deck_controls.png
 :alt: deck_controls

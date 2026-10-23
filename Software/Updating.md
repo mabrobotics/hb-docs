@@ -8,7 +8,7 @@ This chapter covers the robot's ROS 2 software stack running on the LPC and the 
 
 ## Update bundle
 
-Updates are delivered as a single file named `hb50-<target>-v<version>.tar`, for example `hb50-all-v1.2.0.tar`. Target `all` means the bundle is valid for both the robot and the Steam Deck. The file can be sent by email, downloaded or copied from a USB stick — do not unpack or rename it.
+Updates are delivered as a single file named `hb50-<target>-v<version>.tar`, for example `hb50-all-v1.3.0.tar`. Target `all` means the bundle is valid for both the robot and the Steam Deck. The file can be sent by email, downloaded or copied from a USB stick — do not unpack or rename it.
 
 Every bundle is signed by MAB. Before installing, both the Steam Deck and the robot verify:
 
@@ -30,10 +30,10 @@ Robots and Steam Decks running software older than v1.2.0 must be updated once w
 Copy the bundle into the `updates` folder in the home directory of the Steam Deck (`/home/mab/updates/`), for example from a USB stick in the Steam Deck desktop mode, or from a laptop connected to the robot's network (see [Network](Networking.md)):
 
 ```bash
-scp hb50-all-v1.2.0.tar mab@deck.lan:~/updates/
+scp hb50-all-v1.3.0.tar mab@deck.lan:~/updates/
 ```
 
-If there are several bundles in the folder, the last one in alphabetical order of file names is used. Keep only the bundle you want to install in the folder.
+If there are several bundles in the folder, the one with the newest version is used.
 
 ### 2. Put the robot in a safe state
 
@@ -55,10 +55,10 @@ Press `APPLY SOFTWARE UPDATE`. This button only works after a successful check.
 
 The robot is updated first:
 
-1. it unpacks the new software next to the current one (`/home/hb/install-<version>/`),
+1. it unpacks the new software next to the current one (`/home/hb/install-<version>-<id>/`),
 2. stops the robot software (`hb50` service),
 3. switches `/home/hb/install` to the new version,
-4. starts the robot software again and waits up to 20 s for the `hb50` service to run.
+4. starts the robot software again and waits up to 60 s for the first control cycle, which shows that the configuration, the hardware communication and the controller all work.
 
 If the new software starts correctly, the bundle is removed from `/home/hb/updates/` and older software versions are deleted, keeping only the current and the previous one. If it does not start, the robot automatically rolls back to the previous version.
 
@@ -83,6 +83,8 @@ To confirm the installed version, connect over SSH to the robot or the Steam Dec
 ```bash
 cat ~/install/.hb50_version
 ```
+
+When the robot and the Steam Deck run different versions, the status console shows the warning `Robot runs v<version>, remote v<version>: update both to the same version`.
 
 (status-codes)=
 ## Status codes
@@ -131,10 +133,11 @@ The first update uses the package `hb50-first-update-v<version>.tar` supplied by
 
    If the robot does not use the default address `10.11.0.10`, add it at the end, for example `./first_update.sh hb50-all-v<version>.tar hb@<robot-ip>`.
 
-4. Type the robot password when asked. You may be asked twice: once to set up the SSH key, once to install the software.
-5. Wait until the script prints `=== Done: robot and remote run v<version>. Start the HB50 Remote app again.` and start the `HB50 Remote` application.
+4. Type the robot password when asked. You may be asked twice: once to set up the SSH key, once to install the software. If the script asks for the robot name, type the model: `hb40`, `hb50`, or `hb50w` for the robot with wheels.
+5. Wait until the script prints `=== Done: robot and remote run v<version>. Start the HB50 Remote app again.`
+6. Start the `HB50 Remote` application with the `HB50 Remote` icon on the desktop. The script creates the icon for your robot; the old `Honey Badger` icon no longer works and is removed.
 
-If something fails, the script stops and prints the reason. If it stops before `Stopping hb50...`, nothing on the robot was changed. Fix the problem (usually the network connection or the password) and run the same command again.
+The script can be run again safely: the robot or the Steam Deck is skipped if it already runs this version. If the robot is not reachable, only the Steam Deck is updated and the script ends with `robot was NOT updated` — connect the robot and run the same command again. If something fails, the script stops and prints the reason; if it stops before `Stopping hb50...`, nothing on the robot was changed.
 
 The software installed before the first update is kept in `~/install-legacy` on both devices.
 
@@ -144,7 +147,7 @@ The robot update can also be triggered without the Steam Deck, using the service
 
 | Service | Type | Description |
 | --- | --- | --- |
-| `/hb50/check_for_update` | `hb50_commons/srv/CheckForUpdate` | Verifies a bundle. `bundle_path` selects the directory to search for the bundle (empty — `/home/hb/updates/`) |
+| `/hb50/check_for_update` | `hb50_commons/srv/CheckForUpdate` | Verifies a bundle. `bundle_path` selects the bundle file or the directory to search (empty — `/home/hb/updates/`) |
 | `/hb50/apply_update` | `hb50_commons/srv/ApplyUpdate` | Installs the bundle verified by the last check |
 
 ```bash

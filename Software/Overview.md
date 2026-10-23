@@ -35,10 +35,10 @@ Here is a list of relevant topics published by the robot:
 | Topic | Message Type | QoS | Publish Rate |
 | --- | --- | --- | --- |
 | `/hb50/bridge_data` | `hb50_commons/msg/BridgeData` | mabRT | 500 hz |
+| `/hb50/bridge_data_10hz` | `hb50_commons/msg/BridgeData` | Reliable | 10 hz |
 | `/hb50/bridge_state` | `hb50_commons/msg/BridgeState` | mabRT | 500 hz |
 | `/hb50/bridge_state_10hz` | `hb50_commons/msg/BridgeState` | Reliable | 10 hz |
 | `/hb50/control_command` | `std_msgs/msg/String` | Reliable | as needed |
-| `/hb50/heartbeat` | `hb50_commons/msg/Status` | Reliable | 1 hz |
 | `/hb50/imu_data` | `sensor_msgs/msg/Imu` | Reliable | 500 Hz |
 | `/hb50/joint_command` | `hb50_commons/msg/JointCommand` | mabRT | 500 Hz |
 | `/hb50/joint_states` | `sensor_msgs/msg/JointState` | Reliable | 10 Hz |
@@ -48,7 +48,7 @@ Here is a list of relevant topics published by the robot:
 | `/hb50/robot_state_10hz` | `hb50_commons/msg/RobotState` | Reliable | 10 hz |
 | `/hb50/status` | `hb50_commons/msg/Status` | Reliable | as needed |
 | `/hb50/velocity_command` | `geometry_msgs/msg/Twist` | Reliable | as needed |
-| `/hb50/version_data/robot` | `hb50_commons/msg/VersionData` | Reliable, transient local | once at startup |
+| `/hb50/version_data/robot` | `hb50_commons/msg/VersionData` | Reliable, transient local | once, after the first control cycle |
 | `/hb50/version_data/deck` | `hb50_commons/msg/VersionData` | Reliable, transient local | once at startup |
 | `/tf` | `tf2_msgs/msg/TFMessage` | Reliable | 10 hz |
 | `/tf_static` | `tf2_msgs/msg/TFMessage` | Reliable | as needed |
@@ -61,7 +61,7 @@ Here is a list of relevant topics published by the robot:
 | --- | --- | --- | --- |
 | `/hb50/bridge_control` | `hb50_commons/srv/EnableFeature` | `bridge_node` | Hardware commands used by the power commands of the remote (`enable`, `disable`, `enable_leg_bus`, `disable_leg_bus`, `healthcheck`, `shutdown`, ...) |
 | `/hb50/maneuver_control` | `hb50_commons/srv/EnableFeature` | `control_node` | Loading, playing and recording of maneuvers |
-| `/hb50/maneuvers_from_robot` | `hb50_commons/srv/GetRobotData` | `bridge_node` | Names of the maneuvers saved on the robot |
+| `/hb50/maneuvers_from_robot` | `hb50_commons/srv/GetRobotData` | `control_node` | Names of the maneuvers available on the robot |
 | `/hb50/config_save` | `std_srvs/srv/Trigger` | `config_node` | Saves the current parameters to the robot configuration file |
 | `/hb50/config_restore_default` | `std_srvs/srv/Trigger` | `config_node` | Restores the default configuration |
 | `/hb50/check_for_update` | `hb50_commons/srv/CheckForUpdate` | `control_node` | Verifies a software update bundle, see [Software Update](Updating.md) |

@@ -26,6 +26,8 @@ sudo systemctl restart hb50
 
 The installed software version is stored in `/var/run/hb/version.json` and published on the `/hb50/version_data/robot` topic.
 
+Each software version is installed in its own `~/install-<version>` folder, and `~/install` is a link to the active one. For installing new versions, see [Software Update](Updating.md).
+
 ## APC (Application PC)
 
 The APC is the user-facing application computer. It is intended for:

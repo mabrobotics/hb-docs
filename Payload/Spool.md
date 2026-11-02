@@ -9,20 +9,12 @@ Communication with the spool driver is established through the ROS 2 `spool_node
 ## Spool remote controller interface
 
 ```{warning}
-The spool attachment is disabled by default. Always verify the spool is enabled before operating the robot with the spool attached.
+The spool motors are disabled by default. Always enable the spool (`ENABLE SPOOL`) before operating the robot with the spool attached.
 
-If the spool is not enabled and the robot moves, the spool or fiber can be damaged. Enabling the spool also updates the robot motion controller with the spool mass and inertial parameters.
-
-Make sure the `Enable spool attachment mode` toggle shown below is active before using spool functions.
+If the spool is not enabled and the robot moves, the spool or fiber can be damaged.
 ```
 
-```{figure} ./img/main_menu_spool_dis_warn.png
-:name: main_menu_spool
-:alt: main_menu_spool
-:class: bg-primary mb-1
-:align: center
-:class: no-scaled-link
-```
+The `SPOOL MENU` button appears in the left menu of the `HB50 Remote` application automatically when the robot detects the spool, that is when `spool_node` is running.
 
 Spool control has a separate interface built into the remote controller. It allows the operator to handle the spool safely. To begin, the operator should press the `SPOOL MENU` button (number 1) to open the spool control view.
 
@@ -85,7 +77,7 @@ The spool velocity from automatic mode and the manual velocity command are summe
 | `/hb50/payload/spool_unroll_speed` | `std_msgs/msg/Float32` | Reliable | 10 hz |
 | `/hb50/robot_state_10hz` | [`hb50_commons/msg/RobotState`](robotstate_def) | Reliable | 10 hz |
 
-If `/hb50/robot_state_10hz` is not received for 1 s while the spool is enabled, the automatic velocity is set to zero and an error is reported on `/hb50/status`.
+If `/hb50/robot_state_10hz` is not received for 1 s while the spool is enabled, the automatic velocity is set to zero and an error is reported on `/hb50/status`. Spool drive faults are reported on `/hb50/status` as well.
 
 And publishes to the topics:
 

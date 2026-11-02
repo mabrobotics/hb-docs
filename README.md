@@ -16,7 +16,7 @@ Documentation for Honey Badger robots.
 - [Messages](Software/Messages.md) — custom ROS2 message reference
 - [Networking](Software/Networking.md) — Wi-Fi, SSH, and ROS2 network notes
 - [Geometry](Software/Geometry.md) — coordinate frames and leg geometry
-- [Payload](Payload/Payload.md) — payload mount and spool configuration
+- [Payload](Payload/Payload.md) — payload mount, spool, camera and lidar configuration
 
 ## Building
 

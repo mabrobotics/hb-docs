@@ -6,11 +6,11 @@ This page documents the custom ROS 2 message types used by Honey Badger 5.0. All
 
 **Message type:** `hb50_commons/msg/BridgeData`  
 **Producer:** `bridge_node`  
-**Rate:** 500 Hz  
-**QoS:** mabRT  
+**Rate:** 500 Hz (standard), 10 Hz (`/bridge_data_10hz`)  
+**QoS:** mabRT (500 Hz), Reliable (10 Hz)  
 **Use case:** Control applications requiring raw actuator data
 
-Contains the high-frequency mainboard update with kinematics and IMU data. This is the primary topic for control loops and state estimation.
+Contains the high-frequency mainboard update with kinematics and IMU data. This is the primary topic for control loops and state estimation. A low-frequency variant (`/bridge_data_10hz`) is provided for visualization and lossy networks.
 
 ### Fields
 
@@ -85,9 +85,10 @@ Commands the actuators with target position, velocity, torque and PD gains. **Cr
 | `t_pos[]` | `float32[]` | Target position (rad) |
 | `t_vel[]` | `float32[]` | Target velocity (rad/s) |
 | `t_trq[]` | `float32[]` | Target torque (N·m) |
-| `brake[]` | `bool[]` | Enable brake for each joint |
 
 **Important:** Array lengths must be at least the number of actuators (12, or 16 for HB50W), otherwise `bridge_node` drops the message. Actuators are commanded by array index, not by `name[]`, so the order must correspond to the actuator ordering in `BridgeData`.
+
+If `bridge_node` receives no `JointCommand` for 100 ms, it switches the actuators to damping.
 
 ---
 
@@ -173,8 +174,8 @@ Describes the estimated state of a single leg, including foot contact and forces
 ## Status — event and status messages
 
 **Message type:** `hb50_commons/msg/Status`
-**Producers:** All nodes (by heartbeat sub-node), `bridge_node` (hardware events), `control_node` (control events)
-**Rate:** 1 Hz (heartbeat), as needed (events)
+**Producers:** `bridge_node` (hardware events), `control_node` (control events), `spool_node` (spool events)
+**Rate:** as needed
 **QoS:** Reliable
 **Use case:** Monitoring, logging, alarm handling
 
@@ -197,15 +198,13 @@ General‑purpose status message for reporting important events, warnings and er
 - `ERROR=3` — error condition
 - `STALE=4` — stale/timeout condition
 
-All nodes should publish a heartbeat Status message with `level=OK` at least every 1 second. Missing heartbeats indicate communication loss or node crash.
-
 ---
 
 ## VersionData — software version
 
 **Message type:** `hb50_commons/msg/VersionData`  
-**Producers:** `bridge_node` (`/hb50/version_data/robot`), `remote_node` (`/hb50/version_data/deck`)  
-**Rate:** once at startup  
+**Producers:** `control_node` (`/hb50/version_data/robot`), `remote_node` (`/hb50/version_data/deck`)  
+**Rate:** once — `control_node` after its first control cycle, `remote_node` at startup  
 **QoS:** Reliable, transient local  
 **Use case:** Checking the software version of the robot and the Steam Deck
 
@@ -280,7 +279,7 @@ The standard ROS geometry message `/hb50/velocity_command` (`geometry_msgs/msg/T
 - **Subscribe to:** `/hb50/bridge_data` (500 Hz) for raw actuator feedback
 - **Publish to:** `/hb50/joint_command` (500 Hz) for actuator commands
 - **Monitor:** `/hb50/robot_state` (500 Hz) for state estimation
-- **Check:** `/hb50/heartbeat` (1 Hz) to detect stale nodes
+- **Check:** `ros2 lifecycle get /hb50/control_node` to confirm the node is `active`
 
 ### For UI and visualization
 
@@ -291,5 +290,5 @@ The standard ROS geometry message `/hb50/velocity_command` (`geometry_msgs/msg/T
 ### For diagnostics and logging
 
 - **Monitor:** `/hb50/bridge_state` for power and temperature trends
-- **Watch:** `/hb50/status` and `/hb50/heartbeat` for node health
+- **Watch:** `/hb50/status` for warnings and errors, and the lifecycle state of `bridge_node` and `control_node` for node health
 - **Check:** `joint_temperature` and `joint_status` in `/hb50/bridge_data` for actuator issues

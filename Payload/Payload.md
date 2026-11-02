@@ -2,6 +2,12 @@
 
 Configuration of the Honey Badger robot can be extended by mounting additional payload to its back. It allows user for upgrading Honey Badger capabilities.
 
+Supported payloads:
+
+- [Camera & Lidar](CameraLidar.md) — camera and Livox MID-360 lidar,
+- [Spool](Spool.md) — optical-fiber spool for a wired connection to the robot.
+
+
 ## Payload mount
 
 Payload can be attached on the robots' back, using mounting points:

@@ -38,7 +38,7 @@ On the desktop, there is an `HB50 Remote` application icon that starts the `remo
 The application window consists of:
 
 - **Status** (bottom) — connection state, battery level, DC voltage, charger and DC bus state, temperatures, energy used and up time,
-- **Menu** (left) — state of `control_node` and `bridge_node`: `ACTIVE`, `INACTIVE`, `UNCONFIGURED` or `OFF`. During normal operation both nodes are `ACTIVE`. When a spool is detected, the `SPOOL MENU` button appears, see [Spool](../Payload/Spool.md). The `DEV MODE` toggle at the bottom is PIN-protected and intended for MAB service,
+- **Menu** (left) — state of `control_node` and `bridge_node`: `ACTIVE`, `INACTIVE`, `UNCONFIGURED` or `OFF`. During normal operation both nodes are `ACTIVE`. When a payload is detected, the `CAMERA MENU`, `LIDAR MENU` or `SPOOL MENU` button appears, see [Camera & Lidar](../Payload/CameraLidar.md) and [Spool](../Payload/Spool.md). The `DEV MODE` toggle at the bottom is PIN-protected and intended for MAB service,
 - **MainMenu** (center) — walking height and feet height sliders, robot state overview (motion mode, motion type and current gait), leg temperatures, connected Wi-Fi network and the {ref}`adaptive locomotion mode <adaptive-mode>` toggle,
 - **Console** — status messages from the robot and the application,
 - **Bridge** (right) — robot commands. The Command Switch button at the top (`> GO TO POWER COMMANDS` / `> GO TO CONTROL COMMANDS`) switches between control and power commands.

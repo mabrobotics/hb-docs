@@ -4,7 +4,7 @@ Configuration of the Honey Badger robot can be extended by mounting additional p
 
 Supported payloads:
 
-- [Camera & Lidar](CameraLidar.md) — camera and Livox MID-360 lidar,
+- [Camera & Lidar](CameraLidar.md) — camera, Livox MID-360 lidar and LEDs,
 - [Spool](Spool.md) — optical-fiber spool for a wired connection to the robot.
 
 

@@ -18,15 +18,13 @@ The LPC is the primary real-time control computer for the robot. It typically ru
 
 The LPC is responsible for safe, deterministic robot motion and direct hardware handling.
 
-The nodes are started automatically at power-up by the `hb50` systemd service, which runs the `bringup.launch.py` launch file as user `hb`. The robot name, which is also the ROS 2 namespace (`hb50` or `hb50w`), is set by `HB50_NAMESPACE` in `~/.bashrc`. The console output of the current and the previous run is stored in `~/.hb50.log` and `~/.hb50_previous.log`; ROS 2 log files are kept in RAM in `/run/hb/log` and removed when the service stops. To restart the robot software, connect over SSH and run:
+The nodes are started automatically at power-up by the `hb50` systemd service, which runs the `bringup.launch.py` launch file as user `hb`. The robot name, which is also the ROS 2 namespace (`hb50`, `hb50w` or `hb40`), is set by `ROBOT_NS` in `/etc/default/hb50`, together with `ROS_DOMAIN_ID`. The console output of the current and the previous run is stored in `~/.hb50.log` and `~/.hb50_previous.log`; ROS 2 log files are kept in RAM in `/run/hb/log` and removed when the service stops. To restart the robot software, connect over SSH and run:
 
 ```bash
 sudo systemctl restart hb50
 ```
 
-The installed software version is stored in `/run/hb/version.json` and published on the `/hb50/version_data/robot` topic.
-
-Each software version is installed in its own `~/install-<version>-<id>` folder, and `~/install` is a link to the active one. For installing new versions, see [Software Update](Updating.md).
+The software is installed from the `hb50-robot` package in `/opt/hb50-robot`. The installed version is published on the `/hb50/version_data/robot` topic. For installing new versions, see [Software Update](Updating.md).
 
 ## APC (Application PC)
 
@@ -37,7 +35,7 @@ The APC is the user-facing application computer. It is intended for:
 - custom user applications
 - data logging and analysis
 
-By default, MAB-supplied ROS 2 nodes are not launched on the APC. This keeps the APC available for additional compute workloads without affecting the locomotion stack.
+By default, MAB-supplied ROS 2 nodes are not launched on the APC. This keeps the APC available for additional compute workloads without affecting the locomotion stack. The only exception is the optional `hb50-payload` package, which runs the camera, lidar and LED payload, see [Camera & Lidar](../Payload/CameraLidar.md).
 
 ## Network roles
 

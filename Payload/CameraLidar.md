@@ -1,75 +1,8 @@
 # Camera & Lidar
 
-The Honey Badger robot can be equipped with a camera, a Livox MID-360 lidar and LEDs. All of them are handled by the ROS 2 `payload_node` (package `hb50_payload`), which runs on the payload computer (the APC or a Raspberry Pi).
+The Honey Badger robot can be equipped with a camera, a Livox MID-360 lidar and LEDs. All of them are handled by the ROS 2 `payload_node` (package `hb50_payload`), which runs on the APC (Jetson Orin) in a ROS 2 Jazzy Docker container.
 
-## Setup
-
-`payload_node` is started with:
-
-```bash
-ros2 launch hb50_payload payload.launch.py robot_ns:=hb50 config:=<path to payload.yaml>
-```
-
-`robot_ns` is the robot namespace (`hb50` by default). When `config` is omitted, the default `payload.yaml` from the `hb50_payload` package is used. The node restarts automatically 2 s after a crash.
-
-On a Jetson with JetPack 6 (Ubuntu 22.04), ROS 2 Jazzy is not available, so the node runs in a Docker container. The container is started once with:
-
-```bash
-~/install/hb50_payload/share/hb50_payload/scripts/run_container.sh [robot_ns] [config]
-```
-
-It starts again with Docker after a reboot. Logs are available with `docker logs -f hb50_payload`. The container is stopped with `docker stop hb50_payload`, which also closes an open rosbag properly, and removed with `docker rm -f hb50_payload`.
-
-### Configuration
-
-The payload is configured in `payload.yaml`:
-
-```yaml
-/**:
-  ros__parameters:
-    camera:
-      device: /dev/video0
-      name: locomotion
-      mode: walk
-      modes:
-        walk: [640, 480, 30, 50]
-        inspect: [1920, 1080, 5]
-      rotate_180: false
-      mount: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-    lidar:
-      config: mid360.json
-      mount: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-      preview_decimation: 10
-    leds:
-      device: /dev/ttyUSB0
-```
-
-| Parameter | Function |
-| --- | --- |
-| `camera.device` | Video4Linux device of the camera. The camera must support MJPEG. |
-| `camera.name` | Camera name, used in the image topic and the camera frame name. The `HB50 Remote` application displays the `locomotion` camera. |
-| `camera.mode` | Active camera mode, one of `camera.modes`. Can be changed at runtime. |
-| `camera.modes.<name>` | Camera mode: width, height, frame rate and optional JPEG quality (`[width, height, fps, quality]`). Quality 1–100 re-encodes the camera frames, which reduces the bandwidth; `0` or no value sends the camera frames unchanged. Modes can be added and renamed freely. |
-| `camera.rotate_180` | Rotates the camera picture by 180°, for a camera mounted upside down. |
-| `camera.mount` | Camera position relative to the `<robot>/body` frame: `[x, y, z, roll, pitch, yaw]` in m and rad. |
-| `lidar.config` | Livox driver configuration file. Relative paths point to the `config` folder of `hb50_payload`. Leave empty when no lidar is mounted. |
-| `lidar.mount` | Lidar position relative to the `<robot>/body` frame: `[x, y, z, roll, pitch, yaw]` in m and rad. |
-| `lidar.preview_decimation` | Every Nth lidar point is kept in the preview point cloud. |
-| `leds.device` | Serial port of the LCUS-1 USB relay that switches the LEDs. Leave empty when no LEDs are mounted. |
-
-Only `camera.mode`, `camera.modes.<name>` and `camera.rotate_180` can be changed at runtime, for example:
-
-```bash
-ros2 param set /hb50/payload_node camera.mode inspect
-```
-
-Changing the other parameters requires a restart of `payload_node`.
-
-The camera and lidar positions are published as static transforms from `<robot>/body` to `<robot>/camera_<name>` and `<robot>/lidar`, see [Geometry & Frames](../Software/Geometry.md).
-
-If the requested resolution is not supported by the camera, the closest supported one is used and a warning is logged. The camera always captures at 30 fps or more, and lower frame rates are achieved by dropping frames. When `camera.rotate_180` is on and no quality is set, the frames are re-encoded with quality 85.
-
-The network settings of the lidar are stored in `mid360.json`. By default, the lidar uses the address 10.11.0.169 and sends data to the APC (10.11.0.11). If the lidar does not send data within 10 s of being enabled, the driver is stopped and an error suggesting a check of the connection and the addresses in `mid360.json` is returned.
+The software is installed on the APC from the `hb50-payload` package and configured in `/etc/hb50/payload.yaml`, see {ref}`Configuration <payload-configuration>` and {ref}`Installation <payload-installation>`.
 
 ## Remote controller interface
 
@@ -95,7 +28,7 @@ The advanced camera settings contain:
 | `ROTATE 180°` | Turns the `camera.rotate_180` rotation on and off. |
 | `-` / `+` | Change the JPEG quality of the active camera mode in steps of 10, from 10 to 90 or `ORIGINAL` (camera frames sent unchanged). |
 
-Settings changed in the remote apply until `payload_node` restarts. To keep them, set them in `payload.yaml`.
+Settings changed in the remote apply until `payload_node` restarts. To keep them, set them in `/etc/hb50/payload.yaml`.
 
 ### Lidar menu
 
@@ -103,7 +36,7 @@ Settings changed in the remote apply until `payload_node` restarts. To keep them
 | --- | --- |
 | `ENABLE` | Starts the lidar driver. |
 | `DISABLE` | Stops the lidar driver. |
-| Rosbag `START` | Starts recording a rosbag on the payload computer. |
+| Rosbag `START` | Starts recording a rosbag on the APC. |
 | Rosbag `STOP` | Stops the recording and saves the rosbag. |
 
 ### LEDs menu
@@ -114,6 +47,22 @@ Settings changed in the remote apply until `payload_node` restarts. To keep them
 | `OFF` | Turns the LEDs off. |
 
 The result of each command is shown in the status console.
+
+(rosbag-recording)=
+## Rosbag recording
+
+`payload_node` can record a rosbag, started and stopped with the `/hb50/payload/rosbag/record` service (`std_srvs/srv/SetBool`) or the rosbag buttons in the `LIDAR MENU`. The rosbag is saved in MCAP format on the APC in `~/rosbags/payload_<date>_<time>` of the user the payload runs as, and contains the topics:
+
+- `/hb50/bridge_state_10hz`,
+- `/hb50/robot_state_10hz`,
+- `/hb50/payload/camera/locomotion/compressed`,
+- `/hb50/payload/lidar/points`, when `lidar.config` is set.
+
+The camera and the lidar are not enabled by the recording, enable them first to record their data.
+
+```{warning}
+Always stop the recording before turning off the robot or the APC, otherwise the rosbag can be damaged. Stopping or restarting the `hb50-payload` service closes an open rosbag properly.
+```
 
 ## Camera and lidar topics
 
@@ -152,18 +101,90 @@ ros2 service call /hb50/payload/camera/enable std_srvs/srv/SetBool "{data: true}
 
 The response to enabling the lidar is sent when the first lidar data arrives, which can take a few seconds.
 
-(rosbag-recording)=
-## Rosbag recording
+(payload-configuration)=
+## Configuration
 
-`payload_node` can record a rosbag on the payload computer, started and stopped with the `/hb50/payload/rosbag/record` service (`std_srvs/srv/SetBool`) or the rosbag buttons in the `LIDAR MENU`. The rosbag is saved in MCAP format in `~/rosbags/payload_<date>_<time>` and contains the topics:
+The payload is configured in the following files:
 
-- `/hb50/bridge_state_10hz`,
-- `/hb50/robot_state_10hz`,
-- `/hb50/payload/camera/locomotion/compressed`,
-- `/hb50/payload/lidar/points`, when `lidar.config` is set.
+| File | Contents |
+| --- | --- |
+| `/etc/hb50/payload.yaml` | Camera, lidar and LED settings. |
+| `/etc/hb50/mid360.json` | Lidar and APC network addresses. |
+| `/etc/default/hb50-payload` | Robot name (`ROBOT_NS`), `ROS_DOMAIN_ID`, and the user the payload runs as (`HB50_USER`, the first user of the APC when empty). |
 
-The camera and the lidar are not enabled by the recording, enable them first to record their data.
+`ROBOT_NS` and `ROS_DOMAIN_ID` must match the robot settings, see [Platform](../Software/Platform.md). Changes are applied with:
 
-```{warning}
-Always stop the recording before turning off the robot or the payload computer, otherwise the rosbag can be damaged.
+```bash
+sudo systemctl restart hb50-payload
 ```
+
+Package updates keep changed configuration files. When a new version also changes a default, it is saved next to the changed file as `<file>.dpkg-dist`.
+
+The default `/etc/hb50/payload.yaml`:
+
+```yaml
+/**:
+  ros__parameters:
+    camera:
+      device: /dev/video0
+      name: locomotion
+      mode: walk
+      modes:
+        walk: [640, 480, 30, 50]
+        inspect: [1920, 1080, 5]
+      rotate_180: false
+      mount: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    lidar:
+      config: mid360.json
+      mount: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+      preview_decimation: 10
+    leds:
+      device: "1a86:7523"
+```
+
+| Parameter | Function |
+| --- | --- |
+| `camera.device` | Video4Linux device of the camera. The camera must support MJPEG. |
+| `camera.name` | Camera name, used in the image topic and the camera frame name. The `HB50 Remote` application displays the `locomotion` camera. |
+| `camera.mode` | Active camera mode, one of `camera.modes`. Can be changed at runtime. |
+| `camera.modes.<name>` | Camera mode: width, height, frame rate and optional JPEG quality (`[width, height, fps, quality]`). Quality 1–100 re-encodes the camera frames, which reduces the bandwidth; `0` or no value sends the camera frames unchanged. Modes can be added and renamed freely. |
+| `camera.rotate_180` | Rotates the camera picture by 180°, for a camera mounted upside down. |
+| `camera.mount` | Camera position relative to the `<robot>/body` frame: `[x, y, z, roll, pitch, yaw]` in m and rad. |
+| `lidar.config` | Livox driver configuration file. Relative paths point to the folder of `payload.yaml`. Leave empty when no lidar is mounted. |
+| `lidar.mount` | Lidar position relative to the `<robot>/body` frame: `[x, y, z, roll, pitch, yaw]` in m and rad. |
+| `lidar.preview_decimation` | Every Nth lidar point is kept in the preview point cloud. |
+| `leds.device` | USB `vendor:product` ID of the LCUS-1 USB relay that switches the LEDs. Leave empty when no LEDs are mounted. |
+
+Only `camera.mode`, `camera.modes.<name>` and `camera.rotate_180` can be changed at runtime, for example:
+
+```bash
+ros2 param set /hb50/payload_node camera.mode inspect
+```
+
+Changing the other parameters requires a restart of the `hb50-payload` service.
+
+The camera and lidar positions are published as static transforms from `<robot>/body` to `<robot>/camera_<name>` and `<robot>/lidar`, see [Geometry & Frames](../Software/Geometry.md).
+
+If the requested resolution is not supported by the camera, the closest supported one is used and a warning is logged. The camera always captures at 30 fps or more, and lower frame rates are achieved by dropping frames. When `camera.rotate_180` is on and no quality is set, the frames are re-encoded with quality 85.
+
+The network settings of the lidar are stored in `/etc/hb50/mid360.json`. By default, the lidar uses the address 10.11.0.169 and sends data to the APC (10.11.0.11). If the lidar does not send data within 10 s of being enabled, the driver is stopped and an error suggesting a check of the connection and the addresses in `mid360.json` is returned.
+
+(payload-installation)=
+## Installation
+
+The payload software is installed on the APC from the `hb50-payload_<version>_arm64.deb` package supplied by MAB. The first start downloads the ROS 2 Docker image, so the APC needs internet access during installation. Copy the package to the APC and install it (see [Network](../Software/Networking.md) for the APC address):
+
+```bash
+scp hb50-payload_<version>_arm64.deb hb-orin@10.11.0.11:
+ssh hb-orin@10.11.0.11
+sudo apt install ./hb50-payload_<version>_arm64.deb
+```
+
+The payload software runs as the `hb50-payload` systemd service. It starts right after the installation and after every boot, and restarts automatically 2 s after a crash. Its state and logs are available with:
+
+```bash
+systemctl status hb50-payload
+journalctl -u hb50-payload -f
+```
+
+Newer versions are installed with the same `apt install` command, which also restarts the service. The package is removed with `sudo apt remove hb50-payload`, or with `sudo apt purge hb50-payload` to delete the configuration files too.

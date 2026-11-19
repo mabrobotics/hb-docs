@@ -10,6 +10,8 @@ The `CAMERA MENU`, `LIDAR MENU` and `LEDS MENU` buttons appear in the left menu 
 
 The camera, the lidar and the LEDs are off by default and have to be turned on each time `payload_node` starts.
 
+When the enabled camera sends no pictures for 3 s, for example after it was unplugged, it is reconnected automatically as soon as it is available again.
+
 ### Camera menu
 
 | Name | Function |

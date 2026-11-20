@@ -67,6 +67,8 @@ Each power command asks for confirmation before it is executed.
 | `DISABLE BUS` | Powers off the actuators bus. |
 | `HEALTH CHECK` | Checks communication with all actuators and their positions. The result is shown in the console. |
 | `RESET CONTROL` | Restarts `control_node`. |
+| `CHECK SOFTWARE UPDATE` | Verifies the software update bundle, see [Software Update](../Software/Updating.md). |
+| `APPLY SOFTWARE UPDATE` | Installs the verified software update on the robot and the Steam Deck. |
 
 (adaptive-mode)=
 ### Adaptive locomotion mode

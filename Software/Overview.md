@@ -64,6 +64,8 @@ Here is a list of relevant topics published by the robot:
 | `/hb50/maneuvers_from_robot` | `hb50_commons/srv/GetRobotData` | `bridge_node` | Names of the maneuvers saved on the robot |
 | `/hb50/config_save` | `std_srvs/srv/Trigger` | `config_node` | Saves the current parameters to the robot configuration file |
 | `/hb50/config_restore_default` | `std_srvs/srv/Trigger` | `config_node` | Restores the default configuration |
+| `/hb50/check_for_update` | `hb50_commons/srv/CheckForUpdate` | `control_node` | Verifies a software update bundle, see [Software Update](Updating.md) |
+| `/hb50/apply_update` | `hb50_commons/srv/ApplyUpdate` | `control_node` | Installs the verified software update |
 
 (qos-information)=
 ### Quality of Service

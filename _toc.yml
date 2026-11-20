@@ -37,6 +37,8 @@ chapters:
   - file: Payload/Payload.md
     title: Payload
     sections:
+      - file: Payload/CameraLidar.md
+        title: Camera & Lidar
       - file: Payload/Spool.md
         title: Spool
   - file: FAQ.md

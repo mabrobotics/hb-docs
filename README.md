@@ -16,7 +16,7 @@ Documentation for Honey Badger robots.
 - [Messages](Software/Messages.md) — custom ROS2 message reference
 - [Networking](Software/Networking.md) — Wi-Fi, SSH, and ROS2 network notes
 - [Geometry](Software/Geometry.md) — coordinate frames and leg geometry
-- [Payload](Payload/Payload.md) — payload mount and spool configuration
+- [Payload](Payload/Payload.md) — payload mount, spool, camera and lidar configuration
 
 ## Building
 
@@ -34,6 +34,17 @@ pip install -r requirements.txt
 ```bash
 jupyter-book build .
 ```
+
+### PDF of a released version
+
+Before the docs move to a new software version, build the PDF of the current one and add it to `downloads/` and the list in [intro.md](intro.md). Put the version in `title` in `_config.yml` first, then:
+
+```bash
+jupyter-book build --all --builder pdflatex .
+gs -q -sDEVICE=pdfwrite -dPDFSETTINGS=/printer -dNOPAUSE -dBATCH -sOutputFile=downloads/hb-docs-v<version>.pdf _build/latex/book.pdf
+```
+
+Needs LaTeX (`latexmk`, `xelatex`) and Ghostscript. Revert the `title` change afterwards.
 
 ## Pushing & Merging
 

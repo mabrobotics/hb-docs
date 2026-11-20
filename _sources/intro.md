@@ -51,3 +51,10 @@ referrerpolicy="strict-origin-when-cross-origin">
 | Ethernet | 1x LAN, 1x WAN/LAN, up to 1 Gbps each |
 
 \*Operating time in nominal conditions - no payload, constant walking (`Walk` gait), with average speed of 0.5m/s, on mostly flat, dry concrete surface.
+
+## Documentation for older software versions
+
+This documentation describes robot software v1.3.0. Documentation for older software versions is available as PDF:
+
+- {download}`Software v1.2.0 <downloads/hb-docs-v1.2.0.pdf>`
+- {download}`Software v1.1.0 <downloads/hb-docs-v1.1.0.pdf>`

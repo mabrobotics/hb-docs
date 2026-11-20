@@ -200,6 +200,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Payload/Payload.html">Payload</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Payload/CameraLidar.html">Camera &amp; Lidar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Payload/Spool.html">Spool</a></li>
 </ul>
 </details></li>
@@ -458,25 +459,25 @@ document.write(`
 <td><p>mabRT</p></td>
 <td><p>500 hz</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/bridge_state</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/bridge_data_10hz</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/BridgeData</span></code></p></td>
+<td><p>Reliable</p></td>
+<td><p>10 hz</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/bridge_state</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/BridgeState</span></code></p></td>
 <td><p>mabRT</p></td>
 <td><p>500 hz</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/bridge_state_10hz</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/bridge_state_10hz</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/BridgeState</span></code></p></td>
 <td><p>Reliable</p></td>
 <td><p>10 hz</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/control_command</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/control_command</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">std_msgs/msg/String</span></code></p></td>
 <td><p>Reliable</p></td>
 <td><p>as needed</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/heartbeat</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/Status</span></code></p></td>
-<td><p>Reliable</p></td>
-<td><p>1 hz</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/imu_data</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">sensor_msgs/msg/Imu</span></code></p></td>
@@ -526,7 +527,7 @@ document.write(`
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/version_data/robot</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/VersionData</span></code></p></td>
 <td><p>Reliable, transient local</p></td>
-<td><p>once at startup</p></td>
+<td><p>once, after the first control cycle</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/version_data/deck</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/VersionData</span></code></p></td>
@@ -571,8 +572,8 @@ document.write(`
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/maneuvers_from_robot</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/srv/GetRobotData</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">bridge_node</span></code></p></td>
-<td><p>Names of the maneuvers saved on the robot</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">control_node</span></code></p></td>
+<td><p>Names of the maneuvers available on the robot</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/config_save</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">std_srvs/srv/Trigger</span></code></p></td>
@@ -583,16 +584,6 @@ document.write(`
 <td><p><code class="docutils literal notranslate"><span class="pre">std_srvs/srv/Trigger</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">config_node</span></code></p></td>
 <td><p>Restores the default configuration</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/check_for_update</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/srv/CheckForUpdate</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">control_node</span></code></p></td>
-<td><p>Verifies a software update bundle, see <a class="reference internal" href="Updating.html"><span class="std std-doc">Software Update</span></a></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/apply_update</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">hb50_commons/srv/ApplyUpdate</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">control_node</span></code></p></td>
-<td><p>Installs the verified software update</p></td>
 </tr>
 </tbody>
 </table>

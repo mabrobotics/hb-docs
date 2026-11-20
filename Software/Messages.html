@@ -200,6 +200,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Payload/Payload.html">Payload</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Payload/CameraLidar.html">Camera &amp; Lidar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Payload/Spool.html">Spool</a></li>
 </ul>
 </details></li>
@@ -456,10 +457,10 @@ document.write(`
 <h2>BridgeData — high-rate hardware frame<a class="headerlink" href="#bridgedata-high-rate-hardware-frame" title="Link to this heading">#</a></h2>
 <p><strong>Message type:</strong> <code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/BridgeData</span></code><br />
 <strong>Producer:</strong> <code class="docutils literal notranslate"><span class="pre">bridge_node</span></code><br />
-<strong>Rate:</strong> 500 Hz<br />
-<strong>QoS:</strong> mabRT<br />
+<strong>Rate:</strong> 500 Hz (standard), 10 Hz (<code class="docutils literal notranslate"><span class="pre">/bridge_data_10hz</span></code>)<br />
+<strong>QoS:</strong> mabRT (500 Hz), Reliable (10 Hz)<br />
 <strong>Use case:</strong> Control applications requiring raw actuator data</p>
-<p>Contains the high-frequency mainboard update with kinematics and IMU data. This is the primary topic for control loops and state estimation.</p>
+<p>Contains the high-frequency mainboard update with kinematics and IMU data. This is the primary topic for control loops and state estimation. A low-frequency variant (<code class="docutils literal notranslate"><span class="pre">/bridge_data_10hz</span></code>) is provided for visualization and lossy networks.</p>
 <section id="fields">
 <h3>Fields<a class="headerlink" href="#fields" title="Link to this heading">#</a></h3>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -649,14 +650,11 @@ document.write(`
 <td><p><code class="docutils literal notranslate"><span class="pre">float32[]</span></code></p></td>
 <td><p>Target torque (N·m)</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">brake[]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">bool[]</span></code></p></td>
-<td><p>Enable brake for each joint</p></td>
-</tr>
 </tbody>
 </table>
 </div>
 <p><strong>Important:</strong> Array lengths must be at least the number of actuators (12, or 16 for HB50W), otherwise <code class="docutils literal notranslate"><span class="pre">bridge_node</span></code> drops the message. Actuators are commanded by array index, not by <code class="docutils literal notranslate"><span class="pre">name[]</span></code>, so the order must correspond to the actuator ordering in <code class="docutils literal notranslate"><span class="pre">BridgeData</span></code>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">bridge_node</span></code> receives no <code class="docutils literal notranslate"><span class="pre">JointCommand</span></code> for 100 ms, it switches the actuators to damping.</p>
 <hr class="docutils" />
 </section>
 </section>
@@ -840,8 +838,8 @@ document.write(`
 <section id="status-event-and-status-messages">
 <h2>Status — event and status messages<a class="headerlink" href="#status-event-and-status-messages" title="Link to this heading">#</a></h2>
 <p><strong>Message type:</strong> <code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/Status</span></code>
-<strong>Producers:</strong> All nodes (by heartbeat sub-node), <code class="docutils literal notranslate"><span class="pre">bridge_node</span></code> (hardware events), <code class="docutils literal notranslate"><span class="pre">control_node</span></code> (control events)
-<strong>Rate:</strong> 1 Hz (heartbeat), as needed (events)
+<strong>Producers:</strong> <code class="docutils literal notranslate"><span class="pre">bridge_node</span></code> (hardware events), <code class="docutils literal notranslate"><span class="pre">control_node</span></code> (control events), <code class="docutils literal notranslate"><span class="pre">spool_node</span></code> (spool events)
+<strong>Rate:</strong> as needed
 <strong>QoS:</strong> Reliable
 <strong>Use case:</strong> Monitoring, logging, alarm handling</p>
 <p>General‑purpose status message for reporting important events, warnings and errors.</p>
@@ -887,15 +885,14 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">ERROR=3</span></code> — error condition</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">STALE=4</span></code> — stale/timeout condition</p></li>
 </ul>
-<p>All nodes should publish a heartbeat Status message with <code class="docutils literal notranslate"><span class="pre">level=OK</span></code> at least every 1 second. Missing heartbeats indicate communication loss or node crash.</p>
 </section>
 </section>
 <hr class="docutils" />
 <section id="versiondata-software-version">
 <h2>VersionData — software version<a class="headerlink" href="#versiondata-software-version" title="Link to this heading">#</a></h2>
 <p><strong>Message type:</strong> <code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/VersionData</span></code><br />
-<strong>Producers:</strong> <code class="docutils literal notranslate"><span class="pre">bridge_node</span></code> (<code class="docutils literal notranslate"><span class="pre">/hb50/version_data/robot</span></code>), <code class="docutils literal notranslate"><span class="pre">remote_node</span></code> (<code class="docutils literal notranslate"><span class="pre">/hb50/version_data/deck</span></code>)<br />
-<strong>Rate:</strong> once at startup<br />
+<strong>Producers:</strong> <code class="docutils literal notranslate"><span class="pre">control_node</span></code> (<code class="docutils literal notranslate"><span class="pre">/hb50/version_data/robot</span></code>), <code class="docutils literal notranslate"><span class="pre">remote_node</span></code> (<code class="docutils literal notranslate"><span class="pre">/hb50/version_data/deck</span></code>)<br />
+<strong>Rate:</strong> once — <code class="docutils literal notranslate"><span class="pre">control_node</span></code> after its first control cycle, <code class="docutils literal notranslate"><span class="pre">remote_node</span></code> at startup<br />
 <strong>QoS:</strong> Reliable, transient local<br />
 <strong>Use case:</strong> Checking the software version of the robot and the Steam Deck</p>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -1029,7 +1026,7 @@ document.write(`
 <li><p><strong>Subscribe to:</strong> <code class="docutils literal notranslate"><span class="pre">/hb50/bridge_data</span></code> (500 Hz) for raw actuator feedback</p></li>
 <li><p><strong>Publish to:</strong> <code class="docutils literal notranslate"><span class="pre">/hb50/joint_command</span></code> (500 Hz) for actuator commands</p></li>
 <li><p><strong>Monitor:</strong> <code class="docutils literal notranslate"><span class="pre">/hb50/robot_state</span></code> (500 Hz) for state estimation</p></li>
-<li><p><strong>Check:</strong> <code class="docutils literal notranslate"><span class="pre">/hb50/heartbeat</span></code> (1 Hz) to detect stale nodes</p></li>
+<li><p><strong>Check:</strong> <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">lifecycle</span> <span class="pre">get</span> <span class="pre">/hb50/control_node</span></code> to confirm the node is <code class="docutils literal notranslate"><span class="pre">active</span></code></p></li>
 </ul>
 </section>
 <section id="for-ui-and-visualization">
@@ -1044,7 +1041,7 @@ document.write(`
 <h3>For diagnostics and logging<a class="headerlink" href="#for-diagnostics-and-logging" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Monitor:</strong> <code class="docutils literal notranslate"><span class="pre">/hb50/bridge_state</span></code> for power and temperature trends</p></li>
-<li><p><strong>Watch:</strong> <code class="docutils literal notranslate"><span class="pre">/hb50/status</span></code> and <code class="docutils literal notranslate"><span class="pre">/hb50/heartbeat</span></code> for node health</p></li>
+<li><p><strong>Watch:</strong> <code class="docutils literal notranslate"><span class="pre">/hb50/status</span></code> for warnings and errors, and the lifecycle state of <code class="docutils literal notranslate"><span class="pre">bridge_node</span></code> and <code class="docutils literal notranslate"><span class="pre">control_node</span></code> for node health</p></li>
 <li><p><strong>Check:</strong> <code class="docutils literal notranslate"><span class="pre">joint_temperature</span></code> and <code class="docutils literal notranslate"><span class="pre">joint_status</span></code> in <code class="docutils literal notranslate"><span class="pre">/hb50/bridge_data</span></code> for actuator issues</p></li>
 </ul>
 </section>

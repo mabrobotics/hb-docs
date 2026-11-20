@@ -1,0 +1,868 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Camera &amp; Lidar &#8212; Honey Badger Robot Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Payload/CameraLidar';</script>
+    <link rel="icon" href="../_static/logo32x32.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Spool" href="Spool.html" />
+    <link rel="prev" title="Payload" href="Payload.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Honey Badger Robot Documentation - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Honey Badger Robot Documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Intro
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../GettingStarted/GettingStarted.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/Safety.html">Safety</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/FirstStartup.html">First Startup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/Setup.html">Setup &amp; Charging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GettingStarted/ControlConsole.html">Control Console</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Physical/Overview.html">Physical</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Physical/Connectors.html">Button &amp; Connectors</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Software/Overview.html">Software</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Software/Platform.html">Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Software/Messages.html">Message types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Software/Networking.html">Networking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Software/Geometry.html">Geometry &amp; Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Software/Updating.html">Software Update</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Payload.html">Payload</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Camera &amp; Lidar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Spool.html">Spool</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../FAQ.html">FAQ</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/mabrobotics/hb-docs" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/mabrobotics/hb-docs/issues/new?title=Issue%20on%20page%20%2FPayload/CameraLidar.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Payload/CameraLidar.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Camera & Lidar</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remote-controller-interface">Remote controller interface</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#camera-menu">Camera menu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lidar-menu">Lidar menu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#leds-menu">LEDs menu</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rosbag-recording">Rosbag recording</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#camera-and-lidar-topics">Camera and lidar topics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#payload-services">Payload services</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="camera-lidar">
+<h1>Camera &amp; Lidar<a class="headerlink" href="#camera-lidar" title="Link to this heading">#</a></h1>
+<p>The Honey Badger robot can be equipped with a camera, a Livox MID-360 lidar and LEDs. All of them are handled by the ROS 2 <code class="docutils literal notranslate"><span class="pre">payload_node</span></code> (package <code class="docutils literal notranslate"><span class="pre">hb50_payload</span></code>), which runs on the APC (Jetson Orin) in a ROS 2 Jazzy Docker container.</p>
+<p>The software is installed on the APC from the <code class="docutils literal notranslate"><span class="pre">hb50-payload</span></code> package and configured in <code class="docutils literal notranslate"><span class="pre">/etc/hb50/payload.yaml</span></code>, see <a class="reference internal" href="#payload-configuration"><span class="std std-ref">Configuration</span></a> and <a class="reference internal" href="#payload-installation"><span class="std std-ref">Installation</span></a>.</p>
+<section id="remote-controller-interface">
+<h2>Remote controller interface<a class="headerlink" href="#remote-controller-interface" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">CAMERA</span> <span class="pre">MENU</span></code>, <code class="docutils literal notranslate"><span class="pre">LIDAR</span> <span class="pre">MENU</span></code> and <code class="docutils literal notranslate"><span class="pre">LEDS</span> <span class="pre">MENU</span></code> buttons appear in the left menu of the <code class="docutils literal notranslate"><span class="pre">HB50</span> <span class="pre">Remote</span></code> application automatically when the robot detects the payload, that is when <code class="docutils literal notranslate"><span class="pre">payload_node</span></code> is running. The <code class="docutils literal notranslate"><span class="pre">LIDAR</span> <span class="pre">MENU</span></code> button appears only when <code class="docutils literal notranslate"><span class="pre">lidar.config</span></code> is set, and the <code class="docutils literal notranslate"><span class="pre">LEDS</span> <span class="pre">MENU</span></code> button only when <code class="docutils literal notranslate"><span class="pre">leds.device</span></code> is set.</p>
+<p>The camera, the lidar and the LEDs are off by default and have to be turned on each time <code class="docutils literal notranslate"><span class="pre">payload_node</span></code> starts.</p>
+<p>When the enabled camera sends no pictures for 3 s, for example after it was unplugged, it is reconnected automatically as soon as it is available again.</p>
+<section id="camera-menu">
+<h3>Camera menu<a class="headerlink" href="#camera-menu" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ENABLE</span></code></p></td>
+<td><p>Starts the camera.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">DISABLE</span></code></p></td>
+<td><p>Stops the camera.</p></td>
+</tr>
+<tr class="row-even"><td><p>Mode buttons (<code class="docutils literal notranslate"><span class="pre">walk</span></code>, <code class="docutils literal notranslate"><span class="pre">inspect</span></code>, …)</p></td>
+<td><p>Switch the camera mode. One button is shown for each mode in <code class="docutils literal notranslate"><span class="pre">camera.modes</span></code>; the active mode is greyed out.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ADVANCED</span></code></p></td>
+<td><p>Shows or hides the advanced camera settings.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SNAPSHOT</span></code></p></td>
+<td><p>Saves the current camera picture on the Steam Deck in <code class="docutils literal notranslate"><span class="pre">~/Pictures/hb50/</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MAXIMIZE</span></code></p></td>
+<td><p>Shows the camera picture over the whole application. <code class="docutils literal notranslate"><span class="pre">MINIMIZE</span></code> returns to the normal view.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The advanced camera settings contain:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ROTATE</span> <span class="pre">180°</span></code></p></td>
+<td><p>Turns the <code class="docutils literal notranslate"><span class="pre">camera.rotate_180</span></code> rotation on and off.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">-</span></code> / <code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p>Change the JPEG quality of the active camera mode in steps of 10, from 10 to 90 or <code class="docutils literal notranslate"><span class="pre">ORIGINAL</span></code> (camera frames sent unchanged).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Settings changed in the remote apply until <code class="docutils literal notranslate"><span class="pre">payload_node</span></code> restarts. To keep them, set them in <code class="docutils literal notranslate"><span class="pre">/etc/hb50/payload.yaml</span></code>.</p>
+</section>
+<section id="lidar-menu">
+<h3>Lidar menu<a class="headerlink" href="#lidar-menu" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ENABLE</span></code></p></td>
+<td><p>Starts the lidar driver.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">DISABLE</span></code></p></td>
+<td><p>Stops the lidar driver.</p></td>
+</tr>
+<tr class="row-even"><td><p>Rosbag <code class="docutils literal notranslate"><span class="pre">START</span></code></p></td>
+<td><p>Starts recording a rosbag on the APC.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Rosbag <code class="docutils literal notranslate"><span class="pre">STOP</span></code></p></td>
+<td><p>Stops the recording and saves the rosbag.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="leds-menu">
+<h3>LEDs menu<a class="headerlink" href="#leds-menu" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ON</span></code></p></td>
+<td><p>Turns the LEDs on.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">OFF</span></code></p></td>
+<td><p>Turns the LEDs off.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The result of each command is shown in the status console.</p>
+</section>
+</section>
+<section id="rosbag-recording">
+<span id="id1"></span><h2>Rosbag recording<a class="headerlink" href="#rosbag-recording" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">payload_node</span></code> can record a rosbag, started and stopped with the <code class="docutils literal notranslate"><span class="pre">/hb50/payload/rosbag/record</span></code> service (<code class="docutils literal notranslate"><span class="pre">std_srvs/srv/SetBool</span></code>) or the rosbag buttons in the <code class="docutils literal notranslate"><span class="pre">LIDAR</span> <span class="pre">MENU</span></code>. The rosbag is saved in MCAP format on the APC in <code class="docutils literal notranslate"><span class="pre">~/rosbags/payload_&lt;date&gt;_&lt;time&gt;</span></code> of the user the payload runs as, and contains the topics:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">/hb50/bridge_state_10hz</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/hb50/robot_state_10hz</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/hb50/payload/camera/locomotion/compressed</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/hb50/payload/lidar/points</span></code>, when <code class="docutils literal notranslate"><span class="pre">lidar.config</span></code> is set.</p></li>
+</ul>
+<p>The camera and the lidar are not enabled by the recording, enable them first to record their data.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Always stop the recording before turning off the robot or the APC, otherwise the rosbag can be damaged. Stopping or restarting the <code class="docutils literal notranslate"><span class="pre">hb50-payload</span></code> service closes an open rosbag properly.</p>
+</div>
+</section>
+<section id="camera-and-lidar-topics">
+<h2>Camera and lidar topics<a class="headerlink" href="#camera-and-lidar-topics" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">payload_node</span></code> and the lidar driver publish to the following topics:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Topic</p></th>
+<th class="head"><p>Message Type</p></th>
+<th class="head"><p>QoS</p></th>
+<th class="head"><p>Publish Rate</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/payload/camera/locomotion/compressed</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sensor_msgs/msg/CompressedImage</span></code></p></td>
+<td><p>Reliable, depth 1</p></td>
+<td><p>camera mode frame rate</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/payload/lidar/points</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sensor_msgs/msg/PointCloud2</span></code></p></td>
+<td><p>Reliable</p></td>
+<td><p>10 hz</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/payload/lidar/imu</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sensor_msgs/msg/Imu</span></code></p></td>
+<td><p>Reliable</p></td>
+<td><p>200 hz</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/payload/lidar/points_preview</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sensor_msgs/msg/PointCloud2</span></code></p></td>
+<td><p>Reliable, depth 1</p></td>
+<td><p>10 hz</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/tf_static</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tf2_msgs/msg/TFMessage</span></code></p></td>
+<td><p>Reliable</p></td>
+<td><p>as needed</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The camera images are JPEG compressed. The camera topic name contains <code class="docutils literal notranslate"><span class="pre">camera.name</span></code>, <code class="docutils literal notranslate"><span class="pre">locomotion</span></code> by default.</p>
+<p><code class="docutils literal notranslate"><span class="pre">/hb50/payload/lidar/points</span></code> contains the full Livox point cloud. <code class="docutils literal notranslate"><span class="pre">/hb50/payload/lidar/points_preview</span></code> contains only the x, y, z coordinates of every <code class="docutils literal notranslate"><span class="pre">lidar.preview_decimation</span></code>-th point, and is meant for viewing the point cloud over Wi-Fi, for example in RViz. It is published only while there is a subscriber.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For precise definition of QoS check: <a class="reference internal" href="../Software/Overview.html#qos-information"><span class="std std-ref">Quality of Service</span></a>.</p>
+</div>
+</section>
+<section id="payload-services">
+<h2>Payload services<a class="headerlink" href="#payload-services" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Service</p></th>
+<th class="head"><p>Interface Type</p></th>
+<th class="head"><p>Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/payload/camera/enable</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">std_srvs/srv/SetBool</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code> starts the camera, <code class="docutils literal notranslate"><span class="pre">false</span></code> stops it.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/payload/lidar/enable</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">std_srvs/srv/SetBool</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code> starts the lidar driver, <code class="docutils literal notranslate"><span class="pre">false</span></code> stops it.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/payload/leds/enable</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">std_srvs/srv/SetBool</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code> turns the LEDs on, <code class="docutils literal notranslate"><span class="pre">false</span></code> turns them off. Available only when <code class="docutils literal notranslate"><span class="pre">leds.device</span></code> is set.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/hb50/payload/rosbag/record</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">std_srvs/srv/SetBool</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code> starts a rosbag recording, <code class="docutils literal notranslate"><span class="pre">false</span></code> stops it, see <a class="reference internal" href="#rosbag-recording"><span class="std std-ref">Rosbag recording</span></a>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Example of use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>service<span class="w"> </span>call<span class="w"> </span>/hb50/payload/camera/enable<span class="w"> </span>std_srvs/srv/SetBool<span class="w"> </span><span class="s2">&quot;{data: true}&quot;</span>
+</pre></div>
+</div>
+<p>The response to enabling the lidar is sent when the first lidar data arrives, which can take a few seconds.</p>
+</section>
+<section id="configuration">
+<span id="payload-configuration"></span><h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">#</a></h2>
+<p>The payload is configured in the following files:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Contents</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/etc/hb50/payload.yaml</span></code></p></td>
+<td><p>Camera, lidar and LED settings.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/etc/hb50/mid360.json</span></code></p></td>
+<td><p>Lidar and APC network addresses.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/etc/default/hb50-payload</span></code></p></td>
+<td><p>Robot name (<code class="docutils literal notranslate"><span class="pre">ROBOT_NS</span></code>), <code class="docutils literal notranslate"><span class="pre">ROS_DOMAIN_ID</span></code>, and the user the payload runs as (<code class="docutils literal notranslate"><span class="pre">HB50_USER</span></code>, the first user of the APC when empty).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">ROBOT_NS</span></code> and <code class="docutils literal notranslate"><span class="pre">ROS_DOMAIN_ID</span></code> must match the robot settings, see <a class="reference internal" href="../Software/Platform.html"><span class="std std-doc">Platform</span></a>. Changes are applied with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>hb50-payload
+</pre></div>
+</div>
+<p>Package updates keep changed configuration files. When a new version also changes a default, it is saved next to the changed file as <code class="docutils literal notranslate"><span class="pre">&lt;file&gt;.dpkg-dist</span></code>.</p>
+<p>The default <code class="docutils literal notranslate"><span class="pre">/etc/hb50/payload.yaml</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">/**</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ros__parameters</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">camera</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">device</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/dev/video0</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">locomotion</span>
+<span class="w">      </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">walk</span>
+<span class="w">      </span><span class="nt">modes</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">walk</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">640</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">480</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">30</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">50</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">inspect</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1920</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1080</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">5</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">rotate_180</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">      </span><span class="nt">mount</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">lidar</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mid360.json</span>
+<span class="w">      </span><span class="nt">mount</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.0</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">preview_decimation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">    </span><span class="nt">leds</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">device</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1a86:7523&quot;</span>
+</pre></div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">camera.device</span></code></p></td>
+<td><p>Video4Linux device of the camera. The camera must support MJPEG.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">camera.name</span></code></p></td>
+<td><p>Camera name, used in the image topic and the camera frame name. The <code class="docutils literal notranslate"><span class="pre">HB50</span> <span class="pre">Remote</span></code> application displays the <code class="docutils literal notranslate"><span class="pre">locomotion</span></code> camera.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">camera.mode</span></code></p></td>
+<td><p>Active camera mode, one of <code class="docutils literal notranslate"><span class="pre">camera.modes</span></code>. Can be changed at runtime.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">camera.modes.&lt;name&gt;</span></code></p></td>
+<td><p>Camera mode: width, height, frame rate and optional JPEG quality (<code class="docutils literal notranslate"><span class="pre">[width,</span> <span class="pre">height,</span> <span class="pre">fps,</span> <span class="pre">quality]</span></code>). Quality 1–100 re-encodes the camera frames, which reduces the bandwidth; <code class="docutils literal notranslate"><span class="pre">0</span></code> or no value sends the camera frames unchanged. Modes can be added and renamed freely.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">camera.rotate_180</span></code></p></td>
+<td><p>Rotates the camera picture by 180°, for a camera mounted upside down.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">camera.mount</span></code></p></td>
+<td><p>Camera position relative to the <code class="docutils literal notranslate"><span class="pre">&lt;robot&gt;/body</span></code> frame: <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z,</span> <span class="pre">roll,</span> <span class="pre">pitch,</span> <span class="pre">yaw]</span></code> in m and rad.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">lidar.config</span></code></p></td>
+<td><p>Livox driver configuration file. Relative paths point to the folder of <code class="docutils literal notranslate"><span class="pre">payload.yaml</span></code>. Leave empty when no lidar is mounted.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">lidar.mount</span></code></p></td>
+<td><p>Lidar position relative to the <code class="docutils literal notranslate"><span class="pre">&lt;robot&gt;/body</span></code> frame: <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z,</span> <span class="pre">roll,</span> <span class="pre">pitch,</span> <span class="pre">yaw]</span></code> in m and rad.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">lidar.preview_decimation</span></code></p></td>
+<td><p>Every Nth lidar point is kept in the preview point cloud.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">leds.device</span></code></p></td>
+<td><p>USB <code class="docutils literal notranslate"><span class="pre">vendor:product</span></code> ID of the LCUS-1 USB relay that switches the LEDs. Leave empty when no LEDs are mounted.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Only <code class="docutils literal notranslate"><span class="pre">camera.mode</span></code>, <code class="docutils literal notranslate"><span class="pre">camera.modes.&lt;name&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">camera.rotate_180</span></code> can be changed at runtime, for example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>param<span class="w"> </span><span class="nb">set</span><span class="w"> </span>/hb50/payload_node<span class="w"> </span>camera.mode<span class="w"> </span>inspect
+</pre></div>
+</div>
+<p>Changing the other parameters requires a restart of the <code class="docutils literal notranslate"><span class="pre">hb50-payload</span></code> service.</p>
+<p>The camera and lidar positions are published as static transforms from <code class="docutils literal notranslate"><span class="pre">&lt;robot&gt;/body</span></code> to <code class="docutils literal notranslate"><span class="pre">&lt;robot&gt;/camera_&lt;name&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;robot&gt;/lidar</span></code>, see <a class="reference internal" href="../Software/Geometry.html"><span class="std std-doc">Geometry &amp; Frames</span></a>.</p>
+<p>If the requested resolution is not supported by the camera, the closest supported one is used and a warning is logged. The camera always captures at 30 fps or more, and lower frame rates are achieved by dropping frames. When <code class="docutils literal notranslate"><span class="pre">camera.rotate_180</span></code> is on and no quality is set, the frames are re-encoded with quality 85.</p>
+<p>The network settings of the lidar are stored in <code class="docutils literal notranslate"><span class="pre">/etc/hb50/mid360.json</span></code>. By default, the lidar uses the address 10.11.0.169 and sends data to the APC (10.11.0.11). If the lidar does not send data within 10 s of being enabled, the driver is stopped and an error suggesting a check of the connection and the addresses in <code class="docutils literal notranslate"><span class="pre">mid360.json</span></code> is returned.</p>
+</section>
+<section id="installation">
+<span id="payload-installation"></span><h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
+<p>The payload software is installed on the APC from the <code class="docutils literal notranslate"><span class="pre">hb50-payload_&lt;version&gt;_arm64.deb</span></code> package supplied by MAB. The first start downloads the ROS 2 Docker image, so the APC needs internet access during installation. Copy the package to the APC and install it (see <a class="reference internal" href="../Software/Networking.html"><span class="std std-doc">Network</span></a> for the APC address):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>hb50-payload_&lt;version&gt;_arm64.deb<span class="w"> </span>hb-orin@10.11.0.11:
+ssh<span class="w"> </span>hb-orin@10.11.0.11
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>./hb50-payload_&lt;version&gt;_arm64.deb
+</pre></div>
+</div>
+<p>The payload software runs as the <code class="docutils literal notranslate"><span class="pre">hb50-payload</span></code> systemd service. It starts right after the installation and after every boot, and restarts automatically 2 s after a crash. Its state and logs are available with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>systemctl<span class="w"> </span>status<span class="w"> </span>hb50-payload
+journalctl<span class="w"> </span>-u<span class="w"> </span>hb50-payload<span class="w"> </span>-f
+</pre></div>
+</div>
+<p>Newer versions are installed with the same <code class="docutils literal notranslate"><span class="pre">apt</span> <span class="pre">install</span></code> command, which also restarts the service. The package is removed with <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">remove</span> <span class="pre">hb50-payload</span></code>, or with <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">purge</span> <span class="pre">hb50-payload</span></code> to delete the configuration files too.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Payload"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Payload.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Payload</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Spool.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Spool</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remote-controller-interface">Remote controller interface</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#camera-menu">Camera menu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lidar-menu">Lidar menu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#leds-menu">LEDs menu</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rosbag-recording">Rosbag recording</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#camera-and-lidar-topics">Camera and lidar topics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#payload-services">Payload services</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By MAB Robotics
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

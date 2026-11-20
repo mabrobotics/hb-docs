@@ -63,7 +63,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="FAQ" href="../FAQ.html" />
-    <link rel="prev" title="Payload" href="Payload.html" />
+    <link rel="prev" title="Camera &amp; Lidar" href="CameraLidar.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -200,6 +200,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="Payload.html">Payload</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="CameraLidar.html">Camera &amp; Lidar</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Spool</a></li>
 </ul>
 </details></li>
@@ -432,13 +433,10 @@ document.write(`
 <h2>Spool remote controller interface<a class="headerlink" href="#spool-remote-controller-interface" title="Link to this heading">#</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The spool attachment is disabled by default. Always verify the spool is enabled before operating the robot with the spool attached.</p>
-<p>If the spool is not enabled and the robot moves, the spool or fiber can be damaged. Enabling the spool also updates the robot motion controller with the spool mass and inertial parameters.</p>
-<p>Make sure the <code class="docutils literal notranslate"><span class="pre">Enable</span> <span class="pre">spool</span> <span class="pre">attachment</span> <span class="pre">mode</span></code> toggle shown below is active before using spool functions.</p>
+<p>The spool motors are disabled by default. Always enable the spool (<code class="docutils literal notranslate"><span class="pre">ENABLE</span> <span class="pre">SPOOL</span></code>) before operating the robot with the spool attached.</p>
+<p>If the spool is not enabled and the robot moves, the spool or fiber can be damaged.</p>
 </div>
-<figure class="align-center" id="main-menu-spool">
-<img alt="main_menu_spool" class="no-scaled-link" src="../_images/main_menu_spool_dis_warn.png" />
-</figure>
+<p>The <code class="docutils literal notranslate"><span class="pre">SPOOL</span> <span class="pre">MENU</span></code> button appears in the left menu of the <code class="docutils literal notranslate"><span class="pre">HB50</span> <span class="pre">Remote</span></code> application automatically when the robot detects the spool, that is when <code class="docutils literal notranslate"><span class="pre">spool_node</span></code> is running.</p>
 <p>Spool control has a separate interface built into the remote controller. It allows the operator to handle the spool safely. To begin, the operator should press the <code class="docutils literal notranslate"><span class="pre">SPOOL</span> <span class="pre">MENU</span></code> button (number 1) to open the spool control view.</p>
 <figure class="align-center" id="remote-spool">
 <img alt="remote_spool" class="no-scaled-link" src="../_images/spool_menu_desc.svg" />
@@ -532,7 +530,7 @@ document.write(`
 </tbody>
 </table>
 </div>
-<p>If <code class="docutils literal notranslate"><span class="pre">/hb50/robot_state_10hz</span></code> is not received for 1 s while the spool is enabled, the automatic velocity is set to zero and an error is reported on <code class="docutils literal notranslate"><span class="pre">/hb50/status</span></code>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">/hb50/robot_state_10hz</span></code> is not received for 1 s while the spool is enabled, the automatic velocity is set to zero and an error is reported on <code class="docutils literal notranslate"><span class="pre">/hb50/status</span></code>. Spool drive faults are reported on <code class="docutils literal notranslate"><span class="pre">/hb50/status</span></code> as well.</p>
 <p>And publishes to the topics:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -659,12 +657,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Payload.html"
+       href="CameraLidar.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Payload</p>
+        <p class="prev-next-title">Camera &amp; Lidar</p>
       </div>
     </a>
     <a class="right-next"

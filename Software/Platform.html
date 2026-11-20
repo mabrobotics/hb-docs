@@ -200,6 +200,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Payload/Payload.html">Payload</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Payload/CameraLidar.html">Camera &amp; Lidar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Payload/Spool.html">Spool</a></li>
 </ul>
 </details></li>
@@ -432,12 +433,11 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">config_node</span></code> — configuration and parameter server</p></li>
 </ul>
 <p>The LPC is responsible for safe, deterministic robot motion and direct hardware handling.</p>
-<p>The nodes are started automatically at power-up by the <code class="docutils literal notranslate"><span class="pre">hb50</span></code> systemd service, which runs the <code class="docutils literal notranslate"><span class="pre">bringup.launch.py</span></code> launch file as user <code class="docutils literal notranslate"><span class="pre">hb</span></code>. The output of the current and the previous run is stored in <code class="docutils literal notranslate"><span class="pre">~/.hb50.log</span></code> and <code class="docutils literal notranslate"><span class="pre">~/.hb50_previous.log</span></code>. To restart the robot software, connect over SSH and run:</p>
+<p>The nodes are started automatically at power-up by the <code class="docutils literal notranslate"><span class="pre">hb50</span></code> systemd service, which runs the <code class="docutils literal notranslate"><span class="pre">bringup.launch.py</span></code> launch file as user <code class="docutils literal notranslate"><span class="pre">hb</span></code>. The robot name, which is also the ROS 2 namespace (<code class="docutils literal notranslate"><span class="pre">hb50</span></code>, <code class="docutils literal notranslate"><span class="pre">hb50w</span></code> or <code class="docutils literal notranslate"><span class="pre">hb40</span></code>), is set by <code class="docutils literal notranslate"><span class="pre">ROBOT_NS</span></code> in <code class="docutils literal notranslate"><span class="pre">/etc/default/hb50</span></code>, together with <code class="docutils literal notranslate"><span class="pre">ROS_DOMAIN_ID</span></code>. The console output of the current and the previous run is stored in <code class="docutils literal notranslate"><span class="pre">~/.hb50.log</span></code> and <code class="docutils literal notranslate"><span class="pre">~/.hb50_previous.log</span></code>; ROS 2 log files are kept in RAM in <code class="docutils literal notranslate"><span class="pre">/run/hb/log</span></code> and removed when the service stops. To restart the robot software, connect over SSH and run:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>hb50
 </pre></div>
 </div>
-<p>The installed software version is stored in <code class="docutils literal notranslate"><span class="pre">/var/run/hb/version.json</span></code> and published on the <code class="docutils literal notranslate"><span class="pre">/hb50/version_data/robot</span></code> topic.</p>
-<p>Each software version is installed in its own <code class="docutils literal notranslate"><span class="pre">~/install-&lt;version&gt;</span></code> folder, and <code class="docutils literal notranslate"><span class="pre">~/install</span></code> is a link to the active one. For installing new versions, see <a class="reference internal" href="Updating.html"><span class="std std-doc">Software Update</span></a>.</p>
+<p>The software is installed from the <code class="docutils literal notranslate"><span class="pre">hb50-robot</span></code> package in <code class="docutils literal notranslate"><span class="pre">/opt/hb50-robot</span></code>. The installed version is published on the <code class="docutils literal notranslate"><span class="pre">/hb50/version_data/robot</span></code> topic. For installing new versions, see <a class="reference internal" href="Updating.html"><span class="std std-doc">Software Update</span></a>.</p>
 </section>
 <section id="apc-application-pc">
 <h2>APC (Application PC)<a class="headerlink" href="#apc-application-pc" title="Link to this heading">#</a></h2>
@@ -448,7 +448,7 @@ document.write(`
 <li><p>custom user applications</p></li>
 <li><p>data logging and analysis</p></li>
 </ul>
-<p>By default, MAB-supplied ROS 2 nodes are not launched on the APC. This keeps the APC available for additional compute workloads without affecting the locomotion stack.</p>
+<p>By default, MAB-supplied ROS 2 nodes are not launched on the APC. This keeps the APC available for additional compute workloads without affecting the locomotion stack. The only exception is the optional <code class="docutils literal notranslate"><span class="pre">hb50-payload</span></code> package, which runs the camera, lidar and LED payload, see <a class="reference internal" href="../Payload/CameraLidar.html"><span class="std std-doc">Camera &amp; Lidar</span></a>.</p>
 </section>
 <section id="network-roles">
 <h2>Network roles<a class="headerlink" href="#network-roles" title="Link to this heading">#</a></h2>

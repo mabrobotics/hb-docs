@@ -200,6 +200,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="Payload/Payload.html">Payload</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Payload/CameraLidar.html">Camera &amp; Lidar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Payload/Spool.html">Spool</a></li>
 </ul>
 </details></li>
@@ -403,6 +404,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building">Building</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-build-environment">Prepare build environment</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-the-docs">Build the docs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pdf-of-a-released-version">PDF of a released version</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pushing-merging">Pushing &amp; Merging</a></li>
@@ -435,7 +437,7 @@ document.write(`
 <li><p><a class="reference internal" href="Software/Messages.html"><span class="std std-doc">Messages</span></a> — custom ROS2 message reference</p></li>
 <li><p><a class="reference internal" href="Software/Networking.html"><span class="std std-doc">Networking</span></a> — Wi-Fi, SSH, and ROS2 network notes</p></li>
 <li><p><a class="reference internal" href="Software/Geometry.html"><span class="std std-doc">Geometry</span></a> — coordinate frames and leg geometry</p></li>
-<li><p><a class="reference internal" href="Payload/Payload.html"><span class="std std-doc">Payload</span></a> — payload mount and spool configuration</p></li>
+<li><p><a class="reference internal" href="Payload/Payload.html"><span class="std std-doc">Payload</span></a> — payload mount, spool, camera and lidar configuration</p></li>
 </ul>
 </section>
 <section id="building">
@@ -454,6 +456,15 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter-book<span class="w"> </span>build<span class="w"> </span>.
 </pre></div>
 </div>
+</section>
+<section id="pdf-of-a-released-version">
+<h3>PDF of a released version<a class="headerlink" href="#pdf-of-a-released-version" title="Link to this heading">#</a></h3>
+<p>Before the docs move to a new software version, build the PDF of the current one and add it to <code class="docutils literal notranslate"><span class="pre">downloads/</span></code> and the list in <a class="reference internal" href="intro.html"><span class="std std-doc">intro.md</span></a>. Put the version in <code class="docutils literal notranslate"><span class="pre">title</span></code> in <code class="docutils literal notranslate"><span class="pre">_config.yml</span></code> first, then:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter-book<span class="w"> </span>build<span class="w"> </span>--all<span class="w"> </span>--builder<span class="w"> </span>pdflatex<span class="w"> </span>.
+gs<span class="w"> </span>-q<span class="w"> </span>-sDEVICE<span class="o">=</span>pdfwrite<span class="w"> </span>-dPDFSETTINGS<span class="o">=</span>/printer<span class="w"> </span>-dNOPAUSE<span class="w"> </span>-dBATCH<span class="w"> </span>-sOutputFile<span class="o">=</span>downloads/hb-docs-v&lt;version&gt;.pdf<span class="w"> </span>_build/latex/book.pdf
+</pre></div>
+</div>
+<p>Needs LaTeX (<code class="docutils literal notranslate"><span class="pre">latexmk</span></code>, <code class="docutils literal notranslate"><span class="pre">xelatex</span></code>) and Ghostscript. Revert the <code class="docutils literal notranslate"><span class="pre">title</span></code> change afterwards.</p>
 </section>
 </section>
 <section id="pushing-merging">
@@ -515,6 +526,7 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building">Building</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-build-environment">Prepare build environment</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-the-docs">Build the docs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pdf-of-a-released-version">PDF of a released version</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pushing-merging">Pushing &amp; Merging</a></li>

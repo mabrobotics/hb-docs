@@ -8,8 +8,8 @@
 :align: center
 :class: no-scaled-link
 ```
-Power button is located on the right side of the robots' body. It can be used to power on, and off the robot,
-and displays current status of the robots' internal systems.
+Power button is located on the right side of the robot's body. It can be used to power on, and off the robot,
+and displays current status of the robot's internal systems.
 
 ### Status of the robot
 
@@ -79,7 +79,7 @@ To plug the cable to the connector:
 
 To unplug the connector:
 
-- firmly grab cable connectors body,
+- firmly grab the cable connector's body,
 - slightly pull the connector housing, internal sliding mechanism will be actuated (refer to schematic),
 - pull the cable from the socket - it should come out without significant force requirement.
 - for battery connector, always plug battery connector plug immediately after disconnecting from the robot.
@@ -109,7 +109,7 @@ For the canonical description of the onboard computers (LPC / APC), their roles 
 
 ### Environmental safety
 
-While all robots connectors were selected and rated for outdoor use, they must remain plugged at all times during operation.
+While all robot connectors were selected and rated for outdoor use, they must remain plugged at all times during operation.
 
 ```{warning}
 The ports without plugged connector (or matching plug) are not suitable for use near water, dust, dirt or in 
@@ -133,6 +133,8 @@ There are 3 types of plugs for the robot:
 
 AUX1 connector hosts payload power connector and dedicated FDCAN lines.
 
+The cables supplied for the AUX1 and AUX2 connectors have a wire of a different color for each pin. The wire colors are the same for both cables and are listed in the pinout tables.
+
 ```{figure} ./img/connector_5pin.png
 :alt: connector_5pin
 :class: bg-primary mb-1
@@ -142,17 +144,17 @@ AUX1 connector hosts payload power connector and dedicated FDCAN lines.
 
 Pinout is as follows:
 
-| Pin no. | Function |
-| ------------- | -------------- |
-| 1 | Not Connected |
-| 2 | VCC 36V-50.4V, up to 50W |
-| 3 | GND |
-| 4 | FDCAN - CAN L |
-| 5 | FDCAN - CAN H |
+| Pin no. | Function | Cable wire color |
+| ------------- | -------------- | -------------- |
+| 1 | Not Connected | – |
+| 2 | VCC 36V-50.4V, up to 50W | green |
+| 3 | GND | brown |
+| 4 | FDCAN - CAN L | white |
+| 5 | FDCAN - CAN H | yellow |
 
 ### AUX2
 
-AUX2 connectors hosts isolated 5V supply, and Emergency Stop inputs.
+AUX2 connector hosts isolated 5V supply and Emergency Stop inputs.
 
 ```{figure} ./img/connector_5pin.png
 :alt: connector_5pin
@@ -163,22 +165,37 @@ AUX2 connectors hosts isolated 5V supply, and Emergency Stop inputs.
 
 Pinout is as follows:
 
-| Pin no. | Function |
-| ------------- | -------------- |
-| 1 | Not Connected |
-| 2 | 5V (Isolated), up to 10W |
-| 3 | GND (Isolated) |
-| 4 | E-stop |
-| 5 | E-stop |
+| Pin no. | Function | Cable wire color |
+| ------------- | -------------- | -------------- |
+| 1 | Not Connected | – |
+| 2 | 5V (Isolated), up to 10W | green |
+| 3 | GND (Isolated) | brown |
+| 4 | E-stop | white |
+| 5 | E-stop | yellow |
 
 ```{warning}
-This connector offers isolated output - its outputs should not be shorted to regular GND (in AUX1) nor to the robots' 
-chassis. Shorting ant of the connections to the batteries GND, may lead to damage to internal electronics.
+This connector offers isolated output - its outputs should not be shorted to regular GND (in AUX1) nor to the robot's 
+chassis. Shorting any of the connections to the battery GND may lead to damage to internal electronics.
+```
+
+#### E-stop
+
+If E-stop button is used, it should be normally-closed, pressing the button should disconnect the circuit.
+
+There are two input pins connected to the robot's E-stop mechanism. These pins should be shorted 
+to each other during normal operation. The circuit operates in normally-closed manner. The E-stop circuit
+has direct hardware connection to the robot's power system, bypassing software for always-ready emergency use.
+
+```{note}
+This is 'hard' E-stop mechanism, using it will immediately cut the power to the robot's legs, leading to a fall.
+This may lead to unintended damage to the robot and its surroundings. Additionally sudden power cutoff may lead
+to voltage surges that can damage electronics, including exposed payload power port.
+**Avoid using E-stop, except in emergency**
 ```
 
 ### LAN
 
-The LAN connector (located on the left side of the {ref}` rear panel <robot-connectors>`) provides standard wired Ethernet connectivity. 
+The LAN connector (located on the left side of the {ref}`rear panel <robot-connectors>`) provides standard wired Ethernet connectivity. 
 
 ```{figure} ./img/connector_8pin.png
 :alt: connector_8pin
@@ -230,21 +247,6 @@ Pinout is as follows:
 
 ```{warning}
 The socket pinout corresponds to the RJ45 T568B wiring standard.
-```
-
-#### E-stop
-
-If E-stop button is used, it should be normally-closed, pressing the button should disconnect the circuit.
-
-There are two input pins connected to the robots E-stop mechanism. These pins should be shorted 
-to each other during normal operation. The circuit operates in normally-closed manner. The E-stop circuit
-has direct hardware connection to robots power system, bypassing software for always-ready emergency use.
-
-```{note}
-This is 'hard' E-stop mechanism, using it will immediately cut the power to robots' legs, leading to a fall.
-This may, lead to unintended damage to the robot and its surrounding. Additionally sudden power cutoff may lead
-to voltage surges that can damage electronics, including exposed payload power port.
-**Avoid using E-stop, except in emergency**
 ```
 
 ### Charger port

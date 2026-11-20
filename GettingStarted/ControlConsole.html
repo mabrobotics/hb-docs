@@ -200,6 +200,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Payload/Payload.html">Payload</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Payload/CameraLidar.html">Camera &amp; Lidar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Payload/Spool.html">Spool</a></li>
 </ul>
 </details></li>
@@ -448,7 +449,7 @@ document.write(`
 <p>The application window consists of:</p>
 <ul class="simple">
 <li><p><strong>Status</strong> (bottom) — connection state, battery level, DC voltage, charger and DC bus state, temperatures, energy used and up time,</p></li>
-<li><p><strong>Menu</strong> (left) — state of <code class="docutils literal notranslate"><span class="pre">control_node</span></code> and <code class="docutils literal notranslate"><span class="pre">bridge_node</span></code>: <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code>, <code class="docutils literal notranslate"><span class="pre">INACTIVE</span></code>, <code class="docutils literal notranslate"><span class="pre">UNCONFIGURED</span></code> or <code class="docutils literal notranslate"><span class="pre">OFF</span></code>. During normal operation both nodes are <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code>. The <code class="docutils literal notranslate"><span class="pre">DEV</span> <span class="pre">MODE</span></code> toggle at the bottom is PIN-protected and intended for MAB service,</p></li>
+<li><p><strong>Menu</strong> (left) — state of <code class="docutils literal notranslate"><span class="pre">control_node</span></code> and <code class="docutils literal notranslate"><span class="pre">bridge_node</span></code>: <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code>, <code class="docutils literal notranslate"><span class="pre">INACTIVE</span></code>, <code class="docutils literal notranslate"><span class="pre">UNCONFIGURED</span></code> or <code class="docutils literal notranslate"><span class="pre">OFF</span></code>. During normal operation both nodes are <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code>. When a payload is detected, the <code class="docutils literal notranslate"><span class="pre">CAMERA</span> <span class="pre">MENU</span></code>, <code class="docutils literal notranslate"><span class="pre">LIDAR</span> <span class="pre">MENU</span></code>, <code class="docutils literal notranslate"><span class="pre">LEDS</span> <span class="pre">MENU</span></code> or <code class="docutils literal notranslate"><span class="pre">SPOOL</span> <span class="pre">MENU</span></code> button appears, see <a class="reference internal" href="../Payload/CameraLidar.html"><span class="std std-doc">Camera &amp; Lidar</span></a> and <a class="reference internal" href="../Payload/Spool.html"><span class="std std-doc">Spool</span></a>. The <code class="docutils literal notranslate"><span class="pre">DEV</span> <span class="pre">MODE</span></code> toggle at the bottom is PIN-protected and intended for MAB service,</p></li>
 <li><p><strong>MainMenu</strong> (center) — walking height and feet height sliders, robot state overview (motion mode, motion type and current gait), leg temperatures, connected Wi-Fi network and the <a class="reference internal" href="#adaptive-mode"><span class="std std-ref">adaptive locomotion mode</span></a> toggle,</p></li>
 <li><p><strong>Console</strong> — status messages from the robot and the application,</p></li>
 <li><p><strong>Bridge</strong> (right) — robot commands. The Command Switch button at the top (<code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">GO</span> <span class="pre">TO</span> <span class="pre">POWER</span> <span class="pre">COMMANDS</span></code> / <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">GO</span> <span class="pre">TO</span> <span class="pre">CONTROL</span> <span class="pre">COMMANDS</span></code>) switches between control and power commands.</p></li>
@@ -501,7 +502,7 @@ document.write(`
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SHUTDOWN</span></code></p></td>
-<td><p>Shuts down the robot.</p></td>
+<td><p>Shuts down the robot and powers it off.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ENABLE</span> <span class="pre">BUS</span></code></p></td>
 <td><p>Powers on the actuators bus.</p></td>
@@ -510,16 +511,10 @@ document.write(`
 <td><p>Powers off the actuators bus.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">HEALTH</span> <span class="pre">CHECK</span></code></p></td>
-<td><p>Checks communication with all actuators and their positions. The result is shown in the console.</p></td>
+<td><p>Checks communication with all actuators and their positions. The result is shown in the console. Refused while the actuators are enabled — select <code class="docutils literal notranslate"><span class="pre">IDLE</span></code> first.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">RESET</span> <span class="pre">CONTROL</span></code></p></td>
 <td><p>Restarts <code class="docutils literal notranslate"><span class="pre">control_node</span></code>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CHECK</span> <span class="pre">SOFTWARE</span> <span class="pre">UPDATE</span></code></p></td>
-<td><p>Verifies the software update bundle, see <a class="reference internal" href="../Software/Updating.html"><span class="std std-doc">Software Update</span></a>.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">APPLY</span> <span class="pre">SOFTWARE</span> <span class="pre">UPDATE</span></code></p></td>
-<td><p>Installs the verified software update on the robot and the Steam Deck.</p></td>
 </tr>
 </tbody>
 </table>
@@ -532,7 +527,7 @@ document.write(`
 </section>
 <section id="controls-layout">
 <h2>Controls Layout<a class="headerlink" href="#controls-layout" title="Link to this heading">#</a></h2>
-<p>Alongside <code class="docutils literal notranslate"><span class="pre">remote_node</span></code> there is also another node <code class="docutils literal notranslate"><span class="pre">teleop_node</span></code>, which captures joystick button inputs and converts them to robot commands. Below is a list of supported commands and actions:</p>
+<p>Alongside <code class="docutils literal notranslate"><span class="pre">remote_node</span></code> there is also another node <code class="docutils literal notranslate"><span class="pre">teleop_node</span></code>, which captures joystick button inputs and converts them to robot commands. If the controller input is lost for more than 0.3 s, <code class="docutils literal notranslate"><span class="pre">teleop_node</span></code> commands zero velocity. Below is a list of supported commands and actions:</p>
 <figure class="align-center">
 <img alt="deck_controls" class="no-scaled-link" src="../_images/deck_controls.png" />
 </figure>

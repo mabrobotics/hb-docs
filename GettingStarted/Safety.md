@@ -52,7 +52,7 @@ Do not operate the robot:
 - near moving vehicles or machinery,
 - in rain, snow, or standing water unless the robot is explicitly configured for such conditions,
 - in explosive or flammable environments,
-- outside the specified temperature and humidity limits.
+- outside the specified temperature limits.
 
 ## Mechanical hazards
 
@@ -108,7 +108,7 @@ The robot is heavy and may be difficult to handle by one person.
 - Carry the robot only by the main body or designated carrying points.
 - Do not lift the robot by the legs, sensors, connectors, cables, or payload.
 - Use two people or lifting equipment if required by the robot weight.
-- Remove the battery before transport if required by the transport procedure.
+- Remove the battery before transport.
 
 ### Manual handling and repositioning
 

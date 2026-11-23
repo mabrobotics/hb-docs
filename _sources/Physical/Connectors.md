@@ -85,7 +85,7 @@ To plug the cable to the connector:
 To unplug the connector:
 
 - firmly grab the cable connector's body,
-- slightly pull the connector housing, internal sliding mechanism will be actuated (refer to schematic),
+- slightly pull the connector housing, internal sliding mechanism will be actuated,
 - pull the cable from the socket - it should come out without significant force requirement.
 - for battery connector, always plug battery connector plug immediately after disconnecting from the robot.
 

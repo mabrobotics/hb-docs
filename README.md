@@ -4,19 +4,24 @@ Documentation for Honey Badger robots.
 
 ## Documentation structure
 
-- [Getting Started](GettingStarted/GettingStarted.md) — robot introduction and key specs
-- [First Startup](GettingStarted/FirstStartup.md) — first startup checklist
+- [Intro](intro.md) — key specs, PDFs for older software versions
+- [Getting Started](GettingStarted/GettingStarted.md) — robot introduction
 - [Safety](GettingStarted/Safety.md) — safety and emergency procedures
-- [Setup](GettingStarted/Setup.md) — package contents, network reference, charging
+- [First Startup](GettingStarted/FirstStartup.md) — first startup checklist
+- [Setup](GettingStarted/Setup.md) — package contents, network reference, charging and charger/battery connections
 - [Control Console](GettingStarted/ControlConsole.md) — Steam Deck controller and operator console
 - [Physical Overview](Physical/Overview.md) — mechanical overview
 - [Connectors](Physical/Connectors.md) — connectors, buttons, and port reference
 - [Software Overview](Software/Overview.md) — ROS2 architecture and core topics
 - [Platform](Software/Platform.md) — onboard LPC/APC platform roles
 - [Messages](Software/Messages.md) — custom ROS2 message reference
-- [Networking](Software/Networking.md) — Wi-Fi, SSH, and ROS2 network notes
+- [Networking](Software/Networking.md) — SSH and ROS 2 network notes
 - [Geometry](Software/Geometry.md) — coordinate frames and leg geometry
-- [Payload](Payload/Payload.md) — payload mount, spool, camera and lidar configuration
+- [Software Update](Software/Updating.md) — robot and Steam Deck updates
+- [Payload](Payload/Payload.md) — payload mount
+- [Camera & Lidar](Payload/CameraLidar.md) — camera and lidar payload
+- [Spool](Payload/Spool.md) — spool payload
+- [FAQ](FAQ.md) — frequently asked questions
 
 ## Building
 

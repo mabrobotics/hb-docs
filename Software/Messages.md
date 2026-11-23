@@ -57,7 +57,6 @@ Contains power subsystem state, temperatures and hardware status. A low-frequenc
 | `status[]` | `string[]` | Hardware status strings (warnings, errors) |
 | `up_time` | `int32` | System uptime (s) |
 
-[//]: # (TODO: Check and describe placements of the temperature sensors)
 ---
 
 ## JointCommand — actuator control commands

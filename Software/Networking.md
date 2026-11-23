@@ -1,4 +1,4 @@
-# Network
+# Networking
 
 The robot is equipped with an on-board Wi-Fi router, allowing for easy access, [software updates](Updating.md), and management of multiple connected devices.
 

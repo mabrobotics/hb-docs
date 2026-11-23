@@ -6,7 +6,7 @@ This page provides a concise, safe checklist to power on, connect, and stand a n
 
 ## Quick checklist (read before starting)
 
-- Read the Safety section in the main manual.
+- Read the [Safety](Safety.md) page.
 - Place robot on flat, stable ground with at least 1 m clearance around legs.
 - Use two people to lift or position the robot if needed.
 - Have the control console (Steam Deck) or laptop ready.
@@ -19,8 +19,8 @@ This page provides a concise, safe checklist to power on, connect, and stand a n
 
 ## 2 — Connect control console and network
 
-- On the Steam Deck (or laptop): connect to the robot's AP and open the control GUI.
-- Confirm the control console shows the robot as `connected`.
+- On the Steam Deck (or laptop): connect to the robot's Wi-Fi and start the `HB50 Remote` application.
+- Confirm the status bar of `HB50 Remote` shows `Connection: ONLINE`.
 - For the AP name, password, and wired connection options, see [Setup](Setup.md).
 
 ## 3 — Verify system status (basic checks)

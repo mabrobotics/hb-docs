@@ -34,10 +34,10 @@ Here is a list of relevant topics published by the robot:
 
 | Topic | Message Type | QoS | Publish Rate |
 | --- | --- | --- | --- |
-| `/hb50/bridge_data` | `hb50_commons/msg/BridgeData` | mabRT | 500 hz |
-| `/hb50/bridge_data_10hz` | `hb50_commons/msg/BridgeData` | Reliable | 10 hz |
-| `/hb50/bridge_state` | `hb50_commons/msg/BridgeState` | mabRT | 500 hz |
-| `/hb50/bridge_state_10hz` | `hb50_commons/msg/BridgeState` | Reliable | 10 hz |
+| `/hb50/bridge_data` | `hb50_commons/msg/BridgeData` | mabRT | 500 Hz |
+| `/hb50/bridge_data_10hz` | `hb50_commons/msg/BridgeData` | Reliable | 10 Hz |
+| `/hb50/bridge_state` | `hb50_commons/msg/BridgeState` | mabRT | 500 Hz |
+| `/hb50/bridge_state_10hz` | `hb50_commons/msg/BridgeState` | Reliable | 10 Hz |
 | `/hb50/control_command` | `std_msgs/msg/String` | Reliable | as needed |
 | `/hb50/imu_data` | `sensor_msgs/msg/Imu` | Reliable | 500 Hz |
 | `/hb50/joint_command` | `hb50_commons/msg/JointCommand` | mabRT | 500 Hz |
@@ -45,12 +45,12 @@ Here is a list of relevant topics published by the robot:
 | `/hb50/joy` | `sensor_msgs/msg/Joy` | Reliable | as needed |
 | `/hb50/robot_description` | `std_msgs/msg/String` | Reliable | as needed |
 | `/hb50/robot_state` | `hb50_commons/msg/RobotState` | mabRT | 500 Hz |
-| `/hb50/robot_state_10hz` | `hb50_commons/msg/RobotState` | Reliable | 10 hz |
+| `/hb50/robot_state_10hz` | `hb50_commons/msg/RobotState` | Reliable | 10 Hz |
 | `/hb50/status` | `hb50_commons/msg/Status` | Reliable | as needed |
 | `/hb50/velocity_command` | `geometry_msgs/msg/Twist` | Reliable | as needed |
 | `/hb50/version_data/robot` | `hb50_commons/msg/VersionData` | Reliable, transient local | once, after the first control cycle |
 | `/hb50/version_data/deck` | `hb50_commons/msg/VersionData` | Reliable, transient local | once at startup |
-| `/tf` | `tf2_msgs/msg/TFMessage` | Reliable | 10 hz |
+| `/tf` | `tf2_msgs/msg/TFMessage` | Reliable | 10 Hz |
 | `/tf_static` | `tf2_msgs/msg/TFMessage` | Reliable | as needed |
 
 `/hb50/control_command` and `/hb50/velocity_command` are the high-level command inputs of `control_node`, see {ref}`Control command <control-command>` and {ref}`Velocity command <velocity-command>`.

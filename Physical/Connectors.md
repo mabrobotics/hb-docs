@@ -1,4 +1,4 @@
-# Connectors
+# Button & Connectors
 
 ## Power & Status button
 
@@ -8,6 +8,7 @@
 :align: center
 :class: no-scaled-link
 ```
+
 Power button is located on the right side of the robot's body. It can be used to power on, and off the robot,
 and displays current status of the robot's internal systems.
 
@@ -34,7 +35,7 @@ When the robot is powered off:
 
 | Button action | Robot behavior |
 | ------------- | -------------- |
-| Brief press   | Displays battery charge level for 10 seconds |
+| Brief press | Displays battery charge level for 10 seconds |
 | Hold for 2 seconds | Starts the power-on sequence. The power button LED blinks purple for about 3 seconds to indicate startup has begun. |
 
 #### Robot on
@@ -56,13 +57,14 @@ When the charger is connected:
 
 #### Emergency stop
 
-When the emergency stop is active and the robot leg actuators are disabled electrically, the power button 
+When the emergency stop is active and the robot leg actuators are disabled electrically, the power button
 LED blinks between red and yellow.
 
-Do not attempt to operate the robot while the emergency stop is active. Remove the cause of the emergency 
+Do not attempt to operate the robot while the emergency stop is active. Remove the cause of the emergency
 stop before resetting the system.
 
 (firmware-update)=
+
 #### Firmware update
 
 When the power button LED blinks in a red-blue (police) pattern, the robot's internal mainboard is in firmware update mode. This state is intended for service or firmware update procedures and should not be active during normal operation.
@@ -108,6 +110,13 @@ To unplug the connector:
 | 9 | WiFi Antenna |
 | 10 | WiFi Antenna |
 
+```{figure} ./img/robot_connectors.jpg
+:alt: robot_connectors
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
+
 For the canonical description of the onboard computers (LPC / APC), their roles and network addresses, see [Platform](../Software/Platform.md).
 
 ### Environmental safety
@@ -123,7 +132,7 @@ There are 3 types of plugs for the robot:
 
 - 2x plastic USB port cap,
 - 2x 12mm plug (LAN, WAN/LAN),
-- 3x 10mm plug (AUX1, AUX2, Charger) 
+- 3x 10mm plug (AUX1, AUX2, Charger)
 
 ```{figure} ./img/connector_plugs.jpg
 :alt: connector_plugs
@@ -150,7 +159,7 @@ Pinout is as follows:
 | Pin no. | Function | Cable wire color |
 | ------------- | -------------- | -------------- |
 | 1 | Not Connected | – |
-| 2 | VCC 36V-50.4V, up to 50W | green |
+| 2 | VCC 36V-50.4V | green |
 | 3 | GND | brown |
 | 4 | FDCAN - CAN L | white |
 | 5 | FDCAN - CAN H | yellow |
@@ -185,7 +194,7 @@ chassis. Shorting any of the connections to the battery GND may lead to damage t
 
 If E-stop button is used, it should be normally-closed, pressing the button should disconnect the circuit.
 
-There are two input pins connected to the robot's E-stop mechanism. These pins should be shorted 
+There are two input pins connected to the robot's E-stop mechanism. These pins should be shorted
 to each other during normal operation. The circuit operates in normally-closed manner. The E-stop circuit
 has direct hardware connection to the robot's power system, bypassing software for always-ready emergency use.
 
@@ -198,7 +207,7 @@ to voltage surges that can damage electronics, including exposed payload power p
 
 ### LAN
 
-The LAN connector (located on the left side of the {ref}`rear panel <robot-connectors>`) provides standard wired Ethernet connectivity. 
+The LAN connector (located on the left side of the {ref}`rear panel <robot-connectors>`) provides standard wired Ethernet connectivity.
 
 ```{figure} ./img/connector_8pin.png
 :alt: connector_8pin

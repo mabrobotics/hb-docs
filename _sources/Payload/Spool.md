@@ -74,8 +74,8 @@ The spool velocity from automatic mode and the manual velocity command are summe
 
 | Topic | Message Type | QoS | Publish Rate |
 | --- | --- | --- | --- |
-| `/hb50/payload/spool_unroll_speed` | `std_msgs/msg/Float32` | Reliable | 10 hz |
-| `/hb50/robot_state_10hz` | [`hb50_commons/msg/RobotState`](robotstate_def) | Reliable | 10 hz |
+| `/hb50/payload/spool_unroll_speed` | `std_msgs/msg/Float32` | Reliable | 10 Hz |
+| `/hb50/robot_state_10hz` | [`hb50_commons/msg/RobotState`](robotstate_def) | Reliable | 10 Hz |
 
 If `/hb50/robot_state_10hz` is not received for 1 s while the spool is enabled, the automatic velocity is set to zero and an error is reported on `/hb50/status`. Spool drive faults are reported on `/hb50/status` as well.
 
@@ -83,8 +83,8 @@ And publishes to the topics:
 
 | Topic | Message Type | QoS | Publish Rate |
 | --- | --- | --- | --- |
-| `/hb50/payload/spool_unroll_length` | `std_msgs/msg/Float32` | Reliable | 10 hz |
-| `/hb50/torque` | `std_msgs/msg/Float32` | Reliable | 10 hz |
+| `/hb50/payload/spool_unroll_length` | `std_msgs/msg/Float32` | Reliable | 10 Hz |
+| `/hb50/torque` | `std_msgs/msg/Float32` | Reliable | 10 Hz |
 
 ```{note}
 For precise definition of QoS check: {ref}`qos-information`.

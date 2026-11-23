@@ -1,4 +1,4 @@
-# Setup and Startup
+# Setup and Charging
 
 ```{figure} ./img/robot_water.jpg
 :alt: robot_water
@@ -16,6 +16,7 @@ The standard robot package may include the following items:
 | Quadruped robot     | Main robotic platform                                          | ✓ | ✓ |
 | Battery pack        | Power source for the robot                                     | ✓ | ✓ |
 | Battery charger     | Charger compatible with the supplied battery                   | ✓ | ✓ |
+| Charging cables     | Battery charging cable and robot charging cable, see [Charging](#charging) | ✓ | ✓ |
 | Operator controller | Dedicated remote controller                                    | ✓ | ✓ |
 | Documentation       | Operating manual, safety instructions, and configuration notes | ✓ | ✓ |
 | Ethernet cable      | Used for direct network connection                             | optional | ✓ |

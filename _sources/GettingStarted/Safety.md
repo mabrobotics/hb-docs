@@ -120,7 +120,7 @@ The illustration below shows a recommended belly-to-back repositioning move. Use
 Always use an overhand grip when holding the robot legs. Keep your fingers away from gaps between mechanical parts, as they may cause crushing injuries.
 ```
 
-```{figure} ./img/flip.png
+```{figure} ./img/flip.jpg
 :alt: belly-to-back turn of the robot by hand
 :width: 70%
 :align: center

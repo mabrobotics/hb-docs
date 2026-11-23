@@ -23,12 +23,26 @@ When the enabled camera sends no pictures for 3 s, for example after it was unpl
 | `SNAPSHOT` | Saves the current camera picture on the Steam Deck in `~/Pictures/hb50/`. |
 | `MAXIMIZE` | Shows the camera picture over the whole application. `MINIMIZE` returns to the normal view. |
 
+```{figure} ./img/deck_camera.png
+:alt: deck_camera
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
+
 The advanced camera settings contain:
 
 | Name | Function |
 | --- | --- |
 | `ROTATE 180°` | Turns the `camera.rotate_180` rotation on and off. |
 | `-` / `+` | Change the JPEG quality of the active camera mode in steps of 10, from 10 to 90 or `ORIGINAL` (camera frames sent unchanged). |
+
+```{figure} ./img/deck_camera_advanced.png
+:alt: deck_camera_advanced
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
 
 Settings changed in the remote apply until `payload_node` restarts. To keep them, set them in `/etc/hb50/payload.yaml`.
 
@@ -41,12 +55,26 @@ Settings changed in the remote apply until `payload_node` restarts. To keep them
 | Rosbag `START` | Starts recording a rosbag on the APC. |
 | Rosbag `STOP` | Stops the recording and saves the rosbag. |
 
+```{figure} ./img/deck_lidar.png
+:alt: deck_lidar
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
+
 ### LEDs menu
 
 | Name | Function |
 | --- | --- |
 | `ON` | Turns the LEDs on. |
 | `OFF` | Turns the LEDs off. |
+
+```{figure} ./img/deck_leds.png
+:alt: deck_leds
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
 
 The result of each command is shown in the status console.
 
@@ -73,9 +101,9 @@ Always stop the recording before turning off the robot or the APC, otherwise the
 | Topic | Message Type | QoS | Publish Rate |
 | --- | --- | --- | --- |
 | `/hb50/payload/camera/locomotion/compressed` | `sensor_msgs/msg/CompressedImage` | Reliable, depth 1 | camera mode frame rate |
-| `/hb50/payload/lidar/points` | `sensor_msgs/msg/PointCloud2` | Reliable | 10 hz |
-| `/hb50/payload/lidar/imu` | `sensor_msgs/msg/Imu` | Reliable | 200 hz |
-| `/hb50/payload/lidar/points_preview` | `sensor_msgs/msg/PointCloud2` | Reliable, depth 1 | 10 hz |
+| `/hb50/payload/lidar/points` | `sensor_msgs/msg/PointCloud2` | Reliable | 10 Hz |
+| `/hb50/payload/lidar/imu` | `sensor_msgs/msg/Imu` | Reliable | 200 Hz |
+| `/hb50/payload/lidar/points_preview` | `sensor_msgs/msg/PointCloud2` | Reliable, depth 1 | 10 Hz |
 | `/tf_static` | `tf2_msgs/msg/TFMessage` | Reliable | as needed |
 
 The camera images are JPEG compressed. The camera topic name contains `camera.name`, `locomotion` by default.

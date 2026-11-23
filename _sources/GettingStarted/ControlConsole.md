@@ -1,4 +1,4 @@
-# Steam Deck Controller
+# Control Console
 
 Remote control of HB robots is best done using the MAB-supplied Steam Deck controller with custom software and drivers. The controller makes it easy to start up, change gaits, and control the robot using the `HB50 Remote` application.
 
@@ -26,8 +26,6 @@ Connecting the Steam Deck to the robot is also possible via wired connection. Th
 
 On the desktop, there is an `HB50 Remote` application icon that starts the `remote_node` application for controlling Honey Badger robots. The application provides a quick diagnostic overview and enables typical robot operation tasks.
 
-[//]: # (TODO: Retake the screenshot for v1.1.0 - node lifecycle states, adaptive locomotion toggle, no RUN button)
-
 ```{figure} ./img/deck_remote.png
 :alt: deck_remote
 :class: bg-primary mb-1
@@ -38,10 +36,19 @@ On the desktop, there is an `HB50 Remote` application icon that starts the `remo
 The application window consists of:
 
 - **Status** (bottom) — connection state, battery level, DC voltage, charger and DC bus state, temperatures, energy used and up time,
-- **Menu** (left) — state of `control_node` and `bridge_node`: `ACTIVE`, `INACTIVE`, `UNCONFIGURED` or `OFF`. During normal operation both nodes are `ACTIVE`. When a payload is detected, the `CAMERA MENU`, `LIDAR MENU`, `LEDS MENU` or `SPOOL MENU` button appears, see [Camera & Lidar](../Payload/CameraLidar.md) and [Spool](../Payload/Spool.md). The `DEV MODE` toggle at the bottom is PIN-protected and intended for MAB service,
+- **Menu** (left) — state of `control_node` and `bridge_node`: `ACTIVE`, `INACTIVE`, `UNCONFIGURED` or `OFF`. During normal operation both nodes are `ACTIVE`. When a payload is detected, the `CAMERA MENU`, `LIDAR MENU`, `LEDS MENU` or `SPOOL MENU` button appears together with the `MAIN MENU` button, which returns to the main view, see [Camera & Lidar](../Payload/CameraLidar.md) and [Spool](../Payload/Spool.md). The `DEV MODE` toggle at the bottom is PIN-protected and intended for MAB service,
 - **MainMenu** (center) — walking height and feet height sliders, robot state overview (motion mode, motion type and current gait), leg temperatures, connected Wi-Fi network and the {ref}`adaptive locomotion mode <adaptive-mode>` toggle,
 - **Console** — status messages from the robot and the application,
 - **Bridge** (right) — robot commands. The Command Switch button at the top (`> GO TO POWER COMMANDS` / `> GO TO CONTROL COMMANDS`) switches between control and power commands.
+
+With a payload mounted, the Menu shows its buttons:
+
+```{figure} ./img/deck_remote_payload.png
+:alt: deck_remote_payload
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
 
 ### Control commands
 
@@ -59,6 +66,13 @@ The application window consists of:
 ### Power commands
 
 Each power command asks for confirmation before it is executed.
+
+```{figure} ./img/deck_remote_power.png
+:alt: deck_remote_power
+:class: bg-primary mb-1
+:align: center
+:class: no-scaled-link
+```
 
 | Command | Function |
 | --- | --- |

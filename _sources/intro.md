@@ -1,21 +1,11 @@
 # Intro
 
-```{figure} ./img/intro_robots.png
+```{figure} ./img/intro_robots.jpg
 :alt: intro robots
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
 ```
-
-<!-- Take a while to take a look at the introduction video: -->
-
-<!-- <iframe width="560" height="315"
-src="https://www.youtube.com/embed/HEddVC-1DnY"
-title="YouTube video player"
-frameborder="0"
-allowfullscreen
-referrerpolicy="strict-origin-when-cross-origin">
-</iframe> -->
 
 ## General parameters
 
@@ -47,7 +37,7 @@ referrerpolicy="strict-origin-when-cross-origin">
 | Walking Speed (Walk)   | 0.6 | m/s |
 | Slopes | +-30 | ° |
 | **Connectivity**|
-| WiFi 5 AP 802.11 | up to 867 Mbps
+| Wi-Fi 5 AP (802.11ac) | up to 867 | Mbps |
 | Ethernet | 1x LAN, 1x WAN/LAN, up to 1 Gbps each |
 
 \*Operating time in nominal conditions - no payload, constant walking (`Walk` gait), with average speed of 0.5m/s, on mostly flat, dry concrete surface.

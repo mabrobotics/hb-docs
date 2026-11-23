@@ -10,10 +10,10 @@ Supported payloads:
 
 ## Payload mount
 
-Payload can be attached on the robots' back, using mounting points:
+Payload can be attached on the robot's back, using mounting points:
 
 ```{figure} ./img/payload_dimensions.jpg
-:alt: leg_dimensions
+:alt: payload_dimensions
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link

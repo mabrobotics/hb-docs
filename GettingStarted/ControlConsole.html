@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Steam Deck Controller &#8212; Honey Badger Robot Documentation</title>
+    <title>Control Console &#8212; Honey Badger Robot Documentation</title>
   
   
   
@@ -63,7 +63,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Mechanical" href="../Physical/Overview.html" />
-    <link rel="prev" title="Setup and Startup" href="Setup.html" />
+    <link rel="prev" title="Setup and Charging" href="Setup.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -390,7 +390,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Steam Deck Controller</h1>
+    <h1>Control Console</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -422,8 +422,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="steam-deck-controller">
-<h1>Steam Deck Controller<a class="headerlink" href="#steam-deck-controller" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="control-console">
+<h1>Control Console<a class="headerlink" href="#control-console" title="Link to this heading">#</a></h1>
 <p>Remote control of HB robots is best done using the MAB-supplied Steam Deck controller with custom software and drivers. The controller makes it easy to start up, change gaits, and control the robot using the <code class="docutils literal notranslate"><span class="pre">HB50</span> <span class="pre">Remote</span></code> application.</p>
 <section id="network-setup">
 <h2>Network Setup<a class="headerlink" href="#network-setup" title="Link to this heading">#</a></h2>
@@ -449,11 +449,15 @@ document.write(`
 <p>The application window consists of:</p>
 <ul class="simple">
 <li><p><strong>Status</strong> (bottom) — connection state, battery level, DC voltage, charger and DC bus state, temperatures, energy used and up time,</p></li>
-<li><p><strong>Menu</strong> (left) — state of <code class="docutils literal notranslate"><span class="pre">control_node</span></code> and <code class="docutils literal notranslate"><span class="pre">bridge_node</span></code>: <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code>, <code class="docutils literal notranslate"><span class="pre">INACTIVE</span></code>, <code class="docutils literal notranslate"><span class="pre">UNCONFIGURED</span></code> or <code class="docutils literal notranslate"><span class="pre">OFF</span></code>. During normal operation both nodes are <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code>. When a payload is detected, the <code class="docutils literal notranslate"><span class="pre">CAMERA</span> <span class="pre">MENU</span></code>, <code class="docutils literal notranslate"><span class="pre">LIDAR</span> <span class="pre">MENU</span></code>, <code class="docutils literal notranslate"><span class="pre">LEDS</span> <span class="pre">MENU</span></code> or <code class="docutils literal notranslate"><span class="pre">SPOOL</span> <span class="pre">MENU</span></code> button appears, see <a class="reference internal" href="../Payload/CameraLidar.html"><span class="std std-doc">Camera &amp; Lidar</span></a> and <a class="reference internal" href="../Payload/Spool.html"><span class="std std-doc">Spool</span></a>. The <code class="docutils literal notranslate"><span class="pre">DEV</span> <span class="pre">MODE</span></code> toggle at the bottom is PIN-protected and intended for MAB service,</p></li>
+<li><p><strong>Menu</strong> (left) — state of <code class="docutils literal notranslate"><span class="pre">control_node</span></code> and <code class="docutils literal notranslate"><span class="pre">bridge_node</span></code>: <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code>, <code class="docutils literal notranslate"><span class="pre">INACTIVE</span></code>, <code class="docutils literal notranslate"><span class="pre">UNCONFIGURED</span></code> or <code class="docutils literal notranslate"><span class="pre">OFF</span></code>. During normal operation both nodes are <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code>. When a payload is detected, the <code class="docutils literal notranslate"><span class="pre">CAMERA</span> <span class="pre">MENU</span></code>, <code class="docutils literal notranslate"><span class="pre">LIDAR</span> <span class="pre">MENU</span></code>, <code class="docutils literal notranslate"><span class="pre">LEDS</span> <span class="pre">MENU</span></code> or <code class="docutils literal notranslate"><span class="pre">SPOOL</span> <span class="pre">MENU</span></code> button appears together with the <code class="docutils literal notranslate"><span class="pre">MAIN</span> <span class="pre">MENU</span></code> button, which returns to the main view, see <a class="reference internal" href="../Payload/CameraLidar.html"><span class="std std-doc">Camera &amp; Lidar</span></a> and <a class="reference internal" href="../Payload/Spool.html"><span class="std std-doc">Spool</span></a>. The <code class="docutils literal notranslate"><span class="pre">DEV</span> <span class="pre">MODE</span></code> toggle at the bottom is PIN-protected and intended for MAB service,</p></li>
 <li><p><strong>MainMenu</strong> (center) — walking height and feet height sliders, robot state overview (motion mode, motion type and current gait), leg temperatures, connected Wi-Fi network and the <a class="reference internal" href="#adaptive-mode"><span class="std std-ref">adaptive locomotion mode</span></a> toggle,</p></li>
 <li><p><strong>Console</strong> — status messages from the robot and the application,</p></li>
 <li><p><strong>Bridge</strong> (right) — robot commands. The Command Switch button at the top (<code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">GO</span> <span class="pre">TO</span> <span class="pre">POWER</span> <span class="pre">COMMANDS</span></code> / <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">GO</span> <span class="pre">TO</span> <span class="pre">CONTROL</span> <span class="pre">COMMANDS</span></code>) switches between control and power commands.</p></li>
 </ul>
+<p>With a payload mounted, the Menu shows its buttons:</p>
+<figure class="align-center">
+<img alt="deck_remote_payload" class="no-scaled-link" src="../_images/deck_remote_payload.png" />
+</figure>
 <section id="control-commands">
 <h3>Control commands<a class="headerlink" href="#control-commands" title="Link to this heading">#</a></h3>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -494,6 +498,9 @@ document.write(`
 <section id="power-commands">
 <h3>Power commands<a class="headerlink" href="#power-commands" title="Link to this heading">#</a></h3>
 <p>Each power command asks for confirmation before it is executed.</p>
+<figure class="align-center">
+<img alt="deck_remote_power" class="no-scaled-link" src="../_images/deck_remote_power.png" />
+</figure>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Command</p></th>
@@ -570,7 +577,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Setup and Startup</p>
+        <p class="prev-next-title">Setup and Charging</p>
       </div>
     </a>
     <a class="right-next"

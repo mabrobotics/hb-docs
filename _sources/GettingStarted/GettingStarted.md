@@ -35,4 +35,4 @@ For startup and operation, use the core procedure pages below:
 - [Safety](Safety.md) — safety and emergency procedures.
 - [FirstStartup](FirstStartup.md) — step-by-step startup checklist.
 - [ControlConsole](ControlConsole.md) — Steam Deck control and operator console.
-- [Setup](Setup.md) — package contents, network reference, and charging.
+- [Setup](Setup.md) — package contents, network reference, charging and charger/battery connections.

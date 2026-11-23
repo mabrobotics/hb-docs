@@ -20,7 +20,7 @@ Contains the high-frequency mainboard update with kinematics and IMU data. This 
 | `orientation` | `geometry_msgs/Quaternion` | IMU orientation (quaternion) |
 | `angular_velocity` | `geometry_msgs/Vector3` | Body angular velocity (rad/s) |
 | `linear_acceleration` | `geometry_msgs/Vector3` | Body linear acceleration (m/s²) |
-| `joint_name[]` | `string[]` | Names of actuators (e.g., `["fr_j0", "fr_j1", ...]`). HB50W reports 16 actuators: the 12 leg joints followed by the wheels `fr_w`, `fl_w`, `rl_w`, `rr_w` |
+| `joint_name[]` | `string[]` | Names of actuators, 12 for HB50, 16 for HB50W. See {ref}`Joint naming and order <joint-order>` |
 | `joint_position[]` | `float32[]` | Current position of each joint (rad) |
 | `joint_velocity[]` | `float32[]` | Current velocity of each joint (rad/s) |
 | `joint_effort[]` | `float32[]` | Estimated torque of each joint (N·m) |
@@ -67,17 +67,30 @@ Contains power subsystem state, temperatures and hardware status. A low-frequenc
 **QoS:** mabRT  
 **Use case:** Control applications commanding joint motion
 
-Commands the actuators with target position, velocity, torque and PD gains. **Critical:** actuators must be commanded in strict order defined in the robot configuration.
+Commands the actuators with target position, velocity, torque and PD gains.
 
-> `bridge_node` subscribes only to `/hb50/joint_command` topic. Custom control programs can publish `JointCommand` messages directly to this topic; if the custom publisher maintains at least 10 Hz, `bridge_node` will prioritize it over the default `control_node` publisher.
+```{danger}
+Actuators must be commanded in the strict order given in {ref}`Joint naming and order <joint-order>`. A wrong order sends commands to the wrong joints and can cause sudden, unexpected robot motion.
+```
+
+(joint-command-priority)=
+
+### Custom joint control
+
+`bridge_node` subscribes only to the `/hb50/joint_command` topic. Custom control programs can publish `JointCommand` messages directly to this topic:
+
+- a message with `source_node` other than `control_node` takes priority: commands from `control_node` are ignored for 100 ms after it,
+- to keep control, the custom publisher must publish at least at 10 Hz,
+- 100 ms after the last custom message, `control_node` takes control again and its current command is applied immediately,
+- the actuators must be energized (`ENERGIZE`), otherwise `bridge_node` sends zero commands.
 
 ### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
 | `header` | `std_msgs/Header` | Timestamp and source |
-| `source_node` | `string` | Name of commanding node (e.g., `control_node`) |
-| `name[]` | `string[]` | Actuator identifiers (e.g., `["fr_j0", "fr_j1", ...]`) |
+| `source_node` | `string` | Name of the commanding node. Any name other than `control_node` gives the message priority, see {ref}`Custom joint control <joint-command-priority>` |
+| `name[]` | `string[]` | Actuator identifiers, informational only |
 | `kp[]` | `float32[]` | Position gain for each joint |
 | `ki[]` | `float32[]` | (Reserved) Integral gain |
 | `kd[]` | `float32[]` | Velocity damping gain for each joint |
@@ -85,13 +98,14 @@ Commands the actuators with target position, velocity, torque and PD gains. **Cr
 | `t_vel[]` | `float32[]` | Target velocity (rad/s) |
 | `t_trq[]` | `float32[]` | Target torque (N·m) |
 
-**Important:** Array lengths must be at least the number of actuators (12, or 16 for HB50W), otherwise `bridge_node` drops the message. Actuators are commanded by array index, not by `name[]`, so the order must correspond to the actuator ordering in `BridgeData`.
+**Important:** Array lengths must be at least the number of actuators (12, or 16 for HB50W), otherwise `bridge_node` drops the message. Actuators are commanded by array index, not by `name[]`, see {ref}`Joint naming and order <joint-order>`.
 
 If `bridge_node` receives no `JointCommand` for 100 ms, it switches the actuators to damping.
 
 ---
 
 (robotstate_def)=
+
 ## RobotState — estimated state
 
 **Message type:** `hb50_commons/msg/RobotState`  
@@ -225,6 +239,7 @@ ros2 topic echo --once /hb50/version_data/robot
 ---
 
 (control-command)=
+
 ## Control command
 
 `/hb50/control_command` (`std_msgs/msg/String`, Reliable QoS) changes the robot motion mode. It is the topic used by the control commands of the [HB50 Remote](../GettingStarted/ControlConsole.md) application.
@@ -249,6 +264,7 @@ ros2 topic pub --once /hb50/control_command std_msgs/msg/String "{data: stand_up
 ---
 
 (velocity-command)=
+
 ## Velocity command interpretation
 
 The standard ROS geometry message `/hb50/velocity_command` (`geometry_msgs/msg/Twist`, Reliable QoS) is used for high‑level gait commands. Components are interpreted as:

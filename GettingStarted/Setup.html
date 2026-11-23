@@ -404,6 +404,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-first-use">Before first use</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#robot-network-reference">Robot network reference</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#charging-the-robot">Charging the robot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#charging-set">Charging set</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-charger-to-charging-cable-xlr-xlr">✔ Step 1: charger to charging cable (XLR ↔ XLR)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-charging-cable-to-battery-cable-lemo-lemo">✔ Step 2: charging cable to battery cable (LEMO ↔ LEMO)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#never-do-this">✘ NEVER do this</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#battery-safety-cap">Battery safety cap</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#before-charging">Before charging</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#charging-procedure">Charging procedure</a></li>
 </ul>
@@ -494,25 +499,167 @@ document.write(`
 <p>For Steam Deck setup and controller-specific connection guidance, see <a class="reference internal" href="ControlConsole.html"><span class="std std-doc">ControlConsole</span></a>.</p>
 </section>
 <section id="charging-the-robot">
-<h2>Charging the robot<a class="headerlink" href="#charging-the-robot" title="Link to this heading">#</a></h2>
+<span id="charging"></span><h2>Charging the robot<a class="headerlink" href="#charging-the-robot" title="Link to this heading">#</a></h2>
 <p>Use only the approved charger supplied with the Honey Badger 5.0 robot.</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p><strong>There are only two valid connections in the charging set:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>XLR ↔ XLR</strong> — charger (black cable) to charging cable.</p></li>
+<li><p><strong>LEMO ↔ LEMO</strong> — charging cable to battery cable, red dot to red dot.</p></li>
+</ol>
+<p><strong>NEVER connect an XLR connector to a LEMO connector.</strong> They are not compatible. Forcing them together
+destroys both connectors and can damage the battery, causing a short circuit or fire.
+<strong>This can injure you:</strong> risk of electric shock, burns from sparks or hot connectors, and battery fire.</p>
+<p><strong>Never use force.</strong> A correct pair slides together easily. If a connector does not go in, STOP and
+check the photos below.</p>
+</div>
+<section id="charging-set">
+<h3>Charging set<a class="headerlink" href="#charging-set" title="Link to this heading">#</a></h3>
+<figure class="align-center" id="id2">
+<img alt="charger_set" class="no-scaled-link" src="../_images/charger_set.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Charging set: charger with XLR plug (black cable) and battery charging cable (grey cable: XLR socket on one end, LEMO socket on the other).</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The charger output ends with an XLR plug. The XLR joint lets you swap the charging cable:</p>
+<ul class="simple">
+<li><p><strong>battery charging cable</strong> — to charge the battery outside the robot,</p></li>
+<li><p><strong>robot charging cable</strong> — to charge the robot through the charger port, see <a class="reference internal" href="../Physical/Connectors.html#robot-connectors"><span class="std std-ref">Connectors</span></a>.</p></li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Connector</p></th>
+<th class="head"><p>Connect ONLY to</p></th>
+<th class="head"><p>NEVER connect to</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Charger XLR plug (black cable)</p></td>
+<td><p>XLR socket of the charging cable</p></td>
+<td><p>any LEMO connector</p></td>
+</tr>
+<tr class="row-odd"><td><p>Charging cable LEMO socket (grey cable)</p></td>
+<td><p>Battery cable LEMO plug (orange cable)</p></td>
+<td><p>charger XLR plug</p></td>
+</tr>
+<tr class="row-even"><td><p>Battery cable LEMO plug (orange cable)</p></td>
+<td><p>Charging cable LEMO socket, or safety cap</p></td>
+<td><p>charger XLR plug</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="step-1-charger-to-charging-cable-xlr-xlr">
+<h3>✔ Step 1: charger to charging cable (XLR ↔ XLR)<a class="headerlink" href="#step-1-charger-to-charging-cable-xlr-xlr" title="Link to this heading">#</a></h3>
+<p>Align the XLR plug with the XLR socket and push straight in until the release latch clicks.</p>
+<p>To disconnect, <strong>press and hold the release latch</strong> on the XLR socket (grey cable), then pull the
+connectors apart. Never pull without pressing the latch.</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<img alt="xlr_disconnected" class="no-scaled-link" src="../_images/xlr_disconnected.jpg" />
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<img alt="xlr_connected" class="no-scaled-link" src="../_images/xlr_connected.jpg" />
+</div>
+</div>
+</div>
+</section>
+<section id="step-2-charging-cable-to-battery-cable-lemo-lemo">
+<h3>✔ Step 2: charging cable to battery cable (LEMO ↔ LEMO)<a class="headerlink" href="#step-2-charging-cable-to-battery-cable-lemo-lemo" title="Link to this heading">#</a></h3>
+<p>Remove the safety cap from the battery cable. Align the <strong>red dots</strong> on both LEMO connectors and push
+straight in until it clicks. To disconnect, firmly grab the connector body and slightly pull the
+housing to release the latch, then pull the connectors apart. Never twist the connector or pull by the cable.</p>
+<p>All LEMO connectors used with the robot work the same way, see <a class="reference internal" href="../Physical/Connectors.html#lemo-connectors"><span class="std std-ref">Connectors</span></a>.</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<img alt="lemo_disconnected" class="no-scaled-link" src="../_images/lemo_disconnected.jpg" />
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<img alt="lemo_connected" class="no-scaled-link" src="../_images/lemo_connected.jpg" />
+</div>
+</div>
+</div>
+</section>
+<section id="never-do-this">
+<h3>✘ NEVER do this<a class="headerlink" href="#never-do-this" title="Link to this heading">#</a></h3>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<figure class="align-default" id="id3">
+<img alt="wrong_battery_cable_xlr" class="no-scaled-link" src="../_images/wrong_battery_cable_xlr.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text"><strong>WRONG:</strong> battery cable (LEMO) to charger (XLR).</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<figure class="align-default" id="id4">
+<img alt="wrong_charging_cable_xlr" class="no-scaled-link" src="../_images/wrong_charging_cable_xlr.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text"><strong>WRONG:</strong> charging cable LEMO end to charger (XLR).</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>XLR and LEMO connectors have similar diameters, but they are completely different connectors.
+Connecting them with force can destroy the battery and <strong>injure you</strong> (electric shock, burns, battery fire).</p>
+</div>
+</section>
+<section id="battery-safety-cap">
+<span id="id1"></span><h3>Battery safety cap<a class="headerlink" href="#battery-safety-cap" title="Link to this heading">#</a></h3>
+<figure class="align-center" id="id5">
+<img alt="battery" class="no-scaled-link" src="../_images/battery.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Battery with its cable (orange) and LEMO plug with the tethered safety cap.</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>ALWAYS put the safety cap on the battery cable</strong> when the battery is not connected to the robot or
+to the charger. An uncapped battery connector can be short-circuited.</p>
+</div>
+<p>Align the red dots on the cap and the battery cable connector, then push the cap on until it clicks.</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<img alt="battery_cable_cap" class="no-scaled-link" src="../_images/battery_cable_cap.jpg" />
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<img alt="battery_cable_capped" class="no-scaled-link" src="../_images/battery_cable_capped.jpg" />
+</div>
+</div>
+</div>
+</section>
 <section id="before-charging">
 <h3>Before charging<a class="headerlink" href="#before-charging" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Place the robot on stable, flat ground.</p></li>
+<li><p>Place the robot or battery on stable, flat ground.</p></li>
 <li><p>Ensure the robot is stopped and in a safe state.</p></li>
-<li><p>Check that the charger, cable, and connector are clean, dry, and undamaged.</p></li>
+<li><p>Check that the charger, cables, and connectors are clean, dry, and undamaged.</p></li>
 <li><p>Keep the charging area dry and away from flammable materials.</p></li>
 </ul>
 </section>
 <section id="charging-procedure">
 <h3>Charging procedure<a class="headerlink" href="#charging-procedure" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p>Connect the charger to the robot.</p></li>
+<li><p>Connect the correct charging cable to the charger (XLR ↔ XLR): battery charging cable to charge the battery, robot charging cable to charge the robot.</p></li>
+<li><p>Connect the charging cable:</p>
+<ul class="simple">
+<li><p>battery: remove the safety cap and connect to the battery cable (LEMO ↔ LEMO, red dot to red dot),</p></li>
+<li><p>robot: connect to the robot charger port.</p></li>
+</ul>
+</li>
 <li><p>Connect the charger to mains power.</p></li>
-<li><p>Confirm the power LED shows the expected charging state.</p></li>
+<li><p>When charging the robot, confirm the power LED shows the charging state, see <a class="reference internal" href="../Physical/Connectors.html"><span class="std std-doc">Button &amp; Connectors</span></a>.</p></li>
 <li><p>When charging completes, disconnect mains power.</p></li>
-<li><p>Disconnect the charger from the robot.</p></li>
+<li><p>Disconnect the charging cable. For the battery, put the safety cap back on immediately.</p></li>
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -595,6 +742,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-first-use">Before first use</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#robot-network-reference">Robot network reference</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#charging-the-robot">Charging the robot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#charging-set">Charging set</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-charger-to-charging-cable-xlr-xlr">✔ Step 1: charger to charging cable (XLR ↔ XLR)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-charging-cable-to-battery-cable-lemo-lemo">✔ Step 2: charging cable to battery cable (LEMO ↔ LEMO)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#never-do-this">✘ NEVER do this</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#battery-safety-cap">Battery safety cap</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#before-charging">Before charging</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#charging-procedure">Charging procedure</a></li>
 </ul>

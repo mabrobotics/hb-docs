@@ -96,7 +96,8 @@ The robot's battery is a specialized piece of equipment, unsuitable for use outs
 - do not charge the battery unattended,
 - do not operate the robot with damaged power cables or connectors,
 - disconnect power before maintenance, unless the procedure explicitly requires power,
-- after disconnecting the battery, secure the battery connector with the dedicated plug.
+- after disconnecting the battery, secure the battery connector with the dedicated plug, see {ref}`Battery safety cap <battery-safety-cap>`,
+- never connect an XLR connector to a LEMO connector and never force any connector, see {ref}`Charging <charging>`.
 
 ## Safe handling and lifting
 

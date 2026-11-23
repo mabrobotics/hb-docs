@@ -72,6 +72,9 @@ When the power button LED blinks in a red-blue (police) pattern, the robot's int
 The robot includes several connectors, a power button, and status LEDs. Their location may vary depending
 on the hardware version.
 
+(lemo-connectors)=
+All LEMO connectors used with the robot (robot ports, battery cable, charging cable, battery safety cap) work the same way.
+
 To plug the cable to the connector:
 
 - match connector and cable orientation by aligning red markers,
@@ -251,4 +254,4 @@ The socket pinout corresponds to the RJ45 T568B wiring standard.
 
 ### Charger port
 
-Charger port is only suitable to work with MAB supplied charger.
+Charger port is only suitable to work with MAB supplied charger. For valid charger connections, see {ref}`Charging <charging>`.

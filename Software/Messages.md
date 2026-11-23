@@ -1,13 +1,13 @@
 # Custom message types
 
-This page documents the custom ROS 2 message types used by Honey Badger 5.0. All custom messages are defined in the `hb50_commons` package.
+This page documents the custom ROS 2 message types used by Honey Badger 5.0. All custom messages are defined in the `hb50_commons` package. QoS profiles (mabRT, Reliable) are defined in {ref}`Quality of Service <qos-information>`.
 
 ## BridgeData — high-rate hardware frame
 
 **Message type:** `hb50_commons/msg/BridgeData`  
 **Producer:** `bridge_node`  
 **Rate:** 500 Hz (standard), 10 Hz (`/bridge_data_10hz`)  
-**QoS:** mabRT (500 Hz), Reliable (10 Hz)  
+**QoS:** {ref}`mabRT <qos-information>` (500 Hz), {ref}`Reliable <qos-information>` (10 Hz)  
 **Use case:** Control applications requiring raw actuator data
 
 Contains the high-frequency mainboard update with kinematics and IMU data. This is the primary topic for control loops and state estimation. A low-frequency variant (`/bridge_data_10hz`) is provided for visualization and lossy networks.
@@ -34,7 +34,7 @@ Contains the high-frequency mainboard update with kinematics and IMU data. This 
 **Message type:** `hb50_commons/msg/BridgeState`  
 **Producer:** `bridge_node`  
 **Rate:** 500 Hz (standard), 10 Hz (`/bridge_state_10hz`)  
-**QoS:** mabRT (500 Hz), Reliable (10 Hz)  
+**QoS:** {ref}`mabRT <qos-information>` (500 Hz), {ref}`Reliable <qos-information>` (10 Hz)  
 **Use case:** Diagnostics, UI, monitoring
 
 Contains power subsystem state, temperatures and hardware status. A low-frequency variant (`/bridge_state_10hz`) is provided for visualization and lossy networks.
@@ -64,7 +64,7 @@ Contains power subsystem state, temperatures and hardware status. A low-frequenc
 **Message type:** `hb50_commons/msg/JointCommand`  
 **Producer:** `control_node`, user nodes  
 **Rate:** 500 Hz (as needed)  
-**QoS:** mabRT  
+**QoS:** {ref}`mabRT <qos-information>`  
 **Use case:** Control applications commanding joint motion
 
 Commands the actuators with target position, velocity, torque and PD gains.
@@ -77,7 +77,7 @@ Actuators must be commanded in the strict order given in {ref}`Joint naming and 
 
 ### Custom joint control
 
-`bridge_node` subscribes only to the `/hb50/joint_command` topic. Custom control programs can publish `JointCommand` messages directly to this topic:
+`bridge_node` subscribes only to the `/hb50/joint_command` topic. Custom control programs run on the [APC](Platform.md) and publish `JointCommand` messages directly to this topic with the {ref}`mabRT <qos-information>` QoS (depth 1, best effort, volatile):
 
 - a message with `source_node` other than `control_node` takes priority: commands from `control_node` are ignored for 100 ms after it,
 - to keep control, the custom publisher must publish at least at 10 Hz,
@@ -111,7 +111,7 @@ If `bridge_node` receives no `JointCommand` for 100 ms, it switches the actuator
 **Message type:** `hb50_commons/msg/RobotState`  
 **Producer:** `control_node`  
 **Rate:** 500 Hz (standard), 10 Hz (`/robot_state_10hz`)  
-**QoS:** mabRT (500 Hz), Reliable (10 Hz)  
+**QoS:** {ref}`mabRT <qos-information>` (500 Hz), {ref}`Reliable <qos-information>` (10 Hz)  
 **Use case:** State machine, planning, visualization
 
 Contains state estimation outputs, body kinematics and dynamics. A low-frequency variant (`/robot_state_10hz`) is provided for visualization and UI applications.
@@ -189,7 +189,7 @@ Describes the estimated state of a single leg, including foot contact and forces
 **Message type:** `hb50_commons/msg/Status`
 **Producers:** `bridge_node` (hardware events), `control_node` (control events), `spool_node` (spool events)
 **Rate:** as needed
-**QoS:** Reliable
+**QoS:** {ref}`Reliable <qos-information>`
 **Use case:** Monitoring, logging, alarm handling
 
 General‑purpose status message for reporting important events, warnings and errors.
@@ -218,7 +218,7 @@ General‑purpose status message for reporting important events, warnings and er
 **Message type:** `hb50_commons/msg/VersionData`  
 **Producers:** `control_node` (`/hb50/version_data/robot`), `remote_node` (`/hb50/version_data/deck`)  
 **Rate:** once — `control_node` after its first control cycle, `remote_node` at startup  
-**QoS:** Reliable, transient local  
+**QoS:** {ref}`Reliable <qos-information>`, transient local  
 **Use case:** Checking the software version of the robot and the Steam Deck
 
 | Field | Type | Description |
@@ -242,7 +242,7 @@ ros2 topic echo --once /hb50/version_data/robot
 
 ## Control command
 
-`/hb50/control_command` (`std_msgs/msg/String`, Reliable QoS) changes the robot motion mode. It is the topic used by the control commands of the [HB50 Remote](../GettingStarted/ControlConsole.md) application.
+`/hb50/control_command` (`std_msgs/msg/String`, {ref}`Reliable <qos-information>` QoS) changes the robot motion mode. It is the topic used by the control commands of the [HB50 Remote](../GettingStarted/ControlConsole.md) application.
 
 | Command | Remote button | Description |
 | --- | --- | --- |
@@ -267,7 +267,7 @@ ros2 topic pub --once /hb50/control_command std_msgs/msg/String "{data: stand_up
 
 ## Velocity command interpretation
 
-The standard ROS geometry message `/hb50/velocity_command` (`geometry_msgs/msg/Twist`, Reliable QoS) is used for high‑level gait commands. Components are interpreted as:
+The standard ROS geometry message `/hb50/velocity_command` (`geometry_msgs/msg/Twist`, {ref}`Reliable <qos-information>` QoS) is used for high‑level gait commands. Components are interpreted as:
 
 ### Linear velocity
 
@@ -298,7 +298,7 @@ The standard ROS geometry message `/hb50/velocity_command` (`geometry_msgs/msg/T
 
 ### For UI and visualization
 
-- **Subscribe to:** `/hb50/robot_state_10hz` and `/hb50/bridge_state_10hz` (10 Hz, Reliable QoS)
+- **Subscribe to:** `/hb50/robot_state_10hz` and `/hb50/bridge_state_10hz` (10 Hz, {ref}`Reliable <qos-information>` QoS)
 - **Monitor:** `/hb50/status` for warnings and errors
 - **Listen to:** `/tf` and `/tf_static` for frame transforms
 

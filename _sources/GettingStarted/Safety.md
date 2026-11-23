@@ -72,7 +72,7 @@ Do not:
 
 Below is an image highlighting mechanical pinch points - avoid touching the robot near these at all times.
 
-```{figure} ./img/robot_pinch_points.png
+```{figure} ./img/robot_pinch_points.jpg
 :alt: hb50_pinch_points
 :class: bg-primary mb-1
 :align: center

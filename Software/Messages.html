@@ -409,6 +409,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jointcommand-actuator-control-commands">JointCommand — actuator control commands</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-joint-control">Custom joint control</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Fields</a></li>
 </ul>
 </li>
@@ -489,7 +490,7 @@ document.write(`
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">joint_name[]</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">string[]</span></code></p></td>
-<td><p>Names of actuators (e.g., <code class="docutils literal notranslate"><span class="pre">[&quot;fr_j0&quot;,</span> <span class="pre">&quot;fr_j1&quot;,</span> <span class="pre">...]</span></code>). HB50W reports 16 actuators: the 12 leg joints followed by the wheels <code class="docutils literal notranslate"><span class="pre">fr_w</span></code>, <code class="docutils literal notranslate"><span class="pre">fl_w</span></code>, <code class="docutils literal notranslate"><span class="pre">rl_w</span></code>, <code class="docutils literal notranslate"><span class="pre">rr_w</span></code></p></td>
+<td><p>Names of actuators, 12 for HB50, 16 for HB50W. See <a class="reference internal" href="Geometry.html#joint-order"><span class="std std-ref">Joint naming and order</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">joint_position[]</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">float32[]</span></code></p></td>
@@ -600,10 +601,21 @@ document.write(`
 <strong>Rate:</strong> 500 Hz (as needed)<br />
 <strong>QoS:</strong> mabRT<br />
 <strong>Use case:</strong> Control applications commanding joint motion</p>
-<p>Commands the actuators with target position, velocity, torque and PD gains. <strong>Critical:</strong> actuators must be commanded in strict order defined in the robot configuration.</p>
-<blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">bridge_node</span></code> subscribes only to <code class="docutils literal notranslate"><span class="pre">/hb50/joint_command</span></code> topic. Custom control programs can publish <code class="docutils literal notranslate"><span class="pre">JointCommand</span></code> messages directly to this topic; if the custom publisher maintains at least 10 Hz, <code class="docutils literal notranslate"><span class="pre">bridge_node</span></code> will prioritize it over the default <code class="docutils literal notranslate"><span class="pre">control_node</span></code> publisher.</p>
-</div></blockquote>
+<p>Commands the actuators with target position, velocity, torque and PD gains.</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Actuators must be commanded in the strict order given in <a class="reference internal" href="Geometry.html#joint-order"><span class="std std-ref">Joint naming and order</span></a>. A wrong order sends commands to the wrong joints and can cause sudden, unexpected robot motion.</p>
+</div>
+<section id="custom-joint-control">
+<span id="joint-command-priority"></span><h3>Custom joint control<a class="headerlink" href="#custom-joint-control" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">bridge_node</span></code> subscribes only to the <code class="docutils literal notranslate"><span class="pre">/hb50/joint_command</span></code> topic. Custom control programs can publish <code class="docutils literal notranslate"><span class="pre">JointCommand</span></code> messages directly to this topic:</p>
+<ul class="simple">
+<li><p>a message with <code class="docutils literal notranslate"><span class="pre">source_node</span></code> other than <code class="docutils literal notranslate"><span class="pre">control_node</span></code> takes priority: commands from <code class="docutils literal notranslate"><span class="pre">control_node</span></code> are ignored for 100 ms after it,</p></li>
+<li><p>to keep control, the custom publisher must publish at least at 10 Hz,</p></li>
+<li><p>100 ms after the last custom message, <code class="docutils literal notranslate"><span class="pre">control_node</span></code> takes control again and its current command is applied immediately,</p></li>
+<li><p>the actuators must be energized (<code class="docutils literal notranslate"><span class="pre">ENERGIZE</span></code>), otherwise <code class="docutils literal notranslate"><span class="pre">bridge_node</span></code> sends zero commands.</p></li>
+</ul>
+</section>
 <section id="id2">
 <h3>Fields<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -620,11 +632,11 @@ document.write(`
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source_node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
-<td><p>Name of commanding node (e.g., <code class="docutils literal notranslate"><span class="pre">control_node</span></code>)</p></td>
+<td><p>Name of the commanding node. Any name other than <code class="docutils literal notranslate"><span class="pre">control_node</span></code> gives the message priority, see <a class="reference internal" href="#joint-command-priority"><span class="std std-ref">Custom joint control</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">name[]</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">string[]</span></code></p></td>
-<td><p>Actuator identifiers (e.g., <code class="docutils literal notranslate"><span class="pre">[&quot;fr_j0&quot;,</span> <span class="pre">&quot;fr_j1&quot;,</span> <span class="pre">...]</span></code>)</p></td>
+<td><p>Actuator identifiers, informational only</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">kp[]</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">float32[]</span></code></p></td>
@@ -653,7 +665,7 @@ document.write(`
 </tbody>
 </table>
 </div>
-<p><strong>Important:</strong> Array lengths must be at least the number of actuators (12, or 16 for HB50W), otherwise <code class="docutils literal notranslate"><span class="pre">bridge_node</span></code> drops the message. Actuators are commanded by array index, not by <code class="docutils literal notranslate"><span class="pre">name[]</span></code>, so the order must correspond to the actuator ordering in <code class="docutils literal notranslate"><span class="pre">BridgeData</span></code>.</p>
+<p><strong>Important:</strong> Array lengths must be at least the number of actuators (12, or 16 for HB50W), otherwise <code class="docutils literal notranslate"><span class="pre">bridge_node</span></code> drops the message. Actuators are commanded by array index, not by <code class="docutils literal notranslate"><span class="pre">name[]</span></code>, see <a class="reference internal" href="Geometry.html#joint-order"><span class="std std-ref">Joint naming and order</span></a>.</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">bridge_node</span></code> receives no <code class="docutils literal notranslate"><span class="pre">JointCommand</span></code> for 100 ms, it switches the actuators to damping.</p>
 <hr class="docutils" />
 </section>
@@ -1121,6 +1133,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jointcommand-actuator-control-commands">JointCommand — actuator control commands</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-joint-control">Custom joint control</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Fields</a></li>
 </ul>
 </li>

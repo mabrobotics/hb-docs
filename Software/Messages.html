@@ -453,13 +453,13 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="custom-message-types">
 <h1>Custom message types<a class="headerlink" href="#custom-message-types" title="Link to this heading">#</a></h1>
-<p>This page documents the custom ROS 2 message types used by Honey Badger 5.0. All custom messages are defined in the <code class="docutils literal notranslate"><span class="pre">hb50_commons</span></code> package.</p>
+<p>This page documents the custom ROS 2 message types used by Honey Badger 5.0. All custom messages are defined in the <code class="docutils literal notranslate"><span class="pre">hb50_commons</span></code> package. QoS profiles (mabRT, Reliable) are defined in <a class="reference internal" href="Overview.html#qos-information"><span class="std std-ref">Quality of Service</span></a>.</p>
 <section id="bridgedata-high-rate-hardware-frame">
 <h2>BridgeData — high-rate hardware frame<a class="headerlink" href="#bridgedata-high-rate-hardware-frame" title="Link to this heading">#</a></h2>
 <p><strong>Message type:</strong> <code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/BridgeData</span></code><br />
 <strong>Producer:</strong> <code class="docutils literal notranslate"><span class="pre">bridge_node</span></code><br />
 <strong>Rate:</strong> 500 Hz (standard), 10 Hz (<code class="docutils literal notranslate"><span class="pre">/bridge_data_10hz</span></code>)<br />
-<strong>QoS:</strong> mabRT (500 Hz), Reliable (10 Hz)<br />
+<strong>QoS:</strong> <a class="reference internal" href="Overview.html#qos-information"><span class="std std-ref">mabRT</span></a> (500 Hz), <a class="reference internal" href="Overview.html#qos-information"><span class="std std-ref">Reliable</span></a> (10 Hz)<br />
 <strong>Use case:</strong> Control applications requiring raw actuator data</p>
 <p>Contains the high-frequency mainboard update with kinematics and IMU data. This is the primary topic for control loops and state estimation. A low-frequency variant (<code class="docutils literal notranslate"><span class="pre">/bridge_data_10hz</span></code>) is provided for visualization and lossy networks.</p>
 <section id="fields">
@@ -523,7 +523,7 @@ document.write(`
 <p><strong>Message type:</strong> <code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/BridgeState</span></code><br />
 <strong>Producer:</strong> <code class="docutils literal notranslate"><span class="pre">bridge_node</span></code><br />
 <strong>Rate:</strong> 500 Hz (standard), 10 Hz (<code class="docutils literal notranslate"><span class="pre">/bridge_state_10hz</span></code>)<br />
-<strong>QoS:</strong> mabRT (500 Hz), Reliable (10 Hz)<br />
+<strong>QoS:</strong> <a class="reference internal" href="Overview.html#qos-information"><span class="std std-ref">mabRT</span></a> (500 Hz), <a class="reference internal" href="Overview.html#qos-information"><span class="std std-ref">Reliable</span></a> (10 Hz)<br />
 <strong>Use case:</strong> Diagnostics, UI, monitoring</p>
 <p>Contains power subsystem state, temperatures and hardware status. A low-frequency variant (<code class="docutils literal notranslate"><span class="pre">/bridge_state_10hz</span></code>) is provided for visualization and lossy networks.</p>
 <section id="id1">
@@ -599,7 +599,7 @@ document.write(`
 <p><strong>Message type:</strong> <code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/JointCommand</span></code><br />
 <strong>Producer:</strong> <code class="docutils literal notranslate"><span class="pre">control_node</span></code>, user nodes<br />
 <strong>Rate:</strong> 500 Hz (as needed)<br />
-<strong>QoS:</strong> mabRT<br />
+<strong>QoS:</strong> <a class="reference internal" href="Overview.html#qos-information"><span class="std std-ref">mabRT</span></a><br />
 <strong>Use case:</strong> Control applications commanding joint motion</p>
 <p>Commands the actuators with target position, velocity, torque and PD gains.</p>
 <div class="admonition danger">
@@ -608,7 +608,7 @@ document.write(`
 </div>
 <section id="custom-joint-control">
 <span id="joint-command-priority"></span><h3>Custom joint control<a class="headerlink" href="#custom-joint-control" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">bridge_node</span></code> subscribes only to the <code class="docutils literal notranslate"><span class="pre">/hb50/joint_command</span></code> topic. Custom control programs can publish <code class="docutils literal notranslate"><span class="pre">JointCommand</span></code> messages directly to this topic:</p>
+<p><code class="docutils literal notranslate"><span class="pre">bridge_node</span></code> subscribes only to the <code class="docutils literal notranslate"><span class="pre">/hb50/joint_command</span></code> topic. Custom control programs run on the <a class="reference internal" href="Platform.html"><span class="std std-doc">APC</span></a> and publish <code class="docutils literal notranslate"><span class="pre">JointCommand</span></code> messages directly to this topic with the <a class="reference internal" href="Overview.html#qos-information"><span class="std std-ref">mabRT</span></a> QoS (depth 1, best effort, volatile):</p>
 <ul class="simple">
 <li><p>a message with <code class="docutils literal notranslate"><span class="pre">source_node</span></code> other than <code class="docutils literal notranslate"><span class="pre">control_node</span></code> takes priority: commands from <code class="docutils literal notranslate"><span class="pre">control_node</span></code> are ignored for 100 ms after it,</p></li>
 <li><p>to keep control, the custom publisher must publish at least at 10 Hz,</p></li>
@@ -675,7 +675,7 @@ document.write(`
 <p><strong>Message type:</strong> <code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/RobotState</span></code><br />
 <strong>Producer:</strong> <code class="docutils literal notranslate"><span class="pre">control_node</span></code><br />
 <strong>Rate:</strong> 500 Hz (standard), 10 Hz (<code class="docutils literal notranslate"><span class="pre">/robot_state_10hz</span></code>)<br />
-<strong>QoS:</strong> mabRT (500 Hz), Reliable (10 Hz)<br />
+<strong>QoS:</strong> <a class="reference internal" href="Overview.html#qos-information"><span class="std std-ref">mabRT</span></a> (500 Hz), <a class="reference internal" href="Overview.html#qos-information"><span class="std std-ref">Reliable</span></a> (10 Hz)<br />
 <strong>Use case:</strong> State machine, planning, visualization</p>
 <p>Contains state estimation outputs, body kinematics and dynamics. A low-frequency variant (<code class="docutils literal notranslate"><span class="pre">/robot_state_10hz</span></code>) is provided for visualization and UI applications.</p>
 <section id="id3">
@@ -852,7 +852,7 @@ document.write(`
 <p><strong>Message type:</strong> <code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/Status</span></code>
 <strong>Producers:</strong> <code class="docutils literal notranslate"><span class="pre">bridge_node</span></code> (hardware events), <code class="docutils literal notranslate"><span class="pre">control_node</span></code> (control events), <code class="docutils literal notranslate"><span class="pre">spool_node</span></code> (spool events)
 <strong>Rate:</strong> as needed
-<strong>QoS:</strong> Reliable
+<strong>QoS:</strong> <a class="reference internal" href="Overview.html#qos-information"><span class="std std-ref">Reliable</span></a>
 <strong>Use case:</strong> Monitoring, logging, alarm handling</p>
 <p>General‑purpose status message for reporting important events, warnings and errors.</p>
 <section id="id5">
@@ -905,7 +905,7 @@ document.write(`
 <p><strong>Message type:</strong> <code class="docutils literal notranslate"><span class="pre">hb50_commons/msg/VersionData</span></code><br />
 <strong>Producers:</strong> <code class="docutils literal notranslate"><span class="pre">control_node</span></code> (<code class="docutils literal notranslate"><span class="pre">/hb50/version_data/robot</span></code>), <code class="docutils literal notranslate"><span class="pre">remote_node</span></code> (<code class="docutils literal notranslate"><span class="pre">/hb50/version_data/deck</span></code>)<br />
 <strong>Rate:</strong> once — <code class="docutils literal notranslate"><span class="pre">control_node</span></code> after its first control cycle, <code class="docutils literal notranslate"><span class="pre">remote_node</span></code> at startup<br />
-<strong>QoS:</strong> Reliable, transient local<br />
+<strong>QoS:</strong> <a class="reference internal" href="Overview.html#qos-information"><span class="std std-ref">Reliable</span></a>, transient local<br />
 <strong>Use case:</strong> Checking the software version of the robot and the Steam Deck</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -957,7 +957,7 @@ document.write(`
 </section>
 <section id="control-command">
 <span id="id6"></span><h2>Control command<a class="headerlink" href="#control-command" title="Link to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">/hb50/control_command</span></code> (<code class="docutils literal notranslate"><span class="pre">std_msgs/msg/String</span></code>, Reliable QoS) changes the robot motion mode. It is the topic used by the control commands of the <a class="reference internal" href="../GettingStarted/ControlConsole.html"><span class="std std-doc">HB50 Remote</span></a> application.</p>
+<p><code class="docutils literal notranslate"><span class="pre">/hb50/control_command</span></code> (<code class="docutils literal notranslate"><span class="pre">std_msgs/msg/String</span></code>, <a class="reference internal" href="Overview.html#qos-information"><span class="std std-ref">Reliable</span></a> QoS) changes the robot motion mode. It is the topic used by the control commands of the <a class="reference internal" href="../GettingStarted/ControlConsole.html"><span class="std std-doc">HB50 Remote</span></a> application.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Command</p></th>
@@ -1009,7 +1009,7 @@ document.write(`
 </section>
 <section id="velocity-command-interpretation">
 <span id="velocity-command"></span><h2>Velocity command interpretation<a class="headerlink" href="#velocity-command-interpretation" title="Link to this heading">#</a></h2>
-<p>The standard ROS geometry message <code class="docutils literal notranslate"><span class="pre">/hb50/velocity_command</span></code> (<code class="docutils literal notranslate"><span class="pre">geometry_msgs/msg/Twist</span></code>, Reliable QoS) is used for high‑level gait commands. Components are interpreted as:</p>
+<p>The standard ROS geometry message <code class="docutils literal notranslate"><span class="pre">/hb50/velocity_command</span></code> (<code class="docutils literal notranslate"><span class="pre">geometry_msgs/msg/Twist</span></code>, <a class="reference internal" href="Overview.html#qos-information"><span class="std std-ref">Reliable</span></a> QoS) is used for high‑level gait commands. Components are interpreted as:</p>
 <section id="linear-velocity">
 <h3>Linear velocity<a class="headerlink" href="#linear-velocity" title="Link to this heading">#</a></h3>
 <ul class="simple">
@@ -1044,7 +1044,7 @@ document.write(`
 <section id="for-ui-and-visualization">
 <h3>For UI and visualization<a class="headerlink" href="#for-ui-and-visualization" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><strong>Subscribe to:</strong> <code class="docutils literal notranslate"><span class="pre">/hb50/robot_state_10hz</span></code> and <code class="docutils literal notranslate"><span class="pre">/hb50/bridge_state_10hz</span></code> (10 Hz, Reliable QoS)</p></li>
+<li><p><strong>Subscribe to:</strong> <code class="docutils literal notranslate"><span class="pre">/hb50/robot_state_10hz</span></code> and <code class="docutils literal notranslate"><span class="pre">/hb50/bridge_state_10hz</span></code> (10 Hz, <a class="reference internal" href="Overview.html#qos-information"><span class="std std-ref">Reliable</span></a> QoS)</p></li>
 <li><p><strong>Monitor:</strong> <code class="docutils literal notranslate"><span class="pre">/hb50/status</span></code> for warnings and errors</p></li>
 <li><p><strong>Listen to:</strong> <code class="docutils literal notranslate"><span class="pre">/tf</span></code> and <code class="docutils literal notranslate"><span class="pre">/tf_static</span></code> for frame transforms</p></li>
 </ul>

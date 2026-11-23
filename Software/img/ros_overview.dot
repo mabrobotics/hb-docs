@@ -1,0 +1,26 @@
+// ROS 2 overview for software v1.3.0. Render: dot -Tpng -Gdpi=110 ros_overview.dot -o ros_overview.png
+digraph ros_overview {
+    rankdir=LR; nodesep=1.4; ranksep=1.8; bgcolor=white;
+    node [shape=box, style="rounded,filled", fillcolor="#FCE4CC", color="#E8A33C", penwidth=1.5,
+          fontname="Liberation Sans Bold", fontsize=13, margin="0.25,0.15"];
+    edge [fontname="Liberation Sans", fontsize=11, color="#333333", arrowsize=0.7];
+
+    remote [label=<remote_node<br/><font face="Liberation Sans" point-size="11">+ teleop_node (joystick)<br/>Steam Deck</font>>];
+    control  [label="control_node"];
+    bridge   [label="bridge_node"];
+    statepub [label="state_publisher_node"];
+    config   [label="config_node"];
+    tf [shape=plaintext, style="", label="/tf", fontname="Liberation Sans", fontsize=11];
+    { rank=same; control; bridge; }
+    { rank=same; statepub; config; }
+
+    remote   -> control  [label="control_command\nvelocity_command"];
+    control  -> remote   [label="robot_state_10hz\nversion_data/robot"];
+    bridge   -> remote   [label="bridge_data_10hz\nbridge_state_10hz\nstatus"];
+    remote   -> bridge   [label="bridge_control (service)", style=dashed];
+    control  -> bridge   [xlabel="joint_command "];
+    bridge   -> control  [xlabel=" bridge_data\n bridge_state_10hz"];
+    bridge   -> statepub [label="joint_states"];
+    statepub -> tf;
+    config   -> control  [label="parameters", style=dotted, arrowhead=none];
+}

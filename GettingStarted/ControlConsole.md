@@ -89,7 +89,7 @@ When the adaptive locomotion mode is on (default), a walking robot stops steppin
 
 ## Controls Layout
 
-Alongside `remote_node` there is also another node `teleop_node`, which captures joystick button inputs and converts them to robot commands. If the controller input is lost for more than 0.3 s, `teleop_node` commands zero velocity. Below is a list of supported commands and actions:
+Alongside `remote_node` there is also another node `teleop_node`, which captures joystick button inputs and converts them to robot commands. If the controller input is lost for more than 0.3 s, `teleop_node` commands zero velocity. The controller mapping is shown below:
 
 ```{figure} ./img/deck_controls.png
 :alt: deck_controls

@@ -34,6 +34,8 @@ chapters:
         title: Geometry & Frames
       - file: Software/Updating.md
         title: Software Update
+      - file: Software/CustomControl.md
+        title: Custom Control
   - file: Payload/Payload.md
     title: Payload
     sections:

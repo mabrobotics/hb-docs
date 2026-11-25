@@ -190,6 +190,7 @@ This connector offers isolated output - its outputs should not be shorted to reg
 chassis. Shorting any of the connections to the battery GND may lead to damage to internal electronics.
 ```
 
+(e-stop)=
 #### E-stop
 
 If E-stop button is used, it should be normally-closed, pressing the button should disconnect the circuit.

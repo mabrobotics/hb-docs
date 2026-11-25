@@ -19,6 +19,7 @@
 :class: no-scaled-link
 ```
 
+(joint-motion-range)=
 ### Joint Motion Range
 
 | Joint no. | Location | Range |

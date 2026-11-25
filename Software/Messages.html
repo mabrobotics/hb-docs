@@ -197,6 +197,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Networking.html">Networking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Geometry.html">Geometry &amp; Frames</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Updating.html">Software Update</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CustomControl.html">Custom Control</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Payload/Payload.html">Payload</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -409,7 +410,6 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jointcommand-actuator-control-commands">JointCommand — actuator control commands</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-joint-control">Custom joint control</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Fields</a></li>
 </ul>
 </li>
@@ -606,16 +606,7 @@ document.write(`
 <p class="admonition-title">Danger</p>
 <p>Actuators must be commanded in the strict order given in <a class="reference internal" href="Geometry.html#joint-order"><span class="std std-ref">Joint naming and order</span></a>. A wrong order sends commands to the wrong joints and can cause sudden, unexpected robot motion.</p>
 </div>
-<section id="custom-joint-control">
-<span id="joint-command-priority"></span><h3>Custom joint control<a class="headerlink" href="#custom-joint-control" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">bridge_node</span></code> subscribes only to the <code class="docutils literal notranslate"><span class="pre">/hb50/joint_command</span></code> topic. Custom control programs run on the <a class="reference internal" href="Platform.html"><span class="std std-doc">APC</span></a> and publish <code class="docutils literal notranslate"><span class="pre">JointCommand</span></code> messages directly to this topic with the <a class="reference internal" href="Overview.html#qos-information"><span class="std std-ref">mabRT</span></a> QoS (depth 1, best effort, volatile):</p>
-<ul class="simple">
-<li><p>a message with <code class="docutils literal notranslate"><span class="pre">source_node</span></code> other than <code class="docutils literal notranslate"><span class="pre">control_node</span></code> takes priority: commands from <code class="docutils literal notranslate"><span class="pre">control_node</span></code> are ignored for 100 ms after it,</p></li>
-<li><p>to keep control, the custom publisher must publish at least at 10 Hz,</p></li>
-<li><p>100 ms after the last custom message, <code class="docutils literal notranslate"><span class="pre">control_node</span></code> takes control again and its current command is applied immediately,</p></li>
-<li><p>the actuators must be energized (<code class="docutils literal notranslate"><span class="pre">ENERGIZE</span></code>), otherwise <code class="docutils literal notranslate"><span class="pre">bridge_node</span></code> sends zero commands.</p></li>
-</ul>
-</section>
+<p>Custom controllers can publish <code class="docutils literal notranslate"><span class="pre">JointCommand</span></code> messages to take over control from <code class="docutils literal notranslate"><span class="pre">control_node</span></code>, see <a class="reference internal" href="CustomControl.html"><span class="std std-doc">Custom Control</span></a>.</p>
 <section id="id2">
 <h3>Fields<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -632,7 +623,7 @@ document.write(`
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">source_node</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
-<td><p>Name of the commanding node. Any name other than <code class="docutils literal notranslate"><span class="pre">control_node</span></code> gives the message priority, see <a class="reference internal" href="#joint-command-priority"><span class="std std-ref">Custom joint control</span></a></p></td>
+<td><p>Name of the commanding node. Any name other than <code class="docutils literal notranslate"><span class="pre">control_node</span></code> gives the message priority, see <a class="reference internal" href="CustomControl.html#joint-command-priority"><span class="std std-ref">Command priority</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">name[]</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">string[]</span></code></p></td>
@@ -1133,7 +1124,6 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jointcommand-actuator-control-commands">JointCommand — actuator control commands</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-joint-control">Custom joint control</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Fields</a></li>
 </ul>
 </li>

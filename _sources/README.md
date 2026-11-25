@@ -18,6 +18,7 @@ Documentation for Honey Badger robots.
 - [Networking](Software/Networking.md) — SSH and ROS 2 network notes
 - [Geometry](Software/Geometry.md) — coordinate frames and leg geometry
 - [Software Update](Software/Updating.md) — robot and Steam Deck updates
+- [Custom Control](Software/CustomControl.md) — custom controllers and the `hb50-commons` package
 - [Payload](Payload/Payload.md) — payload mount
 - [Camera & Lidar](Payload/CameraLidar.md) — camera and lidar payload
 - [Spool](Payload/Spool.md) — spool payload

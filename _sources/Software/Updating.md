@@ -7,6 +7,7 @@ The robot software is delivered by MAB as Debian packages, one for each device:
 | `hb50-robot_<version>_amd64.deb` | Robot (LPC) |
 | `hb50-remote_<version>_amd64.deb` | Steam Deck |
 | `hb50-payload_<version>_arm64.deb` | APC, only with the camera and lidar payload, see [Camera & Lidar](../Payload/CameraLidar.md) |
+| `hb50-commons_<version>_<arm64\|amd64>.deb` | APC or PC running custom software, see [Custom Control](CustomControl.md) |
 
 The software is installed in `/opt/<package name>`. The robot and the Steam Deck must run the same version; otherwise the status console shows the warning `Robot runs v<version>, remote v<version>: update both to the same version`.
 

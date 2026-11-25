@@ -73,23 +73,14 @@ Commands the actuators with target position, velocity, torque and PD gains.
 Actuators must be commanded in the strict order given in {ref}`Joint naming and order <joint-order>`. A wrong order sends commands to the wrong joints and can cause sudden, unexpected robot motion.
 ```
 
-(joint-command-priority)=
-
-### Custom joint control
-
-`bridge_node` subscribes only to the `/hb50/joint_command` topic. Custom control programs run on the [APC](Platform.md) and publish `JointCommand` messages directly to this topic with the {ref}`mabRT <qos-information>` QoS (depth 1, best effort, volatile):
-
-- a message with `source_node` other than `control_node` takes priority: commands from `control_node` are ignored for 100 ms after it,
-- to keep control, the custom publisher must publish at least at 10 Hz,
-- 100 ms after the last custom message, `control_node` takes control again and its current command is applied immediately,
-- the actuators must be energized (`ENERGIZE`), otherwise `bridge_node` sends zero commands.
+Custom controllers can publish `JointCommand` messages to take over control from `control_node`, see [Custom Control](CustomControl.md).
 
 ### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
 | `header` | `std_msgs/Header` | Timestamp and source |
-| `source_node` | `string` | Name of the commanding node. Any name other than `control_node` gives the message priority, see {ref}`Custom joint control <joint-command-priority>` |
+| `source_node` | `string` | Name of the commanding node. Any name other than `control_node` gives the message priority, see {ref}`Command priority <joint-command-priority>` |
 | `name[]` | `string[]` | Actuator identifiers, informational only |
 | `kp[]` | `float32[]` | Position gain for each joint |
 | `ki[]` | `float32[]` | (Reserved) Integral gain |

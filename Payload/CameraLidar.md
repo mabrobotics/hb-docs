@@ -6,23 +6,6 @@ The software is installed on the APC from the `hb50-payload` package and configu
 
 ## Remote controller interface
 
-The `CAMERA MENU`, `LIDAR MENU` and `LEDS MENU` buttons appear in the left menu of the `HB50 Remote` application automatically when the robot detects the payload, that is when `payload_node` is running. The `LIDAR MENU` button appears only when `lidar.config` is set, and the `LEDS MENU` button only when `leds.device` is set.
-
-The camera, the lidar and the LEDs are off by default and have to be turned on each time `payload_node` starts.
-
-When the enabled camera sends no pictures for 3 s, for example after it was unplugged, it is reconnected automatically as soon as it is available again.
-
-### Camera menu
-
-| Name | Function |
-| --- | --- |
-| `ENABLE` | Starts the camera. |
-| `DISABLE` | Stops the camera. |
-| Mode buttons (`walk`, `inspect`, ...) | Switch the camera mode. One button is shown for each mode in `camera.modes`; the active mode is greyed out. |
-| `ADVANCED` | Shows or hides the advanced camera settings. |
-| `SNAPSHOT` | Saves the current camera picture on the Steam Deck in `~/Pictures/hb50/`. |
-| `MAXIMIZE` | Shows the camera picture over the whole application. `MINIMIZE` returns to the normal view. |
-
 ```{figure} ./img/deck_camera.png
 :alt: deck_camera
 :class: bg-primary mb-1
@@ -30,12 +13,35 @@ When the enabled camera sends no pictures for 3 s, for example after it was unpl
 :class: no-scaled-link
 ```
 
-The advanced camera settings contain:
+When the robot detects the payload, that is when `payload_node` is running, the payload buttons appear in the left menu of the `HB50 Remote` application:
 
 | Name | Function |
 | --- | --- |
-| `ROTATE 180°` | Turns the `camera.rotate_180` rotation on and off. |
-| `-` / `+` | Change the JPEG quality of the active camera mode in steps of 10, from 10 to 90 or `ORIGINAL` (camera frames sent unchanged). |
+| `CAMERA MENU` | Opens the camera menu. |
+| `LIDAR: ON` / `OFF` | Starts or stops the lidar driver. Shown only when `lidar.config` is set. |
+| `LEDS: ON` / `OFF` | Turns the LEDs on or off. Shown only when `leds.device` is set. |
+| `REC: OFF` / `REC: <mm:ss>` | Starts or stops the {ref}`rosbag recording <rosbag-recording>`. While recording, the button shows the recording time. |
+
+While a command is executed, the button shows `STARTING...` or `STOPPING...`. The camera, the lidar and the LEDs are off by default and have to be turned on each time `payload_node` starts.
+
+When the enabled camera sends no pictures for 3 s, for example after it was unplugged, it is reconnected automatically as soon as it is available again.
+
+### Camera menu
+
+| Name | Function |
+| --- | --- |
+| `CAMERA: ON` / `OFF` | Starts or stops the camera. |
+| Mode buttons (`WALK`, `INSPECT`, ...) | Switch the camera mode. One button with the resolution and frame rate is shown for each mode in `camera.modes`; the active mode is highlighted. |
+| `SETTINGS` | Shows or hides the camera settings. |
+| Camera picture | Tap to show the picture over the whole application, tap again to return. The frame rate is shown in the top right corner, `CAMERA OFF` or `NO SIGNAL` when no pictures arrive. |
+| `SNAPSHOT` | Saves the current camera picture on the Steam Deck in `~/Pictures/hb50/`. |
+
+The camera settings contain:
+
+| Name | Function |
+| --- | --- |
+| `-` / `+` | Change the JPEG quality (`QUALITY`) of the active camera mode in steps of 10, from 10 to 90 or `ORIGINAL` (camera frames sent unchanged). Lower quality is smoother over a weak Wi-Fi connection. |
+| `FLIP 180°: ON` / `OFF` | Turns the `camera.rotate_180` rotation on and off, for a camera mounted upside down. |
 
 ```{figure} ./img/deck_camera_advanced.png
 :alt: deck_camera_advanced
@@ -46,42 +52,12 @@ The advanced camera settings contain:
 
 Settings changed in the remote apply until `payload_node` restarts. To keep them, set them in `/etc/hb50/payload.yaml`.
 
-### Lidar menu
-
-| Name | Function |
-| --- | --- |
-| `ENABLE` | Starts the lidar driver. |
-| `DISABLE` | Stops the lidar driver. |
-| Rosbag `START` | Starts recording a rosbag on the APC. |
-| Rosbag `STOP` | Stops the recording and saves the rosbag. |
-
-```{figure} ./img/deck_lidar.png
-:alt: deck_lidar
-:class: bg-primary mb-1
-:align: center
-:class: no-scaled-link
-```
-
-### LEDs menu
-
-| Name | Function |
-| --- | --- |
-| `ON` | Turns the LEDs on. |
-| `OFF` | Turns the LEDs off. |
-
-```{figure} ./img/deck_leds.png
-:alt: deck_leds
-:class: bg-primary mb-1
-:align: center
-:class: no-scaled-link
-```
-
 The result of each command is shown in the status console.
 
 (rosbag-recording)=
 ## Rosbag recording
 
-`payload_node` can record a rosbag, started and stopped with the `/hb50/payload/rosbag/record` service (`std_srvs/srv/SetBool`) or the rosbag buttons in the `LIDAR MENU`. The rosbag is saved in MCAP format on the APC in `~/rosbags/payload_<date>_<time>` of the user the payload runs as, and contains the topics:
+`payload_node` can record a rosbag, started and stopped with the `/hb50/payload/rosbag/record` service (`std_srvs/srv/SetBool`) or the `REC` button of the `HB50 Remote` application. The rosbag is saved in MCAP format on the APC in `~/rosbags/payload_<date>_<time>` of the user the payload runs as, and contains the topics:
 
 - `/hb50/bridge_state_10hz`,
 - `/hb50/robot_state_10hz`,

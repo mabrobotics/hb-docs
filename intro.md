@@ -44,7 +44,7 @@
 
 ## Documentation for older software versions
 
-This documentation describes robot software v1.3.1. Documentation for older software versions is available as PDF:
+This documentation describes robot software v1.3.2. Documentation for older software versions is available as PDF:
 
 - {download}`Software v1.2.0 <downloads/hb-docs-v1.2.0.pdf>`
 - {download}`Software v1.1.0 <downloads/hb-docs-v1.1.0.pdf>`

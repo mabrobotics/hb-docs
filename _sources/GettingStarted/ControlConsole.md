@@ -6,7 +6,7 @@ Remote control of HB robots is best done using the MAB-supplied Steam Deck contr
 
 For robot Wi-Fi SSID and password details, see [Setup](Setup.md).
 
-```{figure} ./img/deck_wifi.png
+```{figure} ./img/deck_wifi.jpg
 :alt: deck_wifi
 :class: bg-primary mb-1
 :align: center
@@ -36,7 +36,7 @@ On the desktop, there is an `HB50 Remote` application icon that starts the `remo
 The application window consists of:
 
 - **Status** (bottom) — connection state, battery level, DC voltage, charger and DC bus state, temperatures, energy used and up time,
-- **Menu** (left) — state of `control_node` and `bridge_node`: `ACTIVE`, `INACTIVE`, `UNCONFIGURED` or `OFF`. During normal operation both nodes are `ACTIVE`. When a payload is detected, the `CAMERA MENU`, `LIDAR MENU`, `LEDS MENU` or `SPOOL MENU` button appears together with the `MAIN MENU` button, which returns to the main view, see [Camera & Lidar](../Payload/CameraLidar.md) and [Spool](../Payload/Spool.md). The `DEV MODE` toggle at the bottom is PIN-protected and intended for MAB service,
+- **Menu** (left) — state of `control_node` and `bridge_node`: `ACTIVE`, `INACTIVE`, `UNCONFIGURED` or `OFF`. During normal operation both nodes are `ACTIVE`. When a payload is detected, the `CAMERA MENU` and `SPOOL MENU` buttons, the `LIDAR`, `LEDS` and `REC` toggles appear together with the `MAIN MENU` button, which returns to the main view, see [Camera & Lidar](../Payload/CameraLidar.md) and [Spool](../Payload/Spool.md). The `DEV MODE` toggle at the bottom is PIN-protected and intended for MAB service,
 - **MainMenu** (center) — walking height and feet height sliders, robot state overview (motion mode, motion type and current gait), leg temperatures, connected Wi-Fi network and the {ref}`adaptive locomotion mode <adaptive-mode>` toggle,
 - **Console** — status messages from the robot and the application,
 - **Bridge** (right) — robot commands. The Command Switch button at the top (`> GO TO POWER COMMANDS` / `> GO TO CONTROL COMMANDS`) switches between control and power commands.

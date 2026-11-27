@@ -37,6 +37,7 @@ The custom controller takes over either from the standing robot or from the robo
 3. Stop the custom controller to hand back control. 100 ms after its last message, `control_node` takes control again with damping, and the robot lies down on the ground.
 
 (stop-idle)=
+
 ### Stopping with IDLE
 
 `IDLE` disables the actuators and keeps them in damping. The custom controller loses control, also when it still publishes, and the robot lies down on the ground with damping.
@@ -46,6 +47,7 @@ Do not select other control commands (`STAND UP`, `STAND`, `WALK`, ...) while th
 ```
 
 (joint-command-priority)=
+
 ## Command priority
 
 `bridge_node` accepts commands from `control_node` and from custom controllers on the same `/hb50/joint_command` topic. The source is given by the `source_node` field of `JointCommand`:
@@ -68,8 +70,11 @@ The arrays are indexed in the order given in {ref}`Joint naming and order <joint
 For reference, `control_node` holds the stand-up pose with `kp` 90 and `kd` 3 on all leg joints. The robot state for the controller is published on `/hb50/bridge_data` at 500 Hz (joint positions, velocities, torques and IMU), see [BridgeData](Messages.md).
 
 (custom-software)=
+
 ## Setup
 
 The `hb50-commons` package contains the robot's ROS 2 interfaces: the messages and services described in [Message types](Messages.md), for C++ and Python. It is built for ROS 2 Jazzy and installed in `/opt/hb50-commons`; source `/opt/hb50-commons/setup.bash` before building or running a custom controller. The package has no dependencies, so it needs a ROS 2 Jazzy host or container.
+
+The package is supplied by MAB together with the robot. To get it for another software version, contact the MAB team.
 
 Install the package version matching the robot software (`arm64` for the APC, `amd64` for a PC) with `sudo apt install ./hb50-commons_<version>_<arch>.deb`. `ROS_DOMAIN_ID` must match the robot settings, see [Software Update](Updating.md).

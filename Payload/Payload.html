@@ -402,6 +402,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#payload-mount">Payload mount</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-payload">Custom payload</a></li>
 </ul>
             </nav>
         </div>
@@ -434,6 +435,45 @@ document.write(`
 area. When designing payloads that reach or extend beyond boundaries of approximate payload area, contact MAB team
 to avoid collisions between legs and payload.</p>
 </div>
+</section>
+<section id="custom-payload">
+<h2>Custom payload<a class="headerlink" href="#custom-payload" title="Link to this heading">#</a></h2>
+<p>The robot controller accounts for the payload when its mass, inertia and center of mass are set. The drawing shows the origin of the robot <a class="reference internal" href="../Software/Geometry.html#local-frame"><span class="std std-ref">coordinate frame</span></a> relative to the payload mount, dimensions in mm, robot front at the top of the top view. The marked front-right mounting hole is at x = 50 mm, y = −65 mm, and the mounting surface is at z = 59 mm.</p>
+<figure class="align-center">
+<img alt="payload_frame_origin" class="no-scaled-link" src="../_images/payload_frame_origin.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>3D CAD models of the robot are available on request. Contact the MAB team.</p>
+</div>
+<p>The payload is set with the parameters of <code class="docutils literal notranslate"><span class="pre">config_node</span></code>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">payload.mass</span></code></p></td>
+<td><p>Payload mass in kg, <code class="docutils literal notranslate"><span class="pre">0</span></code> for no payload.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">payload.com</span></code></p></td>
+<td><p>Payload center of mass in the robot coordinate frame: <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> in m.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">payload.inertia</span></code></p></td>
+<td><p>Payload moments of inertia about its center of mass, along the robot axes: <code class="docutils literal notranslate"><span class="pre">[Ixx,</span> <span class="pre">Iyy,</span> <span class="pre">Izz]</span></code> in kg·m².</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For example, for a 2 kg payload with its center of mass 100 mm above the origin:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>param<span class="w"> </span><span class="nb">set</span><span class="w"> </span>/hb50/config_node<span class="w"> </span>payload.mass<span class="w"> </span><span class="m">2</span>.0
+ros2<span class="w"> </span>param<span class="w"> </span><span class="nb">set</span><span class="w"> </span>/hb50/config_node<span class="w"> </span>payload.com<span class="w"> </span><span class="s2">&quot;[0.0, 0.0, 0.1]&quot;</span>
+ros2<span class="w"> </span>param<span class="w"> </span><span class="nb">set</span><span class="w"> </span>/hb50/config_node<span class="w"> </span>payload.inertia<span class="w"> </span><span class="s2">&quot;[0.01, 0.02, 0.02]&quot;</span>
+ros2<span class="w"> </span>service<span class="w"> </span>call<span class="w"> </span>/hb50/config_save<span class="w"> </span>std_srvs/srv/Trigger
+</pre></div>
+</div>
+<p>The parameters apply immediately. <code class="docutils literal notranslate"><span class="pre">config_save</span></code> saves them on the robot, so they are kept after a restart and a software update.</p>
 </section>
 <div class="toctree-wrapper compound">
 </div>
@@ -504,6 +544,7 @@ to avoid collisions between legs and payload.</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#payload-mount">Payload mount</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-payload">Custom payload</a></li>
 </ul>
   </nav></div>
 

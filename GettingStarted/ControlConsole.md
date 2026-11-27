@@ -6,7 +6,7 @@ Remote control of HB robots is best done using the MAB-supplied Steam Deck contr
 
 For robot Wi-Fi SSID and password details, see [Setup](Setup.md).
 
-```{figure} ./img/deck_wifi.png
+```{figure} ./img/deck_wifi.jpg
 :alt: deck_wifi
 :class: bg-primary mb-1
 :align: center

@@ -140,6 +140,7 @@ The default `/etc/hb50/payload.yaml`:
         inspect: [1920, 1080, 5]
       rotate_180: false
       mount: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+      optical_offset: 0.0021
     lidar:
       config: mid360.json
       mount: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
@@ -155,7 +156,8 @@ The default `/etc/hb50/payload.yaml`:
 | `camera.mode` | Active camera mode, one of `camera.modes`. Can be changed at runtime. |
 | `camera.modes.<name>` | Camera mode: width, height, frame rate and optional JPEG quality (`[width, height, fps, quality]`). Quality 1–100 re-encodes the camera frames, which reduces the bandwidth; `0` or no value sends the camera frames unchanged. Modes can be added and renamed freely. |
 | `camera.rotate_180` | Rotates the camera picture by 180°, for a camera mounted upside down. |
-| `camera.mount` | Camera position relative to the `<robot>/body` frame: `[x, y, z, roll, pitch, yaw]` in m and rad. |
+| `camera.mount` | Camera sensor position relative to the `<robot>/body` frame: `[x, y, z, roll, pitch, yaw]` in m and rad, with x along the lens axis. |
+| `camera.optical_offset` | Distance of the optical center from the camera sensor along the lens axis in m, about the lens focal length. |
 | `lidar.config` | Livox driver configuration file. Relative paths point to the folder of `payload.yaml`. Leave empty when no lidar is mounted. |
 | `lidar.mount` | Lidar position relative to the `<robot>/body` frame: `[x, y, z, roll, pitch, yaw]` in m and rad. |
 | `lidar.preview_decimation` | Every Nth lidar point is kept in the preview point cloud. |
@@ -169,7 +171,7 @@ ros2 param set /hb50/payload_node camera.mode inspect
 
 Changing the other parameters requires a restart of the `hb50-payload` service.
 
-The camera and lidar positions are published as static transforms from `<robot>/body` to `<robot>/camera_<name>` and `<robot>/lidar`, see [Geometry & Frames](../Software/Geometry.md).
+The camera and lidar positions are published as static transforms from `<robot>/body` to `<robot>/camera_<name>` and `<robot>/lidar`, see [Geometry & Frames](../Software/Geometry.md). The camera images refer to the `<robot>/camera_<name>_optical` frame, placed `camera.optical_offset` in front of `<robot>/camera_<name>`, with z along the lens axis, x to the right and y down in the picture.
 
 If the requested resolution is not supported by the camera, the closest supported one is used and a warning is logged. The camera always captures at 30 fps or more, and lower frame rates are achieved by dropping frames. When `camera.rotate_180` is on and no quality is set, the frames are re-encoded with quality 85.
 

@@ -1,6 +1,7 @@
 # Mechanical
 
 (general-dimensions)=
+
 ## General dimensions
 
 ```{figure} ./img/robot_dimensions.png
@@ -8,6 +9,10 @@
 :class: bg-primary mb-1
 :align: center
 :class: no-scaled-link
+```
+
+```{note}
+3D CAD models of the robot are available on request. Contact the MAB team.
 ```
 
 ## Robot Legs
@@ -20,6 +25,7 @@
 ```
 
 (joint-motion-range)=
+
 ### Joint Motion Range
 
 | Joint no. | Location | Range |

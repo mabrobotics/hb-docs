@@ -40,6 +40,8 @@ Each actuator is named `<leg>_j<n>`, e.g. `fl_j2` is the front-left knee. The ar
 | `j2` | Knee |
 | `j3` | Wheel (HB50W only) |
 
+(local-frame)=
+
 ### Local coordinate frame
 
 The robot uses a right‑hand coordinate system with origin at the chassis center (approximately the center of mass). Axes and rotations are defined as:
